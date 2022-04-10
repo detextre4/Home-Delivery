@@ -18,15 +18,15 @@
 
         <aside class="divrow center">
           <!-- content -->
-          <span class="h9-em openMenuCollections" style="font-weight: bold">SEARCH BY COLLECTIONS</span>
-            <button v-if="themeButton" class="relative" @click="CambiarTheme('dark'), CambiarTheme2('dark')"
+          <a class="h9-em openMenuCollections bold">SEARCH BY COLLECTIONS</a>
+            <button v-if="themeButton" class="relative colorCartas" @click="CambiarTheme('dark'), CambiarTheme2('dark')"
               style="width: 80px; border-radius: 30px; color: transparent">
               .
               <div class="containerSwitchTheme" />
               <div class="switchTheme" />
               <div />
             </button>
-            <button v-else class="relative" @click="CambiarTheme('light'), CambiarTheme2('light')"
+            <button v-else class="relative colorCartas" @click="CambiarTheme('light'), CambiarTheme2('light')"
               style="width: 80px; border-radius: 30px; color: transparent">
               .
               <div class="containerSwitchThemeDark" />

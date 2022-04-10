@@ -16,14 +16,15 @@
             :href="item.link"
           >
             <v-list-item-title>
+              <!-- content -->
               <aside class="divrow space">
-                <!-- <div class="divrow center" style="gap: 10px">
+                <div class="divrow center" style="gap: 10px">
                   <v-icon large>{{ item.icon }}</v-icon>
                   <a :href="item.link" class="h8-em" style="font-weight: 600">
                     {{ item.title }}
                   </a>
                 </div>
-                <v-icon medium>mdi-chevron-right</v-icon> -->
+                <v-icon medium>mdi-chevron-right</v-icon>
               </aside>
             </v-list-item-title>
           </v-list-item>
@@ -41,6 +42,10 @@
       activator=".openMenuCollections"
     >
     <section class="colorCartas">
+      <!-- content -->
+      <span class="center bold h4">
+        use if u need this
+      </span>
       </section>
     </v-dialog>
 
@@ -66,10 +71,6 @@ export default {
       dialog: false,
       overlay_opacity: "0.2",
       overlay_color: "white",
-      search: '',
-      filter: [
-        'foo', 'bar', 'fizz', 'buzz'
-      ],
     };
   },
   created() {
