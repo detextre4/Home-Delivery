@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="walletAlert">
     <v-alert
       :value="alertMetamask"
       elevation="3"
@@ -63,20 +63,3 @@ export default {
 </script>
 
 <style src="./Alert.scss" lang="scss"></style>
-<style scoped>
-#alertaWallet {
-  /* Auto layout */
-  padding: 1.45rem;
-  padding-left: 2rem;
-  position: fixed;
-  width: 27.5rem;
-  height: 11.55rem;
-  right: 5rem;
-  top: 99px;
-  border-radius: 30px;
-  z-index: 10;
-}
-#contenedorAlertWallet {
-  margin-left: 7% !important;
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="alert">
     <!-- 1 -->
     <v-alert
       :value="alertSuccess"
