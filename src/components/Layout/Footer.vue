@@ -1,5 +1,6 @@
 <template>
-  <v-footer color="transparent" height="100px" absolute>
+  <v-footer id="footer" color="transparent"
+    height="100px" absolute>
     <v-row no-gutters class="space align" style="max-width: 90%">
       <!-- content -->
       <aside class="divrow">
@@ -13,10 +14,10 @@
 
       <aside class="divrow" style="gap: 5em">
         <div class="divrow" style="cursor: pointer">
-          <span class="h7" style="font-weight: bold">EN</span>
+          <span class="h7-em" style="font-weight: bold">EN</span>
           <v-icon small>mdi-chevron-down</v-icon>
         </div>
-        <span class="h7 center" style="font-weight: bold; gap: 5px">Powered by 
+        <span class="h7-em center" style="font-weight: bold; gap: 5px">Powered by 
           <img class="filter" src="" alt="near">
         </span>
       </aside>

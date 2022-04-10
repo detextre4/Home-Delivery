@@ -18,7 +18,7 @@
 
         <aside class="divrow center">
           <!-- content -->
-          <span class="h9 openMenuCollections" style="font-weight: bold">SEARCH BY COLLECTIONS</span>
+          <span class="h9-em openMenuCollections" style="font-weight: bold">SEARCH BY COLLECTIONS</span>
             <button v-if="themeButton" class="relative" @click="CambiarTheme('dark'), CambiarTheme2('dark')"
               style="width: 80px; border-radius: 30px; color: transparent">
               .

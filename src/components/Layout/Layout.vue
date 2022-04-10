@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="layout">
     <img class="fondo" :src="`${$store.state.baseURL}themes/${$store.state.theme}/bg.png`"
       alt="background"
     >

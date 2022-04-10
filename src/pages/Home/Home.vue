@@ -1,5 +1,6 @@
 <template>
   <section id="home" class="parent center">
+    <v-btn class="colorCartas">haha</v-btn>
   </section>
 </template>
 

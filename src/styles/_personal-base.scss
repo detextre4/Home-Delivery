@@ -173,20 +173,50 @@
   justify-content: flex-start;
   align-items: center;
 }
+.astart {
+  display: flex;
+  align-items: flex-start;
+}
+.jstart {
+  display: flex;
+  justify-content: flex-start;
+}
 .end {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+.aend {
+  display: flex;
+  align-items: flex-end;
+}
+.jend {
+  display: flex;
+  justify-content: flex-end;
 }
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.tcenter {
+  text-align: center;
+}
 .space {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.tspace {
+  text-align: justify;
+}
+.jspace {
+  display: flex;
+  justify-content: space-between;
+}
+.spacea {
+  display: flex;
+  justify-content: space-around;
 }
 .relative {
   position: relative;
