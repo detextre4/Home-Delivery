@@ -1,0 +1,14 @@
+@import "../styles/app";
+
+.parent {
+  padding-top: 2%;
+  max-width: 1500px;
+  margin-inline: auto;
+}
+
+// home
+#home {
+  flex-direction: column;
+  max-width: max-content;
+  height: 70vh;
+}
