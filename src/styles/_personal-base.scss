@@ -199,6 +199,14 @@
   justify-content: center;
   align-items: center;
 }
+.acenter {
+  display: flex;
+  align-items: center;
+}
+.jcenter {
+  display: flex;
+  justify-content: center;
+}
 .tcenter {
   text-align: center;
 }
@@ -242,6 +250,9 @@
 .auto-width {
   max-width: auto !important;
   min-width: auto !important;
+}
+.vermobile {
+  display: none;
 }
 @media (max-width: 880px) and (max-height: 1180px) {
   .eliminarmobile {

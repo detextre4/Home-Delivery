@@ -1,38 +1,75 @@
 <template>
   <section id="menuHeader">
-    <!-- menu header -->
+    <!-- drawer mobile -->
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      height="100%"
+      temporary
+      right
+      :overlay-opacity="overlay_opacity"
+      :overlay-color="overlay_color"
+      class="colorCartas2"
+    >
+      <!-- list 1 (without submenu)-->
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in dataDrawerA"
+          :key="item.title"
+          :href="item.to"
+          link
+        >
+          <v-list-item-content>
+            <div v-bind:key="index" class="center">
+              <a :href="item.to" class="h7-em">{{ item.title }}</a>
+            </div>
+          </v-list-item-content>
+        </v-list-item>
+        <!-- list 2 (with submenu)-->
+        <v-list-item v-for="(item, index) in dataDrawerB" :key="index"
+          @mousedown="changeArrow(item)"
+          @mouseleave="changeArrowFocusOut(item)"
+          :class="{
+            openSubmenuADrawer: item.openA,
+            openSubmenuBDrawer: item.openB,
+          }"
+        >
+          <v-list-item-content>
+            <div class="center">
+              <a class="h7-em">{{ item.title }}</a>
+              <v-icon medium v-if="item.open">mdi-chevron-down</v-icon>
+              <v-icon medium v-else>mdi-chevron-up</v-icon>
+            </div>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <!-- submenuA drawer -->
     <v-menu
       bottom
       transition="scroll-y-transition"
       offset-y
-      activator=".openMenuHeader"
+      z-index="10"
+      max-width="244px"
+      activator=".openSubmenuADrawer"
     >
-      <v-list color="transparent" class="containerMenuHeader">
-        <section class="cardMenuHeader colorCartas">
-          <v-list-item
-            class="cardItems"
-            v-for="(item, i) in dataMenuHeader"
-            :key="i"
-            :href="item.link"
-          >
-            <v-list-item-title>
-              <!-- content -->
-              <aside class="divrow space">
-                <div class="divrow center" style="gap: 10px">
-                  <v-icon large>{{ item.icon }}</v-icon>
-                  <a :href="item.link" class="h8-em" style="font-weight: 600">
-                    {{ item.title }}
-                  </a>
-                </div>
-                <v-icon medium>mdi-chevron-right</v-icon>
-              </aside>
-            </v-list-item-title>
-          </v-list-item>
-        </section>
+      <v-list class="colorCartas2">
+        <v-list-item
+          v-for="(item, i) in dataSubmenuA"
+          :key="i"
+          :href="item.to"
+        >
+          <v-list-item-title class="center">
+            <a :href="item.to" class="h7-em">
+              {{ item.title }}
+            </a>
+          </v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-menu>
 
-    <!-- menu collections -->
+    <!-- dialog (delete if dont need it) -->
     <v-dialog
       id="dialogo"
       v-model="dialog"
@@ -41,11 +78,11 @@
       :overlay-color="overlay_color"
       activator=".openMenuCollections"
     >
-    <section class="colorCartas">
-      <!-- content -->
-      <span class="center bold h4">
-        use if u need this
-      </span>
+      <section class="colorCartas">
+        <!-- content -->
+        <span class="center bold h4">
+          use if u need this
+        </span>
       </section>
     </v-dialog>
 
@@ -56,26 +93,57 @@
 export default {
   name: "HeaderMenu",
   i18n: require("./i18n"),
-  computed: {
-    headers() {
-      return [
-        {
-          sortable: false,
-          value: "title",
-        },
-      ];
-    },
+  created() {
+    const theme = localStorage.getItem("theme");
+    this.OverlayMethod(theme);
   },
   data() {
     return {
       dialog: false,
       overlay_opacity: "0.2",
       overlay_color: "white",
+      drawer: false,
+      dataDrawerA: [
+        {
+          title: "Home",
+          to: "#/",
+        },
+        {
+          title: "Staking",
+          to: "#",
+        },
+        {
+          title: "Community",
+          to: "#",
+        },
+        {
+          title: "About",
+          to: "#",
+        },
+      ],
+      dataDrawerB: [
+        {
+          title: "Languaje",
+          open: true,
+          openA: true,
+        },
+        {
+          title: "Contact",
+          open: true,
+          openB: true,
+        },
+      ],
+      dataSubmenuA: [
+        {
+          title: "English",
+          to: "#",
+        },
+        {
+          title: "Spanish",
+          to: "#",
+        }
+      ],
     };
-  },
-  created() {
-    const theme = localStorage.getItem("theme");
-    this.OverlayMethod(theme);
   },
   methods: {
     OverlayMethod(theme) {
@@ -86,6 +154,17 @@ export default {
       if (theme == "light") {
         this.overlay_opacity = "0.2";
         this.overlay_color = "white"
+      }
+    },
+    ShowDrawer() {
+      this.drawer = !this.drawer
+    },
+    changeArrow(item) {
+      item.open = !item.open;
+    },
+    changeArrowFocusOut(item) {
+      if (item.open === false) {
+        item.open = !item.open;
       }
     },
   },

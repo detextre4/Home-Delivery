@@ -32,7 +32,60 @@
 
 // header
 #headerApp {
+  font-size: 16px;
   transition: 0.4s ease-in-out;
+  .contleft {
+    gap: 1em;
+    .toggle {
+      z-index: 10;
+      background-color: var(--colorCartas2);
+    }
+    .logo {
+      width: clamp(6em, 12vw, 12em);
+      height: clamp(3em, 5vw, 5em);
+    }
+  }
+  .contmiddle {
+    gap: clamp(0em, 3vw, 3em);
+    a {
+      position: relative;
+      font-weight: 400;
+      -webkit-text-stroke: 0.2px var(--color);
+      -moz-text-stroke: 0.2px var(--color);
+    }
+    a:hover:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin-inline: auto;
+      background-color: #ef3340;
+      width: 90%;
+      height: 2px;
+      animation: linea 0.2s;
+    }
+    @keyframes linea {
+      0% {
+        transform: scaleX(0);
+      }
+      100% {
+        transform: scaleX(1);
+      }
+    }
+  }
+  .contright {
+    .walletButton {
+      margin-left: 1em;
+      box-shadow: $sombra-boton !important;
+      span {
+        font-weight: 400;
+        -webkit-text-stroke: 0.2px #FFFFFF;
+        -moz-text-stroke: 0.2px #FFFFFF;
+        color: #FFFFFF !important;
+      }
+    }
+  }
 }
 
 /////////////////////////////////////////////////////////
