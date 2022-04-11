@@ -3,7 +3,7 @@
     <img class="fondo" :src="`${$store.state.baseURL}themes/${$store.state.theme}/bg.png`"
       alt="background"
     >
-    <Header ref="header" id="navbar" />
+    <Header ref="header" />
     <v-main class="content">
       <router-view></router-view>
     </v-main>
