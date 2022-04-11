@@ -1,5 +1,6 @@
 /* global colors */
 :root {
+  --fondo: #000000;
   --color: #FFFFFF;
   --colorInverted: #111011;
   --colorCartas: #000000;

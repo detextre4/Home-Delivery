@@ -2,9 +2,9 @@
 
 // error
 #error {
+  background: var(--fondo);
   .error-page {
     height: 100%;
-    background: #000000;
     .v-main__wrap {
       padding: 4rem $content-padding 70px $content-padding;
     }
