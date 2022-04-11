@@ -6,12 +6,12 @@
   .v-main__wrap {
     // padding: 4rem $content-padding 70px $content-padding;
     padding-inline: 0;
-    padding-bottom: 70px;
+    padding-bottom: clamp(6rem, 8vh, 8rem);
     padding-top: clamp(3rem, 22vh , 8rem);
   }
   @media (max-height: 800px) {
     .v-main__wrap {
-      padding-top: clamp(3rem, 13vh , 9rem);
+      padding-top: clamp(3rem, 17vh , 9rem);
     }
   }
   .fondo {

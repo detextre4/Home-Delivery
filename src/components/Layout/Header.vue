@@ -6,11 +6,11 @@
     <v-app-bar
     id="headerApp"
     color="transparent"
-    height="120px"
+    height="100px"
     fixed
   >
     <v-row>
-      <v-col cols="12" sm="11" md="11" class="divrow space align">
+      <v-col cols="12" sm="11" class="divrow space align paddbottomdel">
         <!-- logo -->
         <router-link to="/">
           <img src="" alt="Logo">
