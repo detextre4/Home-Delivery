@@ -40,4 +40,4 @@ export default {
 };
 </script>
 
-<style src="../pages.scss" lang="scss" />
+<style src="../Pages.scss" lang="scss" />

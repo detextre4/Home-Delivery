@@ -14,7 +14,7 @@
 <script>
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
-import "./layout.scss";
+import "./Layout.scss";
 /*
 --Uso del GSAP:
 
@@ -68,4 +68,4 @@ export default {
 }
 </script>
 
-<style src="./layout.scss" lang="scss" />
+<style src="./Layout.scss" lang="scss" />
