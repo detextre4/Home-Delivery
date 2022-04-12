@@ -50,6 +50,10 @@
   }
   .contnavbar {
     gap: clamp(0em, 1vh, 1em);
+    .conticon :focus {
+      transform: translateY(-8%);
+      transition: 0.5s ease-in-out;
+    }
     .conticon {
       width: min(10vw, 5.9375em);
       height: min(10vw, 5.9375em);
@@ -81,19 +85,22 @@
       gap: 1em;
     }
     .contright {
+      .walletButton:focus {
+        transform: translateY(-1%) scale(0.98, 0.98);
+        filter: drop-shadow(0 0 0.1rem #A4FDDF);
+      }
       .walletButton {
         margin-left: 1em;
-        box-shadow: $sombra-boton !important;
-        background: $color-boton;
-        border-radius: $border;
-        width: 164px;
-        height: 71px;
-        span {
-          font-weight: 400;
-          -webkit-text-stroke: 0.2px #FFFFFF;
-          -moz-text-stroke: 0.2px #FFFFFF;
-          color: #FFFFFF !important;
-        }
+        background: center no-repeat url("../../assets/icons/boton.png");
+        background-size: contain;
+        border-radius: $border-boton;
+        padding: clamp(1.8em, 2vw, 2em);
+        font-weight: 400;
+        font-size: clamp(0.6em, 1.2vw, 0.9em);
+        -webkit-text-stroke: 0.2px #FFFFFF;
+        -moz-text-stroke: 0.2px #FFFFFF;
+        color: $color !important;
+        transition: 0.2s ease-in-out;
       }
     }
   }

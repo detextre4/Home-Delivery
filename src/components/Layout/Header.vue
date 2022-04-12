@@ -23,9 +23,9 @@
           </aside>
 
           <aside class="contright">
-            <v-btn class="walletButton">
+            <button class="walletButton center">
               Iniciar Sesión
-            </v-btn>
+            </button>
           </aside>
         </v-col>
       </v-row>
