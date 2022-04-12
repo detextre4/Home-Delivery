@@ -1,5 +1,5 @@
 <template>
-  <section id="home" class="parent center">
+  <section id="home" class="parent">
     <v-btn class="bold" rounded style="background: var(--colorCartas2);
       box-shadow: 0 3px 11px 0 #111011, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A !important;">
       Checkout "_personal-base.scss" file

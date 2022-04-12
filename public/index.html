@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" type="image/png" href="<%= BASE_URL %>favicon.png" />
-    <link id="theme" rel="stylesheet" href="<%= BASE_URL %>themes/dark/theme.css" />
+    <link id="theme" rel="stylesheet" href="<%= BASE_URL %>themes/light/theme.css" />
     <title>Home Delivery</title>
     <!-- icons-default -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" />
@@ -45,6 +45,9 @@ default settings
 }
 *::-webkit-scrollbar-thumb {
   background: var(--colorScroll);
+}
+* {
+  text-transform: uppercase;
 }
 :is(html, body, #app) {
   font-size: 16px;

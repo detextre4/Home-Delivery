@@ -2,7 +2,8 @@
 
 // login
 #login {
-  background: var(--fondo);
+  background: center no-repeat fixed url("../../assets/images/fondo.png");
+  background-size: cover;
   .v-main__wrap {
     padding: 4rem $content-padding 70px $content-padding;
   }

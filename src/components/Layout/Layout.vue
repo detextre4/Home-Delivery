@@ -1,10 +1,8 @@
 <template>
   <v-app id="layout">
-    <img class="fondo" :src="`${$store.state.baseURL}themes/${$store.state.theme}/bg.png`"
-      alt="background"
-    >
+    <Navbar ref="navbar" />
     <Header ref="header" />
-    <v-main class="content">
+    <v-main>
       <router-view></router-view>
     </v-main>
     <Footer />
@@ -12,6 +10,7 @@
 </template>
 
 <script>
+import Navbar from "@/components/Layout/Navbar";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import "./Layout.scss";
@@ -64,7 +63,7 @@ v-animate-onscroll.repeat="'animHero'"
 */
 export default {
   name: "Layout",
-  components: { Footer, Header },
+  components: { Footer, Header, Navbar },
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <v-footer id="footer" color="transparent"
     height="100px" absolute>
-    <v-row no-gutters class="space align" style="max-width: 90%">
+    <v-row no-gutters class="space">
       <!-- content -->
       <aside class="divrow">
         <div v-for="(item, index) in dataIconos" v-bind:key="index"

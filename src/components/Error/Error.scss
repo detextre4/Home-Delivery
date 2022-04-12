@@ -2,7 +2,8 @@
 
 // error
 #error {
-  background: var(--fondo);
+  background: center no-repeat fixed url("../../assets/images/fondo.png");
+  background-size: cover;
   .error-page {
     height: 100%;
     .v-main__wrap {

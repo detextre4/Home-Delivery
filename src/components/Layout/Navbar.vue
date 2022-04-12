@@ -1,0 +1,106 @@
+<template>
+  <v-row id="navbar">
+    <!-- logo -->
+    <router-link to="/" class="contlogo align">
+      <img class="logo" src="@/assets/logos/logo.png" alt="Logo">
+    </router-link>
+    <!-- content -->
+    <aside class="contnavbar divcol center align">
+      <a v-for="(item, index) in dataNavbar" :key="index" @click="to(item)"
+        class="conticon center" :class="{ conticonActive: item.active }">
+        <button class="divcol center">
+          <img :src="item.icon" alt="Icono">
+          <span>{{ item.title}}</span>
+        </button>
+      </a>
+    </aside>
+  </v-row>
+</template>
+
+<script>
+export default {
+  name: "Navbar",
+  i18n: require("./i18n"),
+  data() {
+    return {
+      dataNavbar: [
+        {
+          icon: require("@/assets/icons/inicio.png"),
+          title: "Inicio",
+          active: true
+        },
+        {
+          icon: require("@/assets/icons/categorias-outline.png"),
+          title: "Categorias",
+          active: false
+        },
+        {
+          icon: require("@/assets/icons/restaurantes-outline.png"),
+          title: "Restaurantes",
+          active: false
+        },
+        {
+          icon: require("@/assets/icons/about-outline.png"),
+          title: "Nosotros",
+          active: false
+        }
+      ]
+    };
+  },
+  methods: {
+    to(item) {
+      const icon1 = require("@/assets/icons/inicio-outline.png");
+      const icon1Active = require("@/assets/icons/inicio.png");
+      const icon2 = require("@/assets/icons/categorias-outline.png");
+      const icon2Active = require("@/assets/icons/categorias.png");
+      const icon3 = require("@/assets/icons/restaurantes-outline.png");
+      const icon3Active = require("@/assets/icons/restaurantes.png");
+      const icon4 = require("@/assets/icons/about-outline.png");
+      const icon4Active = require("@/assets/icons/about.png");
+
+      if (item == this.dataNavbar[0]) {
+        this.dataNavbar[1].icon = icon2
+        this.dataNavbar[2].icon = icon3
+        this.dataNavbar[3].icon = icon4
+        this.dataNavbar.forEach(item => {
+          item.active = false;
+        });
+        item.active = true;
+        item.icon = icon1Active
+      }
+      if (item == this.dataNavbar[1]) {
+        this.dataNavbar[0].icon = icon1
+        this.dataNavbar[2].icon = icon3
+        this.dataNavbar[3].icon = icon4
+        this.dataNavbar.forEach(item => {
+          item.active = false;
+        });
+        item.active = true;
+        item.icon = icon2Active
+      }
+      if (item == this.dataNavbar[2]) {
+        this.dataNavbar[0].icon = icon1
+        this.dataNavbar[1].icon = icon2
+        this.dataNavbar[3].icon = icon4
+        this.dataNavbar.forEach(item => {
+          item.active = false;
+        });
+        item.active = true;
+        item.icon = icon3Active
+      }
+      if (item == this.dataNavbar[3]) {
+        this.dataNavbar[0].icon = icon1
+        this.dataNavbar[1].icon = icon2
+        this.dataNavbar[2].icon = icon3
+        this.dataNavbar.forEach(item => {
+          item.active = false;
+        });
+        item.active = true;
+        item.icon = icon4Active
+      }
+    }
+  },
+};
+</script>
+
+<style src="./Layout.scss" lang="scss" />

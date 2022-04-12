@@ -1,8 +1,5 @@
 <template>
   <v-app id="login" class="center">
-    <img class="fondo" :src="`${$store.state.baseURL}themes/${$store.state.theme}/bg.png`"
-      alt="background"
-    >
     <v-main>
       <v-container class="containerlogin">
         <v-col cols="11" sm="8" md="6"
