@@ -5,14 +5,14 @@
     <v-main>
       <router-view></router-view>
     </v-main>
-    <Footer />
+    <!-- <Footer /> -->
   </v-app>
 </template>
 
 <script>
 import Navbar from "@/components/Layout/Navbar";
 import Header from "@/components/Layout/Header";
-import Footer from "@/components/Layout/Footer";
+// import Footer from "@/components/Layout/Footer";
 import "./Layout.scss";
 /*
 --Uso del GSAP:
@@ -63,7 +63,8 @@ v-animate-onscroll.repeat="'animHero'"
 */
 export default {
   name: "Layout",
-  components: { Footer, Header, Navbar },
+  // components: { Footer, Header, Navbar },
+  components: { Header, Navbar },
 }
 </script>
 

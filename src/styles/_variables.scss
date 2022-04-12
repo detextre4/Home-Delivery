@@ -1,7 +1,7 @@
 @import '~vuetify/src/styles/styles.sass';
 
 //global size
-$border: 15px;
+$border: 20px;
 
 // Sidebar //
 $drawer-items-padding:                     32px !default;
@@ -38,5 +38,5 @@ $sombra-cartas: 0px 4px 50px rgba(0, 0, 0, 0.05);
 
 // Buttons //
 $button-shadow: 0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
-$color-boton: #ef3340;
-$sombra-boton: -2px 3px 3px 0px #ef333f9f,
+$color-boton: #3E2185;
+$sombra-boton: 0px 4px 4px rgba(0, 0, 0, 0.2);

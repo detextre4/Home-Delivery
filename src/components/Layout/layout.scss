@@ -39,9 +39,9 @@
   bottom: 0;
   width: 15%;
   height: 100%;
-  padding-block: 3em;
+  padding-block: clamp(2em, 3vh, 3em);
   box-shadow: $sombra-cartas;
-  gap: 2em;
+  gap: clamp(0em, 1.5vh, 2em);
   .contlogo {
     width: min(90%, 10em);
     .logo {
@@ -49,7 +49,7 @@
     }
   }
   .contnavbar {
-    gap: 1em;
+    gap: clamp(0em, 1vh, 1em);
     .conticon {
       width: min(10vw, 5.9375em);
       height: min(10vw, 5.9375em);
@@ -84,6 +84,10 @@
       .walletButton {
         margin-left: 1em;
         box-shadow: $sombra-boton !important;
+        background: $color-boton;
+        border-radius: $border;
+        width: 164px;
+        height: 71px;
         span {
           font-weight: 400;
           -webkit-text-stroke: 0.2px #FFFFFF;

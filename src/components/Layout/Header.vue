@@ -23,7 +23,7 @@
           </aside>
 
           <aside class="contright">
-            <v-btn class="walletButton" color="#ef3340">
+            <v-btn class="walletButton">
               Iniciar Sesión
             </v-btn>
           </aside>

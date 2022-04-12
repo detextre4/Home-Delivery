@@ -40,8 +40,13 @@ export default {
           active: false
         },
         {
-          icon: require("@/assets/icons/about-outline.png"),
-          title: "Nosotros",
+          icon: require("@/assets/icons/tienda-outline.png"),
+          title: "Mis Tiendas",
+          active: false
+        },
+        {
+          icon: require("@/assets/icons/delivery-outline.png"),
+          title: "Delivery",
           active: false
         }
       ]
@@ -55,13 +60,16 @@ export default {
       const icon2Active = require("@/assets/icons/categorias.png");
       const icon3 = require("@/assets/icons/restaurantes-outline.png");
       const icon3Active = require("@/assets/icons/restaurantes.png");
-      const icon4 = require("@/assets/icons/about-outline.png");
-      const icon4Active = require("@/assets/icons/about.png");
+      const icon4 = require("@/assets/icons/tienda-outline.png");
+      const icon4Active = require("@/assets/icons/tienda.png");
+      const icon5 = require("@/assets/icons/delivery-outline.png");
+      const icon5Active = require("@/assets/icons/delivery.png");
 
       if (item == this.dataNavbar[0]) {
         this.dataNavbar[1].icon = icon2
         this.dataNavbar[2].icon = icon3
         this.dataNavbar[3].icon = icon4
+        this.dataNavbar[4].icon = icon5
         this.dataNavbar.forEach(item => {
           item.active = false;
         });
@@ -72,6 +80,7 @@ export default {
         this.dataNavbar[0].icon = icon1
         this.dataNavbar[2].icon = icon3
         this.dataNavbar[3].icon = icon4
+        this.dataNavbar[4].icon = icon5
         this.dataNavbar.forEach(item => {
           item.active = false;
         });
@@ -82,6 +91,7 @@ export default {
         this.dataNavbar[0].icon = icon1
         this.dataNavbar[1].icon = icon2
         this.dataNavbar[3].icon = icon4
+        this.dataNavbar[4].icon = icon5
         this.dataNavbar.forEach(item => {
           item.active = false;
         });
@@ -92,11 +102,23 @@ export default {
         this.dataNavbar[0].icon = icon1
         this.dataNavbar[1].icon = icon2
         this.dataNavbar[2].icon = icon3
+        this.dataNavbar[4].icon = icon5
         this.dataNavbar.forEach(item => {
           item.active = false;
         });
         item.active = true;
         item.icon = icon4Active
+      }
+      if (item == this.dataNavbar[4]) {
+        this.dataNavbar[0].icon = icon1
+        this.dataNavbar[1].icon = icon2
+        this.dataNavbar[2].icon = icon3
+        this.dataNavbar[3].icon = icon4
+        this.dataNavbar.forEach(item => {
+          item.active = false;
+        });
+        item.active = true;
+        item.icon = icon5Active
       }
     }
   },

@@ -25,3 +25,17 @@
 }
 @media (max-width: 310px) {
 }
+
+@media (max-height: 750px) and (min-width: 881px) {
+  #navbar {
+    font-size: 14px !important;
+    .contlogo {
+      width: min(90%, 8em);
+    }
+  }
+}
+@media (max-height: 630px) and (min-width: 881px) {
+  #navbar {
+    font-size: 12px !important;
+  }
+}
