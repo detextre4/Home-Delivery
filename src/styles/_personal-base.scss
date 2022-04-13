@@ -103,6 +103,9 @@
 .bold {
   font-weight: bold !important;
 }
+.gap {
+  gap: 2em;
+}
 .padd {
   padding: 0;
 }
@@ -195,6 +198,9 @@
   display: flex;
   justify-content: flex-start;
 }
+.tstart {
+  text-align: start;
+}
 .end {
   display: flex;
   justify-content: flex-end;
@@ -207,6 +213,9 @@
 .jend {
   display: flex;
   justify-content: flex-end;
+}
+.tend {
+  text-align: end;
 }
 .center {
   display: flex;
@@ -292,6 +301,9 @@
   }
   .vermobile {
     display: block !important;
+  }
+  .gapmobile {
+    gap: 2em !important;
   }
   .paddmobile {
     padding: 0 !important;
@@ -385,6 +397,9 @@
     display: flex !important;
     justify-content: flex-start !important;
   }
+  .tstartmobile {
+    text-align: start !important;
+  }
   .endmobile {
     display: flex !important;
     justify-content: flex-end !important;
@@ -397,6 +412,9 @@
   .jendmobile {
     display: flex !important;
     justify-content: flex-end !important;
+  }
+  .tendmobile {
+    text-align: end !important;
   }
   .centermobile {
     display: flex !important;
