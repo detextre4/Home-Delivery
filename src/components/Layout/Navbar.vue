@@ -1,11 +1,11 @@
 <template>
-  <v-row id="navbar">
+  <v-row id="navbar" class="alignmobile">
     <!-- logo -->
-    <router-link to="/" class="contlogo align">
+    <router-link to="/" class="contlogo align eliminarmobile">
       <img class="logo" src="@/assets/logos/logo.png" alt="Logo">
     </router-link>
     <!-- content -->
-    <aside class="contnavbar divcol center align">
+    <aside class="contnavbar divcol divrowmobile spacea align">
       <a v-for="(item, index) in dataNavbar" :key="index" @click="to(item)"
         class="conticon center" :class="{ conticonActive: item.active }">
         <button class="divcol center">

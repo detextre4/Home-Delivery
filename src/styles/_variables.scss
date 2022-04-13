@@ -40,3 +40,14 @@ $color: #A4FDDF;
 $color-boton: #3E2185;
 $sombra-boton: 0px 4px 4px rgba(0, 0, 0, 0.2);
 $border-boton: 20px;
+
+// responsive
+:root {
+  --border-responsive: 30px;
+  @media (max-width: 880px) and (max-height: 1180px) {
+    --border-responsive: 20px !important;
+  }
+  @media (max-width: 500px) and (max-height: 1180px) {
+    --border-responsive: 10px !important;
+  }
+}
