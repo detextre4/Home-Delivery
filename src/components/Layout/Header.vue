@@ -1,7 +1,5 @@
 <template>
   <section>
-    <!-- mobile -->
-
     <!-- desktop -->
     <v-app-bar
       id="headerApp"
@@ -9,9 +7,30 @@
       height="100px"
     >
       <v-row class="jend">
-        <v-col class="contheader divrow space">
-          <aside class="contleft divrow acenter">
-            
+        <v-col class="contheader space">
+          <aside class="contleft acenter">
+            <!-- <router-link to="/" class="contlogo align vermobile">
+              <img class="logo" src="@/assets/logos/logo.png" alt="Logo">
+            </router-link> -->
+
+            <v-text-field
+              v-model="search"
+              solo
+              hide-details="true"
+              maxlength="20"
+            >
+            <template v-slot:prepend-inner>
+              <img src="@/assets/icons/lupa.png" alt="icon">
+            </template>
+
+              <template v-slot:label>
+                <span class="label">BUSCAR POR COMIDA / RESTAURANTE</span>
+              </template>
+            </v-text-field>
+
+            <v-btn class="botones">
+              <img width="100%" src="@/assets/icons/options.png" alt="options">
+            </v-btn>
             <!-- <v-btn v-if="themeButton" icon width="2.8em" height="2.8em"
               @click="CambiarTheme('dark'), CambiarTheme2('dark')">
               <v-icon size="clamp(1.5em, 2vw, 2em)">mdi-weather-night</v-icon>
@@ -22,10 +41,19 @@
             </v-btn> -->
           </aside>
 
-          <aside class="contright">
+          <aside class="contright center">
             <button class="walletButton center">
               Iniciar Sesión
             </button>
+            <v-btn class="botones">
+              <v-badge
+                :content="messages"
+                :value="messages"
+                color="#3E2185"
+              >
+                <img width="100%" src="@/assets/icons/cart.png" alt="shopping cart">
+              </v-badge>
+            </v-btn>
           </aside>
         </v-col>
       </v-row>
@@ -59,6 +87,7 @@ export default {
   // },
   data() {
     return {
+      messages: 2,
       // themeButton: true,
     };
   },
