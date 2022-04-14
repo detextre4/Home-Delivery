@@ -58,8 +58,8 @@
   .contnavbar {
     height: 80%;
     .conticon {
-      width: clamp(3em, 10vw, 5.9375em);
-      height: clamp(3em, 10vw, 5.9375em);
+      width: clamp(3em, 10vw, 6.3em);
+      height: clamp(3em, 10vw, 6.3em);
       border-radius: var(--border-responsive);
       :is(img, span) {
         font-weight: 500;

@@ -38,6 +38,21 @@
         height: 100%;
         border-radius: 0;
       }
+      .conticon:nth-child(1) {
+        order: 2;
+      }
+      .conticon:nth-child(2) {
+        order: 0;
+      }
+      .conticon:nth-child(3) {
+        order: 1;
+      }
+      .conticon:nth-child(4) {
+        order: 3;
+      }
+      .conticon:nth-child(5) {
+        order: 4;
+      }
     }
   }
   
