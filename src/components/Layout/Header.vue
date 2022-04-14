@@ -12,12 +12,12 @@
             <!-- <router-link to="/" class="contlogo align vermobile">
               <img class="logo" src="@/assets/logos/logo.png" alt="Logo">
             </router-link> -->
-
             <v-text-field
               v-model="search"
               solo
               hide-details="true"
               maxlength="20"
+              class="eliminarmobile"
             >
             <template v-slot:prepend-inner>
               <img src="@/assets/icons/lupa.png" alt="icon">
@@ -30,6 +30,11 @@
 
             <v-btn class="botones">
               <img width="100%" src="@/assets/icons/options.png" alt="options">
+            </v-btn>
+
+            <v-btn @click="ShowSearchMobile()"
+              class="botones vermobile">
+              <img src="@/assets/icons/lupa.png" alt="icon">
             </v-btn>
             <!-- <v-btn v-if="themeButton" icon width="2.8em" height="2.8em"
               @click="CambiarTheme('dark'), CambiarTheme2('dark')">
@@ -55,22 +60,33 @@
               </v-badge>
             </v-btn>
           </aside>
+
+          <!-- menu search -->
+          <v-col v-show="showSearchMobile" class="containerSearch">
+            <v-text-field
+              v-model="search"
+              solo
+              hide-details="true"
+              maxlength="20"
+            >
+            <template v-slot:prepend-inner>
+              <img src="@/assets/icons/lupa.png" alt="icon">
+            </template>
+
+              <template v-slot:label>
+                <span class="label">BUSCAR POR COMIDA / RESTAURANTE</span>
+              </template>
+            </v-text-field>
+          </v-col>
         </v-col>
       </v-row>
     </v-app-bar>
-
-    <MenuHeader ref="menu"></MenuHeader>
   </section>
 </template>
 
 <script>
-import MenuHeader from "./MenuHeader.vue"
-
 export default {
   name: "Header",
-  components: {
-    MenuHeader
-  },
   i18n: require("./i18n"),
   // created() {
   //   this.element = document.getElementById("theme");
@@ -88,12 +104,14 @@ export default {
   data() {
     return {
       messages: 2,
+      search: "",
+      showSearchMobile: false,
       // themeButton: true,
     };
   },
   methods: {
-    ShowDrawer() {
-      this.$refs.menu.ShowDrawer();
+    ShowSearchMobile() {
+      this.showSearchMobile = !this.showSearchMobile
     },
     // CambiarTheme(theme) {
     //   this.$store.dispatch("CambiarTheme", { theme, element: this.element });
@@ -106,4 +124,4 @@ export default {
 };
 </script>
 
-<style src="./Layout.scss" lang="scss" />
+<style src="./Layout.scss" lang="scss"></style>

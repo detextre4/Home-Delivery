@@ -45,24 +45,24 @@
   #headerApp {
     font-size: 16px;
     max-width: 100%;
-    .contheader {
-      .contleft {
-        // gap: 1em;
-      }
-      .contright {
-        .walletButton {
-          // margin-left: 1em;
-          // clip-path: polygon(0% 5%, 50% 0, 100% 5%, 100% 50%, 100% 95%, 50% 100%, 0% 95%, 0 50%);
-          // padding: clamp(1.8em, 2vw, 1.3em);
-          // font-size: clamp(0.6em, 1.2vw, 0.9em);
-        }
-      }
-    }
   }
 }
 
 // TAMAÑO MINIMO
-@media (max-width: 380px) {
+@media (max-width: 400px) {
+  #headerApp {
+    .v-toolbar__content {
+      padding-inline: 0;
+      .contheader {
+        .contleft {
+          gap: clamp(0em, 1vw, 0.625em);
+        }
+        .contright {
+          gap: clamp(0em, 1vw, 0.625em);
+        }
+      }
+    }
+  }
 }
 @media (max-width: 310px) {
 }
