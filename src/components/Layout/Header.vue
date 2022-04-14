@@ -47,9 +47,9 @@
           </aside>
 
           <aside class="contright center">
-            <button class="walletButton center">
+            <v-btn class="walletButton center">
               Iniciar Sesión
-            </button>
+            </v-btn>
             <v-btn class="botones">
               <v-badge
                 :content="messages"
