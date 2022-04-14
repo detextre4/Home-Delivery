@@ -1,0 +1,179 @@
+@import "../../styles/app";
+
+// global
+.botones {
+  min-width: clamp(3.2em, 4vw, 4.4375em) !important;
+  min-height: clamp(3.2em, 4vw, 4.4375em) !important;
+  background: var(--colorBoton) !important;
+  border-radius: 20px !important;
+  img {
+    width: 2.5em;
+    font-size: clamp(0.7em, 1.2vw, 0.9em);
+  }
+  .v-badge__badge {
+    color: #FFFFFF;
+  }
+}
+.label {
+  color: $colorLabel !important;
+  font-size: clamp(0.7em, 1.2vw, 0.9em) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.16ch !important;
+}
+
+// layout
+#layout {
+  background: center no-repeat fixed url("../../assets/images/fondo.png");
+  background-size: cover;
+  .v-main__wrap {
+    margin-left: 15%;
+    z-index: -1;
+  }
+}
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+// navbar
+#navbar {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  height: 100%;
+  padding-block: clamp(2em, 3vh, 3em);
+  box-shadow: $sombra-cartas;
+  // gap: clamp(0em, 1.5vh, 2em);
+  z-index: 10;
+  .contlogo {
+    width: min(90%, 10em);
+    .logo {
+      width: 100%;
+    }
+  }
+  .contnavbar {
+    height: 80%;
+    .conticon {
+      width: clamp(3em, 10vw, 6.3em);
+      height: clamp(3em, 10vw, 6.3em);
+      border-radius: var(--border-responsive);
+      :is(img, span) {
+        font-weight: 500;
+        font-size: clamp(0.6em, 1.2vw, 0.8em);
+      }
+      img {
+        width: clamp(2em, 10vw, 3.7em);
+        transition: 0.5s ease-in-out;
+      }
+    }
+    .conticonActive {
+      background: #A4FDDF;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      transition: 0.2s ease-in-out;
+    }
+  }
+}
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+// header
+#headerApp {
+  font-size: 16px;
+  max-width: 85%;
+  margin-left: auto;
+  padding-top: clamp(0em, 1vw, 1em);
+  padding-inline: clamp(0em, 2vw, 2em);
+  .contheader {
+    .contleft {
+      gap: 0.625em;
+      // .contlogo {
+      //   width: min(90%, 10em);
+      //   .logo {
+      //     width: 100%;
+      //   }
+      // }
+      .v-input__slot {
+        min-width: 23em;
+        background-color: var(--colorBoton);
+        box-shadow: none !important;
+        clip-path: polygon(0% 6%, 50% 0, 100% 6%, 100% 50%, 100% 94%, 50% 100%, 0% 94%, 0 50%);
+        border-radius: 28px;
+        padding: clamp(0.7em, 2vw, 1em);
+        font-size: clamp(0.7em, 1.2vw, 0.9em);
+        font-weight: 700;
+      }
+    }
+    .contright {
+      gap: 0.625em;
+      .walletButton:focus {
+        transform: translateY(-1%);
+        box-shadow: inset 0px 0px 4px rgb(164, 253, 223, 0.5);
+      }
+      .walletButton {
+        // background: center no-repeat url("../../assets/icons/boton.png");
+        // background-size: contain;
+        background: #3E2185;
+        clip-path: polygon(0% 6%, 50% 0, 100% 6%, 100% 50%, 100% 94%, 50% 100%, 0% 94%, 0 50%);
+        border-radius: 28px;
+        padding: clamp(1.5em, 2vw, 1.6em);
+        font-weight: 600;
+        font-size: clamp(0.7em, 1.2vw, 0.9em);
+        letter-spacing: -0.1ch;
+        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+        transition: 0.2s ease-in-out;
+        height: 100%;
+        span {
+          color: $color;
+        }
+      }
+    }
+  }
+  .containerSearch {
+    position: fixed;
+    top: 90%;
+    max-width: 23em;
+    transition: 0.5s ease-in-out;
+    .v-input__slot {
+      background-color: var(--colorBoton);
+      box-shadow: none !important;
+      clip-path: polygon(0% 6%, 50% 0, 100% 6%, 100% 50%, 100% 94%, 50% 100%, 0% 94%, 0 50%);
+      border-radius: 28px;
+      padding: clamp(0.7em, 2vw, 1em);
+      font-size: clamp(0.7em, 1.2vw, 0.9em);
+      font-weight: 700;
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+// footer
+.v-footer {
+  display: flex;
+  justify-content: flex-end;
+  .row {
+    max-width: 85%;
+    justify-content: center;
+    @include media-breakpoint-up(sm) {
+      justify-content: space-between;
+    }
+  }
+}
+@media (max-width: 880px) and (max-height: 1180px) {
+  .v-footer {
+    .row {
+      justify-content: center;
+      aside:nth-child(1) {
+        order: 2;
+      }
+      aside:nth-child(2) {
+        order: 1;
+      }
+    }
+  }
+}

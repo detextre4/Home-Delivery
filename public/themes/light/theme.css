@@ -5,9 +5,10 @@
   --colorInverted: #FFFFFF;
   --colorCartas: #FFFFFF;
   --colorCartasInverted: #000000;
-  --colorCartas2: #B5C9F1;
+  --colorCartas2: #E5E5E5;
+  --colorBoton: rgba(229, 229, 229, 0.81);
   --colorHover: #eeeeee;
-  --colorScroll: #B7B89F;
+  --colorScroll: #3E2185;
   --colorCartaScroll: rgb(224, 224, 224);
   --mix-blend-mode: multiply;
 }

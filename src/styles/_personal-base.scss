@@ -1,4 +1,10 @@
 :root {
+  // added
+  --step-h1: clamp(3rem, 3.52vw, 5.72rem);
+  --step-span: clamp(1.31rem, 0.37vw, 1.50rem);
+
+  // standard
+    // rem
   --step--5: clamp(0.75rem, calc(0.76rem + 0.02vw), 0.76rem);
   --step--4: clamp(0.77rem, calc(0.76rem + 0.02vw), 0.76rem);
   --step--3: clamp(0.96rem, calc(0.89rem + 0.10vw), 0.91rem);
@@ -11,7 +17,7 @@
   --step-4: clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem);
   --step-5: clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem);
   --step-6: clamp(3.92rem, calc(3.22rem + 3.52vw), 5.72rem);
-
+    // em
   --step-em--5: clamp(0.75em, calc(0.76em + 0.02vw), 0.76em);
   --step-em--4: clamp(0.77em, calc(0.76em + 0.02vw), 0.76em);
   --step-em--3: clamp(0.96em, calc(0.89em + 0.10vw), 0.91em);
@@ -97,6 +103,9 @@
 .bold {
   font-weight: bold !important;
 }
+.gap {
+  gap: 2em;
+}
 .padd {
   padding: 0;
 }
@@ -168,6 +177,14 @@
   display: flex;
   flex-direction: column;
 }
+.divwrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.divwrapdel {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
 .start {
   display: flex;
   justify-content: flex-start;
@@ -181,6 +198,9 @@
   display: flex;
   justify-content: flex-start;
 }
+.tstart {
+  text-align: start;
+}
 .end {
   display: flex;
   justify-content: flex-end;
@@ -193,6 +213,9 @@
 .jend {
   display: flex;
   justify-content: flex-end;
+}
+.tend {
+  text-align: end;
 }
 .center {
   display: flex;
@@ -247,6 +270,24 @@
   max-height: auto !important;
   min-height: auto !important;
 }
+.order1 {
+  order: 0;
+}
+.order2 {
+  order: 1;
+}
+.order3 {
+  order: 2;
+}
+.order4 {
+  order: 3;
+}
+.order5 {
+  order: 4;
+}
+.order6 {
+  order: 5;
+}
 .auto-width {
   max-width: auto !important;
   min-width: auto !important;
@@ -260,6 +301,9 @@
   }
   .vermobile {
     display: block !important;
+  }
+  .gapmobile {
+    gap: 2em !important;
   }
   .paddmobile {
     padding: 0 !important;
@@ -332,25 +376,77 @@
     display: flex !important;
     flex-direction: column !important;
   }
+  .divwrapmobile {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+  .divwrapdelmobile {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
   .startmobile {
     display: flex !important;
     justify-content: flex-start !important;
     align-items: center !important;
+  }
+  .astartmobile {
+    display: flex !important;
+    align-items: flex-start !important;
+  }
+  .jstartmobile {
+    display: flex !important;
+    justify-content: flex-start !important;
+  }
+  .tstartmobile {
+    text-align: start !important;
   }
   .endmobile {
     display: flex !important;
     justify-content: flex-end !important;
     align-items: center !important;
   }
+  .aendmobile {
+    display: flex !important;
+    align-items: flex-end !important;
+  }
+  .jendmobile {
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+  .tendmobile {
+    text-align: end !important;
+  }
   .centermobile {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
   }
+  .acentermobile {
+    display: flex !important;
+    align-items: center !important;
+  }
+  .jcentermobile {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .tcentermobile {
+    text-align: center !important;
+  }
   .spacemobile {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
+  }
+  .tspacemobile {
+    text-align: justify !important;
+  }
+  .jspacemobile {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  .spaceamobile {
+    display: flex !important;
+    justify-content: space-around !important;
   }
   .relativemobile {
     position: relative !important;
@@ -368,5 +464,23 @@
   }
   .roundedmobile {
     border-radius: 15px !important;
+  }
+  .order1mobile {
+    order: 0 !important;
+  }
+  .order2mobile {
+    order: 1 !important;
+  }
+  .order3mobile {
+    order: 2 !important;
+  }
+  .order4mobile {
+    order: 3 !important;
+  }
+  .order5mobile {
+    order: 4 !important;
+  }
+  .order6mobile {
+    order: 5 !important;
   }
 }

@@ -1,8 +1,5 @@
 @import '~vuetify/src/styles/styles.sass';
 
-//global size
-$border: 15px;
-
 // Sidebar //
 $drawer-items-padding:                     32px !default;
 $navigation-drawer-mini-variant-width:     96px!important;
@@ -31,12 +28,30 @@ $h3-font-size:                1.64rem !default;     // 22px
 $h4-font-size:                1.5rem !default;     // 20px
 $h5-font-size:                1.285rem !default;         // 16px
 $h6-font-size:                1.142rem !default;     // 14px
+$colorLabel: #9B9C9D;
 
 // Card //
 $card-shadow: 0 3px 11px 0 #111011, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
 $sombra-cartas: 0px 4px 50px rgba(0, 0, 0, 0.05);
+$border-card: 60px;
 
 // Buttons //
 $button-shadow: 0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
-$color-boton: #ef3340;
-$sombra-boton: -2px 3px 3px 0px #ef333f9f,
+$color: #A4FDDF;
+$color-boton: #3E2185;
+$sombra-boton: 0px 4px 4px rgba(0, 0, 0, 0.2);
+$border-boton: 20px;
+
+// responsive
+:root {
+  --border-responsive: 30px;
+  @media (max-width: 880px) and (max-height: 1180px) {
+    --border-responsive: 20px !important;
+  }
+  @media (max-width: 500px) and (max-height: 1180px) {
+    --border-responsive: 10px !important;
+  }
+  @media (min-width: 881px) and (max-height: 700px) {
+    --border-responsive: 20px !important;
+  }
+}
