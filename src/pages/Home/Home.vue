@@ -233,6 +233,10 @@ export default {
   },
   computed: {
     columnsCategories() {
+      if (this.$vuetify.breakpoint.xl) {
+        return 4;
+      }
+
       if (this.$vuetify.breakpoint.lg && window.innerWidth < 1306) {
         return 3;
       }
@@ -251,6 +255,10 @@ export default {
       return 1;
     },
     columnsRestaurant() {
+      if (this.$vuetify.breakpoint.xl) {
+        return 3;
+      }
+
       if (this.$vuetify.breakpoint.lg) {
         return 3;
       }

@@ -1,7 +1,13 @@
 // // // // ALTAS RESOLUCIONES // // // //
 @media (min-width: 1400px) {
 }
-@media (min-width: 1800px) {
+@media (min-width: 1900px) {
+  html {
+    font-size: 19px !important;
+    #navbar {font-size: 19px !important;}
+    #headerApp {font-size: 19px !important;}
+    #home {font-size: 19px !important;}
+  }
 }
 
 // // // MIN-WIDTH ARRIBA
