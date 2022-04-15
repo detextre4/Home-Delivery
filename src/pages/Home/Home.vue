@@ -82,7 +82,7 @@
                       <img class="images" :src="sliderRestaurant[+index + i].img" alt="Restaurant image">
 
                       <aside class="divcol">
-                        <span class="h7-em bold">{{sliderRestaurant[+index + i].title }}</span>
+                        <a :href="sliderRestaurant[+index + i].to" class="h7-em bold">{{sliderRestaurant[+index + i].title }}</a>
                         <p class="h8-em">{{sliderRestaurant[+index + i].desc }}</p>
                       </aside>
                     </v-col>
@@ -162,6 +162,7 @@ export default {
           like: false,
           title: "La Tagliatella",
           desc: "Especialidad en pasta",
+          to: "#"
         },
         {
           img: require("@/assets/images/r2.png"),
@@ -169,6 +170,7 @@ export default {
           like: false,
           title: "Nodoo",
           desc: "Asiático // Ramen",
+          to: "#"
         },
         {
           img: require("@/assets/images/r3.png"),
@@ -176,6 +178,7 @@ export default {
           like: false,
           title: "La casa de Lola",
           desc: "Comida Mediterránea",
+          to: "#"
         },
         {
           img: require("@/assets/images/r1.png"),
@@ -183,6 +186,7 @@ export default {
           like: false,
           title: "La Tagliatella",
           desc: "Especialidad en pasta",
+          to: "#"
         },
         {
           img: require("@/assets/images/r2.png"),
@@ -190,6 +194,7 @@ export default {
           like: false,
           title: "La Tagliatella",
           desc: "Especialidad en pasta",
+          to: "#"
         },
         {
           img: require("@/assets/images/r3.png"),
@@ -197,6 +202,7 @@ export default {
           like: false,
           title: "La Tagliatella",
           desc: "Especialidad en pasta",
+          to: "#"
         },
         {
           img: require("@/assets/images/r1.png"),
@@ -204,6 +210,7 @@ export default {
           like: false,
           title: "La Tagliatella",
           desc: "Especialidad en pasta",
+          to: "#"
         },
         {
           img: require("@/assets/images/r2.png"),
@@ -211,6 +218,7 @@ export default {
           like: false,
           title: "La Tagliatella",
           desc: "Especialidad en pasta",
+          to: "#"
         },
         {
           img: require("@/assets/images/r3.png"),
@@ -218,12 +226,16 @@ export default {
           like: false,
           title: "La Tagliatella",
           desc: "Especialidad en pasta",
+          to: "#"
         },
       ]
     }
   },
   computed: {
     columnsCategories() {
+      if (this.$vuetify.breakpoint.lg && window.innerWidth < 1306) {
+        return 3;
+      }
       if (this.$vuetify.breakpoint.lg) {
         return 4;
       }
@@ -289,16 +301,6 @@ export default {
         item.icon = require("@/assets/icons/corazon-outline.png")
       }
     }
-    // SelectCardRestaurant(item) {
-    //   const icon1 = require("@/assets/icons/pizza-outline.png");
-    //   const icon1Active = require("@/assets/icons/pizza.png");
-    //   this.sliderRestaurant.forEach(item => {
-    //     item.img = icon1
-    //     item.active = false
-    //   });
-    //   item.img = icon1Active
-    //   item.active = true
-    // }
   },
 };
 </script>

@@ -38,7 +38,7 @@
       <v-expansion-panels
         focusable
         color="var(--colorBoton)"
-        class="menuOptions"
+        class="menuGlobal"
       >
         <v-expansion-panel v-for="(item, i) in dataMenuOptions" :key="i">
           <v-expansion-panel-header color="var(--colorBoton)">
@@ -55,6 +55,48 @@
               </v-list-item>
             </v-list>
           </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </v-menu>
+
+    <!-- menu logout -->
+    <v-menu
+      v-model="logout"
+      bottom
+      transition="scroll-y-transition"
+      offset-y
+      z-index="10"
+      activator=".openMenuLogout"
+      :close-on-content-click="false"
+    >
+      <v-expansion-panels
+        focusable
+        color="var(--colorBoton)"
+        class="menuGlobal"
+      >
+        <v-expansion-panel v-for="(item, i) in dataMenuLogout" :key="i">
+          <template v-if="item.title">
+            <v-expansion-panel-header color="var(--colorBoton)">
+              {{ item.title }}
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-list v-for="(item2, i) in item.selection" :key="i">
+                <v-list-item :href="item2.to" :class="{ activeClass: item2.active }">
+                  <v-list-item-title class="center">
+                    <span>{{ item2.item }}</span>
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-expansion-panel-content>
+          </template>
+
+          <v-list v-if="item.name" class="intoExpansion">
+            <v-list-item @click="Logout()">
+              <v-list-item-title>
+                <span>{{ item.name }}</span>
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
         </v-expansion-panel>
       </v-expansion-panels>
     </v-menu>
@@ -92,6 +134,19 @@ export default {
           ]
         }
       ],
+      dataMenuLogout: [
+        {
+          title: "option",
+          selection: [
+            {item: "option", to: "#", active: false},
+            {item: "option", to: "#", active: false}
+          ]
+        },
+        {
+          name: "Logout",
+        }
+      ],
+      logout: false,
     };
   },
   methods: {
@@ -125,6 +180,10 @@ export default {
         dataOptions2[0].active = false;
         item.active = true;
       }
+    },
+    Logout() {
+      this.$parent.$parent.Logout();
+      this.logout = false;
     }
   },
 };

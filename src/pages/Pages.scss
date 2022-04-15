@@ -120,8 +120,8 @@
             }
           }
         }
-        span {
-          color: $color-boton;
+        a {
+          color: $color-boton !important;
           line-height: 1.5ch;
           letter-spacing: -0.15ch;
         }

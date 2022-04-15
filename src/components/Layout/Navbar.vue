@@ -2,11 +2,11 @@
   <v-row id="navbar" class="alignmobile">
     <!-- logo -->
     <router-link to="/" class="contlogo align eliminarmobile">
-      <img class="logo" src="@/assets/logos/logo.png" alt="Logo">
+      <img class="logo" src="@/assets/logos/logo.png" alt="Logo" @click="to('to')">
     </router-link>
     <!-- content -->
     <aside class="contnavbar divcol divrowmobile spacea align">
-      <a v-for="(item, index) in dataNavbar" :key="index" @click="to(item)"
+      <a :href="item.to" v-for="(item, index) in dataNavbar" :key="index" @click="to(item)"
         class="conticon center" :class="{ conticonActive: item.active }">
         <button class="divcol center">
           <img :src="item.icon" alt="Icono">
@@ -27,27 +27,32 @@ export default {
         {
           icon: require("@/assets/icons/inicio.png"),
           title: "Inicio",
-          active: true
+          active: true,
+          to: "#/"
         },
         {
           icon: require("@/assets/icons/categorias-outline.png"),
           title: "Categorias",
-          active: false
+          active: false,
+          to: "#/categorias"
         },
         {
           icon: require("@/assets/icons/restaurantes-outline.png"),
           title: "Restaurantes",
-          active: false
+          active: false,
+          to: "#"
         },
         {
           icon: require("@/assets/icons/tienda-outline.png"),
           title: "Mis Tiendas",
-          active: false
+          active: false,
+          to: "#"
         },
         {
           icon: require("@/assets/icons/delivery-outline.png"),
           title: "Delivery",
-          active: false
+          active: false,
+          to: "#"
         }
       ]
     };
@@ -65,7 +70,7 @@ export default {
       const icon5 = require("@/assets/icons/delivery-outline.png");
       const icon5Active = require("@/assets/icons/delivery.png");
 
-      if (item == this.dataNavbar[0]) {
+      if (item == this.dataNavbar[0] || item == 'to') {
         this.dataNavbar[1].icon = icon2
         this.dataNavbar[2].icon = icon3
         this.dataNavbar[3].icon = icon4
@@ -73,8 +78,13 @@ export default {
         this.dataNavbar.forEach(item => {
           item.active = false;
         });
-        item.active = true;
-        item.icon = icon1Active
+        if (item == "to") {
+          this.dataNavbar[0].active = true;
+          this.dataNavbar[0].icon = icon1Active;
+        } else {
+          item.active = true;
+          item.icon = icon1Active
+        }
       }
       if (item == this.dataNavbar[1]) {
         this.dataNavbar[0].icon = icon1

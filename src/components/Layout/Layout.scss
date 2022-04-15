@@ -140,6 +140,7 @@
         box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
         transition: 0.2s ease-in-out;
         height: 100%;
+        animation: aparecer 0.5s ease-in-out;
         span {
           color: $color;
         }
@@ -161,12 +162,13 @@
     font-weight: 700;
   }
 }
-.menuOptions {
+.menuGlobal {
   clip-path: $clip-path;
   border-radius: $border-boton !important;
   padding: clamp(0.7em, 2vw, 1em);
   .v-expansion-panel {
     overflow: hidden;
+    background-color: var(--colorBoton) !important;
     .v-expansion-panel-content__wrap {padding: 0;}
     .v-expansion-panel-header {
       color: $colorLabel !important;
@@ -187,6 +189,12 @@
       color: $colorLabel;
       font-size: $font-size-header;
       font-weight: 600;
+    }
+  }
+  .intoExpansion {
+    background-color: var(--colorBoton);
+    .v-list-item {
+      padding-inline: 24px;
     }
   }
 }

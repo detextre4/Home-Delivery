@@ -22,6 +22,11 @@ export default new Router({
           name: 'Home',
           component: () => import('@/pages/Home/Home'),
         },
+        {
+          path: '/categorias',
+          name: 'Categorias',
+          component: () => import('@/pages/Categorias/Categorias'),
+        },
       ],
     },
     // here path 3 if need

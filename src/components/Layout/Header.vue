@@ -36,9 +36,12 @@
           </aside>
 
           <aside class="contright center">
-            <v-btn class="walletButton center">
-              Iniciar Sesión
+            <v-btn v-for="(item, index) in dataLogin" :key="index" @click="Login(item)"
+              v-show="item.show" :class="{ openMenuLogout: item.openMenu }"
+              class="walletButton center">
+              {{ item.text }}
             </v-btn>
+
             <v-btn class="botones">
               <v-badge
                 :content="messages"
@@ -69,19 +72,32 @@ export default {
     return {
       messages: 2,
       search: "",
+      dataLogin: [
+        {
+          text: "Iniciar Sesión",
+          show: true,
+        },
+        {
+          text: "0x7885438272",
+          show: false,
+          openMenu: true,
+        },
+      ]
     };
   },
   methods: {
+    Login(item) {
+      if (item == this.dataLogin[0]) {
+        this.dataLogin[0].show = false;
+        this.dataLogin[1].show = true;
+      }
+    },
+    Logout() {
+      this.dataLogin[1].show = false;
+      this.dataLogin[0].show = true;
+    }
   },
 };
 </script>
 
 <style src="./Layout.scss" lang="scss"></style>
-<style scoped>
-.openSearch {
-  cursor: pointer
-}
-.openOptions {
-  cursor: pointer
-}
-</style>
