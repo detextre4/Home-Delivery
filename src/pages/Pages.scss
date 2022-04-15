@@ -1,5 +1,25 @@
 @import "../styles/app";
 
+// global
+.contcontrols {
+  gap: 1em;
+  .v-btn {
+    background-color: $color-boton;
+  }
+}
+.contIconActive {
+  background-color: $color-boton !important;
+  .square {
+    background: $color-boton !important;
+  }
+  span {
+    color: $color !important;
+  }
+}
+.BorderContIconActive {
+  border: 3px solid #FFFFFF !important;
+}
+
 .parent {
   // padding-top: 2%;
   max-width: 1500px;
@@ -8,7 +28,110 @@
 
 // home
 #home {
-  flex-direction: column;
-  max-width: max-content;
-  height: 70vh;
+  .contup {
+    padding-top: 2em;
+    padding-inline: 5%;
+    .conttag {
+      transform: rotate(-90deg) translateX(-100%);
+      width: 5%;
+      h1 {font-weight: 600; line-height: 1ch;}
+      h2 {font-weight: 500; line-height: 1ch;}
+    }
+    .sectright {
+      width: 100%;
+      :is(.v-image, .v-window) {
+        height: max-content !important;
+      }
+      .cartasHome {
+        border-radius: $border-card;
+        box-shadow: $sombra-cartas !important;
+        padding: clamp(2em, 3vw, 3em);
+        min-height: 25em;
+        overflow: hidden;
+        .contimg {
+          width: 8.4375em;
+          height: 8.4375em;
+          border-radius: 50%;
+          background-color: #FFFFFF;
+          border: 3px solid #6B6B6B;
+          .square {
+            position: absolute;;
+            width: 3em;
+            height: 3em;
+            background: $color;
+            border-radius: $border-boton;
+            z-index: 0;
+            inset: 15%;
+          }
+          img {
+            width: 4em;
+            z-index: 1;
+          }
+        }
+        span {
+          color: $color-boton;
+        }
+      }
+    }
+  }
+  .contdown {
+    padding-inline: 5%;
+    h1 {
+      gap: 0.2em;
+    }
+    .contslider {
+      width: 100%;
+      :is(.v-image, .v-window) {
+        height: max-content !important;
+      }
+      .contslides {
+        height: max-content;
+        gap: clamp(0.5em, 1vw, 1em);
+        .images {
+          width: 100%;
+          height: 15em;
+          clip-path: $clip-path2;
+          border-radius: 80px;
+          // box-shadow: $sombra-boton !important;
+        }
+        .contLike {
+          top: 0;
+          right: 0;
+          position: absolute;
+          z-index: 10;
+          .contimg {
+            width: 4em;
+            height: 4em;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            border: 3px solid #6B6B6B;
+            .square {
+              position: absolute;;
+              width: 1.625em;
+              height: 1.625em;
+              background: $color;
+              border-radius: $border-boton;
+              z-index: 0;
+              inset: 0% 5%;
+            }
+            img {
+              width: 2.25em;
+              z-index: 1;
+            }
+          }
+        }
+        span {
+          color: $color-boton;
+          line-height: 1.5ch;
+          letter-spacing: -0.15ch;
+        }
+        p {
+          letter-spacing: -0.1ch;
+          font-weight: 500;
+          -webkit-text-stroke: 0.4px var(--color);
+          -moz-text-stroke: 0.4px var(--color);
+        }
+      }
+    }
+  }
 }

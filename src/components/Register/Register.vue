@@ -84,4 +84,4 @@ export default {
 }
 </script>
 
-<style src="./Login.scss" lang="scss"></style>
+<style src="./Register.scss" lang="scss"></style>

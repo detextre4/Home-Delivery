@@ -7,9 +7,9 @@ export default new Router({
   routes: [
     // path 1
     {
-      path: '/login',
-      name: 'Login',
-      component: () => import('@/components/Login/Login'),
+      path: '/register',
+      name: 'Register',
+      component: () => import('@/components/Register/Register'),
     },
     // path 2
     {

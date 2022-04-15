@@ -9,9 +9,6 @@
       <v-row class="jend">
         <v-col class="contheader space">
           <aside class="contleft acenter">
-            <!-- <router-link to="/" class="contlogo align vermobile">
-              <img class="logo" src="@/assets/logos/logo.png" alt="Logo">
-            </router-link> -->
             <v-text-field
               v-model="search"
               solo
@@ -28,22 +25,14 @@
               </template>
             </v-text-field>
 
-            <v-btn class="botones">
+            <v-btn class="botones openOptions">
               <img width="100%" src="@/assets/icons/options.png" alt="options">
             </v-btn>
 
-            <v-btn @click="ShowSearchMobile()"
-              class="botones vermobile">
+            <v-btn
+              class="botones vermobile openSearch">
               <img src="@/assets/icons/lupa.png" alt="icon">
             </v-btn>
-            <!-- <v-btn v-if="themeButton" icon width="2.8em" height="2.8em"
-              @click="CambiarTheme('dark'), CambiarTheme2('dark')">
-              <v-icon size="clamp(1.5em, 2vw, 2em)">mdi-weather-night</v-icon>
-            </v-btn>
-            <v-btn v-else icon width="2.8em" height="2.8em"
-              @click="CambiarTheme('light'), CambiarTheme2('light')">
-              <v-icon size="clamp(1.5em, 2vw, 2em)">mdi-weather-sunny</v-icon>
-            </v-btn> -->
           </aside>
 
           <aside class="contright center">
@@ -60,68 +49,39 @@
               </v-badge>
             </v-btn>
           </aside>
-
-          <!-- menu search -->
-          <v-col v-show="showSearchMobile" class="containerSearch">
-            <v-text-field
-              v-model="search"
-              solo
-              hide-details="true"
-              maxlength="20"
-            >
-            <template v-slot:prepend-inner>
-              <img src="@/assets/icons/lupa.png" alt="icon">
-            </template>
-
-              <template v-slot:label>
-                <span class="label">BUSCAR POR COMIDA / RESTAURANTE</span>
-              </template>
-            </v-text-field>
-          </v-col>
         </v-col>
       </v-row>
+    <MenuHeader ref="menu"></MenuHeader>
     </v-app-bar>
   </section>
 </template>
 
 <script>
+import MenuHeader from './MenuHeader.vue'
+
 export default {
   name: "Header",
   i18n: require("./i18n"),
-  // created() {
-  //   this.element = document.getElementById("theme");
-  //   const theme = localStorage.getItem("theme");
-  //   if (theme) {
-  //     this.CambiarTheme(theme);
-  //   }
-  //   if (theme == "light") {
-  //     this.themeButton = true;
-  //   }
-  //   if (theme == "dark") {
-  //     this.themeButton = false;
-  //   }
-  // },
+  components: {
+    MenuHeader
+  },
   data() {
     return {
       messages: 2,
       search: "",
-      showSearchMobile: false,
-      // themeButton: true,
     };
   },
   methods: {
-    ShowSearchMobile() {
-      this.showSearchMobile = !this.showSearchMobile
-    },
-    // CambiarTheme(theme) {
-    //   this.$store.dispatch("CambiarTheme", { theme, element: this.element });
-    //   this.themeButton = !this.themeButton;
-    // },
-    // CambiarTheme2(theme) {
-    //   this.$refs.menu.OverlayMethod(theme);
-    // },
   },
 };
 </script>
 
 <style src="./Layout.scss" lang="scss"></style>
+<style scoped>
+.openSearch {
+  cursor: pointer
+}
+.openOptions {
+  cursor: pointer
+}
+</style>

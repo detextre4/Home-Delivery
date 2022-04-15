@@ -1,5 +1,6 @@
 <template>
   <v-app id="layout">
+    <!-- <img class="fondo" src="@/assets/images/fondo.png" alt="Background Image"> -->
     <Navbar ref="navbar" />
     <Header ref="header" />
     <v-main>
