@@ -249,6 +249,10 @@
   display: flex;
   justify-content: space-around;
 }
+.spacee {
+  display: flex;
+  justify-content: space-evenly;
+}
 .relative {
   position: relative;
 }
@@ -446,6 +450,10 @@
   .spaceamobile {
     display: flex !important;
     justify-content: space-around !important;
+  }
+  .spaceemobile {
+    display: flex;
+    justify-content: space-evenly !important;
   }
   .relativemobile {
     position: relative !important;
