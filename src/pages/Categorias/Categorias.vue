@@ -135,4 +135,4 @@ export default {
 };
 </script>
 
-<style src="../Pages.scss" lang="scss" />
+<style src="./Categorias.scss" lang="scss" />

@@ -1,5 +1,76 @@
 @import "~vuetify/src/styles/styles.sass";
-@import 'variables';
-@import 'base';
-@import 'personal-base';
-@import 'responsive';
+@import "variables";
+@import "base";
+@import "personal-base";
+@import "responsive";
+
+// global
+.botones {
+  min-width: clamp(3.2em, 4vw, 4.4375em) !important;
+  min-height: clamp(3.2em, 4vw, 4.4375em) !important;
+  background: var(--colorBoton) !important;
+  border-radius: 20px !important;
+  img {
+    width: 2.5em;
+    font-size: $font-size-header;
+  }
+  .v-badge__badge {
+    color: #ffffff;
+  }
+}
+.label {
+  color: $colorLabel !important;
+  font-size: $font-size-header !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.16ch !important;
+}
+.activeClass {
+  background-color: $color-boton !important;
+  span {
+    color: #ffffff !important;
+  }
+}
+
+.contcontrols {
+  gap: 1em;
+  .v-btn {
+    background-color: $color-boton;
+  }
+}
+.contIconActive {
+  background-color: $color-boton !important;
+  .square {
+    background: $color-boton !important;
+  }
+  span {
+    color: $color !important;
+  }
+}
+.BorderContIconActive {
+  border: 3px solid #ffffff !important;
+}
+
+.parent {
+  // padding-top: 2%;
+  max-width: 1500px;
+  margin-inline: auto;
+}
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+@keyframes hover {
+  0% {
+    transform: scale(1.1, 1.1);
+    opacity: 50%;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 100%;
+  }
+}

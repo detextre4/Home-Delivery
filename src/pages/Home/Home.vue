@@ -313,4 +313,4 @@ export default {
 };
 </script>
 
-<style src="../Pages.scss" lang="scss" />
+<style src="./Home.scss" lang="scss" />

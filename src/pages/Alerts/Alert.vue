@@ -155,4 +155,4 @@ export default {
 };
 </script>
 
-<style src="./Alert.scss" lang="scss"></style>
+<style src="./Alerts.scss" lang="scss"></style>

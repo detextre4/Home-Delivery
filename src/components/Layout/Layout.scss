@@ -1,34 +1,5 @@
 @import "../../styles/app";
 
-// global
-.botones {
-  min-width: clamp(3.2em, 4vw, 4.4375em) !important;
-  min-height: clamp(3.2em, 4vw, 4.4375em) !important;
-  background: var(--colorBoton) !important;
-  border-radius: 20px !important;
-  img {
-    width: 2.5em;
-    font-size: $font-size-header;
-  }
-  .v-badge__badge {
-    color: #FFFFFF;
-  }
-}
-.label {
-  color: $colorLabel !important;
-  font-size: $font-size-header !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.16ch !important;
-}
-.activeClass {
-  background-color: $color-boton !important;
-  span {color: #FFFFFF !important;}
-}
-@keyframes aparecer {
-  0% {opacity: 0;}
-  100% {opacity: 100%;}
-}
-
 // layout
 #layout {
   background: center no-repeat fixed url("../../assets/images/fondo.png");
@@ -71,10 +42,30 @@
   }
   .contnavbar {
     height: 80%;
+    .conticon:not(.conticonActive):hover:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: #3d218534;
+      border: 2px solid $color-boton;
+      border-radius: var(--border-responsive);
+      animation: hover 1.4s ease infinite alternate;
+    }
+    .conticon:not(.conticonActive):hover:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: #3d218534;
+      border: 2px solid $color-boton;
+      border-radius: var(--border-responsive);
+      animation: hover 1.3s ease infinite alternate;
+    }
     .conticon {
+      position: relative;
       width: clamp(3em, 10vw, 6.3em);
       height: clamp(3em, 10vw, 6.3em);
       border-radius: var(--border-responsive);
+      transition: 0.5s ease;
       :is(img, span) {
         font-weight: 500;
         font-size: $font-size-navbar;
