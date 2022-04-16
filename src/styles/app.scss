@@ -55,22 +55,3 @@
   max-width: 1500px;
   margin-inline: auto;
 }
-
-@keyframes aparecer {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-@keyframes hover {
-  0% {
-    transform: scale(1.1, 1.1);
-    opacity: 50%;
-  }
-  100% {
-    transform: scale(1, 1);
-    opacity: 100%;
-  }
-}
