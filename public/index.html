@@ -49,8 +49,10 @@ default settings
 * {
   text-transform: uppercase !important;
 }
-:is(html, body, #app) {
+:is(html, body) {
   font-size: 16px;
+}
+:is(#app, #layout, #error, #login) {
   scroll-behavior: smooth;
   font-family: 'Open Sans', sans-serif;
 }
