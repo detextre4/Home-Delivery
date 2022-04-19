@@ -30,6 +30,7 @@
             v-if="item.file"
             chips
             :prepend-icon="false"
+            solo
           >
           <template v-slot:prepend-inner>
             <v-icon>mdi-camera</v-icon>
@@ -50,6 +51,12 @@
             </label>
           </div>
         </v-card>
+      </aside>
+
+      <aside class="contsubmit center">
+        <v-btn>
+          <span class="h7-em">Guardar</span>
+        </v-btn>
       </aside>
     </v-col>
   </section>
