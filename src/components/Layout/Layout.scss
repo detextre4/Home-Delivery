@@ -144,11 +144,6 @@
 .searchMobile {
   .v-input__control > .v-input__slot {
     min-width: 24em;
-    background-color: var(--colorBoton) !important;
-    box-shadow: none !important;
-    clip-path: $clip-path;
-    border-radius: 28px;
-    padding: clamp(0.7em, 2vw, 1em);
     font-size: $font-size-header;
     font-weight: 700;
   }

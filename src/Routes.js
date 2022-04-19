@@ -27,6 +27,11 @@ export default new Router({
           name: 'Categorias',
           component: () => import('@/pages/Categorias/Categorias'),
         },
+        {
+          path: '/mi-perfil',
+          name: 'MiPerfil',
+          component: () => import('@/pages/Perfil/MiPerfil'),
+        },
       ],
     },
     // here path 3 if need

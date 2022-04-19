@@ -1,0 +1,78 @@
+@import "@/styles/app";
+
+// miPerfil
+#miPerfil {
+  .contup {
+    padding-top: 2em;
+    padding-inline: 5%;
+  }
+  .contdown {
+    padding-inline: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2em;
+    .gap_checkbox {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .v-card {
+      label {
+        margin-left: 2ch;
+      }
+      // input {}
+      .input-file {
+        .v-chip {
+          background-color: $color-boton;
+          span {
+            color: $color;
+            font-weight: 600;
+          }
+        }
+      }
+      .contcheckbox {
+        height: 3em;
+        .v-btn {
+          width: 2.5em;
+          height: 100%;
+          border-radius: 20px;
+          img {
+            width: 2.5em;
+            animation: checkbox 0.2s ease;
+          }
+          @keyframes checkbox {
+            0% {
+              transform: scale(0.8);
+              opacity: 0;
+            }
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// menuPerfil
+.verificatorMiPerfil {
+  background-color: var(--colorAlerta) !important;
+  box-shadow: none !important;
+  clip-path: $clip-path;
+  border-radius: 28px;
+  padding: clamp(0.7em, 2vw, 1em) !important;
+  h6 {
+    color: $colorLabel;
+    font-weight: 700 !important;
+  }
+  .v-btn {
+    min-width: max-content;
+    min-height: max-content;
+    border-radius: 20px;
+    img {
+      width: 1.5em;
+    }
+  }
+}

@@ -286,9 +286,9 @@ export default {
     SelectCardCategories(item) {
       const icon1 = require("@/assets/icons/pizza-outline.png");
       const icon1Active = require("@/assets/icons/pizza.png");
-      this.sliderCategories.forEach(item => {
-        item.img = icon1
-        item.active = false
+      this.sliderCategories.forEach(element => {
+        element.img = icon1
+        element.active = false
       });
       item.img = icon1Active
       item.active = true

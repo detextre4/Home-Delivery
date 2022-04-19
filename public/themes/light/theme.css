@@ -6,19 +6,25 @@
   --colorCartas: #FFFFFF;
   --colorCartasInverted: #000000;
   --colorCartas2: #E5E5E5;
-  --colorBoton: rgba(229, 229, 229, 0.81);
+  --colorBoton: rgba(229, 229, 229);
+  /* --colorBoton: rgba(229, 229, 229, 0.81); */
   --colorBoton2: #A4FDDF;
   --colorNavbar: #FFFFFF;
   --colorHover: #eeeeee;
   --colorScroll: #3E2185;
   --colorCartaScroll: rgb(224, 224, 224);
   --mix-blend-mode: multiply;
+  --colorAlerta: #CFCFCF;
 }
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button, label) {
+:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button) {
   color: #111011;
 }
 :is(.v-icon, a) {
   color: #111011 !important;
+}
+label {
+  color: #3E2185;
+  font-weight: 700;
 }
 
 /* personal clases */

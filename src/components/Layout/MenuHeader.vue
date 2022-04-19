@@ -1,6 +1,6 @@
 <template>
   <section id="menuHeader">
-    <!-- menu seaech -->
+    <!-- menu search -->
     <v-menu
       bottom
       transition="scroll-y-transition"
@@ -91,7 +91,7 @@
           </template>
 
           <v-list v-if="item.name" class="intoExpansion">
-            <v-list-item @click="Logout()">
+            <v-list-item @click="SelectLogoutItem(item)" :href="item.to">
               <v-list-item-title>
                 <span>{{ item.name }}</span>
               </v-list-item-title>
@@ -135,6 +135,10 @@ export default {
         }
       ],
       dataMenuLogout: [
+        {
+          name: "Mi Perfil",
+          to: "#/mi-perfil"
+        },
         {
           title: "option",
           selection: [
@@ -181,9 +185,21 @@ export default {
         item.active = true;
       }
     },
+    SelectLogoutItem(item) {
+      if (item.name == "Mi Perfil") {
+        this.ClearNavbar();
+        this.logout = false;
+      }
+      if (item.name == "Logout") {
+        this.Logout();
+        this.logout = false;
+      }
+    },
     Logout() {
       this.$parent.$parent.Logout();
-      this.logout = false;
+    },
+    ClearNavbar() {
+      this.$parent.$parent.$parent.$parent.$refs.navbar.clearAll();
     }
   },
 };
