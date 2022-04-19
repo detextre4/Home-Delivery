@@ -74,7 +74,7 @@ export default {
       search: "",
       dataLogin: [
         {
-          text: "Iniciar Sesión",
+          text: this.$t('sesion'),
           show: true,
         },
         {

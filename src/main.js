@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import initI18n from '@/plugins/i18n'
+import {i18n} from '@/plugins/i18n'
 import router from './Routes'
 import store from './store/index'
 import vuetify from './plugins/vuetify'
@@ -16,7 +16,6 @@ Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
 
 Vue.use(VueAnimateOnScroll);
-const i18n = initI18n("ES", "US");
 
 Vue.use(axios);
 

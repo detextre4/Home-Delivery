@@ -3,6 +3,11 @@ import VueI18n from 'vue-i18n';
 
 Vue.use(VueI18n);
 
+const messages = {
+  ES: {},
+  US: {}
+}
+
 /**
  * Create an i18n configuration
  * @param locale Localized language
@@ -21,3 +26,9 @@ Vue.use(VueI18n);
 
 
 export default initI18n;
+
+export const i18n = new VueI18n({
+  locale: 'ES',
+  fallbackLocale: 'US',
+  messages
+})

@@ -47,7 +47,7 @@
 
           <v-expansion-panel-content>
             <v-list v-for="(item2, i) in item.selection" :key="i">
-              <v-list-item :href="item2.to" @click="ActiveClass(item2), CambiarTheme(item2)"
+              <v-list-item :href="item2.to" @click="ActiveClass(item2)"
                 :class="{ activeClass: item2.active }">
                 <v-list-item-title class="center">
                   <span>{{ item2.item }}</span>
@@ -91,7 +91,7 @@
           </template>
 
           <v-list v-if="item.name" class="intoExpansion">
-            <v-list-item @click="SelectLogoutItem(item)" :href="item.to">
+            <v-list-item @click="SelectLogoutItem(item.key)" :href="item.to">
               <v-list-item-title>
                 <span>{{ item.name }}</span>
               </v-list-item-title>
@@ -104,6 +104,7 @@
 </template>
 
 <script>
+import { i18n } from "@/plugins/i18n";
 export default {
   name: "HeaderMenu",
   i18n: require("./i18n"),
@@ -114,6 +115,9 @@ export default {
       this.CambiarTheme(theme);
     }
   },
+  mounted() {
+    this.CambiarLanguaje(localStorage.language);
+  },
   data() {
     return {
       search: "",
@@ -121,23 +125,24 @@ export default {
         {
           title: "Tema",
           selection: [
-            {item: "Normal", to: "#", active: false},
-            {item: "Exótico", to: "#", active: false}
+            {item: "Normal", to: "#", active: false, key: "light"},
+            {item: "Exótico", to: "#", active: false, key: "dark"}
           ]
         },
         {
           title: "Idioma",
           to: "#",
           selection: [
-            {item: "Ingles", to: "#", active: false},
-            {item: "Español", to: "#", active: false}
+            {item: "Ingles", to: "#", active: false, key: "US"},
+            {item: "Español", to: "#", active: false, key: "ES"}
           ]
         }
       ],
       dataMenuLogout: [
         {
           name: "Mi Perfil",
-          to: "#/mi-perfil"
+          to: "#/mi-perfil",
+          key: "perfil"
         },
         {
           title: "option",
@@ -148,49 +153,62 @@ export default {
         },
         {
           name: "Logout",
+          key: "logout"
         }
       ],
       logout: false,
     };
   },
   methods: {
-    CambiarTheme(theme) {
-      const dataOptionsTheme = this.dataMenuOptions[0].selection;
-      if (theme == dataOptionsTheme[0]) {
-        theme = 'light'
-        this.$store.dispatch("CambiarTheme", { theme, element: this.element });
-      }
-      if (theme == dataOptionsTheme[1]) {
-        theme = 'dark'
-        this.$store.dispatch("CambiarTheme", { theme, element: this.element });
-      }
-    },
     ActiveClass(item) {
       const dataOptions1 = this.dataMenuOptions[0].selection;
       if (item == dataOptions1[0]) {
         dataOptions1[1].active = false;
         item.active = true;
+        this.CambiarTheme(item.key);
       }
       if (item == dataOptions1[1]) {
         dataOptions1[0].active = false;
         item.active = true;
+        this.CambiarTheme(item.key);
       }
       const dataOptions2 = this.dataMenuOptions[1].selection;
       if (item == dataOptions2[0]) {
         dataOptions2[1].active = false;
         item.active = true;
+        this.CambiarLanguaje(item.key);
       }
       if (item == dataOptions2[1]) {
         dataOptions2[0].active = false;
         item.active = true;
+        this.CambiarLanguaje(item.key);
+      }
+    },
+    CambiarTheme(theme) {
+      if (theme == 'light') {
+        this.$store.dispatch("CambiarTheme", { theme, element: this.element });
+      }
+      if (theme == 'dark') {
+        this.$store.dispatch("CambiarTheme", { theme, element: this.element });
+      }
+    },
+    CambiarLanguaje(lang) {
+      if (lang === "ES") {
+        localStorage.language = lang;
+        i18n.locale = lang;
+        console.log(localStorage.language);
+      } else {
+        localStorage.language = lang;
+        i18n.locale = lang;
+        console.log(localStorage.language);
       }
     },
     SelectLogoutItem(item) {
-      if (item.name == "Mi Perfil") {
+      if (item == "perfil") {
         this.ClearNavbar();
         this.logout = false;
       }
-      if (item.name == "Logout") {
+      if (item == "logout") {
         this.Logout();
         this.logout = false;
       }
