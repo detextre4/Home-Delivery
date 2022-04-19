@@ -32,9 +32,9 @@
             :prepend-icon="false"
             solo
           >
-          <template v-slot:prepend-inner>
-            <v-icon>mdi-camera</v-icon>
-          </template>
+            <template v-slot:prepend-inner>
+              <v-icon>mdi-camera</v-icon>
+            </template>
           </v-file-input>
 
           <div v-for="(item2, index) in item.checkbox" :key="index"
