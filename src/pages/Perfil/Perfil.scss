@@ -29,9 +29,9 @@
       // input {}
       .input-file {
         .v-chip {
-          background-color: $color-boton;
+          background-color: $clr-btn;
           span {
-            color: $color;
+            color: $clr;
             font-weight: 600;
           }
         }
@@ -66,14 +66,14 @@
       box-shadow: inset 0px 0px 4px rgb(164, 253, 223, 0.5);
     }
     .v-btn {
-      background: $color-boton;
+      background: $clr-btn;
       clip-path: $clip-path;
       border-radius: 28px;
       padding: clamp(1.8em, 2vw, 2em);
       box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
       transition: 0.2s ease-in-out;
       span {
-        color: $color;
+        color: $clr;
         font-weight: 600;
         letter-spacing: -0.1ch;
       }
@@ -83,13 +83,13 @@
 
 // menuPerfil
 .verificatorMiPerfil {
-  background-color: var(--colorAlerta) !important;
+  background-color: var(--clr-alerta) !important;
   box-shadow: none !important;
   clip-path: $clip-path;
   border-radius: 28px;
   padding: clamp(0.7em, 2vw, 1em) !important;
   h6 {
-    color: $colorLabel;
+    color: $clr-label;
     font-weight: 700 !important;
   }
   .v-btn {

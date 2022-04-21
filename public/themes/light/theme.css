@@ -1,59 +1,62 @@
 /* global colors */
 :root {
-  --fondo: #FFFFFF;
-  --color: #111011;
-  --colorInverted: #FFFFFF;
-  --colorCartas: #FFFFFF;
-  --colorCartasInverted: #000000;
-  --colorCartas2: #E5E5E5;
-  --colorBoton: rgba(229, 229, 229);
-  /* --colorBoton: rgba(229, 229, 229, 0.81); */
-  --colorBoton2: #A4FDDF;
-  --colorNavbar: #FFFFFF;
-  --colorHover: #eeeeee;
-  --colorScroll: #3E2185;
-  --colorCartaScroll: rgb(224, 224, 224);
+  --bg: #FFFFFF;
+  --clr: #111011;
+  --clr-inv: #FFFFFF;
+  --clr-card: #FFFFFF;
+  --clr-card-inv: #000000;
+  --clr-card-2: #E5E5E5;
+  --clr-btn: rgba(229, 229, 229);
+  /* --clr-btn: rgba(229, 229, 229, 0.81); */
+  --clr-btn-2: #A4FDDF;
+  --clr-navbar: #FFFFFF;
+  --clr-hover: #eeeeee;
+  --clr-scroll: #3E2185;
+  --clr-card-scroll: rgb(224, 224, 224);
   --mix-blend-mode: multiply;
-  --colorAlerta: #CFCFCF;
+  --clr-alerta: #CFCFCF;
+  --clr-label: #3E2185;
 }
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button) {
-  color: #111011;
+
+/* defautl color */
+:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button):not(.notdefault-clr) {
+  color: var(--clr);
 }
-:is(.v-icon, a) {
-  color: #111011 !important;
+:is(.v-icon, a, input):not(.notdefault-clr) {
+  color: var(--clr) !important;
 }
-label {
-  color: #3E2185;
+label:not(.notdefault-clr) {
+  color: var(--clr-label);
   font-weight: 700;
 }
 
 /* personal clases */
-.color {
-  color: #111011 !important;
+.clr {
+  color: var(--clr) !important;
 }
-.colorInverted {
-  color: #FFFFFF !important;
+.clr-inv {
+  color: var(--clr-inv) !important;
 }
-.colorCartas {
-  background-color: #FFFFFF !important;
+.clr-card {
+  background-color: var(--clr-card) !important;
 }
-.colorCartasInverted {
-  background-color: #000000 !important;
+.clr-card-inv {
+  background-color: var(--clr-card-inv) !important;
 }
 .filter {
   filter: invert(0%) !important;
 }
-.filterInverted {
+.filter-inv {
   filter: invert(100%) !important;
 }
-.colorSVG {
-  fill: #FFFFFF !important;
+.clr-svg {
+  fill: var(--clr) !important;
 }
-.colorSVGInverted {
-  fill: #111011 !important;
+.clr-svg-inv {
+  fill: var(--clr-inv) !important;
 }
-.colorCartas2 {
-  background-color: #B5C9F1 !important;
+.clr-card-2 {
+  background-color: var(--clr-card-2) !important;
 }
 
 /* ////////////////////////////////////////////// */

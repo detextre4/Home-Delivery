@@ -1,57 +1,60 @@
 /* global colors */
 :root {
-  --fondo: #000000;
-  --color: #FFFFFF;
-  --colorInverted: #111011;
-  --colorCartas: #000000;
-  --colorCartasInverted: #FFFFFF;
-  --colorCartas2: #182833;
-  --colorBoton: rgba(229, 229, 229, 0.81);
-  --colorBoton2: #3E2185;
-  --colorHover: #080e35;
-  --colorScroll: rgb(98, 99, 91);
-  --colorCartaScroll: #B7B89F;
+  --bg: #000000;
+  --clr: #FFFFFF;
+  --clr-inv: #111011;
+  --clr-card: #000000;
+  --clr-card-ive: #FFFFFF;
+  --clr-card-2: #182833;
+  --clr-btn: rgba(229, 229, 229, 0.81);
+  --clr-btn-2: #3E2185;
+  --clr-hover: #080e35;
+  --clr-scroll: rgb(98, 99, 91);
+  --clr-card-scroll: #B7B89F;
   --mix-blend-mode: screen;
-  --colorAlerta: #CFCFCF;
+  --clr-alerta: #CFCFCF;
+  --clr-label: #A4FDDF;
 }
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button) {
-  color: #FFFFFF
+
+/* defautl color */
+:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button):not(.notdefault-clr) {
+  color: var(--clr);
 }
-:is(.v-icon, a) {
-  color: #FFFFFF !important;
+:is(.v-icon, a, input):not(.notdefault-clr) {
+  color: var(--clr) !important;
 }
-label {
-  color: #3E2185;
+label:not(.notdefault-clr) {
+  color: var(--clr-label);
   font-weight: 700;
 }
 
 /* personal clases */
-.color {
-  color: #FFFFFF !important;
+.clr {
+  color: var(--clr) !important;
 }
-.colorInverted {
-  color: #111011 !important;
+.clr-inv {
+  color: var(--clr-inv) !important;
 }
-.colorCartas {
-  background-color: #000000 !important;
+.clr-card {
+  background-color: var(--clr-card) !important;
 }
-.colorCartasInverted {
-  background-color: #FFFFFF !important;
+.clr-card-inv {
+  background-color: var(--clr-card-inv) !important;
 }
 .filter {
-  filter: invert(100%) !important;
-}
-.filterInverted {
   filter: invert(0%) !important;
 }
-.colorSVG {
-  fill: #111011 !important;
+.filter-inv {
+  filter: invert(100%) !important;
 }
-.colorSVGInverted {
-  fill: #FFFFFF !important;
+.clr-svg {
+  fill: var(--clr) !important;
 }
-.colorCartas2 {
-  background-color: #182833 !important;
+.clr-svg-inv {
+  fill: var(--clr-inv) !important;
+}
+.clr-card-2 {
+  background-color: var(--clr-card-2) !important;
 }
 
 /* ////////////////////////////////////////////// */

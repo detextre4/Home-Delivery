@@ -21,7 +21,7 @@
                 <template v-for="(n,i) in columnsCategories">
                   <template v-if="(+index + i) < sliderCategories.length">
                     <v-col :key="i">
-                      <v-card color="var(colorCartas)" class="cartasHome divcol center gap"
+                      <v-card color="var(clr-card)" class="cartasHome divcol center gap"
                         :class="{ contIconActive: sliderCategories[+index + i].active }"
                         @click="SelectCardCategories(sliderCategories[+index + i])">
                         <div class="contimg center relative">

@@ -5,8 +5,47 @@
 @import "responsive";
 
 // global
+
+/* limit width */
+.parent {
+  // padding-top: 2%;
+  max-width: 1500px;
+  margin-inline: auto;
+}
+
+// hover effect
+// a:not(.notdefault-hover) {
+//   position: relative;
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     margin: auto;
+//     width: 100%;
+//     height: 100%;
+//     background-color: $clr-btn;
+//     opacity: 0;
+//     border-radius: 50px;
+//     transform: scaleX(0.2);
+//     transform-origin: left;
+//     transition: transform 250ms ease;
+//   }
+//   &:is(:hover, :focus):before {
+//     opacity: 0.2;
+//     transform: scaleX(1);
+//   }
+// }
+
+/* icons-active */
+// .v-input__icon .primary--text {
+//   color: #AD0FD5 !important;
+// }
+
 .v-input__control > .v-input__slot {
-  background-color: var(--colorBoton) !important;
+  background-color: var(--clr-btn) !important;
   box-shadow: none !important;
   clip-path: $clip-path;
   border-radius: 28px;
@@ -27,7 +66,7 @@ h2 {
 .botones {
   min-width: clamp(3.2em, 4vw, 4.4375em) !important;
   min-height: clamp(3.2em, 4vw, 4.4375em) !important;
-  background: var(--colorBoton) !important;
+  background: var(--clr-btn) !important;
   border-radius: 20px !important;
   img {
     width: 2.5em;
@@ -38,13 +77,13 @@ h2 {
   }
 }
 .label {
-  color: $colorLabel !important;
+  color: $clr-label !important;
   font-size: $font-size-header !important;
   font-weight: 700 !important;
   letter-spacing: -0.16ch !important;
 }
 .activeClass {
-  background-color: $color-boton !important;
+  background-color: $clr-btn !important;
   span {
     color: #ffffff !important;
   }
@@ -53,50 +92,18 @@ h2 {
 .contcontrols {
   gap: 1em;
   .v-btn {
-    background-color: $color-boton;
+    background-color: $clr-btn;
   }
 }
 .contIconActive {
-  background-color: $color-boton !important;
+  background-color: $clr-btn !important;
   .square {
-    background: $color-boton !important;
+    background: $clr-btn !important;
   }
   span {
-    color: $color !important;
+    color: $clr !important;
   }
 }
 .BorderContIconActive {
   border: 3px solid #ffffff !important;
 }
-
-.parent {
-  // padding-top: 2%;
-  max-width: 1500px;
-  margin-inline: auto;
-}
-
-// hover effect
-// a:not(.notHover) {
-//   position: relative;
-//   &::before {
-//     content: "";
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     left: 0;
-//     margin: auto;
-//     width: 100%;
-//     height: 100%;
-//     background-color: $color-boton;
-//     opacity: 0;
-//     border-radius: 50px;
-//     transform: scaleX(0.2);
-//     transform-origin: left;
-//     transition: transform 250ms ease;
-//   }
-//   &:is(:hover, :focus):before {
-//     opacity: 0.2;
-//     transform: scaleX(1);
-//   }
-// }

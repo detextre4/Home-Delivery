@@ -8,7 +8,7 @@ $navigation-drawer-mini-variant-width:     96px!important;
 $body-bg: #20232C !default;
 $content-padding:                           24px;
 $clip-path:  polygon(0% 6%, 50% 0, 100% 6%, 100% 50%, 100% 94%, 50% 100%, 0% 94%, 0 50%);
-$clip-path2:  polygon(0% 2%, 50% 0, 100% 2%, 100% 50%, 100% 98%, 50% 100%, 0% 98%, 0 50%);
+$clip-path-2:  polygon(0% 2%, 50% 0, 100% 2%, 100% 50%, 100% 98%, 50% 100%, 0% 98%, 0 50%);
 
 // Colors //
 $primary:           #536DFE;
@@ -32,19 +32,19 @@ $h5-font-size:                1.285rem !default;         // 16px
 $h6-font-size:                1.142rem !default;     // 14px
 $font-size-header:            clamp(0.7em, 1.2vw, 0.9em);
 $font-size-navbar:            clamp(0.6em, 1.2vw, 0.8em);
-$colorLabel: #9B9C9D;
+$clr-label: #9B9C9D;
 
 // Card //
 $card-shadow: 0 3px 11px 0 #111011, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
-$sombra-cartas: 0px 4px 50px rgba(0, 0, 0, 0.05);
+$sombra-card: 0px 4px 50px rgba(0, 0, 0, 0.05);
 $border-card: 60px;
 
 // Buttons //
 $button-shadow: 0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
-$color: #A4FDDF;
-$color-boton: #3E2185;
-$sombra-boton: 0px 4px 4px rgba(0, 0, 0, 0.2);
-$border-boton: 20px;
+$clr: #A4FDDF;
+$clr-btn: #3E2185;
+$sombra-btn: 0px 4px 4px rgba(0, 0, 0, 0.2);
+$border-btn: 20px;
 
 // responsive
 :root {

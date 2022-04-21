@@ -37,11 +37,11 @@
     >
       <v-expansion-panels
         focusable
-        color="var(--colorBoton)"
+        color="var(--clr-btn)"
         class="menuGlobal"
       >
         <v-expansion-panel v-for="(item, i) in dataMenuOptions" :key="i">
-          <v-expansion-panel-header color="var(--colorBoton)">
+          <v-expansion-panel-header color="var(--clr-btn)">
             {{ item.title }}
           </v-expansion-panel-header>
 
@@ -71,12 +71,12 @@
     >
       <v-expansion-panels
         focusable
-        color="var(--colorBoton)"
+        color="var(--clr-btn)"
         class="menuGlobal"
       >
         <v-expansion-panel v-for="(item, i) in dataMenuLogout" :key="i">
           <template v-if="item.title">
-            <v-expansion-panel-header color="var(--colorBoton)">
+            <v-expansion-panel-header color="var(--clr-btn)">
               {{ item.title }}
             </v-expansion-panel-header>
             <v-expansion-panel-content>

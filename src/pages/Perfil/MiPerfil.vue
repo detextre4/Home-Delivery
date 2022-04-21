@@ -39,7 +39,7 @@
 
           <div v-for="(item2, index) in item.checkbox" :key="index"
             class="contcheckbox acenter">
-            <v-btn color="var(--colorBoton)"
+            <v-btn color="var(--clr-btn)"
               :class="{ openDeliveryAlert: item2.verificatorD, openVendedorAlert: item2.verificatorV}">
               <img v-if="item2.model" src="@/assets/icons/check.png" :alt="item2.alt">
             </v-btn>

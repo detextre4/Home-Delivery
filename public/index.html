@@ -36,15 +36,12 @@
 /*
 default settings
 */
-/* * {
-  transition: 0.2s ease-in-out;
-} */
 *::-webkit-scrollbar {
   width: 10px;
-  background: var(--colorCartaScroll);
+  background: var(--clr-card-scroll);
 }
 *::-webkit-scrollbar-thumb {
-  background: var(--colorScroll);
+  background: var(--clr-scroll);
 }
 * {
   text-transform: uppercase !important;
@@ -59,20 +56,17 @@ default settings
 a {
   text-decoration: none;
 }
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button, label, .v-btn) {
+:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button, label, .v-btn):not(.notdefault) {
   letter-spacing: -0.1ch;
 }
 /*
 delete-config-default-vuetify
 */
-/* btn */
-.v-overlay__scrim {
+.v-overlay__scrim:not(.notdefault-vuetify) {
   background: transparent !important;
 }
 /* list */
-.v-list,
-.v-sheet,
-.theme--light {
+:is(.v-list, .v-sheet, .theme--light):not(.notdefault-vuetify) {
   box-shadow: none !important;
 }
 </style>
