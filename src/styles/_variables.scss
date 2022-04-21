@@ -20,6 +20,9 @@ $info:              #9013FE;
 $text-color:        #6e6e6e;
 $text-grey:         #b9b9b9;
 $title-grey:        #4a4a4a;
+$clr:               #A4FDDF;
+$clr-btn:           #3E2185;
+$clr-label:         #9B9C9D;
 
 $card-title-color:  $text-color;
 
@@ -32,7 +35,6 @@ $h5-font-size:                1.285rem !default;         // 16px
 $h6-font-size:                1.142rem !default;     // 14px
 $font-size-header:            clamp(0.7em, 1.2vw, 0.9em);
 $font-size-navbar:            clamp(0.6em, 1.2vw, 0.8em);
-$clr-label: #9B9C9D;
 
 // Card //
 $card-shadow: 0 3px 11px 0 #111011, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
@@ -41,8 +43,6 @@ $border-card: 60px;
 
 // Buttons //
 $button-shadow: 0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
-$clr: #A4FDDF;
-$clr-btn: #3E2185;
 $sombra-btn: 0px 4px 4px rgba(0, 0, 0, 0.2);
 $border-btn: 20px;
 
