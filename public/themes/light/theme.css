@@ -7,15 +7,16 @@
   --clr-card-inv: #000000;
   --clr-card-2: #E5E5E5;
   --clr-btn: rgba(229, 229, 229);
-  /* --clr-btn: rgba(229, 229, 229, 0.81); */
   --clr-btn-2: #A4FDDF;
-  --clr-navbar: #FFFFFF;
+  --clr-navbar: #000000;
   --clr-hover: #eeeeee;
   --clr-scroll: #3E2185;
   --clr-card-scroll: rgb(224, 224, 224);
-  --mix-blend-mode: multiply;
+  /* --clr-text-btn: #A4FDDF;
+  --clr-btn: #3E2185; */
   --clr-alerta: #CFCFCF;
   --clr-label: #3E2185;
+  --mix-blend-mode: multiply;
 }
 
 /* defautl color */
@@ -57,6 +58,12 @@ label:not(.notdefault-clr) {
 }
 .clr-card-2 {
   background-color: var(--clr-card-2) !important;
+}
+.clr-btn {
+  background-color: var(--clr-btn) !important;
+}
+.clr-text-btn {
+  color: var(--clr-text-btn) !important;
 }
 
 /* ////////////////////////////////////////////// */

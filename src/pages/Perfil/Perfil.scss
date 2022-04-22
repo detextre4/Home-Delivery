@@ -31,7 +31,7 @@
         .v-chip {
           background-color: $clr-btn;
           span {
-            color: $clr;
+            color: $clr-text-btn;
             font-weight: 600;
           }
         }
@@ -73,7 +73,7 @@
       box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
       transition: 0.2s ease-in-out;
       span {
-        color: $clr;
+        color: $clr-text-btn;
         font-weight: 600;
         letter-spacing: -0.1ch;
       }

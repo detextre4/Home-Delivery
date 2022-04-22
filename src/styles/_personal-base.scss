@@ -528,3 +528,12 @@
     transform: translateY(10%);
   }
 }
+@keyframes encoger {
+  0% {
+    transform-origin: center;
+    transform: scaleX(1.2);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

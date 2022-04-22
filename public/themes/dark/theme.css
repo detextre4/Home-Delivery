@@ -4,16 +4,19 @@
   --clr: #FFFFFF;
   --clr-inv: #111011;
   --clr-card: #000000;
-  --clr-card-ive: #FFFFFF;
+  --clr-card-inv: #FFFFFF;
   --clr-card-2: #182833;
   --clr-btn: rgba(229, 229, 229, 0.81);
   --clr-btn-2: #3E2185;
+  --clr-navbar: #FFFFFF;
   --clr-hover: #080e35;
   --clr-scroll: rgb(98, 99, 91);
   --clr-card-scroll: #B7B89F;
-  --mix-blend-mode: screen;
+  /* --clr-text-btn: #A4FDDF;
+  --clr-btn: #3E2185; */
   --clr-alerta: #CFCFCF;
   --clr-label: #A4FDDF;
+  --mix-blend-mode: screen;
 }
 
 /* defautl color */
@@ -55,6 +58,12 @@ label:not(.notdefault-clr) {
 }
 .clr-card-2 {
   background-color: var(--clr-card-2) !important;
+}
+.clr-btn {
+  background-color: var(--clr-btn) !important;
+}
+.clr-text-btn {
+  color: var(--clr-text-btn) !important;
 }
 
 /* ////////////////////////////////////////////// */
