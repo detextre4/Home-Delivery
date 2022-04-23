@@ -1,5 +1,5 @@
 .font1 {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'League Gothic', sans-serif;
 }
 :root {
   // added
@@ -279,10 +279,6 @@
 .rounded {
   border-radius: 15px;
 }
-.auto-height {
-  max-height: auto !important;
-  min-height: auto !important;
-}
 .order1 {
   order: 0;
 }
@@ -301,9 +297,23 @@
 .order6 {
   order: 5;
 }
+.fill {
+  width: 100%;
+  height: 100%;
+}
+.fill-w {
+  width: 100%;
+}
+.fill-h {
+  height: 100%;
+}
 .auto-width {
   max-width: auto !important;
   min-width: auto !important;
+}
+.auto-height {
+  max-height: auto !important;
+  min-height: auto !important;
 }
 @media (min-width: 881px) {
   .vermobile {
@@ -507,6 +517,16 @@
   }
   .order6mobile {
     order: 5 !important;
+  }
+  .fillmobile {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .fill-wmobile {
+    width: 100% !important;
+  }
+  .fill-hmobile {
+    height: 100% !important;
   }
 }
 @keyframes aparecer {
