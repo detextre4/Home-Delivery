@@ -29,9 +29,9 @@
       // input {}
       .input-file {
         .v-chip {
-          background-color: $clr-btn;
+          background-color: var(--clr-btn);
           span {
-            color: $clr-text-btn;
+            color:  var(--clr-text-btn);
             font-weight: 600;
           }
         }
@@ -66,14 +66,14 @@
       box-shadow: inset 0px 0px 4px rgb(164, 253, 223, 0.5);
     }
     .v-btn {
-      background: $clr-btn;
+      background: var(--clr-btn);
       clip-path: $clip-path;
       border-radius: 28px;
-      padding: clamp(1.8em, 2vw, 2em);
+      padding: clamp(1.8em, 2.5vw, 2.5em);
       box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
       transition: 0.2s ease-in-out;
       span {
-        color: $clr-text-btn;
+        color: var(--clr-text-btn);
         font-weight: 600;
         letter-spacing: -0.1ch;
       }

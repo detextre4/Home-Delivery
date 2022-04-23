@@ -1,5 +1,5 @@
 <template>
-  <v-app id="error">
+  <v-app id="error" :style="`background-image: url('${$store.state.baseURL}themes/${$store.state.theme}/bg.png')`">
     <v-container fluid class="error-page center divcol">
       <v-row justify="center" align="center">
         <v-col id="containerNotFound">

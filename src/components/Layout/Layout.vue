@@ -1,6 +1,5 @@
 <template>
-  <v-app id="layout">
-    <!-- <img class="fondo" src="@/assets/images/fondo.png" alt="Background Image"> -->
+  <v-app id="layout" :style="`background-image: url('${$store.state.baseURL}themes/${$store.state.theme}/bg.png')`">
     <Navbar ref="navbar" />
     <Header ref="header" />
     <v-main>

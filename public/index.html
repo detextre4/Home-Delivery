@@ -43,9 +43,6 @@ default settings
 *::-webkit-scrollbar-thumb {
   background: var(--clr-scroll);
 }
-* {
-  text-transform: uppercase !important;
-}
 :is(html, body) {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -56,9 +53,6 @@ default settings
 a {
   text-decoration: none;
 }
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button, label, .v-btn):not(.notdefault) {
-  letter-spacing: -0.1ch;
-}
 /*
 delete-config-default-vuetify
 */
@@ -66,7 +60,7 @@ delete-config-default-vuetify
   background: transparent !important;
 } */
 /* list */
-:is(.v-list, .v-sheet, .theme--light):not(.notdefault-vuetify) {
+:is(.v-list, .v-sheet, .theme--light):not(.notdefault-vuetify, .notdefault) {
   box-shadow: none !important;
 }
 </style>

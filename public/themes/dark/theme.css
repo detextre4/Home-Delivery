@@ -1,34 +1,27 @@
 /* global colors */
 :root {
   --bg: #000000;
-  --clr: #FFFFFF;
+  /*  */
+  --clr: #e5e5e5;
   --clr-inv: #111011;
-  --clr-card: #000000;
+  /*  */
+  --clr-card: #CFCFCF;
   --clr-card-inv: #FFFFFF;
-  --clr-card-2: #182833;
-  --clr-btn: rgba(229, 229, 229, 0.81);
-  --clr-btn-2: #3E2185;
+  --clr-card-2: #484242;
+  /*  */
+  --clr-text-btn: #A4FDDF;
+  --clr-btn: #3E2185;
+  --clr-text-btn-inv: #3E2185;
+  --clr-btn-inv: #A4FDDF;
+  --clr-btn-active: #3E2185;
+  /*  */
   --clr-navbar: #FFFFFF;
-  --clr-hover: #080e35;
   --clr-scroll: rgb(98, 99, 91);
   --clr-card-scroll: #B7B89F;
-  /* --clr-text-btn: #A4FDDF;
-  --clr-btn: #3E2185; */
+  /*  */
   --clr-alerta: #CFCFCF;
   --clr-label: #A4FDDF;
   --mix-blend-mode: screen;
-}
-
-/* defautl color */
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button):not(.notdefault-clr) {
-  color: var(--clr);
-}
-:is(.v-icon, a, input):not(.notdefault-clr) {
-  color: var(--clr) !important;
-}
-label:not(.notdefault-clr) {
-  color: var(--clr-label);
-  font-weight: 700;
 }
 
 /* personal clases */
@@ -64,6 +57,12 @@ label:not(.notdefault-clr) {
 }
 .clr-text-btn {
   color: var(--clr-text-btn) !important;
+}
+.clr-btn-inv {
+  background-color: var(--clr-btn-inv) !important;
+}
+.clr-text-btn-inv {
+  color: var(--clr-text-btn-inv) !important;
 }
 
 /* ////////////////////////////////////////////// */

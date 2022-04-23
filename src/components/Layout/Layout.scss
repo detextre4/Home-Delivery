@@ -2,14 +2,8 @@
 
 // layout
 #layout {
-  background: center no-repeat fixed url("../../assets/images/fondo.png");
+  background: center no-repeat fixed;
   background-size: cover;
-  // .fondo {
-  //   position: absolute;
-  //   inset: 0;
-  //   width: 100%;
-  //   height: 100%;
-  // }
   .v-main__wrap {
     margin-left: 15%;
     padding-bottom: clamp(6rem, 8vh, 8rem);
@@ -47,7 +41,7 @@
       position: absolute;
       inset: 0;
       background-color: #3d218534;
-      border: 2px solid $clr-btn;
+      border: 2px solid var(--clr-btn);
       border-radius: var(--border-responsive);
       animation: hover 1.4s ease infinite alternate;
     }
@@ -56,7 +50,7 @@
       position: absolute;
       inset: 0;
       background-color: #3d218534;
-      border: 2px solid $clr-btn;
+      border: 2px solid var(--clr-btn);
       border-radius: var(--border-responsive);
       animation: hover 1.3s ease infinite alternate;
     }
@@ -79,7 +73,7 @@
       }
     }
     .conticonActive {
-      background: var(--clr-btn-2);
+      background: $clr-text-btn;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       transition: 0.2s ease-in-out;
       span {
@@ -103,13 +97,7 @@
       gap: 0.625em;
       .v-input__slot {
         min-width: 23em;
-        background-color: var(--clr-btn);
-        box-shadow: none !important;
-        clip-path: $clip-path;
-        border-radius: 28px;
-        padding: clamp(0.7em, 2vw, 1em);
         font-size: $font-size-header;
-        font-weight: 700;
       }
     }
     .contright {
@@ -144,8 +132,6 @@
 .searchMobile {
   .v-input__control > .v-input__slot {
     min-width: 24em;
-    font-size: $font-size-header;
-    font-weight: 700;
   }
 }
 .menuGlobal {
@@ -154,9 +140,11 @@
   padding: clamp(0.7em, 2vw, 1em);
   .v-expansion-panel {
     overflow: hidden;
-    background-color: var(--clr-btn) !important;
-    .v-expansion-panel-content__wrap {padding: 0;}
+    background-color: transparent !important;
+    .v-expansion-panel-content__wrap {padding: 0;
+      background-color: transparent !important;}
     .v-expansion-panel-header {
+      background-color: var(--clr-card-2) !important;
       color: $clr-label !important;
       font-size: $font-size-header;
       font-weight: 600;
@@ -178,7 +166,7 @@
     }
   }
   .intoExpansion {
-    background-color: var(--clr-btn);
+    background-color: var(--clr-card-2);
     .v-list-item {
       padding-inline: 24px;
     }

@@ -1,3 +1,6 @@
+.font1 {
+  font-family: 'Open Sans', sans-serif !important;
+}
 :root {
   // added
   --step-h1: clamp(3rem, 3.52vw, 5.72rem);
@@ -99,6 +102,12 @@
 }
 .p {
   margin-bottom: 0 !important;
+}
+.normal {
+  font-weight: 400 !important;
+}
+.semibold {
+  font-weight: 500 !important;
 }
 .bold {
   font-weight: bold !important;
@@ -304,6 +313,15 @@
 @media (max-width: 880px) and (max-height: 1180px) {
   .eliminarmobile {
     display: none !important;
+  }
+  .normalmobile {
+    font-weight: 400 !important;
+  }
+  .semiboldmobile {
+    font-weight: 500 !important;
+  }
+  .boldmobile {
+    font-weight: bold !important;
   }
   .gapmobile {
     gap: 2em !important;

@@ -25,7 +25,7 @@
 
                     /* hover effect */
 
-// a:not(.notdefault-hover) {
+// a:not(.notdefault-hover, .notdefault) {
 //   position: relative;
 //   &::before {
 //     content: "";
@@ -49,7 +49,7 @@
 //     transform: scaleX(1);
 //   }
 // }
-// .v-list-item:not(.notdefault-hover) {
+// .v-list-item:not(.notdefault-hover, .notdefault) {
 //   position: relative;
 //   &::before {
 //     content: "";
@@ -80,32 +80,57 @@
 //   color: #AD0FD5 !important;
 // }
 
+/* defautl color */
+:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button):not(.notdefault-clr, .notdefault) {
+  color: var(--clr);
+}
+:is(.v-icon, a, input):not(.notdefault-clr, .notdefault) {
+  color: var(--clr) !important;
+}
+label:not(.notdefault-clr, .notdefault) {
+  color: var(--clr-label);
+  font-weight: 700;
+}
+
                     /* typography */
 
-h1:not(.notdefault-typography) {
+* {
+  text-transform: uppercase !important;
+}
+h1:not(.notdefault-typography, .notdefault) {
   font-weight: 600 !important;
   line-height: 1ch !important;
   margin-bottom: 16px !important;
 }
-h2:not(.notdefault-typography) {
+h2:not(.notdefault-typography, .notdefault) {
   font-weight: 500 !important;
   line-height: 1 !important;
   margin-bottom: 16px !important;
+}
+:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button, label, .v-btn):not(.notdefault-typography, .notdefault) {
+  letter-spacing: -0.1ch;
+}
+p:not(.notdefault-typography, .notdefault) {
+  font-weight: 500;
+  -webkit-text-stroke: 0.4px var(--clr);
+  -moz-text-stroke: 0.4px var(--clr);
 }
 
                     /* other adjusts */
 
 .v-input__control > .v-input__slot {
-  background-color: var(--clr-btn) !important;
+  background-color: var(--clr-card-2) !important;
   box-shadow: none !important;
   clip-path: $clip-path;
   border-radius: 28px;
   padding: clamp(0.7em, 2vw, 1em) !important;
+  font-weight: 700;
+  font-size: $font-size-header;
 }
 .botones {
   min-width: clamp(3.2em, 4vw, 4.4375em) !important;
   min-height: clamp(3.2em, 4vw, 4.4375em) !important;
-  background: var(--clr-btn) !important;
+  background: var(--clr-card-2) !important;
   border-radius: 20px !important;
   img {
     width: 2.5em;
@@ -122,25 +147,25 @@ h2:not(.notdefault-typography) {
   letter-spacing: -0.16ch !important;
 }
 .activeClass {
-  background-color: $clr-btn !important;
+  background-color: var(--clr-btn-active) !important;
   span {
-    color: #ffffff !important;
+    color: var(--clr-text-btn-active) !important;
   }
 }
 
 .contcontrols {
   gap: 1em;
   .v-btn {
-    background-color: $clr-btn;
+    background-color: var(--clr-btn);
   }
 }
 .contIconActive {
-  background-color: $clr-btn !important;
+  background-color: var(--clr-btn) !important;
   .square {
-    background: $clr-btn !important;
+    background: var(--clr-btn) !important;
   }
   span {
-    color: $clr-text-btn !important;
+    color: var(--clr-text-btn) !important;
   }
 }
 .BorderContIconActive {

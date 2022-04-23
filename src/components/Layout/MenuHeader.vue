@@ -37,11 +37,10 @@
     >
       <v-expansion-panels
         focusable
-        color="var(--clr-btn)"
         class="menuGlobal"
       >
         <v-expansion-panel v-for="(item, i) in dataMenuOptions" :key="i">
-          <v-expansion-panel-header color="var(--clr-btn)">
+          <v-expansion-panel-header>
             {{ item.title }}
           </v-expansion-panel-header>
 
@@ -50,7 +49,7 @@
               <v-list-item :href="item2.to" @click="ActiveClass(item2)"
                 :class="{ activeClass: item2.active }">
                 <v-list-item-title class="center">
-                  <span>{{ item2.item }}</span>
+                  <span class="notdefault-clr">{{ item2.item }}</span>
                 </v-list-item-title>
               </v-list-item>
             </v-list>
@@ -71,19 +70,18 @@
     >
       <v-expansion-panels
         focusable
-        color="var(--clr-btn)"
         class="menuGlobal"
       >
         <v-expansion-panel v-for="(item, i) in dataMenuLogout" :key="i">
           <template v-if="item.title">
-            <v-expansion-panel-header color="var(--clr-btn)">
+            <v-expansion-panel-header>
               {{ item.title }}
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <v-list v-for="(item2, i) in item.selection" :key="i">
                 <v-list-item :href="item2.to" :class="{ activeClass: item2.active }">
                   <v-list-item-title class="center">
-                    <span>{{ item2.item }}</span>
+                    <span class="notdefault-clr">{{ item2.item }}</span>
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
@@ -93,7 +91,7 @@
           <v-list v-if="item.name" class="intoExpansion">
             <v-list-item @click="SelectLogoutItem(item.key)" :href="item.to">
               <v-list-item-title>
-                <span>{{ item.name }}</span>
+                <span class="notdefault-clr">{{ item.name }}</span>
               </v-list-item-title>
             </v-list-item>
           </v-list>
@@ -108,13 +106,13 @@ import { i18n } from "@/plugins/i18n";
 export default {
   name: "HeaderMenu",
   i18n: require("./i18n"),
-  created() {
-    this.element = document.getElementById("theme");
-    const theme = localStorage.getItem("theme");
-    if (theme) {
-      this.CambiarTheme(theme);
-    }
-  },
+  // created() {
+  //   this.element = document.getElementById("theme");
+  //   const theme = localStorage.getItem("theme");
+  //   if (theme) {
+  //     this.CambiarTheme(theme);
+  //   }
+  // },
   mounted() {
     this.CambiarLanguaje(localStorage.language);
   },
@@ -123,10 +121,10 @@ export default {
       search: "",
       dataMenuOptions: [
         {
-          title: "Tema",
+          title: "Option",
           selection: [
-            {item: "Normal", to: "#", active: false, key: "light"},
-            {item: "Exótico", to: "#", active: false, key: "dark"}
+            {item: "Option", to: "#", active: false, key: "light"},
+            {item: "Option", to: "#", active: false, key: "dark"}
           ]
         },
         {
@@ -161,17 +159,17 @@ export default {
   },
   methods: {
     ActiveClass(item) {
-      const dataOptions1 = this.dataMenuOptions[0].selection;
-      if (item == dataOptions1[0]) {
-        dataOptions1[1].active = false;
-        item.active = true;
-        this.CambiarTheme(item.key);
-      }
-      if (item == dataOptions1[1]) {
-        dataOptions1[0].active = false;
-        item.active = true;
-        this.CambiarTheme(item.key);
-      }
+      // const dataOptions1 = this.dataMenuOptions[0].selection;
+      // if (item == dataOptions1[0]) {
+      //   dataOptions1[1].active = false;
+      //   item.active = true;
+      //   this.CambiarTheme(item.key);
+      // }
+      // if (item == dataOptions1[1]) {
+      //   dataOptions1[0].active = false;
+      //   item.active = true;
+      //   this.CambiarTheme(item.key);
+      // }
       const dataOptions2 = this.dataMenuOptions[1].selection;
       if (item == dataOptions2[0]) {
         dataOptions2[1].active = false;
@@ -184,14 +182,14 @@ export default {
         this.CambiarLanguaje(item.key);
       }
     },
-    CambiarTheme(theme) {
-      if (theme == 'light') {
-        this.$store.dispatch("CambiarTheme", { theme, element: this.element });
-      }
-      if (theme == 'dark') {
-        this.$store.dispatch("CambiarTheme", { theme, element: this.element });
-      }
-    },
+    // CambiarTheme(theme) {
+    //   if (theme == 'light') {
+    //     this.$store.dispatch("CambiarTheme", { theme, element: this.element });
+    //   }
+    //   if (theme == 'dark') {
+    //     this.$store.dispatch("CambiarTheme", { theme, element: this.element });
+    //   }
+    // },
     CambiarLanguaje(lang) {
       if (lang === "ES") {
         localStorage.language = lang;
