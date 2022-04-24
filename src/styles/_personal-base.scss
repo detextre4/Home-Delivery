@@ -529,6 +529,7 @@
     height: 100% !important;
   }
 }
+// animations
 @keyframes aparecer {
   0% {
     opacity: 50%;
@@ -606,5 +607,78 @@
   }
   62%{
     transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+// hover
+.hover-line {
+  position: relative;
+  transition: 1s $hover-ease;
+  &::before {
+    content: "";
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    margin: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: $clr-btn !important;
+    opacity: 0 !important;
+    border-radius: 50px !important;
+    transform: scaleX(0.2) !important;
+    transform-origin: right !important;
+    transition: transform 250ms ease !important;
+  }
+  &:is(:hover, :focus):before {
+    opacity: 0.5 !important;
+    transform: scaleX(1) !important;
+  }
+}
+.hover-split {
+  position: relative;
+  transition: 1s $hover-ease;
+  $split-position:  49%;
+  $split-thickness: 4px;
+  // === line ===
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: $split-position;
+    left: -10%;
+    right: -10%;
+    height: $split-thickness;
+    border-radius: $split-thickness;
+    margin-top: -($split-thickness / 2);
+    background: #FF2C75;
+    transform: scale(0);
+    transition: transform .8s cubic-bezier(.16,1.08,.38,.98);
+    z-index: 1;
+  }
+  // === Top/bottom mask =====
+  .mask {
+    display: block !important;
+    position: absolute !important;
+    overflow: hidden !important;
+    color: transparent !important;
+    top: 0 !important;
+    height: $split-position !important;
+    transition: all .8s cubic-bezier(.16,1.08,.38,.98);
+  }
+  // === Bottom mask specific =====
+  .mask + .mask {
+    top: $split-position - 0.1 !important;
+    height: 100 - $split-position + 0.1 !important;
+    span { transform: translateY(-$split-position) !important; }
+  }
+  // === hover effect =====
+  &:is(:hover, :active) {
+    .mask { color: $clr-btn !important; transform: skewX(12deg) translateX(5px); }
+    .mask + .mask { transform: skewX(12deg) translateX(-5px); }
+    &::before { transform: scale(1); }
+    & {
+      color: transparent !important;
+    }
   }
 }
