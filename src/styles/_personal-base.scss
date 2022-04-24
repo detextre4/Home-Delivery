@@ -638,6 +638,7 @@
 .hover-split {
   position: relative;
   transition: 1s $hover-ease;
+  color: transparent !important;
   $split-position:  49%;
   $split-thickness: 4px;
   // === line ===
@@ -661,10 +662,11 @@
     display: block !important;
     position: absolute !important;
     overflow: hidden !important;
-    color: transparent !important;
+    color: var(--clr);
     top: 0 !important;
     height: $split-position !important;
     transition: all .8s cubic-bezier(.16,1.08,.38,.98) !important;
+    span { display: block !important; }
   }
   // === Bottom mask specific =====
   .mask + .mask {
@@ -677,8 +679,5 @@
     .mask { color: $clr-btn !important; transform: skewX(12deg) translateX(5px) !important; }
     .mask + .mask { transform: skewX(12deg) translateX(-5px) !important; }
     &::before { transform: scale(1) !important; }
-    & {
-      color: transparent !important;
-    }
   }
 }
