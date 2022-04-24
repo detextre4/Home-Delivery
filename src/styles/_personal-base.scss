@@ -623,7 +623,7 @@
     margin: auto !important;
     width: 100% !important;
     height: 100% !important;
-    background-color: $clr-btn !important;
+    background-color: $clr-hover !important;
     opacity: 0 !important;
     border-radius: 50px !important;
     transform: scaleX(0.2) !important;
@@ -642,19 +642,19 @@
   $split-thickness: 4px;
   // === line ===
   &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: $split-position;
-    left: -10%;
-    right: -10%;
-    height: $split-thickness;
-    border-radius: $split-thickness;
-    margin-top: -($split-thickness / 2);
-    background: #FF2C75;
-    transform: scale(0);
-    transition: transform .8s cubic-bezier(.16,1.08,.38,.98);
-    z-index: 1;
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    top: $split-position !important;
+    left: -10% !important;
+    right: -10% !important;
+    height: $split-thickness !important;
+    border-radius: $split-thickness !important;
+    margin-top: -($split-thickness / 2) !important;
+    background: $clr-hover !important;
+    transform: scale(0) !important;
+    transition: transform .8s cubic-bezier(.16,1.08,.38,.98) !important;
+    z-index: 1 !important;
   }
   // === Top/bottom mask =====
   .mask {
@@ -664,7 +664,7 @@
     color: transparent !important;
     top: 0 !important;
     height: $split-position !important;
-    transition: all .8s cubic-bezier(.16,1.08,.38,.98);
+    transition: all .8s cubic-bezier(.16,1.08,.38,.98) !important;
   }
   // === Bottom mask specific =====
   .mask + .mask {
@@ -674,9 +674,9 @@
   }
   // === hover effect =====
   &:is(:hover, :active) {
-    .mask { color: $clr-btn !important; transform: skewX(12deg) translateX(5px); }
-    .mask + .mask { transform: skewX(12deg) translateX(-5px); }
-    &::before { transform: scale(1); }
+    .mask { color: $clr-btn !important; transform: skewX(12deg) translateX(5px) !important; }
+    .mask + .mask { transform: skewX(12deg) translateX(-5px) !important; }
+    &::before { transform: scale(1) !important; }
     & {
       color: transparent !important;
     }
