@@ -47,6 +47,12 @@ $button-shadow: 0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 
 $sombra-btn: 0px 4px 4px rgba(0, 0, 0, 0.2);
 $border-btn: 20px;
 
+// hover //
+$ease: cubic-bezier(0.23, 1, 0.32, 1);
+$ease-return: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$skew-right: skewX(12deg) translateX(1px);
+$skew-left: skewX(-12deg) translateX(-1px);
+
 // responsive
 :root {
   --border-responsive: 30px;
