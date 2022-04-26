@@ -145,14 +145,7 @@ export default {
           key: "perfil"
         },
         {
-          title: "option",
-          selection: [
-            {item: "option", to: "#", active: false},
-            {item: "option", to: "#", active: false}
-          ]
-        },
-        {
-          name: "Logout",
+          name: "Cerrar sesión",
           key: "logout"
         }
       ],
@@ -214,7 +207,7 @@ export default {
       }
     },
     Logout() {
-      this.$parent.$parent.Logout();
+      this.$parent.$parent.loginNear();
     },
     ClearNavbar() {
       this.$parent.$parent.$parent.$parent.$refs.navbar.clearAll();

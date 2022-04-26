@@ -61,6 +61,9 @@
 
 <script>
 import MenuHeader from './MenuHeader.vue'
+import * as nearAPI from "near-api-js";
+import { CONFIG } from "@/services/api";
+const { connect, keyStores, WalletConnection } = nearAPI;
 
 export default {
   name: "Header",
@@ -70,26 +73,71 @@ export default {
   },
   data() {
     return {
+      nearid: false,
+      user: null,
       messages: 2,
       search: "",
       dataLogin: [
         {
           text: this.$t('sesion'),
-          show: true,
+          show: false,
         },
         {
-          text: "0x7885438272",
+          text: this.user,
           show: false,
           openMenu: true,
         },
       ]
     };
   },
+  mounted(){
+     this.isSigned()
+  },
   methods: {
+    async loginNear() {
+      const near = await connect(
+        CONFIG(new keyStores.BrowserLocalStorageKeyStore())
+      );
+      const wallet = new WalletConnection(near);
+      if (this.nearid === false) {
+        wallet.requestSignIn(
+          "min.mintick.testnet",
+        );
+      } else if (this.nearid) {
+        wallet.signOut();
+        this.nearid = false;
+        this.$router.go();
+      }
+    },
+    async isSigned() {
+      // connect to NEAR
+      const near = await connect(
+        CONFIG(new keyStores.BrowserLocalStorageKeyStore())
+      );
+      // create wallet connection
+      const wallet = new WalletConnection(near);
+      if (wallet.isSignedIn()) {
+        this.nearid = true;
+        // returns account Id as string
+        const walletAccountId = wallet.getAccountId();
+        this.user = walletAccountId;
+      }
+      localStorage.setItem('wallerid' ,this.user)
+      if (this.nearid === false){
+        this.dataLogin[0].show = true;
+         this.dataLogin[1].show = false;
+        }
+      if(this.nearid === true){
+            this.dataLogin[0].show = false;
+            this.dataLogin[1].show = true;
+            this.dataLogin[1].text = this.user
+      }
+    },
     Login(item) {
       if (item == this.dataLogin[0]) {
         this.dataLogin[0].show = false;
         this.dataLogin[1].show = true;
+        this.loginNear()
       }
     },
     Logout() {
