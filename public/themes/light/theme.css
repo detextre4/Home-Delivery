@@ -1,59 +1,69 @@
 /* global colors */
 :root {
-  --fondo: #FFFFFF;
-  --color: #111011;
-  --colorInverted: #FFFFFF;
-  --colorCartas: #FFFFFF;
-  --colorCartasInverted: #000000;
-  --colorCartas2: #E5E5E5;
-  --colorBoton: rgba(229, 229, 229);
-  /* --colorBoton: rgba(229, 229, 229, 0.81); */
-  --colorBoton2: #A4FDDF;
-  --colorNavbar: #FFFFFF;
-  --colorHover: #eeeeee;
-  --colorScroll: #3E2185;
-  --colorCartaScroll: rgb(224, 224, 224);
+  --bg: #FFFFFF;
+  /*  */
+  --clr: #111011;
+  --clr-inv: #FFFFFF;
+  /*  */
+  --clr-card: #FFFFFF;
+  --clr-card-inv: #000000;
+  --clr-card-2: rgba(229, 229, 229);
+  /*  */
+  --clr-text-btn: #A4FDDF;
+  --clr-btn: #3E2185;
+  --clr-text-btn-inv: #3E2185;
+  --clr-btn-inv: #A4FDDF;
+  --clr-text-btn-active: #FFFFFF;
+  --clr-btn-active: #3E2185;
+  /*  */
+  --clr-navbar: #FFFFFF;
+  --clr-scroll: #3E2185;
+  --clr-card-scroll: rgb(224, 224, 224);
+  /*  */
+  --clr-alerta: #CFCFCF;
+  --clr-label: #3E2185;
   --mix-blend-mode: multiply;
-  --colorAlerta: #CFCFCF;
-}
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button) {
-  color: #111011;
-}
-:is(.v-icon, a) {
-  color: #111011 !important;
-}
-label {
-  color: #3E2185;
-  font-weight: 700;
 }
 
 /* personal clases */
-.color {
-  color: #111011 !important;
+.clr {
+  color: var(--clr) !important;
 }
-.colorInverted {
-  color: #FFFFFF !important;
+.clr-inv {
+  color: var(--clr-inv) !important;
 }
-.colorCartas {
-  background-color: #FFFFFF !important;
+.clr-card {
+  background-color: var(--clr-card) !important;
 }
-.colorCartasInverted {
-  background-color: #000000 !important;
+.clr-card-inv {
+  background-color: var(--clr-card-inv) !important;
 }
 .filter {
   filter: invert(0%) !important;
 }
-.filterInverted {
+.filter-inv {
   filter: invert(100%) !important;
 }
-.colorSVG {
-  fill: #FFFFFF !important;
+.clr-svg {
+  fill: var(--clr) !important;
 }
-.colorSVGInverted {
-  fill: #111011 !important;
+.clr-svg-inv {
+  fill: var(--clr-inv) !important;
 }
-.colorCartas2 {
-  background-color: #B5C9F1 !important;
+.clr-card-2 {
+  background-color: var(--clr-card-2) !important;
+}
+.clr-btn {
+  background-color: var(--clr-btn) !important;
+}
+.clr-text-btn {
+  color: var(--clr-text-btn) !important;
+}
+.clr-btn-inv {
+  background-color: var(--clr-btn-inv) !important;
+}
+.clr-text-btn-inv {
+  color: var(--clr-text-btn-inv) !important;
 }
 
 /* ////////////////////////////////////////////// */

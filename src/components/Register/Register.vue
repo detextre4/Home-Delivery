@@ -1,5 +1,5 @@
 <template>
-  <v-app id="login" class="center">
+  <v-app id="login" class="center" :style="`background-image: url('${$store.state.baseURL}themes/${$store.state.theme}/bg.png')`">
     <v-main>
       <v-container class="containerlogin">
         <v-col cols="11" sm="8" md="6"

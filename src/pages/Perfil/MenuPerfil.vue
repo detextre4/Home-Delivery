@@ -13,10 +13,10 @@
       <v-col class="verificatorMiPerfil">
         <h6 class="h8-em">{{ item.text }}</h6>
         <div class="spacea">
-          <v-btn color="var(--colorBoton)" @click="AcceptVerificator(item.accept)">
+          <v-btn color="var(--clr-card-2)" @click="AcceptVerificator(item.accept)">
             <img src="@/assets/icons/check.png" alt="accept button">
           </v-btn>
-          <v-btn color="var(--colorBoton)" @click="CancelVerificator(item.cancel)">
+          <v-btn color="var(--clr-card-2)" @click="CancelVerificator(item.cancel)">
             <img src="@/assets/icons/cancel.png" alt="cancel button">
           </v-btn>
         </div>

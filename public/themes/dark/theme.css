@@ -1,57 +1,68 @@
 /* global colors */
 :root {
-  --fondo: #000000;
-  --color: #FFFFFF;
-  --colorInverted: #111011;
-  --colorCartas: #000000;
-  --colorCartasInverted: #FFFFFF;
-  --colorCartas2: #182833;
-  --colorBoton: rgba(229, 229, 229, 0.81);
-  --colorBoton2: #3E2185;
-  --colorHover: #080e35;
-  --colorScroll: rgb(98, 99, 91);
-  --colorCartaScroll: #B7B89F;
+  --bg: #000000;
+  /*  */
+  --clr: #e5e5e5;
+  --clr-inv: #111011;
+  /*  */
+  --clr-card: #CFCFCF;
+  --clr-card-inv: #FFFFFF;
+  --clr-card-2: #484242;
+  /*  */
+  --clr-text-btn: #A4FDDF;
+  --clr-btn: #3E2185;
+  --clr-text-btn-inv: #3E2185;
+  --clr-btn-inv: #A4FDDF;
+  --clr-btn-active: #3E2185;
+  /*  */
+  --clr-navbar: #FFFFFF;
+  --clr-scroll: rgb(98, 99, 91);
+  --clr-card-scroll: #B7B89F;
+  /*  */
+  --clr-alerta: #CFCFCF;
+  --clr-label: #A4FDDF;
   --mix-blend-mode: screen;
-  --colorAlerta: #CFCFCF;
-}
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button) {
-  color: #FFFFFF
-}
-:is(.v-icon, a) {
-  color: #FFFFFF !important;
-}
-label {
-  color: #3E2185;
-  font-weight: 700;
 }
 
 /* personal clases */
-.color {
-  color: #FFFFFF !important;
+.clr {
+  color: var(--clr) !important;
 }
-.colorInverted {
-  color: #111011 !important;
+.clr-inv {
+  color: var(--clr-inv) !important;
 }
-.colorCartas {
-  background-color: #000000 !important;
+.clr-card {
+  background-color: var(--clr-card) !important;
 }
-.colorCartasInverted {
-  background-color: #FFFFFF !important;
+.clr-card-inv {
+  background-color: var(--clr-card-inv) !important;
 }
 .filter {
-  filter: invert(100%) !important;
-}
-.filterInverted {
   filter: invert(0%) !important;
 }
-.colorSVG {
-  fill: #111011 !important;
+.filter-inv {
+  filter: invert(100%) !important;
 }
-.colorSVGInverted {
-  fill: #FFFFFF !important;
+.clr-svg {
+  fill: var(--clr) !important;
 }
-.colorCartas2 {
-  background-color: #182833 !important;
+.clr-svg-inv {
+  fill: var(--clr-inv) !important;
+}
+.clr-card-2 {
+  background-color: var(--clr-card-2) !important;
+}
+.clr-btn {
+  background-color: var(--clr-btn) !important;
+}
+.clr-text-btn {
+  color: var(--clr-text-btn) !important;
+}
+.clr-btn-inv {
+  background-color: var(--clr-btn-inv) !important;
+}
+.clr-text-btn-inv {
+  color: var(--clr-text-btn-inv) !important;
 }
 
 /* ////////////////////////////////////////////// */
