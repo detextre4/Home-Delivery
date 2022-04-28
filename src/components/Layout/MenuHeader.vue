@@ -143,6 +143,11 @@ export default {
           key: "perfil"
         },
         {
+          name: "Mi Tienda",
+          to: "#/mi-tienda",
+          key: "tienda"
+        },
+        {
           name: "Cerrar sesión",
           key: "logout"
         }
@@ -196,6 +201,10 @@ export default {
     },
     SelectLogoutItem(item) {
       if (item == "perfil") {
+        this.ClearNavbar();
+        this.logout = false;
+      }
+      if (item == "tienda") {
         this.ClearNavbar();
         this.logout = false;
       }

@@ -1,5 +1,6 @@
 <template>
   <section id="miPerfil" class="parent">
+    <Alerts ref="alerts"></Alerts>
     <MenuPerfil ref="menu"></MenuPerfil>
     <v-col class="contmiperfil divcol gap">
       <aside class="contup divcol">
@@ -22,7 +23,7 @@
             solo
           ></v-text-field>
         </v-card>
-         <v-card color="transparent">
+        <v-card color="transparent">
           <label
             for="walet"
             class="h7-em"
@@ -65,7 +66,7 @@
             solo
           ></v-text-field>
         </v-card>
-         <v-card color="transparent">
+        <v-card color="transparent">
           <label
             for="foto"
             class="h7-em"
@@ -84,13 +85,13 @@
               <v-icon>mdi-camera</v-icon>
             </template>
           </v-file-input>
-         </v-card>
+          </v-card>
           <v-card color="transparent" class="gap_checkbox">
-         <div 
+          <div 
             class="contcheckbox acenter">
             <v-btn 
               v-model="perfil.delivery"
-              color="var(--colorBoton)"
+              color="var(--clr-card-2)"
               id="delivery"
               class="openDeliveryAlert">
               <img  v-if="foto == true" src="@/assets/icons/check.png" alt="check button for delivery">
@@ -99,14 +100,14 @@
               for="delivery"
               class="h7-em"
             >
-               ¿Quieres ser delivery?
+              ¿Quieres ser delivery?
             </label>
           </div>
           <div
             class="contcheckbox acenter">
             <v-btn 
               v-model="perfil.vendedor"
-              color="var(--colorBoton)"
+              color="var(--clr-card-2)"
               id="vendedor"
               class="openVendedorAlert">
               <img   v-if="foto2 == true" src="@/assets/icons/check.png" alt="check button for merchant">
@@ -134,10 +135,12 @@
 <script>
 import MenuPerfil from './MenuPerfil.vue'
 import { PERFIL,PROFILE } from '@/services/api.js'
+import Alerts from '@/components/Alerts/Alerts.vue'
 export default {
   name: "MiPerfil",
   components: {
-    MenuPerfil
+    MenuPerfil,
+    Alerts
   },
   data() {
     return {
@@ -241,9 +244,13 @@ export default {
         this.perfil.vendedor = false
         this.foto2 = false
       }
+    },
+    showAlert() {
+      this.$refs.alerts.Alerts('success');
+      this.$refs.alerts.Alerts('cancel');
     }
   },
 };
 </script>
 
-<style src="./Perfil.scss" lang="scss" />
+<style src="./Forms.scss" lang="scss" />

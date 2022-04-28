@@ -30,7 +30,12 @@ export default new Router({
         {
           path: '/mi-perfil',
           name: 'MiPerfil',
-          component: () => import('@/pages/Perfil/MiPerfil'),
+          component: () => import('@/components/Forms/MiPerfil'),
+        },
+        {
+          path: '/mi-tienda',
+          name: 'Tienda',
+          component: () => import('@/components/Forms/Tienda'),
         },
       ],
     },
