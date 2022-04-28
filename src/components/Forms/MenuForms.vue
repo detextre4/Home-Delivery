@@ -66,4 +66,4 @@ export default {
 };
 </script>
 
-<style src="./Perfil.scss" lang="scss"></style>
+<style src="./Forms.scss" lang="scss"></style>

@@ -1,5 +1,5 @@
 .font1 {
-  font-family: 'League Gothic', sans-serif;
+  font-family: 'Open Sans', sans-serif !important;
 }
 :root {
   // added
@@ -103,6 +103,9 @@
 .p {
   margin-bottom: 0 !important;
 }
+.light {
+  font-weight: 300 !important;
+}
 .normal {
   font-weight: 400 !important;
 }
@@ -190,9 +193,9 @@
   display: flex;
   flex-wrap: wrap;
 }
-.divwrapdel {
+.divnowrap {
   display: flex !important;
-  flex-wrap: wrap !important;
+  flex-wrap: nowrap !important;
 }
 .start {
   display: flex;
@@ -324,6 +327,9 @@
   .eliminarmobile {
     display: none !important;
   }
+  .lightmobile {
+    font-weight: 300 !important;
+  }
   .normalmobile {
     font-weight: 400 !important;
   }
@@ -411,7 +417,7 @@
     display: flex !important;
     flex-wrap: wrap !important;
   }
-  .divwrapdelmobile {
+  .divnowrapmobile {
     display: flex !important;
     flex-wrap: nowrap !important;
   }
@@ -609,6 +615,38 @@
     transform: translate(-22px,5px) skew(21deg); 
   }
 }
+@keyframes moveup {
+  0% {
+    transform: translateY(95%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes movedown {
+  0% {
+    transform: translateY(-95%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes moveleft {
+  0% {
+    transform: translateX(-95%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes moveright {
+  0% {
+    transform: translateX(95%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 // hover
 .hover-line {
   position: relative;
@@ -622,16 +660,19 @@
     margin: auto !important;
     width: 100% !important;
     height: 100% !important;
-    background-color: $clr-hover !important;
+    background-color: var(--clr-hover) !important;
     opacity: 0 !important;
     border-radius: 50px !important;
     transform: scaleX(0.2) !important;
-    transform-origin: right !important;
+    transform-origin: left !important;
     transition: 250ms $ease-return !important;
   }
   &:is(:hover, :focus):before {
-    opacity: 0.5 !important;
+    opacity: 0.2 !important;
     transform: scaleX(1) !important;
+  }
+  &:active::before {
+    background-color: #00000098 !important;
   }
 }
 .hover-split {
