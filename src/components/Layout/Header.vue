@@ -92,6 +92,7 @@ export default {
   },
   mounted(){
      this.isSigned()
+     this.axios.defaults.headers.common.Authorization = 'token '
   },
   methods: {
     async loginNear() {
@@ -106,7 +107,7 @@ export default {
       } else if (this.nearid) {
         wallet.signOut();
         this.nearid = false;
-        this.$router.go();
+        this.$$router.go();
       }
     },
     async isSigned() {
@@ -143,6 +144,7 @@ export default {
     Logout() {
       this.dataLogin[1].show = false;
       this.dataLogin[0].show = true;
+      this.$router.push('#/')
     }
   },
 };

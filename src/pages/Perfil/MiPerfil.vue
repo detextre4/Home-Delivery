@@ -123,7 +123,7 @@
       </aside>
 
       <aside class="contsubmit center">
-        <v-btn>
+        <v-btn @click="SaveProfile(perfil)">
           <span class="h7-em">Guardar</span>
         </v-btn>
       </aside>
@@ -133,6 +133,7 @@
 
 <script>
 import MenuPerfil from './MenuPerfil.vue'
+import { PERFIL,PROFILE } from '@/services/api.js'
 export default {
   name: "MiPerfil",
   components: {
@@ -198,8 +199,29 @@ export default {
     }
   },
   mounted(){
+    this.VerifyProfile({wallet:this.perfil.wallet})
   },
   methods: {
+    VerifyProfile(item) {
+      this.axios.post(PERFIL,item).then((response) => {
+        this.perfil=response.data
+        this.foto = response.data.delivery
+        this.foto2 = response.data.vendedor
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    SaveProfile(item) {
+      if (item.id){
+        this.axios.put(PROFILE+item.id+'/',item).then((response) => {
+          this.perfil=response.data
+        })
+      } else {
+        this.axios.post(PROFILE,item).then((response) => {
+          this.perfil=response.data
+        })
+      }
+    },
     AcceptVerificator(item) {
       if (item == "delivery") {
         this.perfil.delivery = true
