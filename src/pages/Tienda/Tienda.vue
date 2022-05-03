@@ -2,10 +2,15 @@
   <section id="tienda" class="parent">
     <v-col class="contup astart">
       <img src="@/assets/images/tienda-title.png" alt="Titulo tienda">
-      <div class="center">
-        <v-btn id="add" icon>+</v-btn>
-        <label class="semibold h6-em" for="add">agregar menu</label>
-      </div>
+
+      <v-tooltip right color="var(--clr-btn)">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn id="add" icon v-bind="attrs" v-on="on" href="#/mi-tienda">
+            <img src="@/assets/icons/pencil.png" alt="Add Menu">
+          </v-btn>
+        </template>
+        <span class="clr-text-btn">Editar datos de tienda</span>
+      </v-tooltip>
     </v-col>
 
     <v-col class="contdown">
@@ -13,7 +18,7 @@
         <h2 class="h3-em tcenter">Menu</h2>
         <v-col class="divcol gap">
           <v-card v-for="(item,i) in dataMenuTienda" :key="i"
-            style="display:flex" class="acenter spacea">
+            style="display:flex" class="acenter">
             <aside class="divrow">
               <img src="@/assets/icons/inicio.png" alt="Menu Image">
 
@@ -24,15 +29,6 @@
                   <span class="h6-em semibol">{{ item.precio }}$</span>
                 </div>
               </div>
-            </aside>
-
-            <aside class="divrow">
-              <v-btn>
-                editar
-              </v-btn>
-              <v-btn text color="#ff4081" rounded>
-                borrar
-              </v-btn>
             </aside>
           </v-card>
         </v-col>
