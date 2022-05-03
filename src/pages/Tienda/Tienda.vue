@@ -1,10 +1,11 @@
 <template>
   <section id="tienda" class="parent">
-    <v-col class="contup">
-      <aside class="conttitle acenter">
-        <img src="@/assets/images/tienda-title.png" alt="Titulo tienda">
-        <v-btn class="botones">+</v-btn>
-      </aside>
+    <v-col class="contup astart">
+      <img src="@/assets/images/tienda-title.png" alt="Titulo tienda">
+      <div class="center">
+        <v-btn id="add" icon>+</v-btn>
+        <label class="semibold h6-em" for="add">agregar menu</label>
+      </div>
     </v-col>
 
     <v-col class="contdown">

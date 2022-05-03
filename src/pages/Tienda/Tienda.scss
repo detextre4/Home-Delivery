@@ -4,11 +4,15 @@
 #tienda {
   .contup {
     padding-top: 2em;
+    padding-bottom: 0;
     // padding-inline: 5%;
-    .conttitle {
-      img {
-        transform: rotate(-13deg);
-        filter: $sombra-filter;
+    img {transform: rotate(-13deg);filter: $sombra-filter;}
+    img + div {
+      filter: $sombra-filter;
+      gap: .2em;
+      #add {
+        background-color: $clr-btn;
+        span {color: $clr-text-btn !important;}
       }
     }
   }
