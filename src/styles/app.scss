@@ -68,6 +68,27 @@ p:not(.notdefault-typography, .notdefault) {
 
                     /* other adjusts */
 
+.back {
+  width: max-content;
+  height: max-content;
+  padding: 0.7em;
+  background-color: $clr-btn;
+  color: $clr-text-btn !important;
+  .v-icon {
+    color: $clr-text-btn !important;
+  }
+}
+
+.add {
+  background-color: $clr-btn;
+  filter: $sombra-filter;
+  padding: 1.6em;
+  img {
+    width: 2em;
+    transform: translateX(5%);
+  }
+}
+
 .v-input__control > .v-input__slot {
   background-color: var(--clr-card-2) !important;
   box-shadow: none !important;

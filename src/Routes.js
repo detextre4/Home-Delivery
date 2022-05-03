@@ -33,6 +33,11 @@ export default new Router({
           component: () => import('@/components/Forms/Tienda'),
         },
         {
+          path: '/mi-menu',
+          name: 'Menu',
+          component: () => import('@/components/Forms/MiMenu'),
+        },
+        {
           path: '/categorias',
           name: 'Categorias',
           component: () => import('@/pages/Categorias/Categorias'),

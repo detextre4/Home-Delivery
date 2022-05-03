@@ -5,7 +5,7 @@
 
       <v-tooltip right color="var(--clr-btn)">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn id="add" icon v-bind="attrs" v-on="on" href="#/mi-tienda">
+          <v-btn class="add" icon v-bind="attrs" v-on="on" href="#/mi-tienda">
             <img src="@/assets/icons/pencil.png" alt="Add Menu">
           </v-btn>
         </template>
@@ -15,7 +15,19 @@
 
     <v-col class="contdown">
       <aside class="wrapper divcol">
-        <h2 class="h3-em tcenter">Menu</h2>
+        <div class="center">
+          <h2 class="h3-em">Menú</h2>
+
+          <v-tooltip right color="var(--clr-btn)">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn class="add" icon v-bind="attrs" v-on="on" href="#/mi-menu">
+                <img src="@/assets/icons/plus.png" alt="add menu">
+              </v-btn>
+            </template>
+            <span class="clr-text-btn">Agregar nuevo menú</span>
+          </v-tooltip>
+        </div>
+
         <v-col class="divcol gap">
           <v-card v-for="(item,i) in dataMenuTienda" :key="i"
             style="display:flex" class="acenter">
@@ -46,32 +58,32 @@ export default {
         {
           nombre: "herian",
           categoria: "css",
-          precio: "1000"
+          precio: "100"
         },
         {
           nombre: "cesar",
           categoria: "django",
-          precio: "1000"
+          precio: "100"
         },
         {
           nombre: "angel",
           categoria: "django",
-          precio: "1000"
+          precio: "100"
         },
         {
           nombre: "herian",
           categoria: "css",
-          precio: "1000"
+          precio: "100"
         },
         {
           nombre: "cesar",
           categoria: "django",
-          precio: "1000"
+          precio: "100"
         },
         {
           nombre: "angel",
           categoria: "django",
-          precio: "1000"
+          precio: "100"
         },
       ]
     }
