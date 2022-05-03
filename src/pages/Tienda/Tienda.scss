@@ -1,0 +1,77 @@
+@import "@/styles/app";
+
+// tienda
+#tienda {
+  .contup {
+    padding-top: 2em;
+    // padding-inline: 5%;
+    .conttitle {
+      img {
+        transform: rotate(-13deg);
+        filter: $sombra-filter;
+      }
+    }
+  }
+  .contdown {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2em;
+    padding-inline: auto 5%;
+    h2 {letter-spacing: -0.13em !important;font-weight: 700 !important;}
+    h2 + .col {
+      border-radius: $border-card !important;
+      box-shadow: $sombra-card, $sombra-card, $sombra-card !important;
+      background-color: var(--clr-card);
+      padding: 2em;
+      overflow-y: scroll;
+      min-height: 500px;
+      max-height: 500px;
+      &::-webkit-scrollbar-thumb {border-radius: $border-card;}
+      .v-card {
+        gap: 1em;
+        position: relative;
+        // padding-inline: clamp(1em, 3vw, 3em);
+        padding-bottom: 1em;
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: #191919;
+          bottom: 0;
+          width: 80%;
+          height: 1px;
+          filter: $sombra-filter;
+        }
+        aside:nth-child(1) {
+          gap: 1em;
+          img {
+            width: 7em;
+            aspect-ratio: 1 / 1;
+            border-radius: $border-btn;
+            background-color: var(--clr-card-2);
+            padding: 0.5em;
+          }
+            .contInfo {
+              line-height: 1.2;
+            & > div {
+              gap: 1em;
+            }
+          }
+        }
+        aside:nth-child(2) {
+          gap: .5em;
+          .v-btn:nth-child(1) {
+            background: var(--clr-btn);
+            clip-path: $clip-path;
+            border-radius: 28px;
+            padding: 0.2em;
+            transition: all 0.2s $ease-return;
+            span {color: $clr-text-btn !important;}
+          }
+          .v-btn + .v-btn {
+            span {color: $error !important;}
+          }
+        }
+      }
+    }
+  }
+}

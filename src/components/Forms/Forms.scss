@@ -6,17 +6,15 @@
     padding-top: 2em;
     padding-inline: 5%;
   }
-  @media (max-width: 600px) and (max-height: 1180px) {
-    .contdown {
-      grid-template-columns: repeat(1, 1fr) !important;
-      grid-gap: 0.2em !important;
-    }
-  }
   .contdown {
     padding-inline: 5%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2em;
+    @media (max-width: 600px) and (max-height: 1180px) {
+      grid-template-columns: repeat(1, 1fr) !important;
+      grid-gap: 0.2em !important;
+    }
     .gap_checkbox {
       display: flex;
       flex-direction: column;
@@ -28,6 +26,7 @@
       }
       // input {}
       .input-file {
+        width: 50% !important;
         .v-chip {
           background-color: var(--clr-btn);
           span {

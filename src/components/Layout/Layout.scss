@@ -43,7 +43,7 @@
       background-color: #3d218534;
       border: 2px solid var(--clr-btn);
       border-radius: var(--border-responsive);
-      animation: hover 1.4s ease infinite alternate;
+      animation: hover 1.4s $ease-return infinite alternate;
     }
     .conticon:not(.conticonActive):hover:after {
       content: "";
@@ -52,7 +52,7 @@
       background-color: #3d218534;
       border: 2px solid var(--clr-btn);
       border-radius: var(--border-responsive);
-      animation: hover 1.3s ease infinite alternate;
+      animation: hover 1.3s $ease infinite alternate;
     }
     .conticon {
       position: relative;

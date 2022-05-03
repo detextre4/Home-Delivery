@@ -133,7 +133,7 @@
 </template>
 
 <script>
-import MenuPerfil from './MenuPerfil.vue'
+import MenuPerfil from './MenuForms.vue'
 import { PERFIL,PROFILE } from '@/services/api.js'
 import Alerts from '@/components/Alerts/Alerts.vue'
 export default {
