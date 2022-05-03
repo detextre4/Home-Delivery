@@ -6,13 +6,14 @@
     padding-top: 2em;
     padding-bottom: 0;
     // padding-inline: 5%;
-    img {transform: rotate(-13deg);filter: $sombra-filter;}
-    img + div {
+    & > img {transform: rotate(-13deg);filter: $sombra-filter;}
+    #add {
+      background-color: $clr-btn;
       filter: $sombra-filter;
-      gap: .2em;
-      #add {
-        background-color: $clr-btn;
-        span {color: $clr-text-btn !important;}
+      padding: 1.6em;
+      img {
+        width: 2em;
+        transform: translateX(5%);
       }
     }
   }
@@ -34,7 +35,7 @@
       .v-card {
         gap: 1em;
         position: relative;
-        // padding-inline: clamp(1em, 3vw, 3em);
+        padding-inline: clamp(1em, 3vw, 3em);
         padding-bottom: 1em;
         &::before {
           content: "";
