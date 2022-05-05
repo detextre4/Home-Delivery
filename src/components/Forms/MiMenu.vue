@@ -172,20 +172,6 @@
           precio: "1000",
           desc: "compra y lleva ahora 20% de descuenta para ¿, oferta limitada"
         },
-        {
-          img: require("@/assets/icons/inicio.png"),
-          nombre: "HAMBURGUESAS TIRPLE CARNE",
-          categoria: "FRITURA",
-          precio: "1000",
-          desc: "compra y lleva ahora 20% de descuenta para ¿, oferta limitada"
-        },
-        {
-          img: require("@/assets/icons/inicio.png"),
-          nombre: "HAMBURGUESAS TIRPLE CARNE",
-          categoria: "FRITURA",
-          precio: "1000",
-          desc: "comprame prro"
-        },
       ]
     }
   },
