@@ -100,7 +100,7 @@
       <aside class="contSlide divcol">
         <v-card v-for="(item, i) in dataSlideMenu" :key="i"
           color="transparent" class="space fill-w" style="display:flex">
-          <aside class="firstcont divrow fill-w">
+          <aside class="firstcont divrow">
             <img class="foto" :src="item.img" alt="Menu Image">
             <div class="child1 divcol jcenter">
               <label class="h6-em">{{ item.nombre }}</label>
