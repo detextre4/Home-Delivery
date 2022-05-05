@@ -92,6 +92,9 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.$parent.$parent.$parent.$refs.navbar.to('categorias')
+  },
   computed: {
     columnsCategories() {
       if (this.$vuetify.breakpoint.lg && window.innerWidth < 1306) {

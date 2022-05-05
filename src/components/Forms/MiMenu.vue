@@ -1,8 +1,8 @@
 <template>
-  <section id="miTienda" class="parent">
+  <section id="miMenu" class="parentForm section">
     <Alerts ref="alerts"></Alerts>
     <MenuForms ref="menu"></MenuForms>
-    <v-col class="contmitienda divcol gap">
+    <v-col class="contmimenu divcol gap">
       <aside class="contup divrow">
         <v-btn class="back" icon href="#/tienda">
           <v-icon large>mdi-arrow-left</v-icon>
@@ -24,15 +24,16 @@
           </label>
 
           <v-file-input
+            v-model="image"
             id="foto"
             solo
-            chips
-            :prepend-icon="false"
+            prepend-icon=""
             class="input-file"
+            @change="ImagePreview()"
           >
-            <!-- <template v-slot:prepend-inner>
-              <v-icon>mdi-camera</v-icon>
-            </template> -->
+            <template v-slot:selection>
+              <img :src="url" alt="Image selected">
+            </template>
           </v-file-input>
         </v-card>
         <v-card color="transparent">
@@ -99,20 +100,19 @@
       <aside class="contSlide divcol">
         <v-card v-for="(item, i) in dataSlideMenu" :key="i"
           color="transparent" class="space fill-w gap">
-          <aside class="firstcont space">
-            <div class="child1 space">
-              <img class="foto" :src="item.img" alt="Menu Image">
-              <label class="h5-em">{{ item.nombre }}</label>
-            </div>
-
-            <div class="child2 space">
-              <span class="h6-em bold">{{ item.categoria }}</span>
-              <span class="h6-em bold">{{ item.precio }}$</span>
+          <aside class="firstcont divrow">
+            <img class="foto" :src="item.img" alt="Menu Image">
+            <div class="child1 divcol jcenter">
+              <label class="h6-em">{{ item.nombre }}</label>
+              <div class="child2 divrow">
+                <span class="h6-em bold">{{ item.categoria }}</span>
+                <span class="h6-em bold">{{ item.precio }}$</span>
+              </div>
             </div>
           </aside>
 
           <aside class="contdesc">
-            <p class="h7-em semibold">{{ item.desc }}</p>
+            <p class="h7-em semibold p">{{ item.desc }}</p>
           </aside>
 
           <aside class="controls space" style="gap:clamp(0.2em, 0.5vw, 0.5em)">
@@ -141,17 +141,19 @@
 </template>
 
 <script>
-import MenuForms from './MenuForms.vue'
-import { PERFIL,PROFILE } from '@/services/api.js'
-import Alerts from '@/components/Alerts/Alerts.vue'
-export default {
-  name: "MiMenu",
-  components: {
-    MenuForms,
-    Alerts
-  },
-  data() {
-    return {
+  import MenuForms from './MenuForms.vue'
+  import { PERFIL,PROFILE } from '@/services/api.js'
+  import Alerts from '@/components/Alerts/Alerts.vue'
+  export default {
+    name: "MiMenu",
+    components: {
+      MenuForms,
+      Alerts
+    },
+    data() {
+      return {
+      url: null,
+      image: null,
       walletid: null,
       foto: false,
       perfil: {wallet: localStorage.getItem('wallerid')},
@@ -191,6 +193,18 @@ export default {
     this.VerifyProfile({wallet:this.perfil.wallet})
   },
   methods: {
+    ImagePreview() {
+      this.url= URL.createObjectURL(this.image)
+    },
+    VerifyProfile(item) {
+      this.axios.post(PERFIL,item).then((response) => {
+        this.perfil=response.data
+        this.foto = response.data.delivery
+        this.foto2 = response.data.vendedor
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
     VerifyProfile(item) {
       this.axios.post(PERFIL,item).then((response) => {
         this.perfil=response.data

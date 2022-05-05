@@ -1,5 +1,5 @@
 <template>
-  <section id="miPerfil" class="parent">
+  <section id="miPerfil" class="parentForm section">
     <Alerts ref="alerts"></Alerts>
     <MenuForms ref="menu"></MenuForms>
     <v-col class="contmiperfil divcol gap">
@@ -73,18 +73,18 @@
           >
             Foto de perfil
           </label>
-        <v-file-input
-            id="foto"
-            class="input-file"
-            v-model="perfil.foto"
-            chips
-            :prepend-icon="false"
-            solo
-          >
-            <template v-slot:prepend-inner>
-              <v-icon>mdi-camera</v-icon>
-            </template>
-          </v-file-input>
+          <v-file-input
+              v-model="image"
+              id="foto"
+              class="input-file"
+              prepend-icon=""
+              solo
+              @change="ImagePreview()"
+            >
+              <template v-slot:selection>
+                <img :src="url" alt="Image selected">
+              </template>
+            </v-file-input>
           </v-card>
           <v-card color="transparent" class="gap_checkbox">
           <div 
@@ -144,10 +144,12 @@ export default {
   },
   data() {
     return {
+      url: null,
+      image: null,
       walletid: null,
       foto: false,
       foto2: false,
-      perfil: {wallet: localStorage.getItem('wallerid')},
+      perfil: {wallet: localStorage.getItem('walletid')},
       // dataForm: [
       //   {
       //     model: "",
@@ -203,8 +205,19 @@ export default {
   },
   mounted(){
     this.VerifyProfile({wallet:this.perfil.wallet})
+    this.$parent.$parent.$parent.$refs.navbar.clearAll()
+
+    if (this.perfil.wallet && this.perfil.wallet !== 'null') {
+      console.log('Hola')
+      this.VerifyProfile({wallet:this.perfil.wallet})
+    } else {
+      this.$router.push({ name: 'Home' });
+    }
   },
   methods: {
+    ImagePreview() {
+      this.url= URL.createObjectURL(this.image)
+    },
     VerifyProfile(item) {
       this.axios.post(PERFIL,item).then((response) => {
         this.perfil=response.data

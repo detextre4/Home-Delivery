@@ -1,5 +1,5 @@
 <template>
-  <section id="home" class="parent">
+  <section id="home" class="parent section">
     <v-col class="contup relative divrow">
       <aside class="conttag jcenter divcol">
         <h1 class="h4-em">Categorías</h1>
@@ -17,10 +17,10 @@
               v-if="(index + 1) % columnsCategories === 1 || columnsCategories === 1"
               :key="index"
             > 
-              <v-row class="fill-height spacea divpadd">
+              <v-row class="fill-height spacea divpadd gap">
                 <template v-for="(n,i) in columnsCategories">
                   <template v-if="(+index + i) < sliderCategories.length">
-                    <v-col :key="i">
+                    <v-col :key="i" class="paddlateral">
                       <v-card color="var(--clr-card)" class="cartasHome gap" style="display: flex"
                         :class="{ contIconActive: sliderCategories[+index + i].active }"
                         @click="SelectCardCategories(sliderCategories[+index + i])">
@@ -65,10 +65,10 @@
               v-if="(index + 1) % columnsRestaurant === 1 || columnsRestaurant === 1"
               :key="index"
             > 
-              <v-row class="fill-height spacea divpadd">
+              <v-row class="fill-height spacea divpadd gap">
                 <template v-for="(n,i) in columnsRestaurant">
                   <template v-if="(+index + i) < sliderRestaurant.length">
-                    <v-col class="contslides relative divcol" :key="i">
+                    <v-col class="contslides relative divcol paddlateral" :key="i">
                       <aside class="contLike">
                         <v-btn icon class="contimg center absolute"
                           :class="{ contIconActive: sliderRestaurant[+index + i].like,
@@ -230,6 +230,9 @@ export default {
         },
       ]
     }
+  },
+  mounted() {
+    this.$parent.$parent.$parent.$refs.navbar.to('inicio')
   },
   computed: {
     columnsCategories() {
