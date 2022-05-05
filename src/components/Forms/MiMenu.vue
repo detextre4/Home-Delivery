@@ -27,7 +27,7 @@
             v-model="image"
             id="foto"
             solo
-            :prepend-icon="false"
+            prepend-icon=""
             class="input-file"
             @change="ImagePreview()"
           >
@@ -141,17 +141,17 @@
 </template>
 
 <script>
-import MenuForms from './MenuForms.vue'
-import { PERFIL,PROFILE } from '@/services/api.js'
-import Alerts from '@/components/Alerts/Alerts.vue'
-export default {
-  name: "MiMenu",
-  components: {
-    MenuForms,
-    Alerts
-  },
-  data() {
-    return {
+  import MenuForms from './MenuForms.vue'
+  import { PERFIL,PROFILE } from '@/services/api.js'
+  import Alerts from '@/components/Alerts/Alerts.vue'
+  export default {
+    name: "MiMenu",
+    components: {
+      MenuForms,
+      Alerts
+    },
+    data() {
+      return {
       url: null,
       image: null,
       walletid: null,
@@ -195,6 +195,15 @@ export default {
   methods: {
     ImagePreview() {
       this.url= URL.createObjectURL(this.image)
+    },
+    VerifyProfile(item) {
+      this.axios.post(PERFIL,item).then((response) => {
+        this.perfil=response.data
+        this.foto = response.data.delivery
+        this.foto2 = response.data.vendedor
+      }).catch((e) => {
+        console.log(e)
+      })
     },
     VerifyProfile(item) {
       this.axios.post(PERFIL,item).then((response) => {

@@ -77,7 +77,7 @@
               v-model="image"
               id="foto"
               class="input-file"
-              :prepend-icon="false"
+              prepend-icon=""
               solo
               @change="ImagePreview()"
             >
@@ -149,7 +149,7 @@ export default {
       walletid: null,
       foto: false,
       foto2: false,
-      perfil: {wallet: localStorage.getItem('wallerid')},
+      perfil: {wallet: localStorage.getItem('walletid')},
       // dataForm: [
       //   {
       //     model: "",
@@ -206,6 +206,13 @@ export default {
   mounted(){
     this.VerifyProfile({wallet:this.perfil.wallet})
     this.$parent.$parent.$parent.$refs.navbar.clearAll()
+
+    if (this.perfil.wallet && this.perfil.wallet !== 'null') {
+      console.log('Hola')
+      this.VerifyProfile({wallet:this.perfil.wallet})
+    } else {
+      this.$router.push({ name: 'Home' });
+    }
   },
   methods: {
     ImagePreview() {

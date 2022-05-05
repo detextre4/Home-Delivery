@@ -61,7 +61,7 @@
             v-model="image"
             id="foto"
             class="input-file"
-            :prepend-icon="false"
+            prepend-icon=""
             solo
             @change="ImagePreview()"
           >
@@ -91,7 +91,7 @@ export default {
       walletid: null,
       // foto: false,
       // foto2: false,
-      perfil: {wallet: localStorage.getItem('wallerid')},
+      perfil: {wallet: localStorage.getItem('walletid')},
     }
   },
   mounted(){
