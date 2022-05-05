@@ -5,7 +5,7 @@
     <v-col class="contmimenu divcol gap">
       <aside class="contup divrow">
         <v-btn class="back" icon href="#/tienda">
-          <v-icon large>mdi-arrow-left</v-icon>
+          <v-icon size="clamp(1.5em, 2.5vw, 2.5em)">mdi-arrow-left</v-icon>
         </v-btn>
 
         <div class="divcol">
@@ -77,7 +77,7 @@
             solo
           ></v-text-field>
         </v-card>
-        <v-card color="transparent" style="display:flex" class="acenter gap contprecio">
+        <v-card color="transparent" style="display:flex" class="space contprecio">
           <aside>
             <label
               for="precio"
@@ -91,20 +91,20 @@
               solo
             ></v-text-field>
           </aside>
-          <v-btn @click="SaveProfile(perfil)">
-            <span class="h7-em">Agregar</span>
+          <v-btn @click="SaveProfile(perfil)" class="h8-em">
+            Agregar
           </v-btn>
         </v-card>
       </aside>
 
       <aside class="contSlide divcol">
         <v-card v-for="(item, i) in dataSlideMenu" :key="i"
-          color="transparent" class="space fill-w gap">
-          <aside class="firstcont divrow">
+          color="transparent" class="space fill-w" style="display:flex">
+          <aside class="firstcont divrow fill-w">
             <img class="foto" :src="item.img" alt="Menu Image">
             <div class="child1 divcol jcenter">
               <label class="h6-em">{{ item.nombre }}</label>
-              <div class="child2 divrow">
+              <div class="child2 space">
                 <span class="h6-em bold">{{ item.categoria }}</span>
                 <span class="h6-em bold">{{ item.precio }}$</span>
               </div>
@@ -115,7 +115,7 @@
             <p class="h7-em semibold p">{{ item.desc }}</p>
           </aside>
 
-          <aside class="controls space" style="gap:clamp(0.2em, 0.5vw, 0.5em)">
+          <aside class="controls acenter spacee" style="gap:0.5em">
             <v-tooltip bottom color="var(--clr-btn)">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn class="add" icon v-bind="attrs" v-on="on">
