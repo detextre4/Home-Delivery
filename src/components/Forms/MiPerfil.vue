@@ -203,7 +203,6 @@ export default {
   },
   mounted(){
     if (this.perfil.wallet && this.perfil.wallet !== 'null') {
-      console.log('Hola')
       this.VerifyProfile({wallet:this.perfil.wallet})
     } else {
       this.$router.push({ name: 'Home' });
@@ -229,6 +228,7 @@ export default {
           this.perfil=response.data
         })
       }
+      this.$router.push({ name: 'Home' });
     },
     AcceptVerificator(item) {
       if (item == "delivery") {
