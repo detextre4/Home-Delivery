@@ -102,125 +102,126 @@
 </template>
 
 <script>
-import { i18n } from "@/plugins/i18n";
-export default {
-  name: "HeaderMenu",
-  i18n: require("./i18n"),
-  // created() {
-  //   this.element = document.getElementById("theme");
-  //   const theme = localStorage.getItem("theme");
-  //   if (theme) {
-  //     this.CambiarTheme(theme);
-  //   }
-  // },
-  mounted() {
-    this.CambiarLanguaje(localStorage.language);
-  },
-  data() {
-    return {
-      search: "",
-      dataMenuOptions: [
-        {
-          title: "Option",
-          selection: [
-            {item: "Option", to: "#", active: false, key: "light"},
-            {item: "Option", to: "#", active: false, key: "dark"}
-          ]
-        },
-        {
-          title: "Idioma",
-          to: "#",
-          selection: [
-            {item: "Ingles", to: "#", active: false, key: "US"},
-            {item: "Español", to: "#", active: false, key: "ES"}
-          ]
-        }
-      ],
-      dataMenuLogout: [
-        {
-          name: "Mi Perfil",
-          to: "#/mi-perfil",
-          key: "perfil"
-        },
-        {
-          name: "Mi Tienda",
-          to: "#/mi-tienda",
-          key: "tienda"
-        },
-        {
-          name: "Cerrar sesión",
-          key: "logout"
-        }
-      ],
-      logout: false,
-    };
-  },
-  methods: {
-    ActiveClass(item) {
-      // const dataOptions1 = this.dataMenuOptions[0].selection;
-      // if (item == dataOptions1[0]) {
-      //   dataOptions1[1].active = false;
-      //   item.active = true;
-      //   this.CambiarTheme(item.key);
-      // }
-      // if (item == dataOptions1[1]) {
-      //   dataOptions1[0].active = false;
-      //   item.active = true;
-      //   this.CambiarTheme(item.key);
-      // }
-      const dataOptions2 = this.dataMenuOptions[1].selection;
-      if (item == dataOptions2[0]) {
-        dataOptions2[1].active = false;
-        item.active = true;
-        this.CambiarLanguaje(item.key);
-      }
-      if (item == dataOptions2[1]) {
-        dataOptions2[0].active = false;
-        item.active = true;
-        this.CambiarLanguaje(item.key);
-      }
-    },
-    // CambiarTheme(theme) {
-    //   if (theme == 'light') {
-    //     this.$store.dispatch("CambiarTheme", { theme, element: this.element });
-    //   }
-    //   if (theme == 'dark') {
-    //     this.$store.dispatch("CambiarTheme", { theme, element: this.element });
+  import { i18n } from "@/plugins/i18n";
+  export default {
+    name: "HeaderMenu",
+    i18n: require("./i18n"),
+    // created() {
+    //   this.element = document.getElementById("theme");
+    //   const theme = localStorage.getItem("theme");
+    //   if (theme) {
+    //     this.CambiarTheme(theme);
     //   }
     // },
-    CambiarLanguaje(lang) {
-      if (lang === "ES") {
-        localStorage.language = lang;
-        i18n.locale = lang;
-        console.log(localStorage.language);
-      } else {
-        localStorage.language = lang;
-        i18n.locale = lang;
-        console.log(localStorage.language);
+    mounted() {
+      this.CambiarLanguaje(localStorage.language);
+    },
+    data() {
+      return {
+        search: "",
+        dataMenuOptions: [
+          {
+            title: "Option",
+            selection: [
+              {item: "Option", to: "#", active: false, key: "light"},
+              {item: "Option", to: "#", active: false, key: "dark"}
+            ]
+          },
+          {
+            title: "Idioma",
+            to: "#",
+            selection: [
+              {item: "Ingles", to: "#", active: false, key: "US"},
+              {item: "Español", to: "#", active: false, key: "ES"}
+            ]
+          }
+        ],
+        dataMenuLogout: [
+          {
+            name: "Mi Perfil",
+            to: "#/mi-perfil",
+            key: "perfil"
+          },
+          {
+            name: "Mi Tienda",
+            to: "#/mi-tienda",
+            key: "tienda"
+          },
+          {
+            name: "Cerrar sesión",
+            key: "logout"
+          }
+        ],
+        logout: false,
+      };
+    },
+    methods: {
+      ActiveClass(item) {
+        // const dataOptions1 = this.dataMenuOptions[0].selection;
+        // if (item == dataOptions1[0]) {
+        //   dataOptions1[1].active = false;
+        //   item.active = true;
+        //   this.CambiarTheme(item.key);
+        // }
+        // if (item == dataOptions1[1]) {
+        //   dataOptions1[0].active = false;
+        //   item.active = true;
+        //   this.CambiarTheme(item.key);
+        // }
+        const dataOptions2 = this.dataMenuOptions[1].selection;
+        if (item == dataOptions2[0]) {
+          dataOptions2[1].active = false;
+          item.active = true;
+          this.CambiarLanguaje(item.key);
+        }
+        if (item == dataOptions2[1]) {
+          dataOptions2[0].active = false;
+          item.active = true;
+          this.CambiarLanguaje(item.key);
+        }
+      },
+      // CambiarTheme(theme) {
+      //   if (theme == 'light') {
+      //     this.$store.dispatch("CambiarTheme", { theme, element: this.element });
+      //   }
+      //   if (theme == 'dark') {
+      //     this.$store.dispatch("CambiarTheme", { theme, element: this.element });
+      //   }
+      // },
+      CambiarLanguaje(lang) {
+        if (lang === "ES") {
+          localStorage.language = lang;
+          i18n.locale = lang;
+        } else {
+          localStorage.language = lang;
+          i18n.locale = lang;
+        }
+      },
+      SelectLogoutItem(item) {
+        if (item == "perfil") {
+          this.ClearNavbar();
+          this.logout = false;
+        }
+        if (item == "tienda") {
+          this.ClearNavbar();
+          this.logout = false;
+        }
+        if (item == "logout") {
+          this.Logout();
+          this.logout = false;
+        }
+      },
+      Logout() {
+        this.$parent.$parent.loginNear('logout');
+        if (this.$route.name !== 'Home') {
+          this.$router.push({ name: 'Home' });
+        }
+      },
+      ClearNavbar() {
+        this.$parent.$parent.$parent.$parent.$refs.navbar.clearAll();
       }
     },
-    SelectLogoutItem(item) {
-      if (item == "perfil") {
-        this.ClearNavbar();
-        this.logout = false;
-      }
-      if (item == "tienda") {
-        this.ClearNavbar();
-        this.logout = false;
-      }
-      if (item == "logout") {
-        this.Logout();
-        this.logout = false;
-      }
-    },
-    Logout() {
-      this.$parent.$parent.loginNear();
-    },
-    ClearNavbar() {
-      this.$parent.$parent.$parent.$parent.$refs.navbar.clearAll();
-    }
-  },
-};
+  };
 </script>
 
 <style src="./Layout.scss" lang="scss"></style>

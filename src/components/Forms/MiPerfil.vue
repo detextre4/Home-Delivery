@@ -78,7 +78,7 @@
             class="input-file"
             v-model="perfil.foto"
             chips
-            :prepend-icon="false"
+            prepend-icon=""
             solo
           >
             <template v-slot:prepend-inner>
@@ -147,7 +147,7 @@ export default {
       walletid: null,
       foto: false,
       foto2: false,
-      perfil: {wallet: localStorage.getItem('wallerid')},
+      perfil: {wallet: localStorage.getItem('walletid')},
       // dataForm: [
       //   {
       //     model: "",
@@ -202,7 +202,12 @@ export default {
     }
   },
   mounted(){
-    this.VerifyProfile({wallet:this.perfil.wallet})
+    if (this.perfil.wallet && this.perfil.wallet !== 'null') {
+      console.log('Hola')
+      this.VerifyProfile({wallet:this.perfil.wallet})
+    } else {
+      this.$router.push({ name: 'Home' });
+    }
   },
   methods: {
     VerifyProfile(item) {

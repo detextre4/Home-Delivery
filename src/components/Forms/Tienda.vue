@@ -89,7 +89,7 @@ export default {
       walletid: null,
       // foto: false,
       // foto2: false,
-      perfil: {wallet: localStorage.getItem('wallerid')},
+      perfil: {wallet: localStorage.getItem('walletid')},
     }
   },
   mounted(){

@@ -141,102 +141,102 @@
 </template>
 
 <script>
-import MenuForms from './MenuForms.vue'
-import { PERFIL,PROFILE } from '@/services/api.js'
-import Alerts from '@/components/Alerts/Alerts.vue'
-export default {
-  name: "MiMenu",
-  components: {
-    MenuForms,
-    Alerts
-  },
-  data() {
-    return {
-      walletid: null,
-      foto: false,
-      perfil: {wallet: localStorage.getItem('wallerid')},
-      dataSlideMenu: [
-        {
-          img: require("@/assets/icons/inicio.png"),
-          nombre: "LUMPIAS CON QUESO",
-          categoria: "CHINO",
-          precio: "1000",
-          desc: "rico platillo para toda la familia pues"
-        },
-        {
-          img: require("@/assets/icons/inicio.png"),
-          nombre: "HAMBURGUESAS TIRPLE CARNE",
-          categoria: "FRITURA",
-          precio: "1000",
-          desc: "compra y lleva ahora 20% de descuenta para ¿, oferta limitada"
-        },
-        {
-          img: require("@/assets/icons/inicio.png"),
-          nombre: "HAMBURGUESAS TIRPLE CARNE",
-          categoria: "FRITURA",
-          precio: "1000",
-          desc: "compra y lleva ahora 20% de descuenta para ¿, oferta limitada"
-        },
-        {
-          img: require("@/assets/icons/inicio.png"),
-          nombre: "HAMBURGUESAS TIRPLE CARNE",
-          categoria: "FRITURA",
-          precio: "1000",
-          desc: "comprame prro"
-        },
-      ]
-    }
-  },
-  mounted(){
-    this.VerifyProfile({wallet:this.perfil.wallet})
-  },
-  methods: {
-    VerifyProfile(item) {
-      this.axios.post(PERFIL,item).then((response) => {
-        this.perfil=response.data
-        this.foto = response.data.delivery
-        this.foto2 = response.data.vendedor
-      }).catch((e) => {
-        console.log(e)
-      })
+  import MenuForms from './MenuForms.vue'
+  import { PERFIL,PROFILE } from '@/services/api.js'
+  import Alerts from '@/components/Alerts/Alerts.vue'
+  export default {
+    name: "MiMenu",
+    components: {
+      MenuForms,
+      Alerts
     },
-    SaveProfile(item) {
-      if (item.id){
-        this.axios.put(PROFILE+item.id+'/',item).then((response) => {
+    data() {
+      return {
+        walletid: null,
+        foto: false,
+        perfil: {wallet: localStorage.getItem('walletid')},
+        dataSlideMenu: [
+          {
+            img: require("@/assets/icons/inicio.png"),
+            nombre: "LUMPIAS CON QUESO",
+            categoria: "CHINO",
+            precio: "1000",
+            desc: "rico platillo para toda la familia pues"
+          },
+          {
+            img: require("@/assets/icons/inicio.png"),
+            nombre: "HAMBURGUESAS TIRPLE CARNE",
+            categoria: "FRITURA",
+            precio: "1000",
+            desc: "compra y lleva ahora 20% de descuenta para ¿, oferta limitada"
+          },
+          {
+            img: require("@/assets/icons/inicio.png"),
+            nombre: "HAMBURGUESAS TIRPLE CARNE",
+            categoria: "FRITURA",
+            precio: "1000",
+            desc: "compra y lleva ahora 20% de descuenta para ¿, oferta limitada"
+          },
+          {
+            img: require("@/assets/icons/inicio.png"),
+            nombre: "HAMBURGUESAS TIRPLE CARNE",
+            categoria: "FRITURA",
+            precio: "1000",
+            desc: "comprame prro"
+          },
+        ]
+      }
+    },
+    mounted(){
+      this.VerifyProfile({wallet:this.perfil.wallet})
+    },
+    methods: {
+      VerifyProfile(item) {
+        this.axios.post(PERFIL,item).then((response) => {
           this.perfil=response.data
+          this.foto = response.data.delivery
+          this.foto2 = response.data.vendedor
+        }).catch((e) => {
+          console.log(e)
         })
-      } else {
-        this.axios.post(PROFILE,item).then((response) => {
-          this.perfil=response.data
-        })
+      },
+      SaveProfile(item) {
+        if (item.id){
+          this.axios.put(PROFILE+item.id+'/',item).then((response) => {
+            this.perfil=response.data
+          })
+        } else {
+          this.axios.post(PROFILE,item).then((response) => {
+            this.perfil=response.data
+          })
+        }
+      },
+      AcceptVerificator(item) {
+        if (item == "delivery") {
+          this.perfil.delivery = true
+          this.foto = true
+        }
+        if (item == "vendedor") {
+          this.perfil.vendedor = true
+          this.foto2 = true
+        }
+      },
+      CancelVerificator(item) {
+        if (item == "delivery") {
+          this.perfil.delivery =  false
+          this.foto = false
+        }
+        if (item == "vendedor") {
+          this.perfil.vendedor = false
+          this.foto2 = false
+        }
+      },
+      showAlert() {
+        this.$refs.alerts.Alerts('success');
+        this.$refs.alerts.Alerts('cancel');
       }
     },
-    AcceptVerificator(item) {
-      if (item == "delivery") {
-        this.perfil.delivery = true
-        this.foto = true
-      }
-      if (item == "vendedor") {
-        this.perfil.vendedor = true
-        this.foto2 = true
-      }
-    },
-    CancelVerificator(item) {
-      if (item == "delivery") {
-        this.perfil.delivery =  false
-        this.foto = false
-      }
-      if (item == "vendedor") {
-        this.perfil.vendedor = false
-        this.foto2 = false
-      }
-    },
-    showAlert() {
-      this.$refs.alerts.Alerts('success');
-      this.$refs.alerts.Alerts('cancel');
-    }
-  },
-};
+  };
 </script>
 
 <style src="./Forms.scss" lang="scss" />
