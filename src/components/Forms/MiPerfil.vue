@@ -1,7 +1,7 @@
 <template>
   <section id="miPerfil" class="parent">
     <Alerts ref="alerts"></Alerts>
-    <MenuPerfil ref="menu"></MenuPerfil>
+    <MenuForms ref="menu"></MenuForms>
     <v-col class="contmiperfil divcol gap">
       <aside class="contup divcol">
         <h1 class="h4-em">Mi Perfil</h1>
@@ -133,13 +133,13 @@
 </template>
 
 <script>
-import MenuPerfil from './MenuPerfil.vue'
+import MenuForms from './MenuForms.vue'
 import { PERFIL,PROFILE } from '@/services/api.js'
 import Alerts from '@/components/Alerts/Alerts.vue'
 export default {
   name: "MiPerfil",
   components: {
-    MenuPerfil,
+    MenuForms,
     Alerts
   },
   data() {

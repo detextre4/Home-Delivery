@@ -107,7 +107,7 @@ export default {
       } else if (this.nearid) {
         wallet.signOut();
         this.nearid = false;
-        this.$$router.go();
+        this. $router.go();
       }
     },
     async isSigned() {
