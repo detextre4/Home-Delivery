@@ -200,25 +200,23 @@ export default {
       }
     },
     SelectLogoutItem(item) {
-      if (item == "perfil") {
-        this.ClearNavbar();
-        this.logout = false;
-      }
-      if (item == "tienda") {
-        this.ClearNavbar();
-        this.logout = false;
-      }
+      // if (item == "perfil") {
+      //   this.ClearNavbar();
+      //   this.logout = false;
+      // }
+      // if (item == "tienda") {
+      //   this.ClearNavbar();
+      //   this.logout = false;
+      // }
       if (item == "logout") {
         this.Logout();
-        this.logout = false;
+        // this.logout = false;
       }
+      this.logout = false;
     },
     Logout() {
       this.$parent.$parent.loginNear();
     },
-    ClearNavbar() {
-      this.$parent.$parent.$parent.$parent.$refs.navbar.clearAll();
-    }
   },
 };
 </script>

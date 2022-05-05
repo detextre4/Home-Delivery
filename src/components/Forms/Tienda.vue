@@ -1,5 +1,5 @@
 <template>
-  <section id="miPerfil" class="parent">
+  <section id="miPerfil" class="parentForm section">
     <v-col class="contmiperfil divcol gap">
       <aside class="contup divcol">
         <h1 class="h4-em">Mi Tienda</h1>
@@ -58,15 +58,15 @@
             Logo
           </label>
           <v-file-input
+            v-model="image"
             id="foto"
-            class="input-file logo-tienda"
-            v-model="perfil.foto"
-            chips
+            class="input-file"
             :prepend-icon="false"
             solo
+            @change="ImagePreview()"
           >
-            <template v-slot:prepend-inner>
-              <v-icon>mdi-camera</v-icon>
+            <template v-slot:selection>
+              <img :src="url" alt="Image selected">
             </template>
           </v-file-input>
         </v-card>
@@ -86,6 +86,8 @@ export default {
   name: "MiPerfil",
   data() {
     return {
+      url: null,
+      image: null,
       walletid: null,
       // foto: false,
       // foto2: false,
@@ -93,8 +95,12 @@ export default {
     }
   },
   mounted(){
+    this.$parent.$parent.$parent.$refs.navbar.clearAll()
   },
   methods: {
+    ImagePreview() {
+      this.url= URL.createObjectURL(this.image)
+    },
     // AcceptVerificator(item) {
     //   if (item == "delivery") {
     //     this.perfil.delivery = true
