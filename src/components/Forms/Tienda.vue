@@ -9,20 +9,6 @@
       <aside class="contdown">
         <v-card color="transparent">
           <label
-            for="username"
-            class="h7-em"
-          >
-            Perfil
-          </label>
-
-          <v-text-field
-            id="username"
-            v-model="perfil.nombre"
-            solo
-          ></v-text-field>
-        </v-card>
-        <v-card color="transparent">
-          <label
             for="walet"
             class="h7-em"
           >
@@ -34,20 +20,6 @@
             v-model="perfil.wallet"
             solo
             disabled
-          ></v-text-field>
-        </v-card>
-        <v-card color="transparent">
-          <label
-            for="telefono"
-            class="h7-em"
-          >
-            Teléfono
-          </label>
-
-          <v-text-field
-            id="telefono"
-            v-model="perfil.telefono"
-            solo
           ></v-text-field>
         </v-card>
         <v-card color="transparent">
@@ -66,17 +38,37 @@
         </v-card>
         <v-card color="transparent">
           <label
-            for="Dirección"
+            for="telefono"
             class="h7-em"
           >
-            Categoria
+            Teléfono
           </label>
 
           <v-text-field
-            id="Dirección"
-            v-model="perfil.categoria"
+            id="telefono"
+            v-model="perfil.telefono"
             solo
           ></v-text-field>
+        </v-card>
+        <v-card color="transparent">
+          <label
+            for="telefono"
+            class="h7-em"
+          >
+            Logo
+          </label>
+          <v-file-input
+            id="foto"
+            class="input-file logo-tienda"
+            v-model="perfil.foto"
+            chips
+            :prepend-icon="false"
+            solo
+          >
+            <template v-slot:prepend-inner>
+              <v-icon>mdi-camera</v-icon>
+            </template>
+          </v-file-input>
         </v-card>
       </aside>
 

@@ -62,9 +62,9 @@ export default {
         },
         {
           icon: require("@/assets/icons/tienda-outline.png"),
-          title: "Mis Tiendas",
+          title: "Mi Tienda",
           active: false,
-          to: "#"
+          to: "#/tienda"
         },
         {
           icon: require("@/assets/icons/delivery-outline.png"),

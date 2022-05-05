@@ -1,0 +1,71 @@
+@import "@/styles/app";
+
+// tienda
+#tienda {
+  .contup {
+    padding-top: 2em;
+    padding-bottom: 0;
+    // padding-inline: 5%;
+    & > img {transform: translateY(22%) rotate(-13deg);filter: $sombra-filter;}
+  }
+  .contdown {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2em;
+    padding-inline: auto 5%;
+    .wrapper {
+      div {
+        gap: 1em;
+        margin-bottom: 0.75em;
+        h2 {letter-spacing: -0.13em !important;font-weight: 700 !important;margin-bottom: 0 !important;}
+        .v-btn {
+          padding: 1em !important;
+          img {
+            width: 1em !important;
+          }
+        }
+      }
+      & div + .col {
+        border-radius: $border-card 0 0 $border-card !important;
+        box-shadow: $sombra-card, $sombra-card, $sombra-card !important;
+        background-color: var(--clr-card);
+        padding: 2em;
+        overflow-y: scroll;
+        min-height: 500px;
+        max-height: 500px;
+        &::-webkit-scrollbar-thumb {border-radius: $border-card;}
+        .v-card {
+          gap: 1em;
+          position: relative;
+          padding-inline: clamp(1em, 3vw, 3em);
+          padding-bottom: 1em;
+          &::before {
+            content: "";
+            position: absolute;
+            background-color: #191919;
+            bottom: 0;
+            width: 80%;
+            height: 1px;
+            filter: $sombra-filter;
+          }
+          aside:nth-child(1) {
+            gap: 1em;
+            img {
+              width: 7em;
+              height: 7em;
+              border-radius: $border-btn;
+              background-color: var(--clr-card-2);
+              padding: 0.5em;
+            }
+              .contInfo {
+                line-height: 1.2;
+              & > div {
+                gap: 1em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
