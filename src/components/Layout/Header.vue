@@ -92,8 +92,12 @@
       };
     },
     mounted(){
-      this.isSigned()
       this.axios.defaults.headers.common.Authorization = 'token '
+      if (localStorage.walletid && localStorage.walletid !== 'null') {
+        this.nearid = true
+      }
+      // Configure button/menu by: Csar
+      this.ChangeMenu(this.nearid)
     },
     methods: {
       async loginNear(action) {
@@ -111,48 +115,17 @@
           this.ChangeMenu(this.nearid)
         }
       },
-      async isSigned() {
-        // Connect to NEAR
-        const near = await connect(
-          CONFIG(new keyStores.BrowserLocalStorageKeyStore())
-        );
-        // Create wallet connection
-        const wallet = new WalletConnection(near);
-        if (wallet.isSignedIn()) {
-          this.nearid = true;
-          // Returns account Id as string
-          const walletAccountId = wallet.getAccountId();
-          this.user = walletAccountId;
-        }
-        localStorage.setItem('walletid' ,this.user)
-        // Configure button/menu by: Csar
-        this.ChangeMenu(this.nearid)
-        // Verify Profile by: Dinoir
-        if ((!localStorage.profileid || localStorage.profileid === 'null') && (localStorage.walletid && localStorage.walletid !== 'null')){
-          this.VerifyProfile(this.user)
-        }
-      },
-      // Verify Profile by: Dinoir
-      VerifyProfile(user) {
-        this.axios.post(PERFIL,{'wallet':user}).then((response) => {
-          if (response.data.id) {
-            localStorage.setItem('profileid' ,response.data.id)
-          }
-        }).catch((e) => {
-          console.log(e)
-        })
-      },
       // Change buttom/menu by: Csar/Angel
       ChangeMenu(nearid){
         if (nearid === false){
           this.dataLogin[0].show = true;
           this.dataLogin[1].show = false;
-          localStorage.clear()
+          // localStorage.clear()
         }
         if (nearid === true){
           this.dataLogin[0].show = false;
           this.dataLogin[1].show = true;
-          this.dataLogin[1].text = this.user
+          this.dataLogin[1].text = localStorage.walletid
         }
       },
       // Login by: Csar
