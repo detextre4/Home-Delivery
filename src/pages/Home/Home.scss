@@ -18,7 +18,9 @@
         border-radius: $border-card;
         box-shadow: $sombra-card !important;
         padding: clamp(2em, 3vw, 3em);
+        max-width: 20em;
         min-height: 25em;
+        margin-inline: auto;
         overflow: hidden;
         .contimg {
           width: 8.4375em;
@@ -56,7 +58,9 @@
         height: max-content !important;
       }
       .contslides {
+        max-width: 30em;
         height: max-content;
+        margin-inline: auto;
         gap: clamp(0.5em, 1vw, 1em);
         .images {
           width: 100%;

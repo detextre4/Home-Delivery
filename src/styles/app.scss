@@ -76,6 +76,24 @@ p:not(.notdefault-typography, .notdefault) {
 
                     /* other adjusts */
 
+// menu select
+.v-select-list {
+  background-color: var(--clr-card-2) !important;
+  box-shadow: none !important;
+  // clip-path: $clip-path-2;
+  border-radius: 28px !important;
+  padding: clamp(0.7em, 2vw, 1em) !important;
+  font-weight: 700;
+  font-size: $font-size-header;
+  border: 2px solid #CFCFCF !important;
+  span {color: var(--clr-text-btn-2) !important}
+  .v-list-item {border-radius: $border-btn;overflow: hidden}
+  .v-list-item--active {
+    background: $clr-btn !important;
+    div {color: $clr-text-btn !important}
+  }
+}
+
 .back {
   width: max-content;
   height: max-content;
@@ -106,6 +124,10 @@ p:not(.notdefault-typography, .notdefault) {
   font-weight: 700;
   font-size: $font-size-header;
 }
+// badge
+.v-badge__badge {
+  color: #ffffff !important;
+}
 .botones {
   min-width: clamp(3.2em, 4vw, 4.4375em) !important;
   min-height: clamp(3.2em, 4vw, 4.4375em) !important;
@@ -114,9 +136,6 @@ p:not(.notdefault-typography, .notdefault) {
   img {
     width: 2.5em;
     font-size: $font-size-header;
-  }
-  .v-badge__badge {
-    color: #ffffff !important;
   }
 }
 .label {
