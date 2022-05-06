@@ -35,47 +35,40 @@ const icon5Active = require("@/assets/icons/delivery.png");
 export default {
   name: "Navbar",
   i18n: require("./i18n"),
-  mounted() {
-    // crear funcion para validar que la ruta de home existe
-    // if (this.dataNavbar[0]) {
-    // this.dataNavbar[0].active = true;
-    // this.dataNavbar[0].icon = require("@/assets/icons/inicio.png");
-    // }
-  },
   data() {
     return {
       dataNavbar: [
         {
           key: "inicio",
-          icon: require("@/assets/icons/inicio-outline.png"),
+          icon: icon1,
           title: "Inicio",
           active: false,
           to: "#/"
         },
         {
           key: "categorias",
-          icon: require("@/assets/icons/categorias-outline.png"),
+          icon: icon2,
           title: "Categorias",
           active: false,
           to: "#/categorias"
         },
         {
           key: "restaurantes",
-          icon: require("@/assets/icons/restaurantes-outline.png"),
+          icon: icon3,
           title: "Restaurantes",
           active: false,
           to: "#"
         },
         {
           key: "tienda",
-          icon: require("@/assets/icons/tienda-outline.png"),
+          icon: icon4,
           title: "Mi Tienda",
           active: false,
           to: "#/tienda",
         },
         {
           key: "delivery",
-          icon: require("@/assets/icons/delivery-outline.png"),
+          icon: icon5,
           title: "Delivery",
           active: false,
           to: "#"
@@ -119,13 +112,7 @@ export default {
     },
     to(item) {
       if (item.key == 'inicio' || item == 'inicio') {
-        this.dataNavbar[1].icon = icon2
-        this.dataNavbar[2].icon = icon3
-        this.dataNavbar[3].icon = icon4
-        this.dataNavbar[4].icon = icon5
-        this.dataNavbar.forEach(element => {
-          element.active = false;
-        });
+        this.clearAll()
         if (item == "inicio") {
           this.dataNavbar[0].active = true;
           this.dataNavbar[0].icon = icon1Active;
@@ -135,13 +122,7 @@ export default {
         }
       }
       if (item.key == 'categorias' || item == 'categorias') {
-        this.dataNavbar[0].icon = icon1
-        this.dataNavbar[2].icon = icon3
-        this.dataNavbar[3].icon = icon4
-        this.dataNavbar[4].icon = icon5
-        this.dataNavbar.forEach(element => {
-          element.active = false;
-        });
+        this.clearAll()
         if (item == "categorias") {
           this.dataNavbar[1].active = true;
           this.dataNavbar[1].icon = icon2Active;
@@ -151,13 +132,7 @@ export default {
         }
       }
       if (item.key == 'restaurantes' || item == 'restaurantes') {
-        this.dataNavbar[0].icon = icon1
-        this.dataNavbar[1].icon = icon2
-        this.dataNavbar[3].icon = icon4
-        this.dataNavbar[4].icon = icon5
-        this.dataNavbar.forEach(element => {
-          element.active = false;
-        });
+        this.clearAll()
         if (item == "restaurantes") {
           this.dataNavbar[2].active = true;
           this.dataNavbar[2].icon = icon3Active;
@@ -167,13 +142,7 @@ export default {
         }
       }
       if (item.key == 'tienda' || item == 'tienda') {
-        this.dataNavbar[0].icon = icon1
-        this.dataNavbar[1].icon = icon2
-        this.dataNavbar[2].icon = icon3
-        this.dataNavbar[4].icon = icon5
-        this.dataNavbar.forEach(element => {
-          element.active = false;
-        });
+        this.clearAll()
         if (item == "tienda") {
           this.dataNavbar[3].active = true;
           this.dataNavbar[3].icon = icon4Active;
@@ -183,13 +152,7 @@ export default {
         }
       }
       if (item.key == 'delivery' || item == 'delivery') {
-        this.dataNavbar[0].icon = icon1
-        this.dataNavbar[1].icon = icon2
-        this.dataNavbar[2].icon = icon3
-        this.dataNavbar[3].icon = icon4
-        this.dataNavbar.forEach(element => {
-          element.active = false;
-        });
+        this.clearAll()
         if (item == "delivery") {
           this.dataNavbar[4].active = true;
           this.dataNavbar[4].icon = icon5Active;

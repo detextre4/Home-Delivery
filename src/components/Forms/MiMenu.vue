@@ -59,6 +59,8 @@
             </label>
           </aside>
           <v-select
+            v-model="categoria"
+            :items="listCategoria"
             id="categoria"
             solo
           >
@@ -152,6 +154,8 @@
     },
     data() {
       return {
+      categoria: "",
+      listCategoria: ["uno", "dos", "tres"],
       url: null,
       image: null,
       walletid: null,

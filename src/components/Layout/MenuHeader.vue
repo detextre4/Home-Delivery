@@ -28,6 +28,7 @@
 
     <!-- menu options -->
     <v-menu
+      v-model="optionMenu"
       bottom
       transition="scroll-y-transition"
       offset-y
@@ -40,20 +41,39 @@
         class="menuGlobal"
       >
         <v-expansion-panel v-for="(item, i) in dataMenuOptions" :key="i">
-          <v-expansion-panel-header>
-            {{ item.title }}
-          </v-expansion-panel-header>
+          <template v-if="item.title">
+            <v-expansion-panel-header>
+              {{ item.title }}
+            </v-expansion-panel-header>
 
-          <v-expansion-panel-content>
-            <v-list v-for="(item2, i) in item.selection" :key="i">
-              <v-list-item :href="item2.to" @click="ActiveClass(item2)"
-                :class="{ activeClass: item2.active }">
-                <v-list-item-title class="center">
-                  <span class="notdefault-clr">{{ item2.item }}</span>
-                </v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-expansion-panel-content>
+            <v-expansion-panel-content>
+              <v-list v-for="(item2, i) in item.selection" :key="i">
+                <v-list-item :href="item2.to" @click="ActiveClass(item2)"
+                  :class="{ activeClass: item2.active }">
+                  <v-list-item-title class="center">
+                    <span class="notdefault-clr">{{ item2.item }}</span>
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-expansion-panel-content>
+          </template>
+
+          <v-list v-if="item.name" class="intoExpansion">
+            <v-list-item @click="SelectOptionItem(item.key)">
+              <v-list-item-title>
+                <v-badge
+                  :content="messages"
+                  :value="messages"
+                  color="#3E2185"
+                  inline
+                  class="notdefault-clr"
+                  style="margin: 0"
+                >
+                  {{ item.name }}
+                </v-badge>
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
         </v-expansion-panel>
       </v-expansion-panels>
     </v-menu>
@@ -118,14 +138,14 @@ export default {
   },
   data() {
     return {
+      logout: false,
+      optionMenu: false,
+      messages: "1",
       search: "",
       dataMenuOptions: [
         {
-          title: "Option",
-          selection: [
-            {item: "Option", to: "#", active: false, key: "light"},
-            {item: "Option", to: "#", active: false, key: "dark"}
-          ]
+          key: "chats",
+          name: "Chats temporales"
         },
         {
           title: "Idioma",
@@ -138,21 +158,25 @@ export default {
       ],
       dataMenuLogout: [
         {
-          name: "Mi Perfil",
-          to: "#/mi-perfil",
-          key: "perfil"
-        },
-        {
-          name: "Mi Tienda",
-          to: "#/mi-tienda",
-          key: "tienda"
+          title: "ajustes",
+          selection: [
+            {
+              item: "Mi Perfil",
+              to: "#/mi-perfil",
+              key: "perfil"
+            },
+            {
+              item: "Mi Tienda",
+              to: "#/mi-tienda",
+              key: "tienda"
+            },
+          ]
         },
         {
           name: "Cerrar sesión",
           key: "logout"
         }
       ],
-      logout: false,
     };
   },
   methods: {
@@ -219,25 +243,30 @@ export default {
     },
     ClearNavbar() {
       this.$parent.$parent.$parent.$parent.$refs.navbar.clearAll();
-    }
-  },
-  SelectLogoutItem(item) {
-    // if (item == "perfil") {
-    //   this.ClearNavbar();
-    //   this.logout = false;
-    // }
-    // if (item == "tienda") {
-    //   this.ClearNavbar();
-    //   this.logout = false;
-    // }
-    if (item == "logout") {
-      this.Logout();
-      // this.logout = false;
-    }
-    this.logout = false;
-  },
-  Logout() {
-    this.$parent.$parent.loginNear();
+    },
+    SelectOptionItem(item) {
+      if (item == "chats") {
+        this.optionMenu = false;
+      }
+    },
+    SelectLogoutItem(item) {
+      // if (item == "perfil") {
+      //   this.ClearNavbar();
+      //   this.logout = false;
+      // }
+      // if (item == "tienda") {
+      //   this.ClearNavbar();
+      //   this.logout = false;
+      // }
+      if (item == "logout") {
+        this.Logout();
+        // this.logout = false;
+      }
+      this.logout = false;
+    },
+    Logout() {
+      this.$parent.$parent.loginNear();
+    },
   },
 };
 </script>
