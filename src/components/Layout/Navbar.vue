@@ -6,18 +6,21 @@
     </router-link>
     <!-- content -->
     <aside class="contnavbar divcol divrowmobile spacea align">
-      <a :href="item.to" v-for="(item, index) in dataNavbar" :key="index" @click="to(item)"
-        class="conticon center" :class="{ conticonActive: item.active }">
-        <button class="divcol center">
-          <img :src="item.icon" alt="Icono">
-          <span>{{ item.title}}</span>
-        </button>
-      </a>
+      <template v-for="(item, index) in dataNavbar">
+        <a :href="item.to" v-if="!item.no_mostrar" :key="index" @click="to(item)"
+          class="conticon center" :class="{ conticonActive: item.active }">
+          <button class="divcol center">
+            <img :src="item.icon" alt="Icono">
+            <span>{{ item.title}}</span>
+          </button>
+        </a>
+      </template>
     </aside>
   </v-row>
 </template>
 
 <script>
+import { PERFIL,PROFILE } from '@/services/api.js'
 const icon1 = require("@/assets/icons/inicio-outline.png");
 const icon1Active = require("@/assets/icons/inicio.png");
 const icon2 = require("@/assets/icons/categorias-outline.png");
@@ -68,7 +71,7 @@ export default {
           icon: require("@/assets/icons/tienda-outline.png"),
           title: "Mi Tienda",
           active: false,
-          to: "#/tienda"
+          to: "#/tienda",
         },
         {
           key: "delivery",
@@ -76,11 +79,34 @@ export default {
           title: "Delivery",
           active: false,
           to: "#"
-        }
+        },
       ]
     };
   },
+  mounted () {
+    this.VerifyProfile(localStorage.walletid)
+  },
   methods: {
+    VerifyProfile(user) {
+      this.axios.post(PERFIL,{'wallet':user}).then((response) => {
+        if (response.data.id) {
+          if (!response.data.vendedor) {
+            var index = this.dataNavbar.findIndex((data) => data.key === 'tienda')
+            this.dataNavbar[index].no_mostrar = true
+            this.$router.addRoute('Layout', { path: '/tienda', name: 'Tienda', component: () => import('@/pages/Tienda/Tienda') })
+          }
+          if (!response.data.delivery) {
+            var index = this.dataNavbar.findIndex((data) => data.key === 'delivery')
+            this.dataNavbar[index].no_mostrar = true
+            this.$router.addRoute('Layout', { path: '/delivery', name: 'Delivery', component: '' })
+          }
+          // Set profile.id as localStorage item
+          localStorage.setItem('profileid',response.data.id)
+        }
+      }).catch((e) => {
+        console.log(e) // **
+      })
+    },
     clearAll() {
       this.dataNavbar[0].icon = icon1
       this.dataNavbar[1].icon = icon2
