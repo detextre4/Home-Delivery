@@ -7,7 +7,7 @@
     <!-- content -->
     <aside class="contnavbar divcol divrowmobile spacea align">
       <template v-for="(item, index) in dataNavbar">
-        <a :href="item.to" v-if="!item.no_mostrar" :key="index" @click="to(item)"
+        <a :href="item.to" v-if="item.mostrar" :key="index" @click="to(item)"
           class="conticon center" :class="{ conticonActive: item.active }">
           <button class="divcol center">
             <img :src="item.icon" alt="Icono">
@@ -43,6 +43,7 @@ export default {
           icon: icon1,
           title: "Inicio",
           active: false,
+          mostrar: true,
           to: "#/"
         },
         {
@@ -50,6 +51,7 @@ export default {
           icon: icon2,
           title: "Categorias",
           active: false,
+          mostrar: true,
           to: "#/categorias"
         },
         {
@@ -57,6 +59,7 @@ export default {
           icon: icon3,
           title: "Restaurantes",
           active: false,
+          mostrar: true,
           to: "#"
         },
         {
@@ -64,6 +67,7 @@ export default {
           icon: icon4,
           title: "Mi Tienda",
           active: false,
+          mostrar: false,
           to: "#/tienda",
         },
         {
@@ -71,6 +75,7 @@ export default {
           icon: icon5,
           title: "Delivery",
           active: false,
+          mostrar: false,
           to: "#"
         },
       ]
@@ -83,14 +88,14 @@ export default {
     VerifyProfile(user) {
       this.axios.post(PERFIL,{'wallet':user}).then((response) => {
         if (response.data.id) {
-          if (!response.data.vendedor) {
+          if (response.data.vendedor) {
             var index = this.dataNavbar.findIndex((data) => data.key === 'tienda')
-            this.dataNavbar[index].no_mostrar = true
+            this.dataNavbar[index].mostrar = true
             this.$router.addRoute('Layout', { path: '/tienda', name: 'Tienda', component: () => import('@/pages/Tienda/Tienda') })
           }
-          if (!response.data.delivery) {
+          if (response.data.delivery) {
             var index = this.dataNavbar.findIndex((data) => data.key === 'delivery')
-            this.dataNavbar[index].no_mostrar = true
+            this.dataNavbar[index].mostrar = true
             this.$router.addRoute('Layout', { path: '/delivery', name: 'Delivery', component: '' })
           }
           // Set profile.id as localStorage item

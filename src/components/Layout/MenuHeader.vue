@@ -222,6 +222,7 @@ export default {
       }
     },
     SelectLogoutItem(item) {
+      console.log('hola')
       if (item == "perfil") {
         this.ClearNavbar();
         this.logout = false;

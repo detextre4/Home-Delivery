@@ -31,7 +31,6 @@
           const walletAccountId = wallet.getAccountId();
           this.user = walletAccountId;
         }
-        console.log('Hai')
         this.VerifyProfile(this.user)
         localStorage.setItem('walletid' ,this.user)
       },
