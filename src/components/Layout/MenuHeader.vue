@@ -239,6 +239,7 @@ export default {
     Logout() {
       this.$parent.$parent.loginNear('logout');
       if (this.$route.name !== 'Home') {
+        localStorage.removeItem('store')
         this.$router.push({ name: 'Home' });
       }
     },
@@ -249,24 +250,6 @@ export default {
       if (item == "chats") {
         this.optionMenu = false;
       }
-    },
-    SelectLogoutItem(item) {
-      // if (item == "perfil") {
-      //   this.ClearNavbar();
-      //   this.logout = false;
-      // }
-      // if (item == "tienda") {
-      //   this.ClearNavbar();
-      //   this.logout = false;
-      // }
-      if (item == "logout") {
-        this.Logout();
-        // this.logout = false;
-      }
-      this.logout = false;
-    },
-    Logout() {
-      this.$parent.$parent.loginNear();
     },
   },
 };

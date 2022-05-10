@@ -236,7 +236,8 @@ export default {
           this.perfil=response.data
         })
       }
-      this.$router.push({ name: 'Home' });
+      this.$router.push({ name: 'Home' })
+      this.$router.go()
     },
     AcceptVerificator(item) {
       if (item == "delivery") {

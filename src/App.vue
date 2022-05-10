@@ -38,15 +38,19 @@
       VerifyProfile(user) {
         this.axios.post(PERFIL,{'wallet':user}).then((response) => {
           if (response.data.id) {
-
             if (response.data.vendedor) {
               this.$router.addRoute('Layout', { path: '/tienda', name: 'Tienda', component: () => import('@/pages/Tienda/Tienda') })
+              this.$router.addRoute('Layout', { path: '/mi-tienda', name: 'MiTienda', component: () => import('@/components/Forms/Tienda') })
             }
-            // if (response.data.delivery) {
-            //   this.$router.addRoute('Layout', { path: '/tienda', name: 'Tienda', component: () => import('@/pages/Tienda/Tienda') })
-            // }
+            if (response.data.delivery) {
+              this.$router.addRoute('Layout', { path: '/delivery', name: 'Delivery', component: '' })
+            }
             // Set profile.id as localStorage item
             localStorage.setItem('profileid',response.data.id)
+          } else {
+            if (this.$route.name !== 'MiPerfil') {
+              this.$router.push({name: 'MiPerfil'})
+            }
           }
         }).catch((e) => {
           console.log(e) // **
