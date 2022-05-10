@@ -24,7 +24,7 @@
           </label>
 
           <v-file-input
-            v-model="image"
+            v-model="menu.image"
             id="foto"
             solo
             prepend-icon=""
@@ -45,7 +45,8 @@
           </label>
 
           <v-text-field
-            id="telefono"
+            v-model="menu.name"
+            id="name"
             solo
           ></v-text-field>
         </v-card>
@@ -59,7 +60,7 @@
             </label>
           </aside>
           <v-select
-            v-model="categoria"
+            v-model="menu.categoria"
             :items="listCategoria"
             id="categoria"
             solo
@@ -160,7 +161,7 @@
       image: null,
       walletid: null,
       foto: false,
-      perfil: {wallet: localStorage.getItem('wallerid')},
+      menu: {},
       dataSlideMenu: [
         {
           img: require("@/assets/icons/inicio.png"),
