@@ -28,11 +28,6 @@ export default new Router({
           component: () => import('@/components/Forms/MiPerfil'),
         },
         {
-          path: '/mi-tienda',
-          name: 'Tienda',
-          component: () => import('@/components/Forms/Tienda'),
-        },
-        {
           path: '/mi-menu',
           name: 'Menu',
           component: () => import('@/components/Forms/MiMenu'),
@@ -42,16 +37,11 @@ export default new Router({
           name: 'Categorias',
           component: () => import('@/pages/Categorias/Categorias'),
         },
-        // {
-        //   path: '/tienda',
-        //   name: 'Tienda',
-        //   component: () => import('@/pages/Tienda/Tienda'),
-        // },
       ],
     },
-    // here path 3 if need
+    // Here next path if need
     
-    // path 4
+    // Last path (Errors)
     {
       path: '*',
       name: 'Error',
