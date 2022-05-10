@@ -138,7 +138,7 @@ export default {
       const data = localStorage.store
       localStorage.store = JSON.stringify(this.store)
       try {
-        const CONTRACT_NAME = 'contract.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
         // connect to NEAR
         const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
         // create wallet connection
@@ -167,7 +167,7 @@ export default {
     async SetStore() {
       localStorage.setItem('store',JSON.stringify(this.store))
       try {
-        const CONTRACT_NAME = 'contract.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
         // Connect to NEAR
         const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
         // Create wallet connection

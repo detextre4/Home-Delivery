@@ -100,7 +100,7 @@ export default {
   methods: {
     async VerifyStore() {
       try {
-        const CONTRACT_NAME = 'contract.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
         // Connect to NEAR
         const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
         // Create wallet connection
