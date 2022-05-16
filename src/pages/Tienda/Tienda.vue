@@ -50,10 +50,15 @@
 </template>
 
 <script>
+import * as nearAPI from 'near-api-js'
+import { CONFIG } from '@/services/api'
+const { connect, keyStores, WalletConnection, Contract } = nearAPI
+
 export default {
   name: "Tienda",
   data() {
     return {
+      data: {},
       dataMenuTienda: [
         {
           nombre: "herian",
@@ -90,9 +95,34 @@ export default {
   },
   mounted() {
     this.$parent.$parent.$parent.$refs.navbar.to('tienda')
+    this.VerifyStore()
   },
   methods: {
-  },
+    async VerifyStore() {
+      try {
+        const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
+        // Connect to NEAR
+        const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
+        // Create wallet connection
+        const wallet = new WalletConnection(near)
+        const contract = new Contract(wallet.account(), CONTRACT_NAME, {
+          viewMethods: ['get_store'],
+          sender: wallet.account()
+        })
+        if (wallet.isSignedIn()) {
+          await contract.get_store({
+            user_id: wallet.getAccountId()
+          }).then((res) => {
+            this.data = res
+            localStorage.setItem('store', JSON.stringify(this.data))
+          })
+        }
+      } catch (e) {
+        // Router
+        this.$router.push({name:'MiTienda'})
+      }
+    },
+  }
 };
 </script>
 

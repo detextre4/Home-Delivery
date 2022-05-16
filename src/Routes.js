@@ -28,11 +28,6 @@ export default new Router({
           component: () => import('@/components/Forms/MiPerfil'),
         },
         {
-          path: '/mi-tienda',
-          name: 'Tienda',
-          component: () => import('@/components/Forms/Tienda'),
-        },
-        {
           path: '/mi-menu',
           name: 'Menu',
           component: () => import('@/components/Forms/MiMenu'),
@@ -49,9 +44,9 @@ export default new Router({
         },
       ],
     },
-    // here path 3 if need
+    // Here next path if need
     
-    // path 4
+    // Last path (Errors)
     {
       path: '*',
       name: 'Error',

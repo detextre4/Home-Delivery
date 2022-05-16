@@ -91,12 +91,10 @@ export default {
           if (response.data.vendedor) {
             var index = this.dataNavbar.findIndex((data) => data.key === 'tienda')
             this.dataNavbar[index].mostrar = true
-            this.$router.addRoute('Layout', { path: '/tienda', name: 'Tienda', component: () => import('@/pages/Tienda/Tienda') })
           }
           if (response.data.delivery) {
             var index = this.dataNavbar.findIndex((data) => data.key === 'delivery')
             this.dataNavbar[index].mostrar = true
-            this.$router.addRoute('Layout', { path: '/delivery', name: 'Delivery', component: '' })
           }
           // Set profile.id as localStorage item
           localStorage.setItem('profileid',response.data.id)

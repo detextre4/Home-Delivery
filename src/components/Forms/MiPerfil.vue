@@ -230,13 +230,16 @@ export default {
       if (item.id){
         this.axios.put(PROFILE+item.id+'/',item).then((response) => {
           this.perfil=response.data
+          this.$router.push({ name: 'Home' })
+          this.$router.go()
         })
       } else {
         this.axios.post(PROFILE,item).then((response) => {
           this.perfil=response.data
+          this.$router.push({ name: 'Home' })
+          this.$router.go()
         })
       }
-      this.$router.push({ name: 'Home' });
     },
     AcceptVerificator(item) {
       if (item == "delivery") {
