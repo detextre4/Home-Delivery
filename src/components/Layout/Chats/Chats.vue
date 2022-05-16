@@ -1,9 +1,10 @@
 <template>
-  <v-navigation-drawer
+  <v-dialog
     id="chats"
     v-model="$store.state.chats"
     fixed
     right
+    temporary
     width="max-content"
     height="100vh"
   >
@@ -18,7 +19,7 @@
       @room-action-handler="test($event)"
       responsive-breakpoint="3000"
     />
-  </v-navigation-drawer>
+  </v-dialog>
 </template>
 
 <script>
