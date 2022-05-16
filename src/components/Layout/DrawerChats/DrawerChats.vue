@@ -1,25 +1,43 @@
 <template>
-  <v-dialog
-    id="chats"
-    v-model="$store.state.chats"
-    fixed
-    right
-    temporary
-    width="max-content"
-    height="100vh"
-  >
-    <chat-window
-      :current-user-id="currentUserId"
-      :rooms="rooms"
-      :rooms-loaded="roomsLoaded"
-      :loading-rooms="loadingRooms"
-      :messages="messages"
-      :messages-loaded="messagesLoaded"
-      @fetch-messages="onFetchMessages"
-      @room-action-handler="test($event)"
-      responsive-breakpoint="3000"
-    />
-  </v-dialog>
+  <section id="drawerChats">
+    <v-badge
+      v-if="!$store.state.drawerChats"
+      :content="messagesBadge"
+      :value="messagesBadge"
+      color="red"
+      class="floatingButton"
+      overlap
+    >
+      <v-btn icon @click="$store.dispatch('DrawerChats', {key: 'open'})">
+        <v-icon color="#FFFFFF !important">mdi-chat</v-icon>
+      </v-btn>
+    </v-badge>
+
+    <v-navigation-drawer
+      v-model="$store.state.drawerChats"
+      right
+      fixed
+      temporary
+      width="max-content"
+      height="100vh"
+      hide-overlay
+    >
+      <h3 class="tcenter">Pedidos</h3>
+
+      <chat-window
+        :current-user-id="currentUserId"
+        :rooms="rooms"
+        :rooms-loaded="roomsLoaded"
+        :loading-rooms="loadingRooms"
+        :messages="messages"
+        :messages-loaded="messagesLoaded"
+        @fetch-messages="onFetchMessages"
+        @room-action-handler="test($event)"
+        :width="'max-content'"
+        responsive-breakpoint="3000"
+      />
+    </v-navigation-drawer>
+  </section>
 </template>
 
 <script>
@@ -32,6 +50,7 @@ export default {
   },
   data() {
     return {
+      messagesBadge: 1,
       currentUserId: "1234",
       rooms: [
         {
@@ -148,4 +167,4 @@ export default {
 };
 </script>
 
-<style src="./Chats.scss" lang="scss" />
+<style src="./DrawerChats.scss" lang="scss" />

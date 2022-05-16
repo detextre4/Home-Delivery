@@ -55,14 +55,12 @@
         </v-col>
       </v-row>
       <MenuHeader ref="menu"></MenuHeader>
-      <Chats></Chats>
     </v-app-bar>
   </section>
 </template>
 
 <script>
   import MenuHeader from './MenuHeader.vue'
-  import Chats from './Chats/Chats.vue'
   import { PERFIL,PROFILE } from '@/services/api.js'
   import * as nearAPI from "near-api-js";
   import { CONFIG } from "@/services/api";
@@ -73,7 +71,6 @@
     i18n: require("./i18n"),
     components: {
       MenuHeader,
-      Chats
     },
     data() {
       return {
