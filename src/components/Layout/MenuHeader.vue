@@ -222,7 +222,6 @@ export default {
       }
     },
     SelectLogoutItem(item) {
-      console.log('hola')
       if (item == "perfil") {
         this.ClearNavbar();
         this.logout = false;
@@ -248,6 +247,8 @@ export default {
     SelectOptionItem(item) {
       if (item == "chats") {
         this.optionMenu = false;
+        const key = 'open'
+        this.$store.dispatch("Chats", {key})
       }
     },
     SelectLogoutItem(item) {

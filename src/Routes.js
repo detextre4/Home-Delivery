@@ -42,11 +42,11 @@ export default new Router({
           name: 'Categorias',
           component: () => import('@/pages/Categorias/Categorias'),
         },
-        // {
-        //   path: '/tienda',
-        //   name: 'Tienda',
-        //   component: () => import('@/pages/Tienda/Tienda'),
-        // },
+        {
+          path: '/tienda',
+          name: 'Tienda',
+          component: () => import('@/pages/Tienda/Tienda'),
+        },
       ],
     },
     // here path 3 if need
