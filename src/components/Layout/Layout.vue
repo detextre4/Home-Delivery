@@ -1,7 +1,8 @@
 <template>
   <v-app id="layout" :style="`background-image: url('${$store.state.baseURL}themes/${$store.state.theme}/bg.png')`">
-    <Navbar ref="navbar" />
-    <Header ref="header" />
+    <Navbar ref="navbar" style="z-index: 10" />
+    <Header ref="header" style="z-index: 10" />
+    <DrawerChats style="z-index: 20"></DrawerChats>
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+import DrawerChats from "./DrawerChats/DrawerChats.vue"
 import Navbar from "@/components/Layout/Navbar";
 import Header from "@/components/Layout/Header";
 // import Footer from "@/components/Layout/Footer";
@@ -64,7 +66,7 @@ v-animate-onscroll.repeat="'animHero'"
 export default {
   name: "Layout",
   // components: { Footer, Header, Navbar },
-  components: { Header, Navbar },
+  components: { Header, Navbar, DrawerChats },
 }
 </script>
 

@@ -9,18 +9,18 @@ export default new Vuex.Store({
   state: {
     baseURL: process.env.BASE_URL,
     theme: "light",
-    chats: false,
+    drawerChats: false,
   },
   mutations: {
     CambiarTheme(state, theme) {
       state.theme = theme
     },
-    Chats(state, key) {
+    DrawerChats(state, key) {
       if (key == 'open') {
-        state.chats = true
+        state.drawerChats = true
       }
       if (key == 'close') {
-        state.chats = false
+        state.drawerChats = false
       }
     }
   },
@@ -30,8 +30,8 @@ export default new Vuex.Store({
       localStorage.setItem("theme", theme);
       commit( "CambiarTheme", theme)
     },
-    Chats({commit}, {key}) {
-      commit( "Chats", key)
+    DrawerChats({commit}, {key}) {
+      commit( "DrawerChats", key)
     },
   },
 });
