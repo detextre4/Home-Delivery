@@ -30,8 +30,11 @@
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     padding-block: 2em;
-  }
-  .vac-card-window {
-    // display: none !important;
+    .contPedidos {
+      h3 {}
+    }
+    .vac-card-window {
+      box-shadow: none !important;
+    }
   }
 }

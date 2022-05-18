@@ -22,7 +22,10 @@
       height="100vh"
       hide-overlay
     >
-      <h3 class="tcenter">Pedidos</h3>
+      <section class="contPedidos divcol acenter">
+        <!-- caja de pedidos -->
+        <h3 class="h7-em tcenter">Pedidos Pendientes</h3>
+      </section>
 
       <chat-window
         :current-user-id="currentUserId"

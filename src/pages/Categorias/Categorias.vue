@@ -38,6 +38,19 @@
           </template>
         </v-carousel>
       </aside> -->
+      <div>
+        <h1>coordinates</h1>
+        <div class="spacea">
+          <v-btn>latitude: {{coordinates.lat}}</v-btn>
+          <v-btn>longitude: {{coordinates.lng}}</v-btn>
+        </div>
+      </div>
+      <GmapMap
+        ref="mapRef"
+        :center="{lat:coordinates.lat, lng:coordinates.lng}"
+        :zoom="12"
+        style="width: 500px; height: 500px"
+      ></GmapMap>
     </v-col>
   </section>
 </template>
@@ -47,7 +60,20 @@ export default {
   name: "Categorias",
   data() {
     return {
+      coordinates: {
+        lat: 0,
+        lng: 0,
+      }
     }
+  },
+  created() {
+    // get user's coordinates from browser request
+    this.$getLocation()
+    .then(coordinates => {
+      this.coordinates = coordinates;
+      console.log(coordinates);
+    })
+    .catch(error => alert(error))
   },
   mounted() {
     this.$parent.$parent.$parent.$refs.navbar.to('categorias')
