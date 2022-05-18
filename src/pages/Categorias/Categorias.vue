@@ -1,6 +1,6 @@
 <template>
   <section id="categorias" class="parent">
-    <v-col class="contup relative divrow">
+    <v-col class="contup relative divcol">
       <!-- <aside class="conttag jcenter divcol">
         <h1 class="h4-em">Categorías</h1>
         <h2 class="h6-em">Populares</h2>
@@ -41,15 +41,30 @@
       <div>
         <h1>coordinates</h1>
         <div class="spacea">
-          <v-btn>latitude: {{coordinates.lat}}</v-btn>
-          <v-btn>longitude: {{coordinates.lng}}</v-btn>
+          <div class="divcol">
+            <v-btn>latitude: {{coordinates.lat}}</v-btn>
+            <v-text-field
+              v-model="coordinates.lat"
+              label="latitud"
+            ></v-text-field>
+          </div>
+
+          <div class="divcol">
+            <v-btn>longitude: {{coordinates.lng}}</v-btn>
+            <v-text-field
+              v-model="coordinates.lng"
+              label="longitud"
+            ></v-text-field>
+          </div>
         </div>
       </div>
+
       <GmapMap
         ref="mapRef"
         :center="{lat:coordinates.lat, lng:coordinates.lng}"
         :zoom="12"
-        style="width: 500px; height: 500px"
+        class="align fill-w"
+        style="height: 800px"
       ></GmapMap>
     </v-col>
   </section>
