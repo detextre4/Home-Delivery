@@ -38,57 +38,21 @@
           </template>
         </v-carousel>
       </aside> -->
-      <div>
-        <h1>coordinates</h1>
-        <div class="spacea">
-          <div class="divcol">
-            <v-btn>latitude: {{coordinates.lat}}</v-btn>
-            <v-text-field
-              v-model="coordinates.lat"
-              label="latitud"
-            ></v-text-field>
-          </div>
-
-          <div class="divcol">
-            <v-btn>longitude: {{coordinates.lng}}</v-btn>
-            <v-text-field
-              v-model="coordinates.lng"
-              label="longitud"
-            ></v-text-field>
-          </div>
-        </div>
-      </div>
-
-      <GmapMap
-        ref="mapRef"
-        :center="{lat:coordinates.lat, lng:coordinates.lng}"
-        :zoom="12"
-        class="align fill-w"
-        style="height: 800px"
-      ></GmapMap>
+      <GoogleMap></GoogleMap>
     </v-col>
   </section>
 </template>
 
 <script>
+import GoogleMap from '@/components/GoogleMap/GoogleMap.vue'
 export default {
   name: "Categorias",
+  components: {
+    GoogleMap
+  },
   data() {
     return {
-      coordinates: {
-        lat: 0,
-        lng: 0,
-      }
     }
-  },
-  created() {
-    // get user's coordinates from browser request
-    this.$getLocation()
-    .then(coordinates => {
-      this.coordinates = coordinates;
-      console.log(coordinates);
-    })
-    .catch(error => alert(error))
   },
   mounted() {
     this.$parent.$parent.$parent.$refs.navbar.to('categorias')

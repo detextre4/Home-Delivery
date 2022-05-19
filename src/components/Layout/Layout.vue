@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import DrawerChats from "./DrawerChats/DrawerChats.vue"
+import DrawerChats from "@/components/DrawerChats/DrawerChats.vue"
 import Navbar from "@/components/Layout/Navbar";
 import Header from "@/components/Layout/Header";
 // import Footer from "@/components/Layout/Footer";

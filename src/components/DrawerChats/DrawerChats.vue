@@ -37,7 +37,7 @@
         @fetch-messages="onFetchMessages"
         @room-action-handler="test($event)"
         :width="'max-content'"
-        responsive-breakpoint="3000"
+        :responsive-breakpoint="3000"
       />
     </v-navigation-drawer>
   </section>
