@@ -37,6 +37,11 @@ export default new Router({
           name: 'Categorias',
           component: () => import('@/pages/Categorias/Categorias'),
         },
+        {
+          path: '/tienda',
+          name: 'Tienda',
+          component: () => import('@/pages/Tienda/Tienda'),
+        },
       ],
     },
     // Here next path if need

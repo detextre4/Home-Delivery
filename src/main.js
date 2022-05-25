@@ -1,5 +1,4 @@
 import "vue-toastification/dist/index.css";
-import * as VueGoogleMaps from 'vue2-google-maps';
 import Toast from "vue-toastification";
 import {i18n} from '@/plugins/i18n'
 import VueAnimateOnScroll from 'vue-animate-onscroll';
@@ -9,6 +8,18 @@ import store from './store/index'
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
+
+// google maps
+import * as VueGoogleMaps from 'vue2-google-maps';
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk',
+  },
+})
+// geolocation
+import VueGeolocation from 'vue-browser-geolocation';
+Vue.use(VueGeolocation);
+
 
 Vue.use(VueApexCharts)
 

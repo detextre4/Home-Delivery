@@ -9,10 +9,19 @@ export default new Vuex.Store({
   state: {
     baseURL: process.env.BASE_URL,
     theme: "light",
+    drawerChats: false,
   },
   mutations: {
     CambiarTheme(state, theme) {
       state.theme = theme
+    },
+    DrawerChats(state, key) {
+      if (key == 'open') {
+        state.drawerChats = true
+      }
+      if (key == 'close') {
+        state.drawerChats = false
+      }
     }
   },
   actions: {
@@ -20,6 +29,9 @@ export default new Vuex.Store({
       element.href = `${state.baseURL}themes/${theme}/theme.css`;
       localStorage.setItem("theme", theme);
       commit( "CambiarTheme", theme)
+    },
+    DrawerChats({commit}, {key}) {
+      commit( "DrawerChats", key)
     },
   },
 });

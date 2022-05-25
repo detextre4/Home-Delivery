@@ -58,7 +58,7 @@
             </v-expansion-panel-content>
           </template>
 
-          <v-list v-if="item.name" class="intoExpansion">
+          <!-- <v-list v-if="item.name" class="intoExpansion">
             <v-list-item @click="SelectOptionItem(item.key)">
               <v-list-item-title>
                 <v-badge
@@ -73,7 +73,7 @@
                 </v-badge>
               </v-list-item-title>
             </v-list-item>
-          </v-list>
+          </v-list> -->
         </v-expansion-panel>
       </v-expansion-panels>
     </v-menu>
@@ -143,10 +143,10 @@ export default {
       messages: "1",
       search: "",
       dataMenuOptions: [
-        {
-          key: "chats",
-          name: "Chats temporales"
-        },
+        // {
+        //   key: "chats",
+        //   name: "Chats temporales"
+        // },
         {
           title: "Idioma",
           to: "#",
@@ -222,7 +222,6 @@ export default {
       }
     },
     SelectLogoutItem(item) {
-      console.log('hola')
       if (item == "perfil") {
         this.ClearNavbar();
         this.logout = false;
@@ -246,11 +245,13 @@ export default {
     ClearNavbar() {
       this.$parent.$parent.$parent.$parent.$refs.navbar.clearAll();
     },
-    SelectOptionItem(item) {
-      if (item == "chats") {
-        this.optionMenu = false;
-      }
-    },
+    // SelectOptionItem(item) {
+    //   if (item == "chats") {
+    //     this.optionMenu = false;
+    //     const key = 'open'
+    //     this.$store.dispatch("DrawerChats", {key})
+    //   }
+    // },
   },
 };
 </script>

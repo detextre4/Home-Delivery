@@ -1,0 +1,17 @@
+@import "@/styles/app";
+
+// googleMap
+.googleMap {
+  .vue-map-container {
+    margin-inline: auto;
+    width: 100%;
+    height: 700px;
+    .vue-map {
+      border-radius: $border-btn;
+      box-shadow: 0 0 6px 5px rgba(0, 0, 0, .2);
+      .localImg {
+        width: 10em;
+      }
+    }
+  }
+}

@@ -70,7 +70,7 @@
     name: "Header",
     i18n: require("./i18n"),
     components: {
-      MenuHeader
+      MenuHeader,
     },
     data() {
       return {
