@@ -1,9 +1,9 @@
 <template>
   <v-row id="navbar" class="alignmobile">
     <!-- logo -->
-    <router-link to="/" class="contlogo align eliminarmobile">
+    <a href="#" class="contlogo align eliminarmobile">
       <img class="logo" src="@/assets/logos/logo.png" alt="Logo" @click="to('inicio')">
-    </router-link>
+    </a>
     <!-- content -->
     <aside class="contnavbar divcol divrowmobile spacea align">
       <template v-for="(item, index) in dataNavbar">
@@ -44,7 +44,7 @@ export default {
           title: "Inicio",
           active: false,
           mostrar: true,
-          to: "#/"
+          to: "#"
         },
         {
           key: "categorias",
@@ -52,7 +52,7 @@ export default {
           title: "Categorias",
           active: false,
           mostrar: true,
-          to: "#/categorias"
+          to: "#categorias"
         },
         {
           key: "restaurantes",
@@ -60,7 +60,7 @@ export default {
           title: "Restaurantes",
           active: false,
           mostrar: true,
-          to: "#"
+          to: "#restaurantes"
         },
         {
           key: "tienda",
@@ -109,59 +109,59 @@ export default {
       this.dataNavbar[2].icon = icon3
       this.dataNavbar[3].icon = icon4
       this.dataNavbar[4].icon = icon5
-      this.dataNavbar.forEach(element => {
-        element.active = false;
-      });
+      this.dataNavbar.forEach(element => {element.active = false;});
     },
     to(item) {
+      this.clearAll()
       if (item.key == 'inicio' || item == 'inicio') {
-        this.clearAll()
         if (item == "inicio") {
           this.dataNavbar[0].active = true;
           this.dataNavbar[0].icon = icon1Active;
+          this.$router.push('/')
         } else {
           item.active = true;
           item.icon = icon1Active
+          this.$router.push('/')
         }
-      }
-      if (item.key == 'categorias' || item == 'categorias') {
-        this.clearAll()
+      } else if (item.key == 'categorias' || item == 'categorias') {
         if (item == "categorias") {
           this.dataNavbar[1].active = true;
           this.dataNavbar[1].icon = icon2Active;
+          this.$router.push('/categorias')
         } else {
           item.active = true;
           item.icon = icon2Active
+          this.$router.push('/categorias')
         }
-      }
-      if (item.key == 'restaurantes' || item == 'restaurantes') {
-        this.clearAll()
+      } else if (item.key == 'restaurantes' || item == 'restaurantes') {
         if (item == "restaurantes") {
           this.dataNavbar[2].active = true;
           this.dataNavbar[2].icon = icon3Active;
+          this.$router.push('/restaurantes')
         } else {
           item.active = true;
           item.icon = icon3Active
+          this.$router.push('/restaurantes')
         }
-      }
-      if (item.key == 'tienda' || item == 'tienda') {
-        this.clearAll()
+      } else if (item.key == 'tienda' || item == 'tienda') {
         if (item == "tienda") {
           this.dataNavbar[3].active = true;
           this.dataNavbar[3].icon = icon4Active;
+          this.$router.push('/tienda')
         } else {
           item.active = true;
           item.icon = icon4Active
+          this.$router.push('/tienda')
         }
-      }
-      if (item.key == 'delivery' || item == 'delivery') {
-        this.clearAll()
+      } else if (item.key == 'delivery' || item == 'delivery') {
         if (item == "delivery") {
           this.dataNavbar[4].active = true;
           this.dataNavbar[4].icon = icon5Active;
+          this.$router.push('/delivery')
         } else {
           item.active = true;
           item.icon = icon5Active
+          this.$router.push('/delivery')
         }
       }
     }

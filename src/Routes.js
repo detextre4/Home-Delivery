@@ -38,6 +38,18 @@ export default new Router({
           component: () => import('@/pages/Categorias/Categorias'),
         },
         {
+          path: '/restaurantes',
+          name: 'Restaurantes',
+          component: () => import('@/pages/Restaurantes/Restaurantes'),
+          children: [
+            {
+              path: 'tienda',
+              name: 'RestaurantesTienda',
+              component: () => import('@/pages/Restaurantes/Tienda'),
+            }
+          ]
+        },
+        {
           path: '/tienda',
           name: 'Tienda',
           component: () => import('@/pages/Tienda/Tienda'),

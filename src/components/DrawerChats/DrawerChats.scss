@@ -7,6 +7,11 @@
     position: fixed;
     bottom: 2em;
     right: 2em;
+    @include mq(max, small) {
+      --size: 3em;
+      bottom: auto !important;
+      top: 6.5em;
+    }
     .v-badge__badge {
       display: flex;
       align-items: center;

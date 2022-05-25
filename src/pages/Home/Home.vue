@@ -1,6 +1,6 @@
 <template>
   <section id="home" class="parent section">
-    <v-col class="contup relative divrow">
+    <!-- <v-col class="contup relative divrow">
       <aside class="conttag jcenter divcol">
         <h1 class="h4-em">Categorías</h1>
         <h2 class="h6-em">Populares</h2>
@@ -47,7 +47,7 @@
           </v-btn>
         </aside>
       </aside>
-    </v-col>
+    </v-col> -->
 
     <v-col class="contdown">
       <h1 class="h4-em divwrap bold">Restaurantes
@@ -111,49 +111,49 @@ export default {
   name: "Home",
   data() {
     return {
-      carouselCategories: 0,
-      sliderCategories: [
-        {
-          img: require("@/assets/icons/pizza-outline.png"),
-          title: "Pizzas",
-          active: false
-        },
-        {
-          img: require("@/assets/icons/pizza-outline.png"),
-          title: "Pizzas",
-          active: false
-        },
-        {
-          img: require("@/assets/icons/pizza-outline.png"),
-          title: "Pizzas",
-          active: false
-        },
-        {
-          img: require("@/assets/icons/pizza-outline.png"),
-          title: "Pizzas",
-          active: false
-        },
-        {
-          img: require("@/assets/icons/pizza-outline.png"),
-          title: "Pizzas",
-          active: false
-        },
-        {
-          img: require("@/assets/icons/pizza-outline.png"),
-          title: "Pizzas",
-          active: false
-        },
-        {
-          img: require("@/assets/icons/pizza-outline.png"),
-          title: "Pizzas",
-          active: false
-        },
-        {
-          img: require("@/assets/icons/pizza-outline.png"),
-          title: "Pizzas",
-          active: false
-        },
-      ],
+      // carouselCategories: 0,
+      // sliderCategories: [
+      //   {
+      //     img: require("@/assets/icons/pizza-outline.png"),
+      //     title: "Pizzas",
+      //     active: false
+      //   },
+      //   {
+      //     img: require("@/assets/icons/pizza-outline.png"),
+      //     title: "Pizzas",
+      //     active: false
+      //   },
+      //   {
+      //     img: require("@/assets/icons/pizza-outline.png"),
+      //     title: "Pizzas",
+      //     active: false
+      //   },
+      //   {
+      //     img: require("@/assets/icons/pizza-outline.png"),
+      //     title: "Pizzas",
+      //     active: false
+      //   },
+      //   {
+      //     img: require("@/assets/icons/pizza-outline.png"),
+      //     title: "Pizzas",
+      //     active: false
+      //   },
+      //   {
+      //     img: require("@/assets/icons/pizza-outline.png"),
+      //     title: "Pizzas",
+      //     active: false
+      //   },
+      //   {
+      //     img: require("@/assets/icons/pizza-outline.png"),
+      //     title: "Pizzas",
+      //     active: false
+      //   },
+      //   {
+      //     img: require("@/assets/icons/pizza-outline.png"),
+      //     title: "Pizzas",
+      //     active: false
+      //   },
+      // ],
       carouselRestaurant: 0,
       sliderRestaurant: [
         {
@@ -235,28 +235,28 @@ export default {
     this.$parent.$parent.$parent.$refs.navbar.to('inicio')
   },
   computed: {
-    columnsCategories() {
-      if (this.$vuetify.breakpoint.xl) {
-        return 4;
-      }
+    // columnsCategories() {
+    //   if (this.$vuetify.breakpoint.xl) {
+    //     return 4;
+    //   }
 
-      if (this.$vuetify.breakpoint.lg && window.innerWidth < 1306) {
-        return 3;
-      }
-      if (this.$vuetify.breakpoint.lg) {
-        return 4;
-      }
+    //   if (this.$vuetify.breakpoint.lg && window.innerWidth < 1306) {
+    //     return 3;
+    //   }
+    //   if (this.$vuetify.breakpoint.lg) {
+    //     return 4;
+    //   }
 
-      if (this.$vuetify.breakpoint.md) {
-        return 3;
-      }
+    //   if (this.$vuetify.breakpoint.md) {
+    //     return 3;
+    //   }
 
-      if (this.$vuetify.breakpoint.sm) {
-        return 2;
-      }
+    //   if (this.$vuetify.breakpoint.sm) {
+    //     return 2;
+    //   }
 
-      return 1;
-    },
+    //   return 1;
+    // },
     columnsRestaurant() {
       if (this.$vuetify.breakpoint.xl) {
         return 3;
@@ -278,24 +278,24 @@ export default {
     }
   },
   methods: {
-    ChangeSlidesCategories(item) {
-      if (item == "next") {
-        this.carouselCategories++
-      }
-      if (item == "prev") {
-        this.carouselCategories--
-      }
-    },
-    SelectCardCategories(item) {
-      const icon1 = require("@/assets/icons/pizza-outline.png");
-      const icon1Active = require("@/assets/icons/pizza.png");
-      this.sliderCategories.forEach(element => {
-        element.img = icon1
-        element.active = false
-      });
-      item.img = icon1Active
-      item.active = true
-    },
+    // ChangeSlidesCategories(item) {
+    //   if (item == "next") {
+    //     this.carouselCategories++
+    //   }
+    //   if (item == "prev") {
+    //     this.carouselCategories--
+    //   }
+    // },
+    // SelectCardCategories(item) {
+    //   const icon1 = require("@/assets/icons/pizza-outline.png");
+    //   const icon1Active = require("@/assets/icons/pizza.png");
+    //   this.sliderCategories.forEach(element => {
+    //     element.img = icon1
+    //     element.active = false
+    //   });
+    //   item.img = icon1Active
+    //   item.active = true
+    // },
     ChangeSlidesRestaurant(item) {
       if (item == "next") {
         this.carouselRestaurant++

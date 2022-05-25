@@ -23,6 +23,7 @@
             id="foto"
             solo
             prepend-icon=""
+            :clearable="false"
             class="input-file"
             @change="ImagePreview()"
           >

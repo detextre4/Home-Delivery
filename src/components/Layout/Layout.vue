@@ -1,6 +1,6 @@
 <template>
   <v-app id="layout" :style="`background-image: url('${$store.state.baseURL}themes/${$store.state.theme}/bg.png')`">
-    <Navbar ref="navbar" style="z-index: 10" />
+    <Navbar ref="navbar" style="z-index: 11" />
     <Header ref="header" style="z-index: 10" />
     <DrawerChats style="z-index: 20"></DrawerChats>
     <v-main>

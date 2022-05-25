@@ -73,12 +73,13 @@
           >
             Foto de perfil
           </label>
-          <v-file-input
+            <v-file-input
               v-model="image"
               id="foto"
               class="input-file"
               prepend-icon=""
               solo
+              :clearable="false"
               @change="ImagePreview()"
             >
               <template v-slot:selection>
