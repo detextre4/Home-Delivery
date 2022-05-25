@@ -5,6 +5,12 @@
   .contup {
     padding-top: 2em;
     padding-inline: 5%;
+    .prueba {
+      @include absoluteCenter;
+      @include mq(max, 700px) {
+        background-color: green !important;
+      }
+    }
   }
   .contdown {
     padding-inline: 5%;

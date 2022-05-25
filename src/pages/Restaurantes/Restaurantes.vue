@@ -1,6 +1,7 @@
 <template>
-  <section id="restaurantes" class="parent">
+  <section id="restaurantes" class="parent relative">
     <v-col class="contup relative divcol">
+      <v-btn class="prueba">hola</v-btn>
     </v-col>
   </section>
 </template>
