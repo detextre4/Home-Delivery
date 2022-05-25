@@ -70,27 +70,28 @@
           // box-shadow: $sombra-boton !important;
         }
         .contLike {
-          top: 0;
-          right: 0;
+          top: 10px;
+          right: 10px;
           position: absolute;
           z-index: 10;
+          --size: clamp(3.5em, 4vw, 4em);
           .contimg {
-            width: 4em;
-            height: 4em;
+            width: var(--size);
+            height: var(--size);
             border-radius: 50%;
             background-color: #FFFFFF;
             border: 3px solid #6B6B6B;
             .square {
               position: absolute;;
-              width: 1.625em;
-              height: 1.625em;
+              width: calc(var(--size) - clamp(2em, 2.46vw, 2.46em));
+              height: calc(var(--size) - clamp(2em, 2.46vw, 2.46em));
               background: var(--clr-btn-inv);
               border-radius: $border-btn;
               z-index: 0;
               inset: 0% 5%;
             }
             img {
-              width: 2.25em;
+              width: calc(var(--size) - clamp(1.6em, 1.7vw, 1.77em));
               z-index: 1;
             }
           }
