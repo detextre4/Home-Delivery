@@ -45,9 +45,8 @@
             v-model="menu.category"
             :items="listCategoria"
             item-text="name"
-            item-value="item"
+            item-value="name"
             id="categoria"
-            multiple
             solo
           >
           </v-select>
@@ -69,7 +68,7 @@
           <aside>
             <label for="precio" class="h7-em"> Precio </label>
 
-            <v-text-field v-model="menu.price" id="precio" solo></v-text-field>
+            <v-text-field v-model="menu.price" id="precio" type="number" solo></v-text-field>
           </aside>
           <v-btn @click="Addmenu()" class="h8-em"> Agregar </v-btn>
         </v-card>
@@ -193,7 +192,6 @@ export default {
       }
     },
     async Addmenu () {
-      try {
         const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
         const direccionIpfs = '.ipfs.dweb.link'
         // connect to NEAR
@@ -206,25 +204,24 @@ export default {
           changeMethods: ['set_menu'],
           sender: wallet.account()
         })
-        // const formData = new FormData()
-        // formData.append('file', this.menu.img)
-        // console.log(this.menu.img)
-        // await this.axios.post(IPFS, formData).then((data) => {
+        const formData = new FormData()
+        formData.append('file', this.menu.img)
+        console.log(this.menu.img)
+        await this.axios.post(IPFS, formData).then((data) => {
+          let prices = parseInt(this.menu.price)
           contract.set_menu({
             name: this.menu.name,
-            img: "'https://' + data.data + direccionIpfs + '/' + data.nombre'",
+            img: 'https://' + data.data + direccionIpfs + '/' + data.nombre,
             user_id: wallet.account(),
             description: this.menu.description,
-            price: this.menu.price,
-            catecategory: this.menu.category
+            price: prices,
+            category: this.menu.category
           }).then((response) => {
             console.log(response)
           }).catch((e) =>{
             console.log(e)
           }) 
-          
-      } catch (e) {
-        console.log(e)}},
+        })  },
     showAlert() {
       this.$refs.alerts.Alerts("success");
       this.$refs.alerts.Alerts("cancel");
