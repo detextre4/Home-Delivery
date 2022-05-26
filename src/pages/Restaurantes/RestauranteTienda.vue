@@ -113,10 +113,12 @@
       <section class="contRestaurantList">
         <v-card v-for="(item,i) in dataRestaurant" :key="i"
           class="card divcol align" style="display:flex">
-          <img class="images" :src="item.img" alt="Restaurant image">
+          <div class="contImages" @click="SelectMenu(item)">
+            <img class="images" :src="item.img" alt="Restaurant image">
+          </div>
 
           <aside class="contcard space">
-            <a class="h7-em bold" @click="ToTienda(item)">{{item.desc}}</a>
+            <p class="h7-em semibold">{{item.desc}}</p>
 
             <div class="contPrice divcol tend">
               <div class="acenter">
@@ -190,6 +192,9 @@ export default {
     }
   },
   methods: {
+    SelectMenu(item) {
+      console.log(item)
+    }
   },
 };
 </script>
