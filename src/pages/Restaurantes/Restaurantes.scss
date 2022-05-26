@@ -3,6 +3,7 @@
 // restaurantes
 #restaurantes {
   --padding-g:  calc(5% + 1em) 5%;
+  @include mq(max, small) {--padding-g: 5% 5%}
   .contup {
     padding-top: 2em;
     padding-inline: var(--padding-g);
@@ -19,45 +20,6 @@
         animation: none !important;
         transform: none !important;
         width: 100% !important;
-      }
-    }
-    .contFilters {
-      --font-size: 1em;
-      gap: 1em;
-      @include mq(max, 670px) {justify-content: space-between;.select:last-child {margin-inline: auto}};
-      .searchBtn {
-        min-height: 3.8em !important;
-        border-radius: 20px !important;
-        background-color: rgba($clr-btn, 0.9) !important;
-        span {color: #FFFFFF !important; font-size: var(--font-size);}
-      }
-      .search {
-        input {font-size: var(--font-size);}
-      }
-      .filtro {
-        max-width: clamp(3.2em, 4vw, 4.4375em) !important;
-        min-height: 3.8em !important;
-        padding: 0;
-        border-radius: 20px !important;
-        background-color: rgba($clr-btn, 0.9) !important;
-      }
-      .select {
-        .v-input__slot {padding-inline: 1.5em !important;.v-label{color: $clr-btn}}
-        .v-select__selections {font-size: var(--font-size) !important;letter-spacing: -0.1ch !important;}
-        --size: 200px;
-        max-width: var(--size);
-        flex: 1 1 var(--size);
-        @include mq(max, 480px) {max-width: none;}
-        .v-chip {
-          margin: 0 .2em 0 0;
-          span {color: $clr-btn}
-        }
-        .select_label {
-          @include absolute(-10px, -25%);
-          font-size: .9em;
-          color: $clr-btn;
-          z-index: 2;
-        }
       }
     }
   }
@@ -77,11 +39,10 @@
         border-radius: $border-card;
         clip-path: $clip-path-2;
         box-shadow: inset 0 0 30px -15px rgba(black, .5) !important;
+        &:is(:hover, :focus) .images {mix-blend-mode: multiply;}
         .images {
           width: 100%;
           height: 15em;
-          // border-radius: 80px;
-          // box-shadow: $sombra-boton !important;
         }
         .contcard {
           padding-inline: 2em;
@@ -109,4 +70,92 @@
   }
 }
 
-#restaurante-tienda {}
+#restaurante-tienda {
+  --height: 300px;
+  @include mq(min, small) {padding-top: 2em};
+  padding-inline: clamp(0, 2.75vw, 2.75em) 5%;
+  @include mq(max, small) {padding-inline: clamp(0, 2.75vw, 2.75em);}
+  .contbanner {
+    display: grid;
+    @include mq(min, small) {grid-template-columns: 1fr 30%}
+    // display: flex;
+    // flex-wrap: wrap;
+    gap: clamp(1em, 2vw, 2em);
+    // img {mix-blend-mode: multiply}
+    .v-image {
+      // flex: 1 1 500px;
+      border-radius: $border-btn $border-btn 0 0;
+      height: var(--height) !important;
+      .backBtn {
+        @include absolute(.5em,.5em);
+      }
+      span {
+        @include absolute(auto, .5em, .5em);
+        text-transform: lowercase !important;
+        font-weight: 600 !important;
+        color: #FFFFFF !important;
+      }
+    }
+    .contmapa {
+      // flex: 1 1 300px;
+      height: var(--height);
+      gap: 1em;
+      span {line-height: 1 !important}
+    }
+  }
+  .contdown {
+    gap: 2em;
+    .contRestaurantList {
+      --max-size: 20em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(15em, 20vw, var(--max-size)), 1fr));
+      grid-gap: 1em;
+      @include mq(max, medium) {grid-gap: 2em}
+      .card {
+        max-width: var(--max-size);
+        @include mq(max, 600px) {max-width: 100% !important};
+        height: max-content;
+        gap: clamp(0.5em, 1vw, 1em);
+        border-radius: $border-card;
+        clip-path: $clip-path-2;
+        box-shadow: inset 0 0 30px -15px rgba(black, .5) !important;
+        &:is(:hover, :focus) .images {mix-blend-mode: multiply;}
+        .images {
+          width: 100%;
+          height: 15em;
+        }
+        .contcard {
+          padding-inline: 2em;
+          padding-bottom: 1.8em;
+          gap: 1em;
+          a {
+            width: max-content;
+            color: var(--clr-btn) !important;
+            line-height: 1.5ch;
+            letter-spacing: -0.15ch;
+            position: relative;
+            &:is(:hover, :focus):before {
+              content: "";
+              position: absolute;
+              inset: -2px;
+              background-color: #3d218534;
+              border: 2px solid var(--clr-btn);
+              border-radius: var(--border-responsive);
+              animation: hover 5s $ease-return infinite alternate;
+            }
+          }
+          .contPrice {
+            font-size: clamp(1em, 1.2vw, 1.2em);
+            .logoNear {
+              --size: 1em;
+              width: var(--size);
+              height: var(--size);
+            }
+            span {color: $clr-label}
+            .price {color: mix($clr-label, #000000) !important}
+          }
+        }
+      }
+    }
+  }
+}

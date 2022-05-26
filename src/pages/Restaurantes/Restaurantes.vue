@@ -18,7 +18,7 @@
         ></v-text-field>
 
         <v-btn class="filtro">
-          <v-icon size="2.5em" color="var(--clr-text-btn)" class="notdefault-clr">mdi-filter</v-icon>
+          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not-clr">mdi-filter</v-icon>
         </v-btn>
 
         <v-select
@@ -56,7 +56,7 @@
             </span>
           </template>
         </v-select>
-        
+
         <v-select
           :items="filters.filterIncluir.by"
           label="incluir"
@@ -118,22 +118,32 @@ export default {
       },
       dataRestaurant: [
         {
-          img: require("@/assets/images/r1.png"),
+          img: require("@/assets/test.jpg"),
           title: "titulo",
           hours: "horario",
         },
         {
-          img: require("@/assets/images/r1.png"),
+          img: require("@/assets/test.jpg"),
           title: "titulo",
           hours: "horario",
         },
         {
-          img: require("@/assets/images/r1.png"),
+          img: require("@/assets/test.jpg"),
           title: "titulo",
           hours: "horario",
         },
         {
-          img: require("@/assets/images/r1.png"),
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
           title: "titulo",
           hours: "horario",
         },

@@ -1,6 +1,6 @@
 <template>
-  <section class="googleMap">
-    <div class="divcol center">
+  <!-- <section class="googleMap"> -->
+    <!-- <div class="divcol center">
       <h1>coordinates</h1>
       <div class="center gap marginbottom">
           <v-btn>latitude: {{myCoordinates.lat}}</v-btn>
@@ -27,7 +27,7 @@
           ></v-text-field>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <GmapMap
       ref="mapRef"
@@ -58,7 +58,7 @@
         <img class="localImg" src="@/assets/logos/logo.png" />
       </gmap-custom-marker>
     </GmapMap>
-  </section>
+  <!-- </section> -->
 </template>
 
 <script>

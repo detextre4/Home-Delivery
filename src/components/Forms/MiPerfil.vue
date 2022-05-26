@@ -206,12 +206,11 @@ export default {
   },
   mounted(){
     this.VerifyProfile({wallet:this.perfil.wallet})
-    this.$parent.$parent.$parent.$refs.navbar.clearAll()
 
     if (this.perfil.wallet && this.perfil.wallet !== 'null') {
       this.VerifyProfile({wallet:this.perfil.wallet})
     } else {
-      this.$router.push({ name: 'Home' });
+      this.$router.push({ path: '/' })
     }
   },
   methods: {
@@ -231,13 +230,13 @@ export default {
       if (item.id){
         this.axios.put(PROFILE+item.id+'/',item).then((response) => {
           this.perfil=response.data
-          this.$router.push({ name: 'Home' })
+          this.$router.push({ path: '/' })
           this.$router.go()
         })
       } else {
         this.axios.post(PROFILE,item).then((response) => {
           this.perfil=response.data
-          this.$router.push({ name: 'Home' })
+          this.$router.push({ path: '/' })
           this.$router.go()
         })
       }

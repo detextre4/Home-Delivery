@@ -133,7 +133,7 @@ $breakpoints: (
     } @else {
       background-image: $bg !important;
     }
-    color: $text !important; span {@include color-text($text);}
+    color: $text !important; :is(span, i) {@include color-text($text);}
   }
   // if single parameter
   @if ($bg) {
@@ -153,12 +153,12 @@ $breakpoints: (
                     // text color
 @mixin color-text($color) {
   @if type-of($color) == color {
-    color: $color !important;span {color: $color !important}
+    color: $color !important; :is(span, i) {color: $color !important}
   } @else if list.length($color) > 1 {
     background-image: linear-gradient(to top left, $color) !important;
     background-clip: text !important;
     color: transparent !important;
-    span {
+    :is(span, i) {
       background-image: linear-gradient(to top left, $color) !important;
       background-clip: text !important;
       color: transparent !important;
@@ -167,7 +167,7 @@ $breakpoints: (
     background-image: $color !important;
     background-clip: text !important;
     color: transparent !important;
-    span {
+    :is(span, i) {
       background-image: $color !important;
       background-clip: text !important;
       color: transparent !important;

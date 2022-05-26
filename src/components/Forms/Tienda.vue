@@ -123,7 +123,6 @@ export default {
     }
   },
   mounted(){
-    this.$parent.$parent.$parent.$refs.navbar.clearAll()
     this.SaveData()
   },
   methods: {

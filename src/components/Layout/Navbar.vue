@@ -83,6 +83,7 @@ export default {
   },
   mounted () {
     this.VerifyProfile(localStorage.walletid)
+    // navbar route verificator
     this.to(this.$router.currentRoute.name)
   },
   methods: {
@@ -115,50 +116,61 @@ export default {
     to(item) {
       this.clearAll()
       if (item.key == 'inicio' || item == 'inicio') {
+        // if external or internal navbar call
         if (item == "inicio") {
           this.dataNavbar[0].active = true;
           this.dataNavbar[0].icon = icon1Active;
-          this.$router.push('/')
+            // push select
+            if (item == "inicio") {this.$router.push('/')}
         } else {
           item.active = true;
           item.icon = icon1Active
           this.$router.push('/')
         }
       } else if (item.key == 'categorias' || item == 'categorias') {
+        // if external or internal navbar call
         if (item == "categorias") {
           this.dataNavbar[1].active = true;
           this.dataNavbar[1].icon = icon2Active;
-          this.$router.push('/categorias')
+            // push select
+            if (item == "categorias") {this.$router.push('/categorias')}
         } else {
           item.active = true;
           item.icon = icon2Active
           this.$router.push('/categorias')
         }
-      } else if (item.key == 'restaurantes' || item == 'restaurantes') {
-        if (item == "restaurantes") {
+      } else if (item.key == 'restaurantes' || item == 'restaurantes' || item == 'restauranteTienda') {
+        // if external or internal navbar call
+        if (item == "restaurantes" || item == 'restauranteTienda') {
           this.dataNavbar[2].active = true;
           this.dataNavbar[2].icon = icon3Active;
-          this.$router.push('/restaurantes')
+            // push select
+            if (item == "restaurantes") {this.$router.push('/restaurantes')}
+            else if (item == "restaurante-tienda") {this.$router.push('/restaurante-tienda')}
         } else {
           item.active = true;
           item.icon = icon3Active
           this.$router.push('/restaurantes')
         }
       } else if (item.key == 'tienda' || item == 'tienda') {
+        // if external or internal navbar call
         if (item == "tienda") {
           this.dataNavbar[3].active = true;
           this.dataNavbar[3].icon = icon4Active;
-          this.$router.push('/tienda')
+            // push select
+            if (item == "tienda") {this.$router.push('/tienda')}
         } else {
           item.active = true;
           item.icon = icon4Active
           this.$router.push('/tienda')
         }
       } else if (item.key == 'delivery' || item == 'delivery') {
+        // if external or internal navbar call
         if (item == "delivery") {
           this.dataNavbar[4].active = true;
           this.dataNavbar[4].icon = icon5Active;
-          this.$router.push('/delivery')
+            // push select
+            if (item == "delivery") {this.$router.push('/delivery')}
         } else {
           item.active = true;
           item.icon = icon5Active

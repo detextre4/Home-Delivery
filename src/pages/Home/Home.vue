@@ -70,7 +70,7 @@
                   <template v-if="(+index + i) < sliderRestaurant.length">
                     <v-col class="contslides relative divcol paddlateral" :key="i">
                       <aside class="contLike">
-                        <v-btn icon class="contimg center absolute"
+                        <v-btn icon class="contimg center absolute not-clr"
                           :class="{ contIconActive: sliderRestaurant[+index + i].like,
                             BorderContIconActive: sliderRestaurant[+index + i].like }"
                           @click="SelectLikeRestaurant(sliderRestaurant[+index + i])">
@@ -231,9 +231,6 @@ export default {
       ]
     }
   },
-  // mounted() {
-  //   this.$parent.$parent.$parent.$refs.navbar.to('inicio')
-  // },
   computed: {
     // columnsCategories() {
     //   if (this.$vuetify.breakpoint.xl) {

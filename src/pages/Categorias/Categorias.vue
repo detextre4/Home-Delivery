@@ -17,9 +17,6 @@ export default {
     return {
     }
   },
-  // mounted() {
-  //   this.$parent.$parent.$parent.$refs.navbar.to('categorias')
-  // },
   methods: {
   },
 };
