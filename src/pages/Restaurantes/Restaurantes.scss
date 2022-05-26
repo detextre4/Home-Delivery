@@ -89,6 +89,7 @@
       height: var(--height) !important;
       .backBtn {
         @include absolute(.5em,.5em);
+        animation: moveleft .5s $ease-return;
       }
       span {
         @include absolute(auto, .5em, .5em);
