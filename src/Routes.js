@@ -19,39 +19,37 @@ export default new Router({
       children: [
         {
           path: '/',
-          name: 'Home',
+          name: 'inicio',
           component: () => import('@/pages/Home/Home'),
         },
         {
           path: '/mi-perfil',
-          name: 'MiPerfil',
+          name: 'miPerfil',
           component: () => import('@/components/Forms/MiPerfil'),
         },
         {
           path: '/mi-menu',
-          name: 'Menu',
+          name: 'menu',
           component: () => import('@/components/Forms/MiMenu'),
         },
         {
           path: '/categorias',
-          name: 'Categorias',
+          name: 'categorias',
           component: () => import('@/pages/Categorias/Categorias'),
         },
         {
           path: '/restaurantes',
-          name: 'Restaurantes',
+          name: 'restaurantes',
           component: () => import('@/pages/Restaurantes/Restaurantes'),
-          children: [
-            {
-              path: 'tienda',
-              name: 'RestaurantesTienda',
-              component: () => import('@/pages/Restaurantes/Tienda'),
-            }
-          ]
+        },
+        {
+          path: '/restaurante-tienda',
+          name: 'restaurantesTienda',
+          component: () => import('@/pages/Restaurantes/RestauranteTienda'),
         },
         {
           path: '/tienda',
-          name: 'Tienda',
+          name: 'tienda',
           component: () => import('@/pages/Tienda/Tienda'),
         },
       ],

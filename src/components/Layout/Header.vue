@@ -67,7 +67,7 @@
   const { connect, keyStores, WalletConnection } = nearAPI;
 
   export default {
-    name: "Header",
+    name: "header",
     i18n: require("./i18n"),
     components: {
       MenuHeader,

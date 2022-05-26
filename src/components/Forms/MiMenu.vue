@@ -79,7 +79,7 @@
           v-for="(item, i) in dataSlideMenu"
           :key="i"
           color="transparent"
-          class="space fill-w"
+          class="space fill_w"
           style="display: flex"
         >
           <aside class="firstcont divrow">
@@ -129,7 +129,7 @@ import { CONFIG, IPFS } from "@/services/api";
 const { connect, keyStores, WalletConnection, Contract } = nearAPI;
 import Alerts from "@/components/Alerts/Alerts.vue";
 export default {
-  name: "MiMenu",
+  name: "miMenu",
   components: {
     MenuForms,
     Alerts,

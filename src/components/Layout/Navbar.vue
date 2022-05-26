@@ -33,7 +33,7 @@ const icon5 = require("@/assets/icons/delivery-outline.png");
 const icon5Active = require("@/assets/icons/delivery.png");
 
 export default {
-  name: "Navbar",
+  name: "navbar",
   i18n: require("./i18n"),
   data() {
     return {
@@ -83,6 +83,7 @@ export default {
   },
   mounted () {
     this.VerifyProfile(localStorage.walletid)
+    this.to(this.$router.currentRoute.name)
   },
   methods: {
     VerifyProfile(user) {

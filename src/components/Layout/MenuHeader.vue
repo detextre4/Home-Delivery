@@ -124,7 +124,7 @@
 <script>
 import { i18n } from "@/plugins/i18n";
 export default {
-  name: "HeaderMenu",
+  name: "headerMenu",
   i18n: require("./i18n"),
   // created() {
   //   this.element = document.getElementById("theme");

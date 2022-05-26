@@ -1,20 +1,21 @@
 <template>
-  <section id="restaurantes-tienda" class="parent">
+  <section id="restaurante-tienda" class="parent">
     <v-col class="contup relative divcol">
+      asd
     </v-col>
   </section>
 </template>
 
 <script>
 export default {
-  name: "RestaurantesTienda",
+  name: "restaurantesTienda",
   data() {
     return {
     }
   },
-  mounted() {
-    this.$parent.$parent.$parent.$refs.navbar.to('restaurantes')
-  },
+  // mounted() {
+  //   this.$parent.$parent.$parent.$refs.navbar.to('restaurantes')
+  // },
   methods: {
   },
 };

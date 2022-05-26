@@ -133,7 +133,7 @@ $breakpoints: (
     } @else {
       background-image: $bg !important;
     }
-    color: $text !important; span {@include tcolor($text);}
+    color: $text !important; span {@include color-text($text);}
   }
   // if single parameter
   @if ($bg) {
@@ -151,7 +151,7 @@ $breakpoints: (
 */
 
                     // text color
-@mixin tcolor($color) {
+@mixin color-text($color) {
   @if type-of($color) == color {
     color: $color !important;span {color: $color !important}
   } @else if list.length($color) > 1 {
@@ -175,7 +175,7 @@ $breakpoints: (
   }
 }
 /* example
-  @include tcolor((red, green));
+  @include color-text((red, green));
 */
 
                     // absolute position

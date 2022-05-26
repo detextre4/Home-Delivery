@@ -64,7 +64,7 @@ v-animate-onscroll.repeat="'animHero'"
 4- crear animaciones
 */
 export default {
-  name: "Layout",
+  name: "layout",
   // components: { Footer, Header, Navbar },
   components: { Header, Navbar, DrawerChats },
 }

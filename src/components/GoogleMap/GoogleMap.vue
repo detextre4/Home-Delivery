@@ -64,7 +64,7 @@
 <script>
 import GmapCustomMarker from 'vue2-gmap-custom-marker';
 export default {
-  name: "Categorias",
+  name: "googleMaps",
   components: {
     'gmap-custom-marker': GmapCustomMarker
   },

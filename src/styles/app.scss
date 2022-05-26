@@ -91,7 +91,7 @@ p:not(.notdefault-typography, .notdefault) {
   .v-list-item {border-radius: $border-btn;overflow: hidden}
   .v-list-item--active {
     background: $clr-btn !important;
-    div {color: $clr-text-btn !important}
+    :is(div, i) {color: $clr-text-btn !important}
   }
 }
 

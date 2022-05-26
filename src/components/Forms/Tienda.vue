@@ -109,7 +109,7 @@ import { CONFIG } from '@/services/api'
 const { connect, keyStores, WalletConnection, Contract } = nearAPI
 
 export default {
-  name: "MiTienda",
+  name: "miTienda",
   data() {
     return {
       url: null,

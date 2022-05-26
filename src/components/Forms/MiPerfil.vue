@@ -138,7 +138,7 @@ import MenuForms from './MenuForms.vue'
 import { PERFIL,PROFILE } from '@/services/api.js'
 import Alerts from '@/components/Alerts/Alerts.vue'
 export default {
-  name: "MiPerfil",
+  name: "miPerfil",
   components: {
     MenuForms,
     Alerts

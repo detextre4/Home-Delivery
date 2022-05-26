@@ -268,7 +268,7 @@
 .relative {
   position: relative;
 }
-.center-absolute {
+.centera {
   position: absolute;
   margin: auto;
   top: 0;
@@ -304,20 +304,49 @@
   width: 100%;
   height: 100%;
 }
-.fill-w {
+.fill_w {
   width: 100%;
 }
-.fill-h {
+.fill_h {
   height: 100%;
 }
-.auto-width {
-  max-width: auto !important;
-  min-width: auto !important;
+.maxsize {
+  max-width: max-content;
+  max-height: max-content;
+  min-width: max-content;
+  min-height: max-content;
+  width: max-content;
+  height: max-content;
 }
-.auto-height {
-  max-height: auto !important;
-  min-height: auto !important;
+.maxsize_w {
+  max-width: max-content;
+  min-width: max-content;
+  width: max-content;
 }
+.maxsize_h {
+  max-height: max-content;
+  min-height: max-content;
+  height: max-content;
+}
+.minsize {
+  max-width: min-content;
+  max-height: min-content;
+  min-width: min-content;
+  min-height: min-content;
+  width: min-content;
+  height: min-content;
+}
+.minsize_w {
+  max-width: min-content;
+  min-width: min-content;
+  width: min-content;
+}
+.minsize_h {
+  max-height: min-content;
+  min-height: min-content;
+  height: min-content;
+}
+
 @media (min-width: 881px) {
   .vermobile {
     display: none !important;
@@ -492,7 +521,7 @@
   .relativemobile {
     position: relative !important;
   }
-  .center-absolutemobile {
+  .centeramobile {
     position: absolute !important;
     margin: auto !important;
     top: 0 !important;
@@ -528,11 +557,47 @@
     width: 100% !important;
     height: 100% !important;
   }
-  .fill-wmobile {
+  .fill_wmobile {
     width: 100% !important;
   }
-  .fill-hmobile {
+  .fill_hmobile {
     height: 100% !important;
+  }
+  .maxsizemobile {
+    max-width: max-content !important;
+    max-height: max-content !important;
+    min-width: max-content !important;
+    min-height: max-content !important;
+    width: max-content !important;
+    height: max-content !important;
+  }
+  .maxsize_wmobile {
+    max-width: max-content !important;
+    min-width: max-content !important;
+    width: max-content !important;
+  }
+  .maxsize_hmobile {
+    max-height: max-content !important;
+    min-height: max-content !important;
+    height: max-content !important;
+  }
+  .minsizemobile {
+    max-width: min-content !important;
+    max-height: min-content !important;
+    min-width: min-content !important;
+    min-height: min-content !important;
+    width: min-content !important;
+    height: min-content !important;
+  }
+  .minsize_wmobile {
+    max-width: min-content !important;
+    min-width: min-content !important;
+    width: min-content !important;
+  }
+  .minsize_hmobile {
+    max-height: min-content !important;
+    min-height: min-content !important;
+    height: min-content !important;
   }
 }
 // animations

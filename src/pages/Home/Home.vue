@@ -108,7 +108,7 @@
 
 <script>
 export default {
-  name: "Home",
+  name: "inicio",
   data() {
     return {
       // carouselCategories: 0,
@@ -231,9 +231,9 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.$parent.$parent.$parent.$refs.navbar.to('inicio')
-  },
+  // mounted() {
+  //   this.$parent.$parent.$parent.$refs.navbar.to('inicio')
+  // },
   computed: {
     // columnsCategories() {
     //   if (this.$vuetify.breakpoint.xl) {

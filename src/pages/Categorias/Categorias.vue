@@ -9,7 +9,7 @@
 <script>
 import GoogleMap from '@/components/GoogleMap/GoogleMap.vue'
 export default {
-  name: "Categorias",
+  name: "categorias",
   components: {
     GoogleMap
   },
@@ -17,9 +17,9 @@ export default {
     return {
     }
   },
-  mounted() {
-    this.$parent.$parent.$parent.$refs.navbar.to('categorias')
-  },
+  // mounted() {
+  //   this.$parent.$parent.$parent.$refs.navbar.to('categorias')
+  // },
   methods: {
   },
 };
