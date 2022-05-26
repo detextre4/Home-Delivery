@@ -81,9 +81,9 @@
 
                       <img class="images" :src="sliderRestaurant[+index + i].img" alt="Restaurant image">
 
-                      <aside class="divcol">
+                      <aside class="divcol" style="padding-inline: 1em">
                         <a :href="sliderRestaurant[+index + i].to" class="h7-em bold">{{sliderRestaurant[+index + i].title }}</a>
-                        <p class="h8-em semibold">{{sliderRestaurant[+index + i].desc }}</p>
+                        <p class="h8-em semibold p">{{sliderRestaurant[+index + i].desc }}</p>
                       </aside>
                     </v-col>
                   </template>
