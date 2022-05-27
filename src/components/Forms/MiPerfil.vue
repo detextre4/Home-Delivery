@@ -205,6 +205,7 @@ export default {
     }
   },
   mounted(){
+    this.$parent.$parent.$parent.$refs.navbar.to({key: null});
     this.VerifyProfile({wallet:this.perfil.wallet})
 
     if (this.perfil.wallet && this.perfil.wallet !== 'null') {
