@@ -8,13 +8,13 @@ export default new Router({
     // path 1
     {
       path: '/register',
-      name: 'Register',
+      name: 'register',
       component: () => import('@/components/Register/Register'),
     },
     // path 2
     {
       path: '/',
-      name: 'Layout',
+      name: 'layout',
       component: () => import('@/components/Layout/Layout'),
       children: [
         {
@@ -59,7 +59,7 @@ export default new Router({
     // Last path (Errors)
     {
       path: '*',
-      name: 'Error',
+      name: 'error',
       component: () => import('@/components/Error/Error'),
     }
   ],

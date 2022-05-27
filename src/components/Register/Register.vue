@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  name: "Login",
+  name: "register",
   data() {
     return {
       Login: true,

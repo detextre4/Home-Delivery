@@ -8,6 +8,19 @@
 
 ///////////////////// global ///////////////////////
 
+                    /* scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+  &:hover {background: var(--clr-card-scroll)}
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: var(--clr-scroll);
+}
+
+
+
                     /* limit size */
 
 .parent {
@@ -33,13 +46,8 @@
 }
 
 
-                    /* icons-active */
 
-// .v-input__icon .primary--text {
-//   color: #AD0FD5 !important;
-// }
-
-/* defautl color */
+                    /* defautl color */
 :is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button):not(.not-clr, .not) {
   color: var(--clr);
 }
@@ -53,12 +61,23 @@ label:not(.not-clr, .not) {
 .v-btn--icon:not(.not-clr, .not) {
   @include color($clr-btn, $clr-text-btn);
 }
+::selection {
+  background-color: #ffac40;
+}
+
+          /* icons-active */
+
+// .v-input__icon .primary--text {
+//   color: #AD0FD5 !important;
+// }
+
+
 
                     /* typography */
 
-* {
-  text-transform: uppercase !important;
-}
+*:not(.not-typography, .not) {text-transform: uppercase !important}
+a:not(.not-typography, .not) {text-decoration: none}
+
 h1:not(.not-typography, .not) {
   font-weight: 600 !important;
   line-height: 1ch !important;
@@ -77,6 +96,8 @@ p:not(.not-typography, .not) {
   -webkit-text-stroke: 0.4px var(--clr);
   -moz-text-stroke: 0.4px var(--clr);
 }
+
+
 
                     /* other adjusts */
 
@@ -193,13 +214,10 @@ p:not(.not-typography, .not) {
   font-weight: 700 !important;
   letter-spacing: -0.16ch !important;
 }
-.activeClass {
-  transition: .2s $ease-return;
-  &:is(:hover, :focus) {
-    background-color: var(--clr-btn-active) !important;
-    span {
-      color: var(--clr-text-btn-active) !important;
-    }
+.activeClass:is(:hover, :focus) {
+  background-color: var(--clr-btn-active) !important;
+  span {
+    color: var(--clr-text-btn-active) !important;
   }
 }
 
