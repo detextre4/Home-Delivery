@@ -8622,11 +8622,6 @@
   optionalDependencies:
     "lamejs" "1.2.0"
 
-"vue-animate-onscroll@^1.0.8":
-  "integrity" "sha512-uyb/lTudNmWaxT8W0UQIk75EyzX7wYM64hm7gsMCVhGICQkb5j/ynIZ/ZnSApsqvruUg4t3UxT1MUhN4sDU11Q=="
-  "resolved" "https://registry.npmjs.org/vue-animate-onscroll/-/vue-animate-onscroll-1.0.8.tgz"
-  "version" "1.0.8"
-
 "vue-apexcharts@^1.6.1":
   "integrity" "sha512-9HS3scJwWgKjmkcWIf+ndNDR0WytUJD8Ju0V2ZYcjYtlTLwJAf2SKUlBZaQTkDmwje/zMgulvZRi+MXmi+WkKw=="
   "resolved" "https://registry.npmjs.org/vue-apexcharts/-/vue-apexcharts-1.6.2.tgz"
