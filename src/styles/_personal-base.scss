@@ -600,14 +600,11 @@
     height: min-content !important;
   }
 }
+
 // animations
 @keyframes aparecer {
-  0% {
-    opacity: 50%;
-  }
-  100% {
-    opacity: 100%;
-  }
+  0% {opacity: 50%}
+  100% {opacity: 100%}
 }
 @keyframes hover {
   0% {
@@ -620,103 +617,59 @@
   }
 }
 @keyframes linea {
-  0% {
-    transform: scaleX(0);
-  }
-  100% {
-    transform: scaleX(1);
-  }
+  0% {transform: scaleX(0)}
+  100% {transform: scaleX(1)}
 }
 @keyframes movement {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10%);
-  }
-  100% {
-    transform: translateY(10%);
-  }
+  0% {transform: translateY(0)}
+  50% {transform: translateY(-10%)}
+  100% {transform: translateY(10%)}
 }
 @keyframes encoger {
   0% {
     transform-origin: center;
     transform: scaleX(1.2);
   }
-  100% {
-    transform: scaleX(1);
-  }
+  100% {transform: scaleX(1)}
 }
 @keyframes glitch{
-  2%,64%{
-    transform: translate(2px,0) skew(0deg);
-  }
-  4%,60%{
-    transform: translate(-2px,0) skew(0deg);
-  }
-  62%{
-    transform: translate(0,0) skew(5deg); 
-  }
+  2%,64%{transform: translate(2px,0) skew(0deg)}
+  4%,60%{transform: translate(-2px,0) skew(0deg)}
+  62%{transform: translate(0,0) skew(5deg)}
 }
 @keyframes glitchTop{
-  2%,64%{
-    transform: translate(2px,-2px);
-  }
-  4%,60%{
-    transform: translate(-2px,2px);
-  }
-  62%{
-    transform: translate(13px,-1px) skew(-13deg); 
-  }
+  2%,64%{transform: translate(2px,-2px)}
+  4%,60%{transform: translate(-2px,2px)}
+  62%{transform: translate(13px,-1px) skew(-13deg)}
 }
 @keyframes glitchBotom{
-  2%,64%{
-    transform: translate(-2px,0);
-  }
-  4%,60%{
-    transform: translate(-2px,0);
-  }
-  62%{
-    transform: translate(-22px,5px) skew(21deg); 
-  }
+  2%,64%{transform: translate(-2px,0)}
+  4%,60%{transform: translate(-2px,0)}
+  62%{transform: translate(-22px,5px) skew(21deg)}
 }
 @keyframes moveup {
-  0% {
-    transform: translateY(95%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% {transform: translateY(95%)}
+  100% {transform: translateY(0)}
 }
 @keyframes movedown {
-  0% {
-    transform: translateY(-95%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% {transform: translateY(-95%)}
+  100% {transform: translateY(0)}
 }
 @keyframes moveleft {
-  0% {
-    transform: translateX(-95%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% {transform: translateX(-95%)}
+  100% {transform: translateX(0)}
 }
 @keyframes moveright {
-  0% {
-    transform: translateX(95%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% {transform: translateX(95%)}
+  100% {transform: translateX(0)}
 }
+
+// custome clasess //
 // hover
-.hover-line {
-  position: relative;
+.hover_line {
+  position: relative !important;
   &::before {
-    content: "";
+    content: "" !important;
     position: absolute !important;
     top: 0 !important;
     right: 0 !important;
@@ -740,8 +693,13 @@
     background-color: #00000098 !important;
   }
 }
-.hover-split {
-  position: relative;
+/*example
+  <span class="hover_line">
+*/
+
+.hover_split {
+  position: relative !important;
+  line-height: 1 !important;
   color: transparent !important;
   $split-position:  49%;
   $split-thickness: 4px;
@@ -770,13 +728,13 @@
     top: 0 !important;
     height: $split-position !important;
     transition: all .8s cubic-bezier(.16,1.08,.38,.98) !important;
-    span { display: block !important; }
+    &>* { display: block !important; }
   }
   // === Bottom mask specific =====
   .mask + .mask {
     top: $split-position - 0.1 !important;
     height: 100 - $split-position + 0.1 !important;
-    span { transform: translateY(-$split-position) !important; }
+    &>* { transform: translateY(-$split-position) !important; }
   }
   // === hover effect =====
   &:is(:hover, :active) {
@@ -785,3 +743,38 @@
     &::before { transform: scale(1) !important; }
   }
 }
+/*example
+  <span class="hover_split maxsize_w">example
+    <span class="mask"><span>example</span></span>
+    <span class="mask"><span>example</span></span>
+  </span>
+*/
+
+
+// animation
+.anim_slide {
+  .mask {
+    --distance: 1.2em;
+    width: calc(var(--distance) * 3) !important;
+    height: var(--distance) !important;
+    line-height: var(--distance) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    &>* {
+      position: absolute !important;
+      top: 0;
+      @include animation(5s infinite) {
+        0% {top: 0}
+        25% {top: calc(var(--distance) * -1)}
+        50% {top: calc(var(--distance) * -2)}
+        75% {top: calc(var(--distance) * -3)}
+      }
+    }
+  }
+}
+/*example
+  <span class="mask">
+    <span>word1<br>word2<br>word3<br>word4</span>
+  </span>
+*/
+
