@@ -206,8 +206,8 @@ $breakpoints: (
   @include stroke(1px #191919);
 */
 
-                    // prefix navigator properties
-@mixin nav($property, $value) {
+                    // prefix browser properties
+@mixin browser($property, $value) {
   #{$property}: $value;
   -webkit-#{$property}: $value;
   -ms-#{$property}: $value;
