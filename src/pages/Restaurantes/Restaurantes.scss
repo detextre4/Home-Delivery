@@ -11,7 +11,7 @@
       @include absolute(0, 250px);
       transform: rotate(-90deg);
       width: 5%;
-      @include animation(20s, $ease-return, infinite, alternate) {
+      @include animation(20s $ease-return infinite alternate) {
         from {transform: rotate(-90deg);}
         to {transform: rotate(-87deg);}
       }

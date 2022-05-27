@@ -80,6 +80,8 @@ $breakpoints: (
 }
 */
 
+
+
                     // iteration childs
 @mixin child($from, $to) {
   @for $i from $from through $to {
@@ -94,33 +96,24 @@ $breakpoints: (
 }
 */
 
+
+
                     // unique animations
-@mixin animation(
-  $duration,
-  $timing: fixed,
-  $iteration: fixed,
-  $direction: fixed,
-  $delay: fixed,
-  $state: fixed
-) {
+@mixin animation($values) {
   $name: #{unique-id()};
+  animation: $name $values;
   @keyframes #{$name} {
     @content;
   }
-  animation-name: $name;
-  animation-timing-function: $timing;
-  animation-duration: $duration;
-  animation-iteration-count: $iteration;
-  animation-direction: $direction;
-  animation-delay: $delay;
-  animation-play-state: $state;
 }
 /* example
-@include animation(.5s, $ease-reutrn, infinite, alternate, 0ms, running) {
+@include animation(.5s $ease-reutrn infinite alternate 0ms running) {
   from { background-color: yellow }
   to { background-color: red }
 }
 */
+
+
 
                     // color scheme
 @mixin color($bg, $text:fixed) {
@@ -133,7 +126,7 @@ $breakpoints: (
     } @else {
       background-image: $bg !important;
     }
-    color: $text !important; :is(span, i) {@include color-text($text);}
+    color: $text !important; :is(span, i) {@include colorText($text);}
   }
   // if single parameter
   @if ($bg) {
@@ -150,8 +143,10 @@ $breakpoints: (
   @include color((red 10%, purple 50%), $clr-text-btn);
 */
 
+
+
                     // text color
-@mixin color-text($color) {
+@mixin colorText($color) {
   @if type-of($color) == color {
     color: $color !important; :is(span, i) {color: $color !important}
   } @else if list.length($color) > 1 {
@@ -178,6 +173,8 @@ $breakpoints: (
   @include color-text((red, green));
 */
 
+
+
                     // absolute position
 @mixin absolute($value1, $value2:fixed, $value3:fixed, $value4:fixed) {
   position: absolute;
@@ -199,6 +196,8 @@ $breakpoints: (
   bottom: 0;
 }
 
+
+
                     // text stroke
 @mixin stroke($value) {
   @include nav(text-stroke, $value)
@@ -219,3 +218,4 @@ $breakpoints: (
 */
 
                     /* other adjusts */
+
