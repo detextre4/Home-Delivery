@@ -1,6 +1,7 @@
 <template>
   <section id="categorias" class="parent">
     <v-col class="contup relative divcol">
+      <v-card class="">hola</v-card>
       <GoogleMap></GoogleMap>
     </v-col>
   </section>

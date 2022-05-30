@@ -7,8 +7,8 @@
     position: fixed;
     bottom: 2em;
     right: 2em;
-    @include mq(max, x-small) {right: calc(2em - 24px);}
-    @include mq(max, small) {
+    @include media(max, x-small) {right: calc(2em - 24px);}
+    @include media(max, small) {
       --size: 3em;
       bottom: auto !important;
       top: 6.5em;

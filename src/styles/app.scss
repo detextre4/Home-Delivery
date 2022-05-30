@@ -107,7 +107,7 @@ p:not(.not-typography, .not) {
   --padding-buttons: clamp(.5em, 1vw, 1em);
   --height-buttons: clamp(3.5em, 3.8vw, 3.8em);
   gap: clamp(.5em, 1vw, 1em);
-  // @include mq(max, 670px) {justify-content: space-between;.select:last-child {margin-inline: auto}};
+  // @include media(max, 670px) {justify-content: space-between;.select:last-child {margin-inline: auto}};
   .searchBtn {
     min-height: var(--height-buttons) !important;
     padding-inline: var(--padding-buttons);
@@ -131,7 +131,7 @@ p:not(.not-typography, .not) {
     --size: 200px;
     max-width: var(--size);
     flex: 1 1 var(--size);
-    @include mq(max, 480px) {max-width: none;}
+    @include media(max, 480px) {max-width: none;}
     .v-chip {
       margin: 0 .2em 0 0;
       span {color: $clr-btn}

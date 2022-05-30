@@ -41,9 +41,7 @@ default settings
   scroll-behavior: smooth;
   background-color: var(--bg) !important;
 }
-:is(#app, #layout, #error, #login) {
-  font-family: 'Open Sans', sans-serif;
-}
+:is(#app, #layout, #error, #login) {font-family: var(--font1)}
 /*
 delete-config-default-vuetify
 */
@@ -51,7 +49,6 @@ delete-config-default-vuetify
   background: transparent !important;
 } */
 /* list */
-:is(.v-list, .v-sheet, .theme--light):not(.not-vuetify, .not) {
-  box-shadow: none !important;
-}
+:is(.v-list, .v-sheet, .theme--light):not(.not-vuetify, .not) {box-shadow: none !important}
+.v-card[class*="div"], .v-card[class*="space"] {display: flex !important}
 </style>

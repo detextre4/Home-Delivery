@@ -3,7 +3,7 @@
 // restaurantes
 #restaurantes {
   --padding-g:  calc(5% + 1em) 5%;
-  @include mq(max, small) {--padding-g: 5% 5%}
+  @include media(max, small) {--padding-g: 5% 5%}
   .contup {
     padding-top: 2em;
     padding-inline: var(--padding-g);
@@ -15,7 +15,7 @@
         from {transform: rotate(-90deg);}
         to {transform: rotate(-87deg);}
       }
-      @include mq(max, small) {
+      @include media(max, small) {
         position: static !important;
         animation: none !important;
         transform: none !important;
@@ -30,10 +30,10 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(clamp(15em, 20vw, var(--max-size)), 1fr));
       grid-gap: 1em;
-      @include mq(max, medium) {grid-gap: 2em}
+      @include media(max, medium) {grid-gap: 2em}
       .card {
         max-width: var(--max-size);
-        @include mq(max, 600px) {max-width: 100% !important};
+        @include media(max, 600px) {max-width: 100% !important};
         height: max-content;
         gap: clamp(0.5em, 1vw, 1em);
         border-radius: $border-card;
@@ -73,12 +73,12 @@
 
 #restaurante-tienda {
   --height: 300px;
-  @include mq(min, small) {padding-top: 2em};
+  @include media(min, small) {padding-top: 2em};
   padding-inline: clamp(0, 2.75vw, 2.75em) 5%;
-  @include mq(max, small) {padding-inline: clamp(0, 2.75vw, 2.75em);}
+  @include media(max, small) {padding-inline: clamp(0, 2.75vw, 2.75em);}
   .contbanner {
     display: grid;
-    @include mq(min, small) {grid-template-columns: 1fr 30%}
+    @include media(min, small) {grid-template-columns: 1fr 30%}
     // display: flex;
     // flex-wrap: wrap;
     gap: clamp(1em, 2vw, 2em);
@@ -112,10 +112,10 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(clamp(15em, 20vw, var(--max-size)), 1fr));
       grid-gap: 1em;
-      @include mq(max, medium) {grid-gap: 2em}
+      @include media(max, medium) {grid-gap: 2em}
       .card {
         max-width: var(--max-size);
-        @include mq(max, 600px) {max-width: 100% !important};
+        @include media(max, 600px) {max-width: 100% !important};
         height: max-content;
         gap: clamp(0.5em, 1vw, 1em);
         border-radius: $border-card;
