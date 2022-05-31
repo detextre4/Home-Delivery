@@ -43,7 +43,7 @@ export default new Router({
           component: () => import('@/pages/Restaurantes/Restaurantes'),
         },
         {
-          path: '/restaurante-tienda',
+          path: '/restaurante-tienda:id?',
           name: 'restauranteTienda',
           component: () => import('@/pages/Restaurantes/RestauranteTienda'),
         },
@@ -51,6 +51,11 @@ export default new Router({
           path: '/tienda',
           name: 'tienda',
           component: () => import('@/pages/Tienda/Tienda'),
+        },
+        {
+          path: '/delivery',
+          name: 'delivery',
+          component: () => import('@/pages/Delivery/Delivery'),
         },
       ],
     },
