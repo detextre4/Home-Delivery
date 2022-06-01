@@ -94,7 +94,6 @@ export default {
     }
   },
   mounted() {
-    this.$parent.$parent.$parent.$refs.navbar.to('tienda')
     this.VerifyStore()
   },
   methods: {

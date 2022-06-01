@@ -43,7 +43,7 @@
               this.$router.addRoute('layout', { path: '/mi-tienda', name: 'miTienda', component: () => import('@/components/forms/miTienda/MiTienda') })
             }
             if (response.data.delivery) {
-              this.$router.addRoute('layout', { path: '/delivery', name: 'delivery', component: () => import('@/pages/delivery/Delivery'), })
+              this.$router.addRoute('pedido', { path: '/pedido', name: 'pedido', component: () => import('@/pages/pedido/Pedido'), })
             }
             // Set profile.id as localStorage item
             localStorage.setItem('profileid',response.data.id)

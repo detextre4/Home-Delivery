@@ -1,5 +1,5 @@
 <template>
-  <section id="categorias" class="parent">
+  <section id="pedido" class="parent">
     <v-col class="contup relative divcol">
       <v-card class="">hola</v-card>
       <GoogleMap></GoogleMap>
@@ -10,7 +10,7 @@
 <script>
 import GoogleMap from '@/components/googleMap/GoogleMap.vue'
 export default {
-  name: "categorias",
+  name: "pedido",
   components: {
     GoogleMap
   },
@@ -23,4 +23,4 @@ export default {
 };
 </script>
 
-<style src="./Categorias.scss" lang="scss" />
+<style src="./Pedido.scss" lang="scss" />

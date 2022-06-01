@@ -38,11 +38,6 @@ export default new Router({
           component: () => import('@/pages/home/Home'),
         },
         {
-          path: '/categorias',
-          name: 'categorias',
-          component: () => import('@/pages/categorias/Categorias'),
-        },
-        {
           path: '/restaurantes',
           name: 'restaurantes',
           component: () => import('@/pages/restaurantes/Restaurantes'),
@@ -58,9 +53,9 @@ export default new Router({
         //   component: () => import('@/pages/tienda/Tienda'),
         // },
         {
-          path: '/delivery',
-          name: 'delivery',
-          component: () => import('@/pages/delivery/Delivery'),
+          path: '/pedido',
+          name: 'pedido',
+          component: () => import('@/pages/pedido/Pedido'),
         },
       ],
     },
