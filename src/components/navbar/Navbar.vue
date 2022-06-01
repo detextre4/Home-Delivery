@@ -104,7 +104,6 @@ export default {
         // if external or internal navbar call
         if (item == "inicio") {
           const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'inicio')]
-          console.log(index)
           index.active = true;
           index.icon = icon1Active;
             // push select
