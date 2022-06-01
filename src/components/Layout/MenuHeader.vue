@@ -48,10 +48,10 @@
 
             <v-expansion-panel-content>
               <v-list v-for="(item2, i) in item.selection" :key="i">
-                <v-list-item :href="item2.to" @click="ActiveClass(item2)"
-                  :class="{ activeClass: item2.active }">
+                <v-list-item :href="item2.to" @click="CambiarLanguaje(item2.key); optionMenu = false"
+                  class="activeClass">
                   <v-list-item-title class="center">
-                    <span class="notdefault-clr">{{ item2.item }}</span>
+                    <span class="not-clr">{{ item2.item }}</span>
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
@@ -66,7 +66,7 @@
                   :value="messages"
                   color="#3E2185"
                   inline
-                  class="notdefault-clr"
+                  class="not-clr"
                   style="margin: 0"
                 >
                   {{ item.name }}
@@ -99,9 +99,9 @@
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <v-list v-for="(item2, i) in item.selection" :key="i">
-                <v-list-item :href="item2.to" :class="{ activeClass: item2.active }">
-                  <v-list-item-title class="center">
-                    <span class="notdefault-clr">{{ item2.item }}</span>
+                <v-list-item :href="item2.to" class="activeClass">
+                  <v-list-item-title class="center" @click.stop="logout = false">
+                    <span class="not-clr">{{ item2.item }}</span>
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
@@ -109,9 +109,9 @@
           </template>
 
           <v-list v-if="item.name" class="intoExpansion">
-            <v-list-item @click="SelectLogoutItem(item.key)" :href="item.to">
+            <v-list-item @click.stop="logout = false" :href="item.to">
               <v-list-item-title>
-                <span class="notdefault-clr">{{ item.name }}</span>
+                <span class="not-clr">{{ item.name }}</span>
               </v-list-item-title>
             </v-list-item>
           </v-list>
@@ -124,7 +124,7 @@
 <script>
 import { i18n } from "@/plugins/i18n";
 export default {
-  name: "HeaderMenu",
+  name: "headerMenu",
   i18n: require("./i18n"),
   // created() {
   //   this.element = document.getElementById("theme");
@@ -143,16 +143,12 @@ export default {
       messages: "1",
       search: "",
       dataMenuOptions: [
-        // {
-        //   key: "chats",
-        //   name: "Chats temporales"
-        // },
         {
           title: "Idioma",
           to: "#",
           selection: [
-            {item: "Ingles", to: "#", active: false, key: "US"},
-            {item: "Español", to: "#", active: false, key: "ES"}
+            {item: "Ingles", to: "#", key: "US"},
+            {item: "Español", to: "#", key: "ES"}
           ]
         }
       ],
@@ -180,30 +176,6 @@ export default {
     };
   },
   methods: {
-    ActiveClass(item) {
-      // const dataOptions1 = this.dataMenuOptions[0].selection;
-      // if (item == dataOptions1[0]) {
-      //   dataOptions1[1].active = false;
-      //   item.active = true;
-      //   this.CambiarTheme(item.key);
-      // }
-      // if (item == dataOptions1[1]) {
-      //   dataOptions1[0].active = false;
-      //   item.active = true;
-      //   this.CambiarTheme(item.key);
-      // }
-      const dataOptions2 = this.dataMenuOptions[1].selection;
-      if (item == dataOptions2[0]) {
-        dataOptions2[1].active = false;
-        item.active = true;
-        this.CambiarLanguaje(item.key);
-      }
-      if (item == dataOptions2[1]) {
-        dataOptions2[0].active = false;
-        item.active = true;
-        this.CambiarLanguaje(item.key);
-      }
-    },
     // CambiarTheme(theme) {
     //   if (theme == 'light') {
     //     this.$store.dispatch("CambiarTheme", { theme, element: this.element });
@@ -221,20 +193,6 @@ export default {
         i18n.locale = lang;
       }
     },
-    SelectLogoutItem(item) {
-      if (item == "perfil") {
-        this.ClearNavbar();
-        this.logout = false;
-      }
-      if (item == "tienda") {
-        this.ClearNavbar();
-        this.logout = false;
-      }
-      if (item == "logout") {
-        this.Logout();
-        this.logout = false;
-      }
-    },
     Logout() {
       this.$parent.$parent.loginNear('logout');
       if (this.$route.name !== 'Home') {
@@ -242,16 +200,6 @@ export default {
         this.$router.push({ name: 'Home' });
       }
     },
-    ClearNavbar() {
-      this.$parent.$parent.$parent.$parent.$refs.navbar.clearAll();
-    },
-    // SelectOptionItem(item) {
-    //   if (item == "chats") {
-    //     this.optionMenu = false;
-    //     const key = 'open'
-    //     this.$store.dispatch("DrawerChats", {key})
-    //   }
-    // },
   },
 };
 </script>

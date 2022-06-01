@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: "MenuPerfil",
+  name: "menuPerfil",
   data() {
     return {
       closeMenu: true,

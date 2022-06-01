@@ -6,7 +6,11 @@
   .v-input__control {
     max-width: 12em;
     height: 12em;
-    :is(.v-input__slot, .v-text-field__slot) {height: 100% !important;cursor: default}
+    :is(.v-input__slot, .v-text-field__slot) {
+      padding: 0 !important;
+      height: 100% !important;
+      cursor: default;
+    }
     .v-text-field__slot {cursor: pointer !important}
     img {width: 100%}
   }

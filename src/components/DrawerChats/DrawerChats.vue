@@ -47,7 +47,7 @@ import ChatWindow from 'vue-advanced-chat'
 import { MESSAGES, CHATS } from '@/services/api.js'
 import 'vue-advanced-chat/dist/vue-advanced-chat.css'
 export default {
-  name: "Categories",
+  name: "drawerChats",
   components: {
     ChatWindow
   },

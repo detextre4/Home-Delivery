@@ -1,6 +1,6 @@
 <template>
   <v-app id="layout" :style="`background-image: url('${$store.state.baseURL}themes/${$store.state.theme}/bg.png')`">
-    <Navbar ref="navbar" style="z-index: 10" />
+    <Navbar ref="navbar" style="z-index: 11" />
     <Header ref="header" style="z-index: 10" />
     <DrawerChats style="z-index: 20"></DrawerChats>
     <v-main>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import DrawerChats from "./DrawerChats/DrawerChats.vue"
+import DrawerChats from "@/components/DrawerChats/DrawerChats.vue"
 import Navbar from "@/components/Layout/Navbar";
 import Header from "@/components/Layout/Header";
 // import Footer from "@/components/Layout/Footer";
@@ -43,28 +43,9 @@ mounted() {
     duration: 0.3
   });
 }
-
---uso delvue-animate-onscroll:
-
-1-
-
-npm install vue-animate-onscroll
-
-2-
-
-import VueAnimateOnScroll from 'vue-animate-onscroll'
-
-Vue.use(VueAnimateOnScroll)
-
-3-
-
-class="animStartHero"
-v-animate-onscroll.repeat="'animHero'"
-
-4- crear animaciones
 */
 export default {
-  name: "Layout",
+  name: "layout",
   // components: { Footer, Header, Navbar },
   components: { Header, Navbar, DrawerChats },
 }

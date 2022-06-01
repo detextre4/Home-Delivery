@@ -1,11 +1,25 @@
 @import "~vuetify/src/styles/styles.sass";
 @import "variables";
 @import "base";
+@import "mixins";
 @import "personal-base";
 @import "responsive";
 
 
 ///////////////////// global ///////////////////////
+
+                    /* scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+  &:hover {background: var(--clr-card-scroll)}
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: var(--clr-scroll);
+}
+
+
 
                     /* limit size */
 
@@ -32,49 +46,105 @@
 }
 
 
-                    /* icons-active */
+
+                    /* defautl color */
+:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button):not(.not-clr, .not) {
+  color: var(--clr);
+}
+:is(.v-icon, a, input):not(.not-clr, .not) {
+  color: var(--clr) !important;
+}
+label:not(.not-clr, .not) {
+  color: var(--clr-label);
+  font-weight: 700;
+}
+.v-btn--icon:not(.not-clr, .not) {
+  @include color($clr-btn, $clr-text-btn);
+}
+::selection {
+  background-color: #ffac40;
+}
+
+          /* icons-active */
 
 // .v-input__icon .primary--text {
 //   color: #AD0FD5 !important;
 // }
 
-/* defautl color */
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button):not(.notdefault-clr, .notdefault) {
-  color: var(--clr);
-}
-:is(.v-icon, a, input):not(.notdefault-clr, .notdefault) {
-  color: var(--clr) !important;
-}
-label:not(.notdefault-clr, .notdefault) {
-  color: var(--clr-label);
-  font-weight: 700;
-}
+
 
                     /* typography */
 
-* {
-  text-transform: uppercase !important;
-}
-h1:not(.notdefault-typography, .notdefault) {
+*:not(.not-typography, .not) {text-transform: uppercase !important}
+a:not(.not-typography, .not) {text-decoration: none}
+
+h1:not(.not-typography, .not) {
   font-weight: 600 !important;
   line-height: 1ch !important;
   margin-bottom: 16px !important;
 }
-h2:not(.notdefault-typography, .notdefault) {
+h2:not(.not-typography, .not) {
   font-weight: 500 !important;
   line-height: 1 !important;
   margin-bottom: 16px !important;
 }
-:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button, label, .v-btn):not(.notdefault-typography, .notdefault) {
+:is(span, p, h1, h2, h3, h4, h5, h6, .v-list-item__title, .v-btn span, button, label, .v-btn):not(.not-typography, .not) {
   letter-spacing: -0.1ch;
 }
-p:not(.notdefault-typography, .notdefault) {
+p:not(.not-typography, .not) {
   font-weight: 500;
   -webkit-text-stroke: 0.4px var(--clr);
   -moz-text-stroke: 0.4px var(--clr);
 }
 
+
+
                     /* other adjusts */
+
+// filter
+.contFilters {
+  --font-size: 1em;
+  --padding-buttons: clamp(.5em, 1vw, 1em);
+  --height-buttons: clamp(3.5em, 3.8vw, 3.8em);
+  gap: clamp(.5em, 1vw, 1em);
+  // @include media(max, 670px) {justify-content: space-between;.select:last-child {margin-inline: auto}};
+  .searchBtn {
+    min-height: var(--height-buttons) !important;
+    padding-inline: var(--padding-buttons);
+    border-radius: 20px !important;
+    background-color: rgba($clr-btn, 0.9) !important;
+    span {color: #FFFFFF !important; font-size: var(--font-size);}
+  }
+  .search {
+    input {font-size: var(--font-size);}
+  }
+  .filtro {
+    max-width: clamp(3.2em, 4vw, 4.4375em) !important;
+    min-height: var(--height-buttons) !important;
+    padding-inline: var(--padding-buttons) !important;
+    border-radius: 20px !important;
+    background-color: rgba($clr-btn, 0.9) !important;
+  }
+  .select {
+    .v-input__slot {padding-inline: 1.5em !important;.v-label{color: $clr-btn}}
+    .v-select__selections {font-size: var(--font-size) !important;letter-spacing: -0.1ch !important;}
+    --size: 200px;
+    max-width: var(--size);
+    flex: 1 1 var(--size);
+    @include media(max, 480px) {max-width: none;}
+    .v-chip {
+      margin: 0 .2em 0 0;
+      span {color: $clr-btn}
+    }
+    .select_label {
+      @include absolute(-10px, -25%);
+      font-size: .9em;
+      color: $clr-btn;
+      z-index: 2;
+    }
+  }
+}
+
 
 // menu select
 .v-select-list {
@@ -90,7 +160,7 @@ p:not(.notdefault-typography, .notdefault) {
   .v-list-item {border-radius: $border-btn;overflow: hidden}
   .v-list-item--active {
     background: $clr-btn !important;
-    div {color: $clr-text-btn !important}
+    :is(div, i) {color: $clr-text-btn !important}
   }
 }
 
@@ -144,7 +214,7 @@ p:not(.notdefault-typography, .notdefault) {
   font-weight: 700 !important;
   letter-spacing: -0.16ch !important;
 }
-.activeClass {
+.activeClass:is(:hover, :focus) {
   background-color: var(--clr-btn-active) !important;
   span {
     color: var(--clr-text-btn-active) !important;

@@ -73,12 +73,13 @@
           >
             Foto de perfil
           </label>
-          <v-file-input
+            <v-file-input
               v-model="image"
               id="foto"
               class="input-file"
               prepend-icon=""
               solo
+              :clearable="false"
               @change="ImagePreview()"
             >
               <template v-slot:selection>
@@ -137,7 +138,7 @@ import MenuForms from './MenuForms.vue'
 import { PERFIL,PROFILE } from '@/services/api.js'
 import Alerts from '@/components/Alerts/Alerts.vue'
 export default {
-  name: "MiPerfil",
+  name: "miPerfil",
   components: {
     MenuForms,
     Alerts
@@ -204,13 +205,13 @@ export default {
     }
   },
   mounted(){
+    this.$parent.$parent.$parent.$refs.navbar.to({key: null});
     this.VerifyProfile({wallet:this.perfil.wallet})
-    this.$parent.$parent.$parent.$refs.navbar.clearAll()
 
     if (this.perfil.wallet && this.perfil.wallet !== 'null') {
       this.VerifyProfile({wallet:this.perfil.wallet})
     } else {
-      this.$router.push({ name: 'Home' });
+      this.$router.push({ path: '/' })
     }
   },
   methods: {
@@ -230,13 +231,13 @@ export default {
       if (item.id){
         this.axios.put(PROFILE+item.id+'/',item).then((response) => {
           this.perfil=response.data
-          this.$router.push({ name: 'Home' })
+          this.$router.push({ path: '/' })
           this.$router.go()
         })
       } else {
         this.axios.post(PROFILE,item).then((response) => {
           this.perfil=response.data
-          this.$router.push({ name: 'Home' })
+          this.$router.push({ path: '/' })
           this.$router.go()
         })
       }

@@ -9,7 +9,7 @@
   const { connect, keyStores, WalletConnection } = nearAPI;
 
   export default {
-    name: 'App',
+    name: 'app',
     data(){
       return {
         user: null,

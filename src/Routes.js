@@ -8,39 +8,54 @@ export default new Router({
     // path 1
     {
       path: '/register',
-      name: 'Register',
+      name: 'register',
       component: () => import('@/components/Register/Register'),
     },
     // path 2
     {
       path: '/',
-      name: 'Layout',
+      name: 'layout',
       component: () => import('@/components/Layout/Layout'),
       children: [
         {
           path: '/',
-          name: 'Home',
+          name: 'inicio',
           component: () => import('@/pages/Home/Home'),
         },
         {
           path: '/mi-perfil',
-          name: 'MiPerfil',
+          name: 'miPerfil',
           component: () => import('@/components/Forms/MiPerfil'),
         },
         {
           path: '/mi-menu',
-          name: 'Menu',
+          name: 'menu',
           component: () => import('@/components/Forms/MiMenu'),
         },
         {
           path: '/categorias',
-          name: 'Categorias',
+          name: 'categorias',
           component: () => import('@/pages/Categorias/Categorias'),
         },
         {
+          path: '/restaurantes',
+          name: 'restaurantes',
+          component: () => import('@/pages/Restaurantes/Restaurantes'),
+        },
+        {
+          path: '/restaurante-tienda:id?',
+          name: 'restauranteTienda',
+          component: () => import('@/pages/Restaurantes/RestauranteTienda'),
+        },
+        {
           path: '/tienda',
-          name: 'Tienda',
+          name: 'tienda',
           component: () => import('@/pages/Tienda/Tienda'),
+        },
+        {
+          path: '/delivery',
+          name: 'delivery',
+          component: () => import('@/pages/Delivery/Delivery'),
         },
       ],
     },
@@ -49,7 +64,7 @@ export default new Router({
     // Last path (Errors)
     {
       path: '*',
-      name: 'Error',
+      name: 'error',
       component: () => import('@/components/Error/Error'),
     }
   ],

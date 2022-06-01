@@ -109,7 +109,7 @@ import { CONFIG } from '@/services/api'
 const { connect, keyStores, WalletConnection, Contract } = nearAPI
 
 export default {
-  name: "MiTienda",
+  name: "miTienda",
   data() {
     return {
       url: null,
@@ -123,7 +123,7 @@ export default {
     }
   },
   mounted(){
-    this.$parent.$parent.$parent.$refs.navbar.clearAll()
+    this.$parent.$parent.$parent.$refs.navbar.to({key: null});
     this.SaveData()
   },
   methods: {
