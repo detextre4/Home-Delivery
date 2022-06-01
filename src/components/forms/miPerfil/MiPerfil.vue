@@ -134,9 +134,9 @@
 </template>
 
 <script>
-import MenuForms from './MenuForms.vue'
+import Alerts from '@/components/alerts/Alerts.vue'
+import MenuForms from '../components/MenuForms.vue'
 import { PERFIL,PROFILE } from '@/services/api.js'
-import Alerts from '@/components/Alerts/Alerts.vue'
 export default {
   name: "miPerfil",
   components: {
@@ -270,4 +270,4 @@ export default {
 };
 </script>
 
-<style src="./Forms.scss" lang="scss" />
+<style src="./MiPerfil.scss" lang="scss" />

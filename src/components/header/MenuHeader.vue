@@ -48,7 +48,7 @@
 
             <v-expansion-panel-content>
               <v-list v-for="(item2, i) in item.selection" :key="i">
-                <v-list-item :href="item2.to" @click="CambiarLanguaje(item2.key); optionMenu = false"
+                <v-list-item @click="CambiarLanguaje(item2.key); optionMenu = false"
                   class="activeClass">
                   <v-list-item-title class="center">
                     <span class="not-clr">{{ item2.item }}</span>
@@ -99,8 +99,8 @@
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <v-list v-for="(item2, i) in item.selection" :key="i">
-                <v-list-item :href="item2.to" class="activeClass">
-                  <v-list-item-title class="center" @click.stop="logout = false">
+                <v-list-item class="activeClass" @click.stop="logout = false; $router.push(item2.to)" href="#">
+                  <v-list-item-title class="center">
                     <span class="not-clr">{{ item2.item }}</span>
                   </v-list-item-title>
                 </v-list-item>
@@ -109,7 +109,7 @@
           </template>
 
           <v-list v-if="item.name" class="intoExpansion">
-            <v-list-item @click.stop="logout = false" :href="item.to">
+            <v-list-item @click.stop="logout = false">
               <v-list-item-title>
                 <span class="not-clr">{{ item.name }}</span>
               </v-list-item-title>
@@ -145,10 +145,9 @@ export default {
       dataMenuOptions: [
         {
           title: "Idioma",
-          to: "#",
           selection: [
-            {item: "Ingles", to: "#", key: "US"},
-            {item: "Español", to: "#", key: "ES"}
+            {item: "Ingles", key: "US"},
+            {item: "Español", key: "ES"}
           ]
         }
       ],
@@ -158,12 +157,12 @@ export default {
           selection: [
             {
               item: "Mi Perfil",
-              to: "#/mi-perfil",
+              to: "/mi-perfil",
               key: "perfil"
             },
             {
               item: "Mi Tienda",
-              to: "#/mi-tienda",
+              to: "/mi-tienda",
               key: "tienda"
             },
           ]
@@ -204,4 +203,4 @@ export default {
 };
 </script>
 
-<style src="./Layout.scss" lang="scss"></style>
+<style src="./Header.scss" lang="scss"></style>

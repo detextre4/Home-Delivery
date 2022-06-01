@@ -52,4 +52,4 @@ export default {
 }
 </script>
 
-<style src="./Layout.scss" lang="scss" />
+<style src="./Footer.scss" lang="scss" />

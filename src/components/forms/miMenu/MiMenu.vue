@@ -123,11 +123,11 @@
 </template>
 
 <script>
-import MenuForms from "./MenuForms.vue";
+import Alerts from "@/components/alerts/Alerts.vue";
+import MenuForms from "../components/MenuForms.vue";
 import * as nearAPI from 'near-api-js'
 import { CONFIG, IPFS } from "@/services/api";
 const { connect, keyStores, WalletConnection, Contract } = nearAPI;
-import Alerts from "@/components/Alerts/Alerts.vue";
 export default {
   name: "miMenu",
   components: {
@@ -230,4 +230,4 @@ export default {
 };
 </script>
 
-<style src="./Forms.scss" lang="scss" />
+<style src="./MiMenu.scss" lang="scss" />

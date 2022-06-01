@@ -66,4 +66,4 @@ export default {
 };
 </script>
 
-<style src="./Forms.scss" lang="scss"></style>
+<style src="./MenuForms.scss" lang="scss"></style>

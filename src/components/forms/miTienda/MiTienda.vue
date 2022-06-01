@@ -220,4 +220,4 @@ export default {
 };
 </script>
 
-<style src="./Forms.scss" lang="scss" />
+<style src="./MiTienda.scss" lang="scss" />

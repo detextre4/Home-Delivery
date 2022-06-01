@@ -101,6 +101,21 @@ p:not(.not-typography, .not) {
 
                     /* other adjusts */
 
+// input file
+.input-file {
+  .v-input__control {
+    max-width: 12em;
+    height: 12em;
+    :is(.v-input__slot, .v-text-field__slot) {
+      padding: 0 !important;
+      height: 100% !important;
+      cursor: default;
+    }
+    .v-text-field__slot {cursor: pointer !important}
+    img {width: 100%}
+  }
+}
+
 // filter
 .contFilters {
   --font-size: 1em;

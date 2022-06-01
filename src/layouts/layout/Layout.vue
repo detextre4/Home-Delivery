@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import DrawerChats from "@/components/DrawerChats/DrawerChats.vue"
-import Navbar from "@/components/Layout/Navbar";
-import Header from "@/components/Layout/Header";
-// import Footer from "@/components/Layout/Footer";
+import DrawerChats from "@/components/drawerChats/DrawerChats.vue"
+import Navbar from "@/components/navbar/Navbar";
+import Header from "@/components/header/Header";
+// import Footer from "@/components/footer/Footer";
 import "./Layout.scss";
 /*
 --Uso del GSAP:
@@ -50,5 +50,3 @@ export default {
   components: { Header, Navbar, DrawerChats },
 }
 </script>
-
-<style src="./Layout.scss" lang="scss" />

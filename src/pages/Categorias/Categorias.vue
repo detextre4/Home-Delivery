@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import GoogleMap from '@/components/GoogleMap/GoogleMap.vue'
+import GoogleMap from '@/components/googleMap/GoogleMap.vue'
 export default {
   name: "categorias",
   components: {
