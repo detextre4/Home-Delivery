@@ -34,10 +34,9 @@
         :loading-rooms="loadingRooms"
         :messages="messages"
         :messages-loaded="messagesLoaded"
-        @fetch-messages="onFetchMessages"
         @room-action-handler="test($event)"
         :width="'max-content'"
-        responsive-breakpoint="3000"
+        :responsive-breakpoint="3000"
       />
     </v-navigation-drawer>
   </section>
@@ -45,6 +44,7 @@
 
 <script>
 import ChatWindow from 'vue-advanced-chat'
+import { MESSAGES, CHATS } from '@/services/api.js'
 import 'vue-advanced-chat/dist/vue-advanced-chat.css'
 export default {
   name: "Categories",
@@ -58,7 +58,8 @@ export default {
       // Chats
       loadingRooms: false,
       roomsLoaded: true,
-      rooms: [
+      rooms: [],
+      rooms_b: [
         {
           roomId: 1,
           roomName: "Room 1",
@@ -103,21 +104,38 @@ export default {
       messages: [],
     }
   },
+  mounted () {
+    this.fetchChats(localStorage.getItem('profileid'))
+  },
   methods: {
-    test(e) {
-      console.log(e);
+    fetchChats(e) {
+      this.roomsLoaded = true
+      // vue-advanced-chat component is performance oriented, hence you have to follow specific rules to make it work properly
+      const habs = []; // El componente necesita igualar un array lleno con la variable de las rooms
+      this.axios.get(CHATS).then((res) => {
+        res.data.forEach((element) => {
+          habs.push(element);
+          this.fetchMessages({room:1,options:''})
+        });
+        this.rooms = habs
+        console.log(this.rooms)
+        this.roomsLoaded = false
+      })
     },
-    onFetchMessages() {
-      this.axios.get()
-      setTimeout(() => {
-
-        this.messages = [
-          {
-          },
-        ];
-        this.messagesLoaded = true;
-      });
+    fetchMessages({ room, options }) {
+      this.messagesLoaded = false
+      this.axios.get(MESSAGES).then((res) => {
+        console.log(res.data)
+        this.messages = res.data
+        this.messagesLoaded = true
+      })
     },
+    // onFetchMessages() {
+    //   this.axios.get(MESSAGES).then((res) => {
+    //     this.messages = res.data
+    //     this.messagesLoaded = true;
+    //   })
+    // },
   },
 };
 </script>
