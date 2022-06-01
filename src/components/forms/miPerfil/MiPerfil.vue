@@ -4,15 +4,15 @@
     <MenuForms ref="menu"></MenuForms>
     <v-col class="contmiperfil divcol gap">
       <aside class="contup divcol">
-        <h1 class="h4-em">Mi Perfil</h1>
-        <h2 class="h6-em">Introduzca la siguiente información</h2>
+        <h1 class="h7_em">Mi Perfil</h1>
+        <h2 class="h9_em">Introduzca la siguiente información</h2>
       </aside>
 
       <aside class="contdown">
         <v-card color="transparent">
           <label
             for="username"
-            class="h7-em"
+            class="h10_em"
           >
             Nombre o seudonimo
           </label>
@@ -26,7 +26,7 @@
         <v-card color="transparent">
           <label
             for="walet"
-            class="h7-em"
+            class="h10_em"
           >
             Wallet
           </label>
@@ -41,7 +41,7 @@
         <v-card color="transparent">
           <label
             for="telefono"
-            class="h7-em"
+            class="h10_em"
           >
             Numero de telefono
           </label>
@@ -55,7 +55,7 @@
         <v-card color="transparent">
           <label
             for="Dirección"
-            class="h7-em"
+            class="h10_em"
           >
             Dirección
           </label>
@@ -69,7 +69,7 @@
         <v-card color="transparent">
           <label
             for="foto"
-            class="h7-em"
+            class="h10_em"
           >
             Foto de perfil
           </label>
@@ -99,7 +99,7 @@
             </v-btn>
             <label
               for="delivery"
-              class="h7-em"
+              class="h10_em"
             >
               ¿Quieres ser delivery?
             </label>
@@ -115,7 +115,7 @@
             </v-btn>
             <label
               for="vendedor"
-              class="h7-em"
+              class="h10_em"
             >
               ¿Quieres ser vendedor?
             </label>
@@ -126,7 +126,7 @@
 
       <aside class="contsubmit center">
         <v-btn @click="SaveProfile(perfil)">
-          <span class="h7-em">Guardar</span>
+          <span class="h10_em">Guardar</span>
         </v-btn>
       </aside>
     </v-col>

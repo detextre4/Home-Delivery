@@ -9,14 +9,14 @@
         </v-btn>
 
         <div class="divcol">
-          <h1 class="h4-em">Mi Menú</h1>
-          <h2 class="h6-em">Organiza tu menu</h2>
+          <h1 class="h7_em">Mi Menú</h1>
+          <h2 class="h9_em">Organiza tu menu</h2>
         </div>
       </aside>
 
       <aside class="contdown">
         <v-card color="transparent">
-          <label for="foto" class="h7-em"> Foto del platillo </label>
+          <label for="foto" class="h10_em"> Foto del platillo </label>
 
           <v-file-input
             v-model="menu.img"
@@ -33,13 +33,13 @@
           </v-file-input>
         </v-card>
         <v-card color="transparent">
-          <label for="nombre" class="h7-em"> Nombre del plato </label>
+          <label for="nombre" class="h10_em"> Nombre del plato </label>
 
           <v-text-field v-model="menu.name" id="telefono" solo></v-text-field>
         </v-card>
         <v-card color="transparent">
           <aside>
-            <label for="categoria" class="h7-em"> Categoria </label>
+            <label for="categoria" class="h10_em"> Categoria </label>
           </aside>
           <v-select
             v-model="menu.category"
@@ -52,7 +52,7 @@
           </v-select>
         </v-card>
         <v-card color="transparent">
-          <label for="descripcion" class="h7-em"> Descripción </label>
+          <label for="descripcion" class="h10_em"> Descripción </label>
 
           <v-text-field
             v-model="menu.description"
@@ -66,11 +66,11 @@
           class="space contprecio"
         >
           <aside>
-            <label for="precio" class="h7-em"> Precio </label>
+            <label for="precio" class="h10_em"> Precio </label>
 
             <v-text-field v-model="menu.price" id="precio" type="number" solo></v-text-field>
           </aside>
-          <v-btn @click="Addmenu()" class="h8-em"> Agregar </v-btn>
+          <v-btn @click="Addmenu()" class="h11_em"> Agregar </v-btn>
         </v-card>
       </aside>
 
@@ -85,16 +85,16 @@
           <aside class="firstcont divrow">
             <img class="foto" :src="item.img" alt="Menu Image" />
             <div class="child1 divcol jcenter">
-              <label class="h6-em">{{ item.nombre }}</label>
+              <label class="h9_em">{{ item.nombre }}</label>
               <div class="child2 space">
-                <span class="h6-em bold">{{ item.categoria }}</span>
-                <span class="h6-em bold">{{ item.precio }}$</span>
+                <span class="h9_em bold">{{ item.categoria }}</span>
+                <span class="h9_em bold">{{ item.precio }}$</span>
               </div>
             </div>
           </aside>
 
           <aside class="contdesc">
-            <p class="h7-em semibold p">{{ item.desc }}</p>
+            <p class="h10_em semibold p">{{ item.desc }}</p>
           </aside>
 
           <aside class="controls acenter spacee" style="gap: 0.5em">

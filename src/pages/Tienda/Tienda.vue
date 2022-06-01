@@ -16,7 +16,7 @@
     <v-col class="contdown">
       <aside class="wrapper divcol">
         <div class="center">
-          <h2 class="h3-em">Menú</h2>
+          <h2 class="h6_em">Menú</h2>
 
           <v-tooltip right color="var(--clr-btn)">
             <template v-slot:activator="{ on, attrs }">
@@ -35,10 +35,10 @@
               <img src="@/assets/icons/inicio.png" alt="Menu Image">
 
               <div class="contInfo divcol jcenter">
-                <label class="h4-em">{{ item.nombre }}</label>
+                <label class="h7_em">{{ item.nombre }}</label>
                 <div class="space">
-                  <span class="h6-em semibold">{{ item.categoria }}</span>
-                  <span class="h6-em semibol">{{ item.precio }}$</span>
+                  <span class="h9_em semibold">{{ item.categoria }}</span>
+                  <span class="h9_em semibol">{{ item.precio }}$</span>
                 </div>
               </div>
             </aside>

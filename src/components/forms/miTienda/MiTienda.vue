@@ -6,15 +6,15 @@
           <v-icon size="clamp(1.5em, 2.5vw, 2.5em)">mdi-arrow-left</v-icon>
         </v-btn>
         <div style="margin-left: 5mm;" class="divcol">
-          <h1 class="h4-em">Mi Tienda</h1>
-          <h2 class="h6-em">Introduzca la información de la tienda</h2>
+          <h1 class="h7_em">Mi Tienda</h1>
+          <h2 class="h9_em">Introduzca la información de la tienda</h2>
         </div>
       </aside>
       <aside class="contdown">
         <v-card color="transparent">
           <label
             for="walet"
-            class="h7-em"
+            class="h10_em"
           >
             Nombre de la tienda
           </label>
@@ -27,7 +27,7 @@
         <v-card color="transparent">
           <label
             for="walet"
-            class="h7-em"
+            class="h10_em"
           >
             Wallet de la tienda
           </label>
@@ -40,7 +40,7 @@
         <v-card color="transparent">
           <label
             for="Dirección"
-            class="h7-em"
+            class="h10_em"
           >
             Dirección
           </label>
@@ -53,7 +53,7 @@
         <v-card color="transparent">
           <label
             for="telefono"
-            class="h7-em"
+            class="h10_em"
           >
             Teléfono
           </label>
@@ -67,7 +67,7 @@
         <v-card color="transparent">
           <label
             for="telefono"
-            class="h7-em"
+            class="h10_em"
           >
             Logo
           </label>
@@ -93,10 +93,10 @@
 
       <aside class="contsubmit center">
         <v-btn v-if="save" @click="PutStore()">
-          <span class="h7-em">Guardaaar</span>
+          <span class="h10_em">Guardaaar</span>
         </v-btn>
         <v-btn v-else @click="SetStore()">
-          <span class="h7-em">Guardar</span>
+          <span class="h10_em">Guardar</span>
         </v-btn>
       </aside>
     </v-col>

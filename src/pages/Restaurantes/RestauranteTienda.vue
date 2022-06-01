@@ -9,24 +9,24 @@
         >
           <aside class="backBtn">
             <v-btn icon @click="$router.push('/restaurantes')" :ripple="false">
-              <v-icon class="not-clr">mdi-chevron-left</v-icon>
+              <v-icon class="not_clr">mdi-chevron-left</v-icon>
             </v-btn>
           </aside>
-          <span class="h8-em">horario</span>
+          <span class="h11_em">horario</span>
 
-          <v-card-title class="h3-em bold">
+          <v-card-title class="h6_em bold">
             nombre
           </v-card-title>
 
-          <v-card-text class="h8-em">
+          <v-card-text class="h11_em">
             descripcion
           </v-card-text>
         </v-img>
 
         <aside class="contmapa divcol jend">
           <div class="divcol">
-            <label class="h7-em">dirección</label>
-            <span class="h9-em">dirección url o lo que sea que quieras poner</span>
+            <label class="h10_em">dirección</label>
+            <span class="h11_em">dirección url o lo que sea que quieras poner</span>
           </div>
 
           <GoogleMap></GoogleMap>
@@ -48,7 +48,7 @@
         ></v-text-field>
 
         <v-btn class="filtro">
-          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not-clr">mdi-filter</v-icon>
+          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not_clr">mdi-filter</v-icon>
         </v-btn>
 
         <v-select
@@ -118,14 +118,14 @@
           </div>
 
           <aside class="contcard space">
-            <p class="h7-em semibold">{{item.desc}}</p>
+            <p class="h10_em semibold">{{item.desc}}</p>
 
             <div class="contPrice divcol tend">
               <div class="acenter">
                 <img class="logoNear" src="@/assets/logos/near.png" alt="near">
                 <span class="price normal">{{item.near}}</span>
               </div>
-              <span class="not-clr">(${{item.dollar}})</span>
+              <span class="not_clr">(${{item.dollar}})</span>
             </div>
           </aside>
         </v-card>

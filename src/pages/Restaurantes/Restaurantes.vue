@@ -2,7 +2,7 @@
   <section id="restaurantes" class="parent relative">
     <v-col class="contup relative divcol">
       <aside class="conttag jcenter divcol">
-        <h1 class="h4-em">Restaurantes</h1>
+        <h1 class="h7_em">Restaurantes</h1>
       </aside>
 
       <aside class="contFilters divwrap acenter">
@@ -18,7 +18,7 @@
         ></v-text-field>
 
         <v-btn class="filtro">
-          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not-clr">mdi-filter</v-icon>
+          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not_clr">mdi-filter</v-icon>
         </v-btn>
 
         <v-select
@@ -88,7 +88,7 @@
           <img class="images" :src="item.img" alt="Restaurant image">
 
           <aside class="contcard space">
-            <a class="h7-em bold" @click="ToTienda(item)">{{item.title}}</a>
+            <a class="h10_em bold" @click="ToTienda(item)">{{item.title}}</a>
             <span class="normal tend">{{item.hours}}</span>
           </aside>
         </v-card>

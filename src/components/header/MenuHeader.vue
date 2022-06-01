@@ -51,7 +51,7 @@
                 <v-list-item @click="CambiarLanguaje(item2.key); optionMenu = false"
                   class="activeClass">
                   <v-list-item-title class="center">
-                    <span class="not-clr">{{ item2.item }}</span>
+                    <span class="not_clr">{{ item2.item }}</span>
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
@@ -66,7 +66,7 @@
                   :value="messages"
                   color="#3E2185"
                   inline
-                  class="not-clr"
+                  class="not_clr"
                   style="margin: 0"
                 >
                   {{ item.name }}
@@ -101,7 +101,7 @@
               <v-list v-for="(item2, i) in item.selection" :key="i">
                 <v-list-item class="activeClass" @click.stop="logout = false; $router.push(item2.to)" href="#">
                   <v-list-item-title class="center">
-                    <span class="not-clr">{{ item2.item }}</span>
+                    <span class="not_clr">{{ item2.item }}</span>
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
@@ -111,7 +111,7 @@
           <v-list v-if="item.name" class="intoExpansion">
             <v-list-item @click.stop="logout = false">
               <v-list-item-title>
-                <span class="not-clr">{{ item.name }}</span>
+                <span class="not_clr">{{ item.name }}</span>
               </v-list-item-title>
             </v-list-item>
           </v-list>

@@ -5,7 +5,7 @@
       <!-- content -->
       <aside class="divrow">
         <div v-for="(item, index) in dataIconos" v-bind:key="index"
-          class="divpadd paddvertical">
+          class="padd2 paddvertical">
           <a :href="item.link" target="_blank">
             <v-icon large>{{ item.icon }}</v-icon>
           </a>
@@ -14,10 +14,10 @@
 
       <aside class="divrow" style="gap: 5em">
         <div class="divrow" style="cursor: pointer">
-          <span class="h7-em" style="font-weight: bold">EN</span>
+          <span class="h10_em" style="font-weight: bold">EN</span>
           <v-icon small>mdi-chevron-down</v-icon>
         </div>
-        <span class="h7-em center" style="font-weight: bold; gap: 5px">Powered by 
+        <span class="h10_em center" style="font-weight: bold; gap: 5px">Powered by 
           <img class="filter" src="" alt="near">
         </span>
       </aside>

@@ -24,7 +24,7 @@
     >
       <section class="contPedidos divcol acenter">
         <!-- caja de pedidos -->
-        <h3 class="h7-em tcenter">Pedidos Pendientes</h3>
+        <h3 class="h10_em tcenter">Pedidos Pendientes</h3>
       </section>
 
       <chat-window
