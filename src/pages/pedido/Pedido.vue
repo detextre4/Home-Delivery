@@ -36,7 +36,7 @@
     </v-col>
 
     <v-col class="contdown divcol gap1">
-      <h1 class="h6_em tcap">Historial Pedidos:</h1>
+      <h1 class="h6_em tcap tcentermobile">Historial Pedidos:</h1>
 
       <section class="grid">
         <v-card v-for="(item,i) in dataHistorial" :key="i"
