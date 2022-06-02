@@ -696,9 +696,9 @@
 .anim_linea {animation: linea .5s $ease-return}
 .anim_movement {animation: movement .5s $ease-return}
 .anim_encoger {animation: encoger .5s $ease-return}
-.anim_glitch {animation: glitch .5s $ease-return}
-.anim_glitchTop {animation: glitchTop .5s $ease-return}
-.anim_glitchTop {animation: glitchBottom .5s $ease-return}
+.anim_glitch {animation: glitch 1s linear infinite}
+.anim_glitchTop {animation: glitchTop 1s linear infinite}
+.anim_glitchTop {animation: glitchBottom 1s linear infinite}
 .anim_moveup {animation: moveup .5s $ease-return}
 .anim_movedown {animation: movedown .5s $ease-return}
 .anim_moveleft {animation: moveleft .5s $ease-return}
