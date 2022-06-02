@@ -34,7 +34,10 @@
         :loading-rooms="loadingRooms"
         :messages="messages"
         :messages-loaded="messagesLoaded"
+        @fetch-messages="fetchMessages($event)"
         @room-action-handler="test($event)"
+        :show-audio="false"
+        :show-files="false"
         :width="'max-content'"
         :responsive-breakpoint="3000"
       />
@@ -54,11 +57,12 @@ export default {
   data() {
     return {
       messagesBadge: 1,
-      currentUserId: "1234",
+      currentUserId: '',
       // Chats
       loadingRooms: false,
       roomsLoaded: true,
       rooms: [],
+      esperando: false,
       rooms_b: [
         {
           roomId: 1,
@@ -78,7 +82,7 @@ export default {
           },
           users: [
             {
-              _id: 1234,
+              _id: 1,
               username: "John Doe",
               avatar: "assets/imgs/doe.png",
               status: {
@@ -87,7 +91,7 @@ export default {
               },
             },
             {
-              _id: 4321,
+              _id: 2,
               username: "John Snow",
               avatar: "assets/imgs/snow.png",
               status: {
@@ -102,32 +106,63 @@ export default {
       // Mensajes
       messagesLoaded: false,
       messages: [],
+      intervalo: null,
     }
   },
   mounted () {
-    this.fetchChats(localStorage.getItem('profileid'))
+    this.currentUserId = 1
+    this.initChatComponent()
+    
   },
   methods: {
+    initChatComponent(){
+      this.fetchChats(localStorage.getItem('profileid'))
+      this.intervalo = setInterval(()=>{
+        if (this.esperando !== true) {
+          console.log('fetchChats')
+        }
+      },3000)
+    },
+    handleChats(){
+      this.axios.post(CHATS).then((res) => {
+        console.log(res.code)
+        if (res.code[0] !== 2) {
+          console.log(res.code)
+        }
+      }).catch((e)=>console.log(e))
+    },
     fetchChats(e) {
+      this.esperando = true
       this.roomsLoaded = true
       // vue-advanced-chat component is performance oriented, hence you have to follow specific rules to make it work properly
       const habs = []; // El componente necesita igualar un array lleno con la variable de las rooms
       this.axios.get(CHATS).then((res) => {
-        res.data.forEach((element) => {
-          habs.push(element);
-          this.fetchMessages({room:1,options:''})
-        });
+        console.log(res.status.charAt(0))
+        if (res.status[0] !== 2) {
+        } else {
+          console.log(res.code)
+          res.data.forEach((element) => {
+            habs.push(element);
+          })
+        }
         this.rooms = habs
-        console.log(this.rooms)
+        this.esperando = false
         this.roomsLoaded = false
-      })
+      }).catch((e)=>console.log(e))
+    },
+    handleMessage(){
+
     },
     fetchMessages({ room, options }) {
       this.messagesLoaded = false
+      var msgs = []
       this.axios.get(MESSAGES).then((res) => {
-        console.log(res.data)
-        this.messages = res.data
+        res.data.forEach((element) => {
+          msgs.push(element);
+        });
+        this.messages = msgs
         this.messagesLoaded = true
+        console.log(this.messages)
       })
     },
     // onFetchMessages() {

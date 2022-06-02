@@ -48,8 +48,8 @@
             // Set profile.id as localStorage item
             localStorage.setItem('profileid',response.data.id)
           } else {
-            if (this.$route.name !== 'MiPerfil') {
-              this.$router.push({name: 'MiPerfil'})
+            if (this.$route.name !== 'perfil') {
+              this.$router.push({name: 'perfil'})
             }
           }
         }).catch((e) => {

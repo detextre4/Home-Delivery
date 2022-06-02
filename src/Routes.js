@@ -18,13 +18,13 @@ export default new Router({
       component: () => import('@/components/Layout/Layout'),
       children: [
         {
-          path: '/',
+          path: '/home',
           name: 'inicio',
           component: () => import('@/pages/Home/Home'),
         },
         {
           path: '/mi-perfil',
-          name: 'miPerfil',
+          name: 'perfil',
           component: () => import('@/components/Forms/MiPerfil'),
         },
         {
