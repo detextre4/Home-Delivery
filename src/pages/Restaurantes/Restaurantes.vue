@@ -92,7 +92,7 @@
               @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
               {{item.title}}
             </a>
-            <span class="normal tend">{{item.hours}}</span>
+            <span class="normal tnone tend">{{item.hours}}</span>
           </aside>
         </v-card>
       </section>

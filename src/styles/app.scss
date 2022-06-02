@@ -94,9 +94,9 @@ label:not(.not_clr, .not) {
 //////////////////////////////////////////////////////////////////////
 /* // // typography // // */
 //////////////////////////////////////////////////////////////////////
-
 *:not(.not_typography, .not) {text-transform: uppercase}
 a:not(.not_typography, .not) {text-decoration: none}
+input {text-transform: none !important}
 
 h1:not(.not_typography, .not) {
   font-weight: 600 !important;
