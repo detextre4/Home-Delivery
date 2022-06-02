@@ -2,7 +2,7 @@
   <section id="miPerfil" class="parentForm section">
     <Alerts ref="alerts"></Alerts>
     <MenuForms ref="menu"></MenuForms>
-    <v-col class="contmiperfil divcol gap">
+    <v-col class="contmiperfil divcol gap2">
       <aside class="contup divcol">
         <h1 class="h7_em">Mi Perfil</h1>
         <h2 class="h9_em">Introduzca la siguiente información</h2>

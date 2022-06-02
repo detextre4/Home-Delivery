@@ -2,7 +2,7 @@
   <section id="miMenu" class="parentForm section">
     <Alerts ref="alerts"></Alerts>
     <MenuForms ref="menu"></MenuForms>
-    <v-col class="contmimenu divcol gap">
+    <v-col class="contmimenu divcol gap2">
       <aside class="contup divrow">
         <v-btn class="back" icon href="#/tienda">
           <v-icon size="clamp(1.5em, 2.5vw, 2.5em)">mdi-arrow-left</v-icon>

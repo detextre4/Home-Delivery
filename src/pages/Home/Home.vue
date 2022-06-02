@@ -17,11 +17,11 @@
               v-if="(index + 1) % columnsCategories === 1 || columnsCategories === 1"
               :key="index"
             > 
-              <v-row class="fill-height spacea padd2 gap">
+              <v-row class="fill-height spacea padd2 gap2">
                 <template v-for="(n,i) in columnsCategories">
                   <template v-if="(+index + i) < sliderCategories.length">
                     <v-col :key="i" class="paddlateral">
-                      <v-card color="var(--clr-card)" class="cartasHome gap" style="display: flex"
+                      <v-card color="var(--clr-card)" class="cartasHome gap2" style="display: flex"
                         :class="{ contIconActive: sliderCategories[+index + i].active }"
                         @click="SelectCardCategories(sliderCategories[+index + i])">
                         <div class="contimg center relative">
@@ -65,7 +65,7 @@
               v-if="(index + 1) % columnsRestaurant === 1 || columnsRestaurant === 1"
               :key="index"
             > 
-              <v-row class="fill-height spacea padd2 gap">
+              <v-row class="fill-height spacea padd2 gap2">
                 <template v-for="(n,i) in columnsRestaurant">
                   <template v-if="(+index + i) < sliderRestaurant.length">
                     <v-col class="contslides relative divcol paddlateral" :key="i">

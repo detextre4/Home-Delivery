@@ -2,13 +2,13 @@
   <!-- <section class="googleMap"> -->
     <!-- <div class="divcol center">
       <h1>coordinates</h1>
-      <div class="center gap marginbottom">
+      <div class="center gap2 marginbottom">
           <v-btn>latitude: {{myCoordinates.lat}}</v-btn>
           <v-btn>longitude: {{myCoordinates.lng}}</v-btn>
       </div>
 
       <h1>map coordinates</h1>
-      <div class="center gap">
+      <div class="center gap2">
         <div class="divcol">
           <v-btn>latitude:</v-btn>
           <v-text-field

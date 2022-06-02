@@ -1,6 +1,6 @@
 <template>
   <section id="miPerfil" class="parentForm section">
-    <v-col class="contmiperfil divcol gap">
+    <v-col class="contmiperfil divcol gap2">
       <aside class="contup divrow">
         <v-btn class="back" icon href="#/tienda">
           <v-icon size="clamp(1.5em, 2.5vw, 2.5em)">mdi-arrow-left</v-icon>

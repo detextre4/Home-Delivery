@@ -124,6 +124,8 @@
 .margin0bottom {margin-bottom: 0}
 .margin1bottom {margin-bottom: .5em}
 .margin2bottom {margin-bottom: 1em}
+.divcontents {display: contents}
+.grid {display: grid}
 .divrow {
   display: flex;
   flex-direction: row;
@@ -281,6 +283,10 @@
 .scroll_v {overflow: visible}
 .scrollx_v {overflow-x: visible}
 .scrolly_v {overflow-y: visible}
+.tnone {text-transform: none !important}
+.tcap {text-transform: capitalize !important}
+.tup {text-transform: uppercase !important}
+.tlow {text-transform: lowercase !important}
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
 /* // // mobile // // */ 
@@ -368,6 +374,8 @@
   .margin0bottommobile {margin-bottom: 0 !important}
   .margin1bottommobile {margin-bottom: .5em !important}
   .margin2bottommobile {margin-bottom: 1em !important}
+  .divcontentsmobile {display: contents !important}
+  .gridmobile {display: grid !important}
   .divrowmobile {
     display: flex !important;
     flex-direction: row !important;
@@ -525,6 +533,10 @@
   .scroll_vmobile {overflow: visible !important}
   .scrollx_vmobile {overflow-x: visible !important}
   .scrolly_vmobile {overflow-y: visible !important}
+  .tnonemobile {text-transform: none !important}
+  .tcapmobile {text-transform: capitalize !important}
+  .tupmobile {text-transform: uppercase !important}
+  .tlowmobile {text-transform: lowercase !important}
 }
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /

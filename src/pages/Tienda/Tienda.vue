@@ -28,7 +28,7 @@
           </v-tooltip>
         </div>
 
-        <v-col class="divcol gap">
+        <v-col class="divcol gap2">
           <v-card v-for="(item,i) in dataMenuTienda" :key="i"
             style="display:flex" class="acenter">
             <aside class="divrow">

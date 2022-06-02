@@ -40,7 +40,7 @@
         gap: clamp(0.5em, 1vw, 1em);
         border-radius: $border-card;
         clip-path: $clip-path-2;
-        box-shadow: inset 0 0 30px -15px rgba(black, .5) !important;
+        box-shadow: $sombra-card-2 !important;
         &:is(:hover, :focus) .images {mix-blend-mode: multiply;}
         .images {
           width: 100%;
@@ -127,7 +127,7 @@
         gap: clamp(0.5em, 1vw, 1em);
         border-radius: $border-card;
         clip-path: $clip-path-2;
-        box-shadow: inset 0 0 30px -15px rgba(black, .5) !important;
+        box-shadow: $sombra-card-2!important;
         overflow: hidden;
         .contImages {
           cursor: pointer;

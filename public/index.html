@@ -40,15 +40,15 @@ default settings
   font-size: 16px;
   scroll-behavior: smooth;
   background-color: var(--bg) !important;
+  scroll-padding-top: 2em;
 }
 :is(#app, #layout, #error, #login) {font-family: var(--font1)}
 /*
 delete-config-default-vuetify
 */
-/* .v-overlay__scrim {
-  background: transparent !important;
-} */
-/* list */
-:is(.v-list, .v-sheet, .theme--light) {box-shadow: none !important}
-.v-card[class*="div"], .v-card[class*="space"] {display: flex !important}
+:is(.v-list, .v-sheet, .theme--light, .v-dialog) {box-shadow: none !important}
+.v-card:is([class*="div"], [class*="space"]) {display: flex !important}
+.v-card:is([class*="grid"]) {display: grid !important}
+.v-card::before {background: transparent !important}
+/* .v-overlay__scrim {background: transparent !important} */
 </style>
