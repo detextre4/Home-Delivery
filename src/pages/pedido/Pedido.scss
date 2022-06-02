@@ -44,11 +44,13 @@
       .v-card {
         border-radius: $border-card;
         box-shadow: $sombra-card !important;
+        transition: .2s $ease-return;
         @include media(max, 627px) {margin-inline: auto}
         @include media(max, 400px) {width: 100% !important}
         .mapa {
           height: 12.5em;
           position: relative;
+          pointer-events: none;
           &::after {
             content: var(--tag);
             font-size: var(--step-em-2);
@@ -58,11 +60,14 @@
             display: grid;
             place-items: center;
             background-color: rgb(0, 0, 0, 0.54);
-            opacity: 1;
+            transform-origin: bottom;
+            @include animation(.2s $ease-return) {from {transform: scaleY(0)}to {transform: scaleY(1)}}
           }
         }
-        &:is(:hover, :focus) .mapa::after {
-          opacity: 0;
+        &:hover {transform: scale(1.05)}
+        &:hover .mapa::after {
+          transform: scaleY(0);
+          @include animation(.2s $ease-return) {from {transform: scaleY(1)}to {transform: scaleY(0)}}
         }
         &>aside {
           padding: 1em;

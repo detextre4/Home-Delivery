@@ -90,7 +90,7 @@ export default {
           near: "1",
           distance: "2.0 km",
           time: "5:22 mins",
-          state: "completado",
+          state: "en curso",
         },
         {
           user: "aloha.near",
