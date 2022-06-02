@@ -9,21 +9,24 @@
   .contup {
     padding-top: 2em;
     padding-inline: var(--padding-g);
+  }
+  .contdown {
+    padding-inline: var(--padding-g);
     .conttag {
-      @include absolute(0, 250px);
+      position: sticky;
+      margin-left: -6.5%;
+      top: 50%;
       transform: rotate(-90deg);
       width: 5%;
-      @include animation(14s $ease-return infinite alternate) {from {transform: rotate(-95deg);}to {transform: rotate(-80deg)}}
+      @include animation(14s $ease-return infinite alternate) {from {transform: rotate(-93deg);}to {transform: rotate(-80deg)}}
       @include media(max, small) {
         position: static !important;
         animation: none !important;
         transform: none !important;
         width: 100% !important;
+        margin-left: 0 !important;
       }
     }
-  }
-  .contdown {
-    padding-inline: var(--padding-g);
     .contRestaurantList {
       --max-size: 20em;
       display: grid;

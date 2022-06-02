@@ -1,10 +1,7 @@
 <template>
   <section id="restaurantes" class="parent relative">
     <v-col class="contup relative divcol">
-      <aside class="conttag jcenter divcol">
-        <h1 class="h7_em">Restaurantes</h1>
-      </aside>
-
+      <h1 class="h7_em vermobile">Restaurantes</h1>
       <aside class="contFilters divwrap acenter">
         <v-btn text class="searchBtn semibold">
           filtrar
@@ -82,6 +79,9 @@
     </v-col>
 
     <v-col class="contdown">
+      <aside class="conttag jcenter divcol eliminarmobile">
+        <h1 class="h7_em">Restaurantes</h1>
+      </aside>
       <section class="contRestaurantList">
         <v-card v-for="(item,i) in dataRestaurant" :key="i"
           class="card divcol" v-ripple="activeRipple?{class: 'activeRipple'}:''">
