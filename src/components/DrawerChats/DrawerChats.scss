@@ -1,4 +1,4 @@
-@import "@/styles/app";
+@use "@/styles/app" as *;
 
 // drawerChats
 #drawerChats {
@@ -7,6 +7,7 @@
     position: fixed;
     bottom: 2em;
     right: 2em;
+    animation: moveright .5s $ease-return;
     @include media(max, x-small) {right: calc(2em - 24px);}
     @include media(max, small) {
       --size: 3em;

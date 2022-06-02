@@ -9,24 +9,24 @@
         >
           <aside class="backBtn">
             <v-btn icon @click="$router.push('/restaurantes')" :ripple="false">
-              <v-icon class="not-clr">mdi-chevron-left</v-icon>
+              <v-icon class="not_clr">mdi-chevron-left</v-icon>
             </v-btn>
           </aside>
-          <span class="h8-em">horario</span>
+          <span class="h11_em">horario</span>
 
-          <v-card-title class="h3-em bold">
+          <v-card-title class="h6_em bold">
             nombre
           </v-card-title>
 
-          <v-card-text class="h8-em">
+          <v-card-text class="h11_em">
             descripcion
           </v-card-text>
         </v-img>
 
         <aside class="contmapa divcol jend">
           <div class="divcol">
-            <label class="h7-em">dirección</label>
-            <span class="h9-em">dirección url o lo que sea que quieras poner</span>
+            <label class="h10_em">dirección</label>
+            <span class="h11_em">dirección url o lo que sea que quieras poner</span>
           </div>
 
           <GoogleMap></GoogleMap>
@@ -48,7 +48,7 @@
         ></v-text-field>
 
         <v-btn class="filtro">
-          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not-clr">mdi-filter</v-icon>
+          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not_clr">mdi-filter</v-icon>
         </v-btn>
 
         <v-select
@@ -112,20 +112,21 @@
 
       <section class="contRestaurantList">
         <v-card v-for="(item,i) in dataRestaurant" :key="i"
-          class="card divcol align" style="display:flex">
-          <div class="contImages" @click="SelectMenu(item)">
+          class="card divcol align" v-ripple="activeRipple?{class: 'activeRipple'}:''">
+          <div class="contImages" @click="SelectMenu(item)"
+            @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
             <img class="images" :src="item.img" alt="Restaurant image">
           </div>
 
           <aside class="contcard space">
-            <p class="h7-em semibold">{{item.desc}}</p>
+            <p class="h10_em semibold">{{item.desc}}</p>
 
             <div class="contPrice divcol tend">
               <div class="acenter">
                 <img class="logoNear" src="@/assets/logos/near.png" alt="near">
                 <span class="price normal">{{item.near}}</span>
               </div>
-              <span class="not-clr">(${{item.dollar}})</span>
+              <span class="not_clr">(${{item.dollar}})</span>
             </div>
           </aside>
         </v-card>
@@ -135,7 +136,7 @@
 </template>
 
 <script>
-import GoogleMap from '@/components/GoogleMap/GoogleMap'
+import GoogleMap from '@/components/googleMaps/GoogleMap'
 export default {
   name: "restauranteTienda",
   components: {
@@ -143,6 +144,7 @@ export default {
   },
   data() {
     return {
+      activeRipple:false,
       filters: {
         filterName: {
           title: "nombre",

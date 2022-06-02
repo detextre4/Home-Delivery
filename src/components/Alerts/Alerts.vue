@@ -10,7 +10,7 @@
       color="var(--clr-btn)"
     >
       <template v-slot:action="{ attrs }">
-        <v-btn class="h7-em semibolbold" color="red" text rounded v-bind="attrs" @click="Close(item)">
+        <v-btn class="h10_em semibolbold" color="red" text rounded v-bind="attrs" @click="Close(item)">
           Cerrar
         </v-btn>
       </template>
@@ -18,10 +18,10 @@
       <aside class="alert-content divcol">
         <div class="divrow acenter">
           <v-icon :style="`color: ${item.color} !important`" size="2.5rem">{{ item.icon }}</v-icon>
-          <h3 class="h5-em p bold" :style="`color: ${item.color} !important`">{{ item.title }}</h3>
+          <h3 class="h8_em p bold" :style="`color: ${item.color} !important`">{{ item.title }}</h3>
         </div>
 
-        <span class="h8-em semibold">
+        <span class="h11_em semibold">
           {{ item.desc }}
         </span>
       </aside>

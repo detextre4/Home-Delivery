@@ -1,0 +1,162 @@
+<template>
+  <v-row id="navbar" class="alignmobile">
+    <!-- logo -->
+    <a href="#" class="contlogo align eliminarmobile">
+      <img class="logo" src="@/assets/logos/logo.png" alt="Logo" @click="to('inicio')">
+    </a>
+    <!-- content -->
+    <aside class="contnavbar divcol divrowmobile spacea align">
+      <template v-for="(item, index) in dataNavbar">
+        <a v-if="item.mostrar" :key="index" @click="to(item)"
+          class="conticon center" :class="{ conticonActive: item.active }">
+          <button class="divcol center">
+            <img :src="item.icon" alt="Icono">
+            <span>{{ item.title}}</span>
+          </button>
+        </a>
+      </template>
+    </aside>
+  </v-row>
+</template>
+
+<script>
+import { PERFIL,PROFILE } from '@/services/api.js'
+const icon1 = require("@/assets/icons/inicio-outline.png");
+const icon1Active = require("@/assets/icons/inicio.png");
+const icon2 = require("@/assets/icons/restaurantes-outline.png");
+const icon2Active = require("@/assets/icons/restaurantes.png");
+const icon3 = require("@/assets/icons/tienda-outline.png");
+const icon3Active = require("@/assets/icons/tienda.png");
+const icon4 = require("@/assets/icons/delivery-outline.png");
+const icon4Active = require("@/assets/icons/delivery.png");
+
+export default {
+  name: "navbar",
+  i18n: require("./i18n"),
+  data() {
+    return {
+      dataNavbar: [
+        {
+          key: "inicio",
+          icon: icon1,
+          title: "Inicio",
+          active: false,
+          mostrar: true,
+        },
+        {
+          key: "restaurantes",
+          icon: icon2,
+          title: "Restaurantes",
+          active: false,
+          mostrar: true,
+        },
+        {
+          key: "tienda",
+          icon: icon3,
+          title: "Mi Tienda",
+          active: false,
+          mostrar: false,
+        },
+        {
+          key: "pedido",
+          icon: icon4,
+          title: "Pedido",
+          active: false,
+          mostrar: true,
+        },
+      ]
+    };
+  },
+  mounted () {
+    this.VerifyProfile(localStorage.walletid)
+    // navbar route verificator
+    this.to(this.$router.currentRoute.name)
+  },
+  methods: {
+    VerifyProfile(user) {
+      this.axios.post(PERFIL,{'wallet':user}).then((response) => {
+        if (response.data.id) {
+          if (response.data.vendedor) {
+            var index = this.dataNavbar.findIndex((data) => data.key === 'tienda')
+            this.dataNavbar[index].mostrar = true
+          }
+          if (response.data.pedido) {
+            var index = this.dataNavbar.findIndex((data) => data.key === 'pedido')
+            this.dataNavbar[index].mostrar = true
+          }
+          // Set profile.id as localStorage item
+          localStorage.setItem('profileid',response.data.id)
+        }
+      }).catch((e) => {
+        console.log(e) // **
+      })
+    },
+    clearAll() {
+      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'inicio')].icon = icon1
+      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'restaurantes')].icon = icon2
+      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'tienda')].icon = icon3
+      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'pedido')].icon = icon4
+      this.dataNavbar.forEach(element => {element.active = false});
+    },
+    to(item) {
+      this.clearAll()
+      if (item.key == 'inicio' || item == 'inicio') {
+        // if external or internal navbar call
+        if (item == "inicio") {
+          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'inicio')]
+          index.active = true;
+          index.icon = icon1Active;
+            // push select
+            if (item == "inicio") {this.$router.push('/')}
+        } else {
+          item.active = true;
+          item.icon = icon1Active
+          this.$router.push('/')
+        }
+      } else if (item.key == 'restaurantes' || item == 'restaurantes' || item == 'restauranteTienda') {
+        // if external or internal navbar call
+        if (item == "restaurantes" || item == 'restauranteTienda') {
+          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'restaurantes')]
+          index.active = true;
+          index.icon = icon2Active;
+            // push select
+            if (item == "restaurantes") {this.$router.push('/restaurantes')}
+            else if (item == "restaurante-tienda") {this.$router.push('/restaurante-tienda')}
+        } else {
+          item.active = true;
+          item.icon = icon2Active
+          this.$router.push('/restaurantes')
+        }
+      } else if (item.key == 'tienda' || item == 'tienda') {
+        // if external or internal navbar call
+        if (item == "tienda") {
+          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'tienda')]
+          index.active = true;
+          index.icon = icon3Active;
+            // push select
+            if (item == "tienda") {this.$router.push('/tienda')}
+        } else {
+          item.active = true;
+          item.icon = icon3Active
+          this.$router.push('/tienda')
+        }
+      } else if (item.key == 'pedido' || item == 'pedido') {
+        // if external or internal navbar call
+        if (item == "pedido") {
+          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'pedido')]
+          index.active = true;
+          index.icon = icon4Active;
+            // push select
+            if (item == "pedido") {this.$router.push('/pedido')}
+        } else {
+          item.active = true;
+          item.icon = icon4Active
+          this.$router.push('/pedido')
+        }
+      }
+    }
+  },
+};
+</script>
+
+<style src="./Navbar.scss" lang="scss" />

@@ -1,10 +1,7 @@
 <template>
   <section id="restaurantes" class="parent relative">
     <v-col class="contup relative divcol">
-      <aside class="conttag jcenter divcol">
-        <h1 class="h4-em">Restaurantes</h1>
-      </aside>
-
+      <h1 class="h7_em vermobile">Restaurantes</h1>
       <aside class="contFilters divwrap acenter">
         <v-btn text class="searchBtn semibold">
           filtrar
@@ -18,7 +15,7 @@
         ></v-text-field>
 
         <v-btn class="filtro">
-          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not-clr">mdi-filter</v-icon>
+          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not_clr">mdi-filter</v-icon>
         </v-btn>
 
         <v-select
@@ -82,14 +79,20 @@
     </v-col>
 
     <v-col class="contdown">
+      <aside class="conttag jcenter divcol eliminarmobile">
+        <h1 class="h7_em">Restaurantes</h1>
+      </aside>
       <section class="contRestaurantList">
         <v-card v-for="(item,i) in dataRestaurant" :key="i"
-          class="card divcol" style="display:flex">
+          class="card divcol" v-ripple="activeRipple?{class: 'activeRipple'}:''">
           <img class="images" :src="item.img" alt="Restaurant image">
 
           <aside class="contcard space">
-            <a class="h7-em bold" @click="ToTienda(item)">{{item.title}}</a>
-            <span class="normal tend">{{item.hours}}</span>
+            <a class="h10_em bold" @click="ToTienda(item)"
+              @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
+              {{item.title}}
+            </a>
+            <span class="normal tnone tend">{{item.hours}}</span>
           </aside>
         </v-card>
       </section>
@@ -102,6 +105,7 @@ export default {
   name: "restaurantes",
   data() {
     return {
+      activeRipple: false,
       filters: {
         filterName: {
           title: "nombre",

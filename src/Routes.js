@@ -9,13 +9,13 @@ export default new Router({
     {
       path: '/register',
       name: 'register',
-      component: () => import('@/components/Register/Register'),
+      component: () => import('@/layouts/register/Register'),
     },
     // path 2
     {
       path: '/',
       name: 'layout',
-      component: () => import('@/components/Layout/Layout'),
+      component: () => import('@/layouts/layout/Layout'),
       children: [
         {
           path: '/home',
@@ -30,32 +30,37 @@ export default new Router({
         {
           path: '/mi-menu',
           name: 'menu',
-          component: () => import('@/components/Forms/MiMenu'),
+          component: () => import('@/components/forms/miMenu/MiMenu'),
         },
+        // {
+        //   path: '/mi-tienda',
+        //   name: 'miTienda',
+        //   component: () => import('@/components/forms/miTienda/MiTienda'),
+        // },
         {
-          path: '/categorias',
-          name: 'categorias',
-          component: () => import('@/pages/Categorias/Categorias'),
+          path: '/',
+          name: 'inicio',
+          component: () => import('@/pages/home/Home'),
         },
         {
           path: '/restaurantes',
           name: 'restaurantes',
-          component: () => import('@/pages/Restaurantes/Restaurantes'),
+          component: () => import('@/pages/restaurantes/Restaurantes'),
         },
         {
           path: '/restaurante-tienda:id?',
           name: 'restauranteTienda',
-          component: () => import('@/pages/Restaurantes/RestauranteTienda'),
+          component: () => import('@/pages/restaurantes/RestauranteTienda'),
         },
+        // {
+        //   path: '/tienda',
+        //   name: 'tienda',
+        //   component: () => import('@/pages/tienda/Tienda'),
+        // },
         {
-          path: '/tienda',
-          name: 'tienda',
-          component: () => import('@/pages/Tienda/Tienda'),
-        },
-        {
-          path: '/delivery',
-          name: 'delivery',
-          component: () => import('@/pages/Delivery/Delivery'),
+          path: '/pedido',
+          name: 'pedido',
+          component: () => import('@/pages/pedido/Pedido'),
         },
       ],
     },
@@ -65,7 +70,7 @@ export default new Router({
     {
       path: '*',
       name: 'error',
-      component: () => import('@/components/Error/Error'),
+      component: () => import('@/layouts/error/Error'),
     }
   ],
 });

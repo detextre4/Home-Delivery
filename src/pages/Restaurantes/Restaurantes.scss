@@ -1,30 +1,32 @@
-@import "@/styles/app";
+@use "@/styles/app" as *;
 
-// restaurantes
+//////////////////////////////////////////////////////////////////////
+// // // restaurantes // // //
+//////////////////////////////////////////////////////////////////////
 #restaurantes {
   --padding-g:  calc(5% + 1em) 5%;
   @include media(max, small) {--padding-g: 5% 5%}
   .contup {
     padding-top: 2em;
     padding-inline: var(--padding-g);
+  }
+  .contdown {
+    padding-inline: var(--padding-g);
     .conttag {
-      @include absolute(0, 250px);
+      position: sticky;
+      margin-left: -6.5%;
+      top: 50%;
       transform: rotate(-90deg);
       width: 5%;
-      @include animation(20s $ease-return infinite alternate) {
-        from {transform: rotate(-90deg);}
-        to {transform: rotate(-87deg);}
-      }
+      @include animation(14s $ease-return infinite alternate) {from {transform: rotate(-93deg);}to {transform: rotate(-80deg)}}
       @include media(max, small) {
         position: static !important;
         animation: none !important;
         transform: none !important;
         width: 100% !important;
+        margin-left: 0 !important;
       }
     }
-  }
-  .contdown {
-    padding-inline: var(--padding-g);
     .contRestaurantList {
       --max-size: 20em;
       display: grid;
@@ -38,7 +40,7 @@
         gap: clamp(0.5em, 1vw, 1em);
         border-radius: $border-card;
         clip-path: $clip-path-2;
-        box-shadow: inset 0 0 30px -15px rgba(black, .5) !important;
+        box-shadow: $sombra-card-2 !important;
         &:is(:hover, :focus) .images {mix-blend-mode: multiply;}
         .images {
           width: 100%;
@@ -70,6 +72,11 @@
     }
   }
 }
+
+
+//////////////////////////////////////////////////////////////////////
+// // // restaurante tienda // // //
+//////////////////////////////////////////////////////////////////////
 
 #restaurante-tienda {
   --height: 300px;
@@ -120,7 +127,7 @@
         gap: clamp(0.5em, 1vw, 1em);
         border-radius: $border-card;
         clip-path: $clip-path-2;
-        box-shadow: inset 0 0 30px -15px rgba(black, .5) !important;
+        box-shadow: $sombra-card-2!important;
         overflow: hidden;
         .contImages {
           cursor: pointer;
