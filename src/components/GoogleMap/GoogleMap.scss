@@ -4,6 +4,12 @@
 .vue-map {
   border-radius: $border-btn;
   box-shadow: 0 0 6px 5px rgba(0, 0, 0, .2);
+  div[draggable="false"]:not(.gm-style-cc) {border-radius: $border-btn !important;background-color: $clr-btn-2 !important}
+  .gm-control-active {
+    background-color: $clr-btn-2 !important;
+    border-radius: 50% !important;
+    img {filter: invert(100%) contrast(10)}
+  }
   .localImg {
     width: 10em;
   }
