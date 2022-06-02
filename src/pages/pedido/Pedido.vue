@@ -3,7 +3,7 @@
     <ModalPedido ref="modalPedido"></ModalPedido>
     <v-col class="contup divcol">
       <aside class="astart gap1">
-        <v-btn icon><v-icon>mdi-chevron-left</v-icon></v-btn>
+        <v-btn class="anim_moveleft" icon><v-icon>mdi-chevron-left</v-icon></v-btn>
         <h1 class="h6_em tnone">Pedido: {{previewPedido.user}}</h1>
       </aside>
 

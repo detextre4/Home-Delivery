@@ -691,6 +691,18 @@
 
 
 /* animations */ 
+.anim_aparecer {animation: aparecer .5s $ease-return}
+.anim_hover {animation: hover .5s $ease-return}
+.anim_linea {animation: linea .5s $ease-return}
+.anim_movement {animation: movement .5s $ease-return}
+.anim_encoger {animation: encoger .5s $ease-return}
+.anim_glitch {animation: glitch .5s $ease-return}
+.anim_glitchTop {animation: glitchTop .5s $ease-return}
+.anim_glitchTop {animation: glitchBottom .5s $ease-return}
+.anim_moveup {animation: moveup .5s $ease-return}
+.anim_movedown {animation: movedown .5s $ease-return}
+.anim_moveleft {animation: moveleft .5s $ease-return}
+.anim_moveright {animation: moveright .5s $ease-return}
 .anim_slide {
   --distance: 1.2em;
   width: calc(var(--distance) * 7) !important;
