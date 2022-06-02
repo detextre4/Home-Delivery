@@ -17,7 +17,7 @@
           </p>
           <p class="h10_em semibold">
             <span>Costo viaje (Aprox): </span>
-            {{previewPedido.dollar}}$ ({{previewPedido.near}})
+            {{previewPedido.dollar}}$ ({{previewPedido.near}} NEAR)
           </p>
           <p class="h10_em semibold">
             <span>Dirección: </span>
