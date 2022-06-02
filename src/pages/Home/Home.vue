@@ -51,7 +51,9 @@
 
     <v-col class="contdown">
       <h1 class="h7_em divwrap bold">Restaurantes
-        <h2 class="h12_em p acenter">Populares</h2>
+        <h2 class="h12_em p acenter anim_slide" style="line-height: var(--distance) !important">
+          <span>Más<br>Populares</span>
+        </h2>
       </h1>
 
       <aside class="contslider">

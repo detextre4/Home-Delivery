@@ -112,8 +112,9 @@
 
       <section class="contRestaurantList">
         <v-card v-for="(item,i) in dataRestaurant" :key="i"
-          class="card divcol align" style="display:flex">
-          <div class="contImages" @click="SelectMenu(item)">
+          class="card divcol align" v-ripple="activeRipple?{class: 'activeRipple'}:''">
+          <div class="contImages" @click="SelectMenu(item)"
+            @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
             <img class="images" :src="item.img" alt="Restaurant image">
           </div>
 
@@ -143,6 +144,7 @@ export default {
   },
   data() {
     return {
+      activeRipple:false,
       filters: {
         filterName: {
           title: "nombre",

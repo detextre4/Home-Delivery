@@ -7,6 +7,12 @@
   .contup {
     padding-top: 2em;
     padding-inline: 5%;
+    h1 {
+      @include animation(8s $ease-return infinite alternate) {
+        0% {transform:  translateX(1em) rotate(2deg)}
+        10% {transform:  translateX(0em) rotate(-2deg)}
+      }
+    }
     .v-card {
       min-height: 25em;
       padding: 2.5em;

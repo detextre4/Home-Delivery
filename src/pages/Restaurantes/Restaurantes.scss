@@ -13,10 +13,7 @@
       @include absolute(0, 250px);
       transform: rotate(-90deg);
       width: 5%;
-      @include animation(20s $ease-return infinite alternate) {
-        from {transform: rotate(-90deg);}
-        to {transform: rotate(-87deg);}
-      }
+      @include animation(14s $ease-return infinite alternate) {from {transform: rotate(-95deg);}to {transform: rotate(-80deg)}}
       @include media(max, small) {
         position: static !important;
         animation: none !important;

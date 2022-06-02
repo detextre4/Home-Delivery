@@ -692,27 +692,23 @@
 
 /* animations */ 
 .anim_slide {
-  .mask {
-    --distance: 1.2em;
-    width: calc(var(--distance) * 3) !important;
-    height: var(--distance) !important;
-    line-height: var(--distance) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    &>* {
-      position: absolute !important;
-      top: 0;
-      @include animation(5s infinite) {
-        0% {top: 0}
-        25% {top: calc(var(--distance) * -1)}
-        50% {top: calc(var(--distance) * -2)}
-        75% {top: calc(var(--distance) * -3)}
-      }
+  --distance: 1.2em;
+  width: calc(var(--distance) * 7) !important;
+  height: var(--distance) !important;
+  line-height: var(--distance) !important;
+  position: relative !important;
+  overflow-y: hidden !important;
+  &>* {
+    position: absolute !important;
+    top: 0;
+    @include animation(7s infinite) {
+      0% {top: 0}
+      50% {top: calc(var(--distance) * -1)}
     }
   }
 }
 /*example
-  <span class="mask">
+  <span class="anim_slide" style="line-height: var(--distance) !important">
     <span>word1<br>word2<br>word3<br>word4</span>
   </span>
 */

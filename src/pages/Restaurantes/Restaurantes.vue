@@ -84,11 +84,14 @@
     <v-col class="contdown">
       <section class="contRestaurantList">
         <v-card v-for="(item,i) in dataRestaurant" :key="i"
-          class="card divcol" style="display:flex">
+          class="card divcol" v-ripple="activeRipple?{class: 'activeRipple'}:''">
           <img class="images" :src="item.img" alt="Restaurant image">
 
           <aside class="contcard space">
-            <a class="h10_em bold" @click="ToTienda(item)">{{item.title}}</a>
+            <a class="h10_em bold" @click="ToTienda(item)"
+              @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
+              {{item.title}}
+            </a>
             <span class="normal tend">{{item.hours}}</span>
           </aside>
         </v-card>
@@ -102,6 +105,7 @@ export default {
   name: "restaurantes",
   data() {
     return {
+      activeRipple: false,
       filters: {
         filterName: {
           title: "nombre",
