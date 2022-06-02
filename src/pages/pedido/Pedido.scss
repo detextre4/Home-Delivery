@@ -57,6 +57,8 @@
           height: 12.5em;
           position: relative;
           pointer-events: none;
+          overflow: hidden;
+          border-radius: $border-card;
           &::after {
             content: var(--tag);
             font-size: var(--step-em-2);

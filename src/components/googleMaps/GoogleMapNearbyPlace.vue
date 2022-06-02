@@ -1,34 +1,13 @@
 <template>
-  <!-- <section class="googleMap"> -->
-    <!-- <div class="divcol center">
-      <h1>coordinates</h1>
-      <div class="center gap2 marginbottom">
-          <v-btn>latitude: {{myCoordinates.lat}}</v-btn>
-          <v-btn>longitude: {{myCoordinates.lng}}</v-btn>
-      </div>
-
-      <h1>map coordinates</h1>
-      <div class="center gap2">
-        <div class="divcol">
-          <v-btn>latitude:</v-btn>
-          <v-text-field
-            v-model="mapCoordinates.lat"
-            solo
-            label="latitud"
-          ></v-text-field>
-        </div>
-
-        <div class="divcol">
-          <v-btn>longitude:</v-btn>
-          <v-text-field
-            v-model="mapCoordinates.lng"
-            solo
-            label="longitud"
-          ></v-text-field>
-        </div>
-      </div>
-    </div> -->
-
+  <section class="relative">
+    <v-text-field
+      v-model="CoordenatesMap"
+      solo
+      hide-details
+      class="inputGoogleSearch"
+      prepend-icon="mdi-magnify"
+      @change="findLocation()"
+    ></v-text-field>
     <GmapMap
       ref="mapRef"
       :center="myCoordinates"
@@ -39,7 +18,7 @@
         scaleControl: false,
         streetViewControl: false,
         rotateControl: true,
-        fullscreenControl: true,
+        fullscreenControl: false,
         disableDefaultUi: false,
         styles: [
           {elementType: 'geometry', stylers: [{color: 'rgb(224, 224, 224)'}]},
@@ -58,10 +37,11 @@
         <img class="localImg" src="@/assets/logos/logo.png" />
       </gmap-custom-marker>
     </GmapMap>
-  <!-- </section> -->
+  </section>
 </template>
 
 <script>
+import axios from 'axios';
 import GmapCustomMarker from 'vue2-gmap-custom-marker';
 export default {
   name: "googleMaps",
@@ -81,7 +61,10 @@ export default {
       marker: {
         lat: 50.60229509638775,
         lng: 3.0247059387528408
-      }
+      },
+      lat: 0,
+      lng: 0,
+      radius: 50,
     }
   },
   computed: {
@@ -96,21 +79,19 @@ export default {
         lat: this.map.getCenter().lat().toFixed(4),
         lng: this.map.getCenter().lng().toFixed(4)
       }
+    },
+    CoordenatesMap() {
+      return `${this.lat}, ${this.lng}`
     }
   },
   created() {
-    // does the user have a saved center? use it instead of the default
-    // if (localStorage.center) {
-    //   this.myCoordinates = JSON.parse(localStorage.center);
-    // } else {
     // get user's coordinates from browser request
     this.$getLocation()
     .then(coordinates => {
       this.myCoordinates = coordinates;
     })
     .catch(error => alert(error))
-    // }
-    
+
     // does the user have a saved zoom? use it instead of the default
     if (localStorage.zoom) {
       this.zoom = parseInt(localStorage.zoom);
@@ -119,21 +100,23 @@ export default {
   mounted() {
     //add the map to a data object
     this.$refs.mapRef.$mapPromise.then(map => this.map = map)
-    // this.$refs.mapRef.setMapOnAll(null);
   },
   methods: {
     handleDrag() {
-      // get center and zoom level, store in localstorage
-      // let center = {
-      //   lat: this.map.getCenter().lat(),
-      //   lng: this.map.getCenter().lng()
-      // };
+      // get zoom level, store in localstorage
       let zoom = this.map.getZoom();
-      
-      // localStorage.center = JSON.stringify(center)
       localStorage.zoom = zoom;
+    },
+    findLocation() {
+      const URL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${
+        this.lat}, ${this.lng}&type=restaurant&radius=${
+          this.radius * 1000}&key=[AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk]`;
+      axios.get(URL).then(response => {
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error.message);
+      });
     }
-
   },
 };
 </script>

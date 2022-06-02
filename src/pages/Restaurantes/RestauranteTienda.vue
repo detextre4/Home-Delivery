@@ -136,7 +136,7 @@
 </template>
 
 <script>
-import GoogleMap from '@/components/googleMap/GoogleMap'
+import GoogleMap from '@/components/googleMaps/GoogleMap'
 export default {
   name: "restauranteTienda",
   components: {

@@ -8,7 +8,7 @@
       </aside>
 
       <v-card class="grid">
-        <GoogleMap class="map"></GoogleMap>
+        <GoogleMapNearbyPlace class="map"></GoogleMapNearbyPlace>
 
         <aside class="divcol spacea relative">
           <p class="h10_em semibold">
@@ -56,11 +56,12 @@
 </template>
 
 <script>
-import GoogleMap from '@/components/googleMap/GoogleMap.vue'
+import GoogleMap from '@/components/googleMaps/GoogleMap.vue'
+import GoogleMapNearbyPlace from '@/components/googleMaps/GoogleMapNearbyPlace.vue'
 import ModalPedido from './ModalPedido'
 export default {
   name: "pedido",
-  components: { GoogleMap, ModalPedido },
+  components: { GoogleMap, GoogleMapNearbyPlace, ModalPedido },
   data() {
     return {
       previewPedido: {
