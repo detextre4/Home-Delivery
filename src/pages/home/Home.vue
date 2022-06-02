@@ -75,7 +75,7 @@
                         <v-btn icon class="contimg center absolute not_clr"
                           :class="{ contIconActive: sliderRestaurant[+index + i].like,
                             BorderContIconActive: sliderRestaurant[+index + i].like }"
-                          @click="SelectLikeRestaurant(sliderRestaurant[+index + i])">
+                            @click="SelectLikeRestaurant(sliderRestaurant[+index + i])">
                           <img :src="sliderRestaurant[+index + i].icon" alt="Food icon">
                           <div class="square" />
                         </v-btn>
