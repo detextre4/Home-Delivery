@@ -2,7 +2,7 @@
   <v-dialog
     v-model="modalPedido"
     max-width="min(100%, 60em)"
-    style="margin: 0 !important"
+    scrollable
   >
     <v-card id="modalPedido" class="grid">
       <v-btn icon class="close" @click.stop="modalPedido=false">

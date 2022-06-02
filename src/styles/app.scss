@@ -50,6 +50,11 @@
   }
 }
 
+// v-dialogs
+.v-dialog--scrollable {
+  @include media(max, small) {margin: 0 !important; min-height: 100% !important}
+}
+
 
 
 //////////////////////////////////////////////////////////////////////

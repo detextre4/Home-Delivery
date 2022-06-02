@@ -84,7 +84,7 @@
 #modalPedido {
   @include media(min, small) {grid-template-columns: repeat(2, 1fr);grid-template-rows: repeat(2, 1fr)}
   padding-top: 1em;
-  @include media(max, small) {padding-top: 2em}
+  @include media(max, small) {padding-top: 2em;min-height: 100vh}
   border-radius: $border-card;
   clip-path: $clip-path-2;
   box-shadow: $sombra-card-2 !important;
@@ -93,6 +93,7 @@
   .close {
     --distance: 1.5em;
     @include absolute(auto, var(--distance), var(--distance));
+    z-index: 2;
   }
   section {
     padding: 2em;
