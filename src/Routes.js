@@ -20,12 +20,12 @@ export default new Router({
         {
           path: '/home',
           name: 'inicio',
-          component: () => import('@/pages/Home/Home'),
+          component: () => import('@/pages/home/Home'),
         },
         {
           path: '/mi-perfil',
           name: 'perfil',
-          component: () => import('@/components/Forms/MiPerfil'),
+          component: () => import('@/components/forms/miPerfil/MiPerfil'),
         },
         {
           path: '/mi-menu',
@@ -37,11 +37,11 @@ export default new Router({
         //   name: 'miTienda',
         //   component: () => import('@/components/forms/miTienda/MiTienda'),
         // },
-        {
-          path: '/',
-          name: 'inicio',
-          component: () => import('@/pages/home/Home'),
-        },
+        // {
+        //   path: '/',
+        //   name: 'inicio',
+        //   component: () => import('@/pages/home/Home'),
+        // },
         {
           path: '/restaurantes',
           name: 'restaurantes',
