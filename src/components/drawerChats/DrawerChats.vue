@@ -40,6 +40,7 @@
         :show-files="false"
         :width="'max-content'"
         :responsive-breakpoint="3000"
+        @send-message="handleMessage"
       />
     </v-navigation-drawer>
   </section>
@@ -117,11 +118,11 @@ export default {
   methods: {
     initChatComponent(){
       this.fetchChats(localStorage.getItem('profileid'))
-      this.intervalo = setInterval(()=>{
-        if (this.esperando !== true) {
-          console.log('fetchChats')
-        }
-      },3000)
+      // this.intervalo = setInterval(()=>{
+      //   if (this.esperando !== true) {
+      //     console.log('fetchChats')
+      //   }
+      // },3000)
     },
     handleChats(){
       this.axios.post(CHATS).then((res) => {
@@ -137,8 +138,8 @@ export default {
       // vue-advanced-chat component is performance oriented, hence you have to follow specific rules to make it work properly
       const habs = []; // El componente necesita igualar un array lleno con la variable de las rooms
       this.axios.get(CHATS).then((res) => {
-        console.log(res.status.charAt(0))
-        if (res.status[0] !== 2) {
+        // console.log(res.status.charAt(0))
+        if (res.status !== 200) {
         } else {
           console.log(res.code)
           res.data.forEach((element) => {
@@ -150,8 +151,13 @@ export default {
         this.roomsLoaded = false
       }).catch((e)=>console.log(e))
     },
-    handleMessage(){
-
+    handleMessage(data){
+      console.log(data)
+      this.axios.post(MESSAGES,{content:data.content,replyMessage:data.replyMessage,roomId:data.roomId,usuario:1}).then((res) => {
+        if (res.code !== 201) {
+          console.log(res.code)
+        }
+      }).catch((e)=>console.log(e))
     },
     fetchMessages({ room, options }) {
       this.messagesLoaded = false
@@ -162,7 +168,6 @@ export default {
         });
         this.messages = msgs
         this.messagesLoaded = true
-        console.log(this.messages)
       })
     },
     // onFetchMessages() {
