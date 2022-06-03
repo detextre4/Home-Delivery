@@ -19,59 +19,54 @@
         </v-btn>
 
         <v-select
-          v-model="filters.filterName.title"
-          :items="filters.filterName.by"
-          solo
+          v-model="filters.filterName"
+          :items="$t('filters.filterName.by')"
+          :label="$t('filters.filterName.label')"
           hide-details
-          class="select relative"
-        >
-          <template v-slot:selection="slotProps">
-            <div class="select_label">{{$t('por')}}</div>
-            <span>{{slotProps.item}}</span>
-          </template>
-        </v-select>
+          filled
+          class="select"
+        ></v-select>
 
         <v-select
-          v-model="filters.filterExcluir.title"
-          :items="filters.filterExcluir.by"
+          v-model="filters.filterExcluir"
+          :items="$t('filters.filterExcluir')"
           :label="$t('excluir')"
-          solo
+          filled
           hide-details
           multiple
           class="select"
         >
           <template v-slot:selection="{item, index}">
-            <div class="select_label">{{$t('excluir')}}</div>
             <v-chip color="#FFFFFF" v-if="index === 0">
-              <span>{{item}}</span>
+              <span class="semibold">{{item}}</span>
             </v-chip>
             <span
               v-if="index === 1"
               class="black--text text-caption"
             >
-              (+{{ filters.filterExcluir.title.length - 1 }})
+              (+{{ $t('filters.filterExcluir').length - 1 }})
             </span>
           </template>
         </v-select>
 
         <v-select
-          :items="filters.filterIncluir.by"
+          v-model="filters.filterIncluir"
+          :items="$t('filters.filterIncluir')"
           :label="$t('incluir')"
-          solo
           hide-details
+          filled
           multiple
           class="select"
         >
           <template v-slot:selection="{item, index}">
-            <div class="select_label">{{$t('incluir')}}</div>
             <v-chip color="#FFFFFF" v-if="index === 0">
-              <span>{{item}}</span>
+              <span class="semibold">{{item}}</span>
             </v-chip>
             <span
               v-if="index === 1"
               class="black--text text-caption"
             >
-              (+{{ filters.filterIncluir.title.length - 1 }})
+              (+{{ $t('filters.filterIncluir').length - 1 }})
             </span>
           </template>
         </v-select>
@@ -83,7 +78,7 @@
         <h1 class="h7_em">{{$t('restaurantes')}}</h1>
       </aside>
       <section class="contRestaurantList">
-        <v-card v-for="(item,i) in $t('dataRestaurant')" :key="i"
+        <v-card v-for="(item,i) in dataRestaurant" :key="i"
           class="card divcol" v-ripple="activeRipple?{class: 'activeRipple'}:''">
           <img class="images" :src="item.img" alt="Restaurant image">
 
@@ -108,26 +103,32 @@ export default {
     return {
       activeRipple: false,
       filters: {
-        filterName: {
-          title: "nombre",
-          by: ["nombre", "autor"]
-        },
-        filterExcluir: {
-          title: [],
-          by: ["blabla", "algoalgo"]
-        },
-        filterIncluir: {
-          title: [],
-          by: ["blabla", "algoalgo"]
-        },
+        filterName: null,
+        filterExcluir: [],
+        filterIncluir: [],
       },
-      // dataRestaurant: [
-      //   {
-      //     img: require("@/assets/test.jpg"),
-      //     title: "titulo",
-      //     hours: "horario",
-      //   },
-      // ]
+      dataRestaurant: [
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+      ]
     }
   },
   methods: {
