@@ -211,7 +211,7 @@ export default {
     if (this.perfil.wallet && this.perfil.wallet !== 'null') {
       this.VerifyProfile({wallet:this.perfil.wallet})
     } else {
-      this.$router.push({ path: '/' })
+      this.$router.push({name:'inicio'})
     }
   },
   methods: {
@@ -231,13 +231,13 @@ export default {
       if (item.id){
         this.axios.put(PROFILE+item.id+'/',item).then((response) => {
           this.perfil=response.data
-          this.$router.push({ path: '/' })
+          this.$router.push({name:'inicio'})
           this.$router.go()
         })
       } else {
         this.axios.post(PROFILE,item).then((response) => {
           this.perfil=response.data
-          this.$router.push({ path: '/' })
+          this.$router.push({name:'inicio'})
           this.$router.go()
         })
       }

@@ -194,9 +194,9 @@ export default {
     },
     Logout() {
       this.$parent.$parent.loginNear('logout');
-      if (this.$route.name !== 'Home') {
+      if (this.$route.name !== 'inicio') {
         localStorage.removeItem('store')
-        this.$router.push({ name: 'Home' });
+        this.$router.push({name:'inicio'});
       }
     },
   },

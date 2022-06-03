@@ -107,11 +107,11 @@ export default {
           index.active = true;
           index.icon = icon1Active;
             // push select
-            if (item == "inicio") {this.$router.push('/')}
+            if (item == "inicio") {this.$router.push({name:'inicio'})}
         } else {
           item.active = true;
           item.icon = icon1Active
-          this.$router.push('/')
+          this.$router.push({name:'inicio'})
         }
       } else if (item.key == 'restaurantes' || item == 'restaurantes' || item == 'restauranteTienda') {
         // if external or internal navbar call
