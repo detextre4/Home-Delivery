@@ -1,10 +1,10 @@
 <template>
   <section id="restaurantes" class="parent relative">
     <v-col class="contup relative divcol">
-      <h1 class="h7_em vermobile">Restaurantes</h1>
+      <h1 class="h7_em vermobile">{{$t('restaurantes')}}</h1>
       <aside class="contFilters divwrap acenter">
         <v-btn text class="searchBtn semibold">
-          filtrar
+          {{$t('filtrar')}}
         </v-btn>
 
         <v-text-field
@@ -26,7 +26,7 @@
           class="select relative"
         >
           <template v-slot:selection="slotProps">
-            <div class="select_label">por</div>
+            <div class="select_label">{{$t('por')}}</div>
             <span>{{slotProps.item}}</span>
           </template>
         </v-select>
@@ -34,14 +34,14 @@
         <v-select
           v-model="filters.filterExcluir.title"
           :items="filters.filterExcluir.by"
-          label="excluir"
+          :label="$t('excluir')"
           solo
           hide-details
           multiple
           class="select"
         >
           <template v-slot:selection="{item, index}">
-            <div class="select_label">excluir</div>
+            <div class="select_label">{{$t('excluir')}}</div>
             <v-chip color="#FFFFFF" v-if="index === 0">
               <span>{{item}}</span>
             </v-chip>
@@ -56,14 +56,14 @@
 
         <v-select
           :items="filters.filterIncluir.by"
-          label="incluir"
+          :label="$t('incluir')"
           solo
           hide-details
           multiple
           class="select"
         >
           <template v-slot:selection="{item, index}">
-            <div class="select_label">incluir</div>
+            <div class="select_label">{{$t('incluir')}}</div>
             <v-chip color="#FFFFFF" v-if="index === 0">
               <span>{{item}}</span>
             </v-chip>
@@ -80,10 +80,10 @@
 
     <v-col class="contdown">
       <aside class="conttag jcenter divcol eliminarmobile">
-        <h1 class="h7_em">Restaurantes</h1>
+        <h1 class="h7_em">{{$t('restaurantes')}}</h1>
       </aside>
       <section class="contRestaurantList">
-        <v-card v-for="(item,i) in dataRestaurant" :key="i"
+        <v-card v-for="(item,i) in $t('dataRestaurant')" :key="i"
           class="card divcol" v-ripple="activeRipple?{class: 'activeRipple'}:''">
           <img class="images" :src="item.img" alt="Restaurant image">
 
@@ -103,6 +103,7 @@
 <script>
 export default {
   name: "restaurantes",
+  i18n: require("./i18n"),
   data() {
     return {
       activeRipple: false,
@@ -120,38 +121,13 @@ export default {
           by: ["blabla", "algoalgo"]
         },
       },
-      dataRestaurant: [
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-      ]
+      // dataRestaurant: [
+      //   {
+      //     img: require("@/assets/test.jpg"),
+      //     title: "titulo",
+      //     hours: "horario",
+      //   },
+      // ]
     }
   },
   methods: {

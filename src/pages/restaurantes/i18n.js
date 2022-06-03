@@ -1,12 +1,110 @@
 module.exports = {
   messages: {
     ES: {
-      sesion: "iniciar sesion",
-      savePhrase: 'Este registro genera una frase de 12 palabras que debe guardar en un lugar seguro',
+      restaurantes: "Restaurantes",
+      filtrar: "filtrar",
+      por: "por",
+      excluir: "excluir",
+      incluir: "incluir",
+      filters: {
+        filterName: {
+          title: "nombre",
+          by: ["nombre", "autor"]
+        },
+        filterExcluir: {
+          title: [],
+          by: ["blabla", "algoalgo"]
+        },
+        filterIncluir: {
+          title: [],
+          by: ["blabla", "algoalgo"]
+        },
+      },
+      dataRestaurant: [
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "titulo",
+          hours: "horario",
+        },
+      ]
     },
     US: {
-      sesion: "log in",
-      savePhrase: 'This record generates a 12-word phrase that you must keep in a safe place',
+      restaurantes: "restaurants",
+      filtrar: "filter",
+      por: "by",
+      excluir: "suppress",
+      incluir: "include",
+      filters: {
+        filterName: {
+          title: "name",
+          by: ["name", "author"]
+        },
+        filterExcluir: {
+          title: [],
+          by: ["blahblah", "thingthing"]
+        },
+        filterIncluir: {
+          title: [],
+          by: ["blahblah", "thingthing"]
+        },
+      },
+      dataRestaurant: [
+        {
+          img: require("@/assets/test.jpg"),
+          title: "title",
+          hours: "schedule",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "title",
+          hours: "schedule",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "title",
+          hours: "schedule",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "title",
+          hours: "schedule",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "title",
+          hours: "schedule",
+        },
+        {
+          img: require("@/assets/test.jpg"),
+          title: "title",
+          hours: "schedule",
+        },
+      ]
     }
   }
 }
