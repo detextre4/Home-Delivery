@@ -42,9 +42,10 @@
         <v-card v-for="(item,i) in dataHistorial" :key="i"
           class="divcol" :style="`width:${widthListener}`"
           @click="ViewCard(item)" v-ripple="{class: 'activeRipple'}">
-          <GoogleMap class="mapa" :style="`--tag: '${$t(item.state)}'`"></GoogleMap>
+          <GoogleMap :class="{completado:item.state=='completado',enCurso:item.state=='enCurso',cancelado:item.state=='cancelado'}"
+          class="mapa" :style="`--tag: '${$t(item.state)}'`"></GoogleMap>
 
-          <aside class="divcol center tcenter" :style="state">
+          <aside class="divcol center tcenter">
             <h3 class="h8_em semibold tnone">{{item.user}}</h3>
             <span class="text">{{item.distance}} - {{item.time}}</span>
             <span class="text">{{item.dollar}} $ ({{item.near}} Near)</span>

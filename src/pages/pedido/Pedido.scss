@@ -59,7 +59,11 @@
           // pointer-events: none;
           overflow: hidden;
           border-radius: $border-card;
+          &.completado::after {background-color: rgba(21, 4, 35, 0.54)}
+          &.enCurso::after {background-color: rgba(0, 0, 0, 0.54)}
+          &.cancelado::after {background-color: rgba(38, 1, 1, 0.54)}
           &::after {
+            $tag: var(--bg-state);
             content: var(--tag);
             font-size: var(--step-em-2);
             font-weight: 700;
@@ -67,7 +71,6 @@
             @include absoluteCenter;
             display: grid;
             place-items: center;
-            background-color: rgb(0, 0, 0, 0.54);
             transform-origin: bottom;
             @include animation(.2s $ease-return) {from {transform: scaleY(0)}to {transform: scaleY(1)}}
           }
