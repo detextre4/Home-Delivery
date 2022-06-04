@@ -11,9 +11,7 @@
     animation: moveright .5s $ease-return;
     .alert-content {
       gap: 0.2em;
-      span {
-        color: #FFFFFF !important;
-      }
+      span {color: #FFFFFF !important;}
     }
     .v-btn {
       span {
