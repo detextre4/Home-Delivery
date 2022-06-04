@@ -88,10 +88,10 @@ export default {
       })
     },
     clearAll() {
-      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'inicio')].icon = icon1
-      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'restaurantes')].icon = icon2
-      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'tienda')].icon = icon3
-      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'pedido')].icon = icon4
+      this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'inicio')].icon = icon1
+      this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'restaurantes')].icon = icon2
+      this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'tienda')].icon = icon3
+      this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'pedido')].icon = icon4
       this.dataNavbar.forEach(element => {element.active = false});
     },
     to(item) {
@@ -99,7 +99,7 @@ export default {
       if (item.key == 'inicio' || item == 'inicio') {
         // if external or internal navbar call
         if (item == "inicio") {
-          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'inicio')]
+          const index = this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'inicio')]
           index.active = true;
           index.icon = icon1Active;
             // push select
@@ -112,7 +112,7 @@ export default {
       } else if (item.key == 'restaurantes' || item == 'restaurantes' || item == 'restauranteTienda') {
         // if external or internal navbar call
         if (item == "restaurantes" || item == 'restauranteTienda') {
-          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'restaurantes')]
+          const index = this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'restaurantes')]
           index.active = true;
           index.icon = icon2Active;
             // push select
@@ -126,7 +126,7 @@ export default {
       } else if (item.key == 'tienda' || item == 'tienda') {
         // if external or internal navbar call
         if (item == "tienda") {
-          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'tienda')]
+          const index = this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'tienda')]
           index.active = true;
           index.icon = icon3Active;
             // push select
@@ -139,7 +139,7 @@ export default {
       } else if (item.key == 'pedido' || item == 'pedido') {
         // if external or internal navbar call
         if (item == "pedido") {
-          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'pedido')]
+          const index = this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'pedido')]
           index.active = true;
           index.icon = icon4Active;
             // push select

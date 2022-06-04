@@ -1,18 +1,18 @@
 module.exports = {
   messages: {
     ES: {
-      cerrar: "Cerrar",
-      aprobado: "Aprobado",
-      textAprobado: "Operacion completada exitosamente",
-      denegado: "Denegado",
-      textDenegado: "Operacion fallida",
+      close: "Cerrar",
+      success: "Aprobado",
+      textSuccess: "Operacion completada exitosamente",
+      cancel: "Denegado",
+      textCancel: "Operacion fallida",
     },
     US: {
-      cerrar: "Close",
-      aprobado: "Approved",
-      textAprobado: "Operation completed successfully",
-      denegado: "Denied",
-      textDenegado: "Failed operation",
+      close: "Close",
+      success: "Approved",
+      textSuccess: "Operation completed successfully",
+      cancel: "Denied",
+      textCancel: "Failed operation",
     }
   }
 }

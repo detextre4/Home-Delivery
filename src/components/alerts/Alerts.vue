@@ -9,20 +9,18 @@
       color="var(--clr-btn)"
     >
       <template v-slot:action="{ attrs }">
-        <v-btn class="h10_em semibolbold" color="red" text rounded v-bind="attrs" @click="Close(item)">
-          {{$t('cerrar')}}
+        <v-btn class="h10_em semibolbold" color="red" text rounded v-bind="attrs" @click="item.model=false">
+          {{$t('close')}}
         </v-btn>
       </template>
 
       <aside class="alert-content divcol">
         <div class="divrow acenter">
           <v-icon :style="`color: ${item.color} !important`" size="2.5rem">{{ item.icon }}</v-icon>
-          <h3 class="h8_em p bold" :style="`color: ${item.color} !important`">{{ $t(item.title) }}</h3>
+          <h3 class="h8_em p bold" :style="`color: ${item.color} !important`">{{ $t(item.key) }}</h3>
         </div>
 
-        <span class="h11_em semibold">
-          {{ $t(item.desc) }}
-        </span>
+        <span class="h11_em semibold">{{ $t(item.desc) }}</span>
       </aside>
     </v-snackbar>
   </section>
@@ -38,35 +36,26 @@ export default {
       dataAlerts: [
         {
           key: "success",
-          model: false,
+          desc: "textSuccess",
           icon: "mdi-check-circle",
-          title: "aprobado",
           color: "#A4FDDF",
-          desc: "textAprobado"
+          model: false,
         },
         {
           key: "cancel",
-          model: false,
+          desc: "textCancel",
           icon: "mdi-close-circle",
-          title: "denegado",
           color: "rgb(200, 0, 0)",
-          desc: "textDenegado"
+          model: false,
         }
       ]
     };
   },
   methods: {
     Alerts(key) {
-      if (key == 'success') {
-        this.dataAlerts[0].model = true
-      }
-      if (key == 'cancel') {
-        this.dataAlerts[1].model = true
-      }
+      const index = this.dataAlerts.findIndex(data=>data.key==key);
+      this.dataAlerts[index].model = true
     },
-    Close(item) {
-      item.model = false;
-    }
   }
 };
 </script>

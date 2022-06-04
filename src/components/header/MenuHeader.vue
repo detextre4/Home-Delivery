@@ -95,13 +95,13 @@
           <!-- expansion -->
           <template v-if="dataMenuLogout.expansion">
             <v-expansion-panel-header>
-              {{ $t(dataMenuLogout.expansion.name) }}
+              {{ $t(dataMenuLogout.expansion.key) }}
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <v-list v-for="(item, i) in dataMenuLogout.expansion.selection" :key="i">
                 <v-list-item class="activeClass" :to="item.to" @click.stop="logout = false">
                   <v-list-item-title class="center">
-                    <span class="not_clr">{{ $t(item.name) }}</span>
+                    <span class="not_clr">{{ $t(item.key) }}</span>
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
@@ -113,7 +113,7 @@
             <v-list v-for="(item,i) in dataMenuLogout.list" :key="i" class="intoExpansion">
               <v-list-item @click.stop="Logout()">
                 <v-list-item-title>
-                  <span class="not_clr">{{ $t(item.name) }}</span>
+                  <span class="not_clr">{{ $t(item.key) }}</span>
                 </v-list-item-title>
               </v-list-item>
             </v-list>
@@ -154,23 +154,20 @@ export default {
       },
       dataMenuLogout: {
         expansion: {
-          name: "ajustes",
           key: "ajustes",
           selection: [
             {
-              name: "perfil",
               key: "perfil",
               to: "/mi-perfil",
             },
             {
-              name: "tienda",
               key: "tienda",
               to: "/mi-tienda",
             },
           ]
         },
         list: [
-          { name: "logout", key: "logout" }
+          { key: "logout" }
         ]
       },
     };
