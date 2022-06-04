@@ -63,7 +63,6 @@
           &.enCurso::after {background-color: rgba(0, 0, 0, 0.54)}
           &.cancelado::after {background-color: rgba(38, 1, 1, 0.54)}
           &::after {
-            $tag: var(--bg-state);
             content: var(--tag);
             font-size: var(--step-em-2);
             font-weight: 700;
