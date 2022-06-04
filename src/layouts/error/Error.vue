@@ -2,11 +2,11 @@
   <v-app id="error">
     <v-container fluid class="error-page center divcol">
       <v-row justify="center" align="center">
-        <v-col class="tcenter center divcol paddmobile">
+        <v-col class="tcenter center divcol padd0mobile">
           <!-- content -->
           <h1 class="p bold">404</h1>
           <span class="h5_em bold">{{$t('errorTitle')}}</span>
-          <v-btn href="#/" class="h7_em bold">{{$t('buttonTitle')}}</v-btn>
+          <v-btn href="#" :to="'/'" class="h7_em bold">{{$t('buttonTitle')}}</v-btn>
         </v-col>
       </v-row>
     </v-container>
