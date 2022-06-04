@@ -186,6 +186,54 @@ $breakpoints: (
 
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // fixed position // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+@mixin fixed($value1, $value2:fixed, $value3:fixed, $value4:fixed) {
+  position: fixed;
+  left: $value1;
+  top: $value2;
+  right: $value3;
+  bottom: $value4;
+}
+/* example
+  @include center(auto, 0, 0, 0);
+*/
+@mixin fixedCenter() {
+  position: fixed;
+  margin: auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // sticky position // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+@mixin sticky($value1, $value2:fixed, $value3:fixed, $value4:fixed) {
+  position: sticky;
+  left: $value1;
+  top: $value2;
+  right: $value3;
+  bottom: $value4;
+}
+/* example
+  @include center(auto, 0, 0, 0);
+*/
+@mixin stickyCenter() {
+  position: sticky;
+  margin: auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
 /* // // absolute position // // */ 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
 @mixin absolute($value1, $value2:fixed, $value3:fixed, $value4:fixed) {
@@ -214,7 +262,7 @@ $breakpoints: (
 /* // // text stroke // // */ 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
 @mixin stroke($value) {
-  @include nav(text-stroke, $value)
+  @include browser(text-stroke, $value)
 }
 /* example
   @include stroke(1px #191919);
@@ -226,8 +274,9 @@ $breakpoints: (
 @mixin browser($property, $value) {
   #{$property}: $value;
   -webkit-#{$property}: $value;
-  -ms-#{$property}: $value;
   -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
 }
 /* example
   @include nav(transform, rotate(45deg));
