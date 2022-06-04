@@ -1,12 +1,38 @@
 module.exports = {
   messages: {
     ES: {
-      sesion: "iniciar sesion",
-      savePhrase: 'Este registro genera una frase de 12 palabras que debe guardar en un lugar seguro',
+      labelBuscar: "Buscar por comida / Restaurante",
+      sesion: "Iniciar sesión",
+      idioma: "Idioma",
+      español: "Español",
+      ingles: "Ingles",
+      ajustes: "Ajustes",
+      perfil: "Perfil",
+      tienda: "Mi Tienda",
+      logout: "Cerrar sesión",
+      // dataMenuOptions: {
+      //   expansion: {
+      //     key: "idioma",
+      //     selection: [{name: "Ingles", key: "US"}, {name: "Español", key: "ES"}]
+      //   }
+      // },
     },
     US: {
-      sesion: "log in",
-      savePhrase: 'This record generates a 12-word phrase that you must keep in a safe place',
+      labelBuscar: "Search by food / Restaurant",
+      sesion: "Log in",
+      idioma: "Language",
+      español: "Spanish",
+      ingles: "English",
+      ajustes: "Options",
+      perfil: "Profile",
+      tienda: "My Shop",
+      logout: "Log out",
+      // dataMenuOptions: {
+      //   expansion: {
+      //     key: "Language",
+      //     selection: [{name: "English", key: "US"}, {name: "Spanish", key: "ES"}]
+      //   }
+      // },
     }
   }
 }

@@ -24,7 +24,7 @@
     >
       <section class="contPedidos divcol acenter">
         <!-- caja de pedidos -->
-        <h3 class="h10_em tcenter">Pedidos Pendientes</h3>
+        <h3 class="h10_em tcenter">{{$t('pedidosPendientes')}}</h3>
       </section>
 
       <chat-window
@@ -52,9 +52,8 @@ import { MESSAGES, CHATS } from '@/services/api.js'
 import 'vue-advanced-chat/dist/vue-advanced-chat.css'
 export default {
   name: "drawerChats",
-  components: {
-    ChatWindow
-  },
+  components: { ChatWindow },
+  i18n: require("./i18n"),
   data() {
     return {
       messagesBadge: 1,

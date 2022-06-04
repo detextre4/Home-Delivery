@@ -1,12 +1,34 @@
 module.exports = {
   messages: {
     ES: {
-      sesion: "iniciar sesion",
-      savePhrase: 'Este registro genera una frase de 12 palabras que debe guardar en un lugar seguro',
+      pedido: "Pedido",
+      informacion: "Información",
+      costoViaje: "Costo viaje (Aprox)",
+      direccion: "Dirección",
+      distanciaTotal: "Distancia total",
+      verDetalles: "Ver detalles",
+      historialPedidos: "Historial Pedidos",
+      informacionPedido: "INFORMACIÓN DEL PEDIDO",
+      informacionVendedor: "INFORMACIÓN DEL VENDEDOR",
+      informacionDelivery: "INFORMACIÓN DEL DELIVERY",
+      completado: "Completado",
+      enCurso: "En Curso",
+      cancelado: "Cancelado",
     },
     US: {
-      sesion: "log in",
-      savePhrase: 'This record generates a 12-word phrase that you must keep in a safe place',
+      pedido: "Order",
+      informacion: "Information",
+      costoViaje: "Trip cost (Approx)",
+      direccion: "Direction",
+      distanciaTotal: "Total distance",
+      verDetalles: "See details",
+      historialPedidos: "Order History",
+      informacionPedido: "ORDER INFORMATION",
+      informacionVendedor: "SELLER INFORMATION",
+      informacionDelivery: "DELIVERY INFORMATION",
+      completado: "Success",
+      enCurso: "In Progress",
+      cancelado: "Cancelled",
     }
   }
 }

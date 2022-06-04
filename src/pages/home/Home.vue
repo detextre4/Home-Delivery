@@ -50,9 +50,9 @@
     </v-col> -->
 
     <v-col class="contdown">
-      <h1 class="h7_em divwrap bold">Restaurantes
+      <h1 class="h7_em divwrap bold">{{$t('restaurantes')}}
         <h2 class="h12_em p acenter anim_slide" style="line-height: var(--distance) !important">
-          <span>Más<br>Populares</span>
+          <span>{{$t('mas')}}<br>{{$t('populares')}}</span>
         </h2>
       </h1>
 
@@ -111,51 +111,9 @@
 <script>
 export default {
   name: "inicio",
+  i18n: require("./i18n"),
   data() {
     return {
-      // carouselCategories: 0,
-      // sliderCategories: [
-      //   {
-      //     img: require("@/assets/icons/pizza-outline.png"),
-      //     title: "Pizzas",
-      //     active: false
-      //   },
-      //   {
-      //     img: require("@/assets/icons/pizza-outline.png"),
-      //     title: "Pizzas",
-      //     active: false
-      //   },
-      //   {
-      //     img: require("@/assets/icons/pizza-outline.png"),
-      //     title: "Pizzas",
-      //     active: false
-      //   },
-      //   {
-      //     img: require("@/assets/icons/pizza-outline.png"),
-      //     title: "Pizzas",
-      //     active: false
-      //   },
-      //   {
-      //     img: require("@/assets/icons/pizza-outline.png"),
-      //     title: "Pizzas",
-      //     active: false
-      //   },
-      //   {
-      //     img: require("@/assets/icons/pizza-outline.png"),
-      //     title: "Pizzas",
-      //     active: false
-      //   },
-      //   {
-      //     img: require("@/assets/icons/pizza-outline.png"),
-      //     title: "Pizzas",
-      //     active: false
-      //   },
-      //   {
-      //     img: require("@/assets/icons/pizza-outline.png"),
-      //     title: "Pizzas",
-      //     active: false
-      //   },
-      // ],
       carouselRestaurant: 0,
       sliderRestaurant: [
         {
@@ -234,82 +192,23 @@ export default {
     }
   },
   computed: {
-    // columnsCategories() {
-    //   if (this.$vuetify.breakpoint.xl) {
-    //     return 4;
-    //   }
-
-    //   if (this.$vuetify.breakpoint.lg && window.innerWidth < 1306) {
-    //     return 3;
-    //   }
-    //   if (this.$vuetify.breakpoint.lg) {
-    //     return 4;
-    //   }
-
-    //   if (this.$vuetify.breakpoint.md) {
-    //     return 3;
-    //   }
-
-    //   if (this.$vuetify.breakpoint.sm) {
-    //     return 2;
-    //   }
-
-    //   return 1;
-    // },
     columnsRestaurant() {
-      if (this.$vuetify.breakpoint.xl) {
-        return 3;
-      }
-
-      if (this.$vuetify.breakpoint.lg) {
-        return 3;
-      }
-
-      if (this.$vuetify.breakpoint.md) {
-        return 3;
-      }
-
-      if (this.$vuetify.breakpoint.sm) {
-        return 2;
-      }
-
+      if (this.$vuetify.breakpoint.xl) {return 3}
+      if (this.$vuetify.breakpoint.lg) {return 3}
+      if (this.$vuetify.breakpoint.md) {return 3}
+      if (this.$vuetify.breakpoint.sm) {return 2}
       return 1;
     }
   },
   methods: {
-    // ChangeSlidesCategories(item) {
-    //   if (item == "next") {
-    //     this.carouselCategories++
-    //   }
-    //   if (item == "prev") {
-    //     this.carouselCategories--
-    //   }
-    // },
-    // SelectCardCategories(item) {
-    //   const icon1 = require("@/assets/icons/pizza-outline.png");
-    //   const icon1Active = require("@/assets/icons/pizza.png");
-    //   this.sliderCategories.forEach(element => {
-    //     element.img = icon1
-    //     element.active = false
-    //   });
-    //   item.img = icon1Active
-    //   item.active = true
-    // },
     ChangeSlidesRestaurant(item) {
-      if (item == "next") {
-        this.carouselRestaurant++
-      }
-      if (item == "prev") {
-        this.carouselRestaurant--
-      }
+      if (item == "next") {this.carouselRestaurant++}
+      if (item == "prev") {this.carouselRestaurant--}
     },
     SelectLikeRestaurant(item) {
       item.like = !item.like
-      if (item.like == true) {
-        item.icon = require("@/assets/icons/corazon.png")
-      } else {
-        item.icon = require("@/assets/icons/corazon-outline.png")
-      }
+      if (item.like == true) {item.icon = require("@/assets/icons/corazon.png")}
+      else {item.icon = require("@/assets/icons/corazon-outline.png")}
     }
   },
 };

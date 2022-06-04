@@ -3,7 +3,6 @@
     <v-snackbar
       v-for="(item, index) in dataAlerts" :key="index"
       v-model="item.model"
-      elevation="10"
       centered
       right
       transition="slide-x-reverse-transition"
@@ -11,18 +10,18 @@
     >
       <template v-slot:action="{ attrs }">
         <v-btn class="h10_em semibolbold" color="red" text rounded v-bind="attrs" @click="Close(item)">
-          Cerrar
+          {{$t('cerrar')}}
         </v-btn>
       </template>
 
       <aside class="alert-content divcol">
         <div class="divrow acenter">
           <v-icon :style="`color: ${item.color} !important`" size="2.5rem">{{ item.icon }}</v-icon>
-          <h3 class="h8_em p bold" :style="`color: ${item.color} !important`">{{ item.title }}</h3>
+          <h3 class="h8_em p bold" :style="`color: ${item.color} !important`">{{ $t(item.title) }}</h3>
         </div>
 
         <span class="h11_em semibold">
-          {{ item.desc }}
+          {{ $t(item.desc) }}
         </span>
       </aside>
     </v-snackbar>
@@ -31,7 +30,8 @@
 
 <script>
 export default {
-  name: "Alerts",
+  name: "alerts",
+  i18n: require("./i18n"),
   data() {
     return {
       alert: true,
@@ -40,17 +40,17 @@ export default {
           key: "success",
           model: false,
           icon: "mdi-check-circle",
-          title: "Aprobado",
+          title: "aprobado",
           color: "#A4FDDF",
-          desc: "Operacion completada exitosamente"
+          desc: "textAprobado"
         },
         {
           key: "cancel",
           model: false,
           icon: "mdi-close-circle",
-          title: "Denegado",
+          title: "denegado",
           color: "rgb(200, 0, 0)",
-          desc: "Operacion fallida"
+          desc: "textDenegado"
         }
       ]
     };

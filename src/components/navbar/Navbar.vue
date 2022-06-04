@@ -11,7 +11,7 @@
           class="conticon center" :class="{ conticonActive: item.active }">
           <button class="divcol center">
             <img :src="item.icon" alt="Icono">
-            <span>{{ item.title}}</span>
+            <span>{{ $t(item.key) }}</span>
           </button>
         </a>
       </template>
@@ -39,28 +39,24 @@ export default {
         {
           key: "inicio",
           icon: icon1,
-          title: "Inicio",
           active: false,
           mostrar: true,
         },
         {
           key: "restaurantes",
           icon: icon2,
-          title: "Restaurantes",
           active: false,
           mostrar: true,
         },
         {
           key: "tienda",
           icon: icon3,
-          title: "Mi Tienda",
           active: false,
           mostrar: false,
         },
         {
           key: "pedido",
           icon: icon4,
-          title: "Pedido",
           active: false,
           mostrar: true,
         },

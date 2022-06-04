@@ -7,52 +7,52 @@
   height: 100%;
   display: flex;
   align-items: center;
-  .contup {
-    padding-top: 2em;
-    .conttag {
-      transform: rotate(-90deg) translate(-100%, -2%);
-      width: 5%;
-    }
-    .sectright {
-      width: 100%;
-      :is(.v-image, .v-window) {height: max-content !important}
-      .cartasHome {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: $border-card;
-        box-shadow: $sombra-card !important;
-        padding: clamp(2em, 3vw, 3em);
-        max-width: 20em;
-        min-height: 25em;
-        margin-inline: auto;
-        overflow: hidden;
-        .contimg {
-          width: 8.4375em;
-          height: 8.4375em;
-          border-radius: 50%;
-          background-color: #FFFFFF;
-          border: 3px solid #6B6B6B;
-          .square {
-            position: absolute;;
-            width: 3em;
-            height: 3em;
-            background: var(--clr-btn-inv);
-            border-radius: $border-btn;
-            z-index: 0;
-            inset: 15%;
-          }
-          img {
-            width: 4em;
-            z-index: 1;
-          }
-        }
-        span {
-          color: var(--clr-btn);
-        }
-      }
-    }
-  }
+  // .contup {
+  //   padding-top: 2em;
+  //   .conttag {
+  //     transform: rotate(-90deg) translate(-100%, -2%);
+  //     width: 5%;
+  //   }
+  //   .sectright {
+  //     width: 100%;
+  //     :is(.v-image, .v-window) {height: max-content !important}
+  //     .cartasHome {
+  //       flex-direction: column;
+  //       justify-content: center;
+  //       align-items: center;
+  //       border-radius: $border-card;
+  //       box-shadow: $sombra-card !important;
+  //       padding: clamp(2em, 3vw, 3em);
+  //       max-width: 20em;
+  //       min-height: 25em;
+  //       margin-inline: auto;
+  //       overflow: hidden;
+  //       .contimg {
+  //         width: 8.4375em;
+  //         height: 8.4375em;
+  //         border-radius: 50%;
+  //         background-color: #FFFFFF;
+  //         border: 3px solid #6B6B6B;
+  //         .square {
+  //           position: absolute;;
+  //           width: 3em;
+  //           height: 3em;
+  //           background: var(--clr-btn-inv);
+  //           border-radius: $border-btn;
+  //           z-index: 0;
+  //           inset: 15%;
+  //         }
+  //         img {
+  //           width: 4em;
+  //           z-index: 1;
+  //         }
+  //       }
+  //       span {
+  //         color: var(--clr-btn);
+  //       }
+  //     }
+  //   }
+  // }
   .contdown {
     h1 {
       gap: 0.2em;

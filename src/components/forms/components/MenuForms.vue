@@ -11,12 +11,12 @@
       :close-on-content-click="false"
     >
       <v-col class="verificatorMiPerfil">
-        <h6 class="h11_em">{{ item.text }}</h6>
+        <h6 class="h11_em">{{ $t(item.text) }}</h6>
         <div class="spacea">
-          <v-btn color="var(--clr-card-2)" @click="AcceptVerificator(item.accept)">
+          <v-btn color="var(--clr-card-2)" @click="AcceptVerificator(item.key)">
             <img src="@/assets/icons/check.png" alt="accept button">
           </v-btn>
-          <v-btn color="var(--clr-card-2)" @click="CancelVerificator(item.cancel)">
+          <v-btn color="var(--clr-card-2)" @click="CancelVerificator(item.key)">
             <img src="@/assets/icons/cancel.png" alt="cancel button">
           </v-btn>
         </div>
@@ -28,22 +28,21 @@
 <script>
 export default {
   name: "menuPerfil",
+  i18n: require("./i18n"),
   data() {
     return {
       closeMenu: true,
       dataVerificators: [
         {
-          text: "¿Estas seguro que deseas ser delivery?",
+          key: "delivery",
+          text: "delivery",
           activator: ".openDeliveryAlert",
-          accept: "delivery",
-          cancel: "delivery",
           closeMenu: false,
         },
         {
-          text: "¿Estas seguro que deseas ser vendedor?",
+          key: "vendedor",
+          text: "vendedor",
           activator: ".openVendedorAlert",
-          accept: "vendedor",
-          cancel: "vendedor",
           closeMenu: false,
         },
       ]

@@ -1,12 +1,26 @@
 module.exports = {
   messages: {
     ES: {
-      sesion: "iniciar sesion",
-      savePhrase: 'Este registro genera una frase de 12 palabras que debe guardar en un lugar seguro',
+      miPerfil: "Mi Perfil",
+      subtitle: "Introduzca la siguiente información",
+      nombre: "Nombre o seudonimo",
+      telefono: "Numero de telefono",
+      direccion: "Dirección",
+      foto: "Foto de perfil",
+      preguntaDelivery: "¿Quieres ser delivery?",
+      preguntaVendedor: "¿Quieres ser vendedor?",
+      guardar: "Guardar",
     },
     US: {
-      sesion: "log in",
-      savePhrase: 'This record generates a 12-word phrase that you must keep in a safe place',
+      miPerfil: "My Profile",
+      subtitle: "Enter the following information",
+      nombre: "Name or pseudonym",
+      telefono: "Phone Number",
+      direccion: "Direction",
+      foto: "Profile picture",
+      preguntaDelivery: "Do you want to be a delivery?",
+      preguntaVendedor: "Do you want to be a seller?",
+      guardar: "Save",
     }
   }
 }

@@ -10,7 +10,7 @@
       </v-btn>
 
       <section class="first divcol">
-        <span class="h10_em bold">INFORMACIÓN DEL PEDIDO</span>
+        <span class="h10_em bold">{{$t('informacionPedido')}}</span>
         <aside class="grid">
           <span v-for="(value, key) in dataModalPedido.pedido" :key="key"
             class="h11_em semibold">{{key}}: {{value}}<span class="coma">,</span></span>
@@ -18,7 +18,7 @@
       </section>
       
       <section class="divcol">
-        <span class="h10_em bold">INFORMACIÓN DEL VENDEDOR</span>
+        <span class="h10_em bold">{{$t('informacionVendedor')}}</span>
         <aside class="grid">
           <span v-for="(value, key) in dataModalPedido.vendedor" :key="key"
             class="h11_em semibold">{{key}}: {{value}}<span class="coma">,</span></span>
@@ -26,7 +26,7 @@
       </section>
       
       <section class="last divcol">
-        <span class="h10_em bold">INFORMACIÓN DEL DELIVERY</span>
+        <span class="h10_em bold">{{$t('informacionDelivery')}}</span>
         <aside class="grid">
           <span v-for="(value, key) in dataModalPedido.delivery" :key="key"
             class="h11_em semibold">{{key}}: {{value}}<span class="coma">,</span></span>
@@ -39,6 +39,7 @@
 <script>
 export default {
   name: "modalPedido",
+  i18n: require("./i18n"),
   data() {
     return {
       modalPedido: false,
