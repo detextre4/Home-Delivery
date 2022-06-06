@@ -4,17 +4,14 @@
     <MenuForms ref="menu"></MenuForms>
     <v-col class="contmiperfil divcol gap2">
       <aside class="contup divcol">
-        <h1 class="h7_em">Mi Perfil</h1>
-        <h2 class="h9_em">Introduzca la siguiente información</h2>
+        <h1 class="h7_em">{{$t('miPerfil')}}</h1>
+        <h2 class="h9_em">{{$t('subtitle')}}</h2>
       </aside>
 
       <aside class="contdown">
         <v-card color="transparent">
-          <label
-            for="username"
-            class="h10_em"
-          >
-            Nombre o seudonimo
+          <label for="username" class="h10_em">
+            {{$t('nombre')}}
           </label>
 
           <v-text-field
@@ -24,10 +21,7 @@
           ></v-text-field>
         </v-card>
         <v-card color="transparent">
-          <label
-            for="walet"
-            class="h10_em"
-          >
+          <label for="walet" class="h10_em">
             Wallet
           </label>
 
@@ -39,11 +33,8 @@
           ></v-text-field>
         </v-card>
         <v-card color="transparent">
-          <label
-            for="telefono"
-            class="h10_em"
-          >
-            Numero de telefono
+          <label for="telefono" class="h10_em">
+            {{$t('telefono')}}
           </label>
 
           <v-text-field
@@ -53,11 +44,8 @@
           ></v-text-field>
         </v-card>
         <v-card color="transparent">
-          <label
-            for="Dirección"
-            class="h10_em"
-          >
-            Dirección
+          <label for="Dirección" class="h10_em">
+            {{$t('direccion')}}
           </label>
 
           <v-text-field
@@ -67,11 +55,8 @@
           ></v-text-field>
         </v-card>
         <v-card color="transparent">
-          <label
-            for="foto"
-            class="h10_em"
-          >
-            Foto de perfil
+          <label for="foto" class="h10_em">
+            {{$t('foto')}}
           </label>
             <v-file-input
               v-model="image"
@@ -95,13 +80,10 @@
               color="var(--clr-card-2)"
               id="delivery"
               class="openDeliveryAlert">
-              <img  v-if="foto == true" src="@/assets/icons/check.png" alt="check button for delivery">
+              <img  v-if="foto == true" src="@/assets/icons/check.svg" alt="check button for delivery">
             </v-btn>
-            <label
-              for="delivery"
-              class="h10_em"
-            >
-              ¿Quieres ser delivery?
+            <label for="delivery" class="h10_em">
+              {{$t('preguntaDelivery')}}
             </label>
           </div>
           <div
@@ -111,13 +93,10 @@
               color="var(--clr-card-2)"
               id="vendedor"
               class="openVendedorAlert">
-              <img   v-if="foto2 == true" src="@/assets/icons/check.png" alt="check button for merchant">
+              <img   v-if="foto2 == true" src="@/assets/icons/check.svg" alt="check button for merchant">
             </v-btn>
-            <label
-              for="vendedor"
-              class="h10_em"
-            >
-              ¿Quieres ser vendedor?
+            <label for="vendedor" class="h10_em">
+              {{$t('preguntaVendedor')}}
             </label>
           </div>
 
@@ -126,7 +105,7 @@
 
       <aside class="contsubmit center">
         <v-btn @click="SaveProfile(perfil)">
-          <span class="h10_em">Guardar</span>
+          <span class="h10_em">{{$t('guardar')}}</span>
         </v-btn>
       </aside>
     </v-col>
@@ -139,10 +118,8 @@ import MenuForms from '../components/MenuForms.vue'
 import { PERFIL,PROFILE } from '@/services/api.js'
 export default {
   name: "miPerfil",
-  components: {
-    MenuForms,
-    Alerts
-  },
+  components: { MenuForms, Alerts },
+  i18n: require("./i18n"),
   data() {
     return {
       url: null,
@@ -151,57 +128,6 @@ export default {
       foto: false,
       foto2: false,
       perfil: {wallet: localStorage.getItem('walletid')},
-      // dataForm: [
-      //   {
-      //     model: "",
-      //     id: "label-nombre",
-      //     label: "Nombre o Pseudonimo",
-      //     textField: true
-      //   },
-      //   {
-      //     model: this.walletid,
-      //     label: "Wallet",
-      //     disabled: true,
-      //     textField: true
-      //   },
-      //   {
-      //     model: "",
-      //     id: "label-direccion",
-      //     label: "Dirección",
-      //     textField: true
-      //   },
-      //   {
-      //     model: "",
-      //     id: "label-telefono",
-      //     label: "Teléfono",
-      //     textField: true
-      //   },
-      //   {
-      //     model: "",
-      //     id: "label-perfil",
-      //     label: "Foto de perfil",
-      //     file: true
-      //   },
-      //   {
-      //     gap: true,
-      //     checkbox: [
-      //       {
-      //         model: false,
-      //         id: "label-delivery",
-      //         label: "Delivery",
-      //         alt: "check button for delivery",
-      //         verificatorD: true
-      //       },
-      //       {
-      //         model: false,
-      //         id: "label-vendedor",
-      //         label: "Vendedor",
-      //         alt: "check button for merchant",
-      //         verificatorV: true
-      //       },
-      //     ]
-      //   },
-      // ]
     }
   },
   mounted(){
@@ -263,7 +189,9 @@ export default {
       }
     },
     showAlert() {
+      // mostrar alerta completado
       this.$refs.alerts.Alerts('success');
+      // mostrar alerta cancelado
       this.$refs.alerts.Alerts('cancel');
     }
   },

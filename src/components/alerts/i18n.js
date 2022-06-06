@@ -1,12 +1,18 @@
 module.exports = {
   messages: {
     ES: {
-      sesion: "iniciar sesion",
-      savePhrase: 'Este registro genera una frase de 12 palabras que debe guardar en un lugar seguro',
+      close: "Cerrar",
+      success: "Aprobado",
+      textSuccess: "Operacion completada exitosamente",
+      cancel: "Denegado",
+      textCancel: "Operacion fallida",
     },
     US: {
-      sesion: "log in",
-      savePhrase: 'This record generates a 12-word phrase that you must keep in a safe place',
+      close: "Close",
+      success: "Approved",
+      textSuccess: "Operation completed successfully",
+      cancel: "Denied",
+      textCancel: "Failed operation",
     }
   }
 }

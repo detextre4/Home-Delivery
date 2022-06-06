@@ -4,7 +4,7 @@
     <v-col class="contup divcol">
       <aside class="astart gap1">
         <v-btn class="anim_moveleft" icon><v-icon>mdi-chevron-left</v-icon></v-btn>
-        <h1 class="h6_em tnone">Pedido: {{previewPedido.user}}</h1>
+        <h1 class="h6_em tnone">{{$t('pedido')}}: {{previewPedido.user}}</h1>
       </aside>
 
       <v-card class="grid">
@@ -12,37 +12,38 @@
 
         <aside class="divcol spacea relative">
           <p class="h10_em semibold">
-            <span>Información: </span>
+            <span>{{$t('informacion')}}: </span>
             {{previewPedido.information}}
           </p>
           <p class="h10_em semibold">
-            <span>Costo viaje (Aprox): </span>
+            <span>{{$t('costoViaje')}}: </span>
             {{previewPedido.dollar}}$ ({{previewPedido.near}} NEAR)
           </p>
           <p class="h10_em semibold">
-            <span>Dirección: </span>
+            <span>{{$t('direccion')}}: </span>
             {{previewPedido.direction}}
           </p>
           <p class="h10_em semibold">
-            <span>Distancia total: </span>
+            <span>{{$t('distanciaTotal')}}: </span>
             {{previewPedido.distance}}
           </p>
           <v-btn class="h11_em" text color="var(--clr-btn)" rounded max-width="max-content"
             @click="$refs.modalPedido.modalPedido=true">
-            Ver detalles
+            {{$t('verDetalles')}}
           </v-btn>
         </aside>
       </v-card>
     </v-col>
 
     <v-col class="contdown divcol gap1">
-      <h1 class="h6_em tcap tcentermobile">Historial Pedidos:</h1>
+      <h1 class="h6_em tcap tcentermobile">{{$t('historialPedidos')}}:</h1>
 
       <section class="grid">
         <v-card v-for="(item,i) in dataHistorial" :key="i"
           class="divcol" :style="`width:${widthListener}`"
           @click="ViewCard(item)" v-ripple="{class: 'activeRipple'}">
-          <GoogleMap class="mapa" :style="`--tag: '${item.state}'`"></GoogleMap>
+          <GoogleMap :class="{completado:item.state=='completado',enCurso:item.state=='enCurso',cancelado:item.state=='cancelado'}"
+          class="mapa" :style="`--tag: '${$t(item.state)}'`"></GoogleMap>
 
           <aside class="divcol center tcenter">
             <h3 class="h8_em semibold tnone">{{item.user}}</h3>
@@ -62,6 +63,7 @@ import ModalPedido from './ModalPedido'
 export default {
   name: "pedido",
   components: { GoogleMap, GoogleMapNearbyPlace, ModalPedido },
+  i18n: require("./i18n"),
   data() {
     return {
       previewPedido: {
@@ -91,7 +93,7 @@ export default {
           near: "1",
           distance: "2.0 km",
           time: "5:22 mins",
-          state: "en curso",
+          state: "enCurso",
         },
         {
           user: "aloha.near",
@@ -101,7 +103,7 @@ export default {
           near: "2",
           distance: "5.0 km",
           time: "2:22 mins",
-          state: "completado",
+          state: "cancelado",
         },
       ],
     }

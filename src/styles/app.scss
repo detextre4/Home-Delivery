@@ -164,22 +164,17 @@ p:not(.not_typography, .not) {
     background-color: rgba($clr-btn, 0.9) !important;
   }
   .select {
-    .v-input__slot {padding-inline: 1.5em !important;.v-label{color: $clr-btn}}
-    .v-select__selections {font-size: var(--font-size) !important;letter-spacing: -0.1ch !important;}
     --size: 200px;
     max-width: var(--size);
+    @include media(max, 480px) {max-width: none}
     flex: 1 1 var(--size);
-    @include media(max, 480px) {max-width: none;}
-    .v-chip {
-      margin: 0 .2em 0 0;
-      span {color: $clr-btn}
-    }
-    .select_label {
-      @include absolute(-10px, -25%);
-      font-size: .9em;
-      color: $clr-btn;
-      z-index: 2;
-    }
+    background-color: var(--clr-card-2) !important;
+    clip-path: $clip-path;
+    border-radius: 28px !important;
+    .v-chip {margin: 0 .2em 0 0;max-width: 6.9em;span {color: $clr-btn; overflow: hidden; white-space: nowrap; text-overflow: ellipsis}}
+    .v-input__slot {padding-inline: 1.5em !important;padding-block: 0em .4em !important;.v-label{color: $clr-btn; z-index: 2};.v-label--active{color: $clr-btn-2 !important}}
+    .v-input__slot::after, .v-input__slot::before {background-color: transparent !important; border: none !important}
+    .v-select__selections {*{text-transform: none !important};.v-select__selection {font-size: var(--font-size) !important;letter-spacing: -0.1ch !important;font-weight: 600 !important}}
   }
 }
 
@@ -223,7 +218,7 @@ p:not(.not_typography, .not) {
   }
 }
 
-.v-input__slot {
+.v-text-field--solo .v-input__slot {
   background-color: var(--clr-card-2) !important;
   box-shadow: none !important;
   clip-path: $clip-path;

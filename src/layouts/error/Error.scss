@@ -36,7 +36,7 @@
       }
       .v-btn {
         width: clamp(8em, 20vw, 20em);
-        height: 4.75rem;
+        height: clamp(2em, 5vw, 4.75em);
         background: transparent;
         border: 2px solid $clr-btn;
         border-radius: 50.6557px;

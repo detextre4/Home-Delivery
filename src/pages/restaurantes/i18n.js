@@ -1,110 +1,38 @@
 module.exports = {
   messages: {
     ES: {
+      // restaurantes
       restaurantes: "Restaurantes",
-      filtrar: "filtrar",
-      por: "por",
-      excluir: "excluir",
-      incluir: "incluir",
+      filtrar: "Filtrar",
+      excluir: "Excluir",
+      incluir: "Incluir",
       filters: {
         filterName: {
-          title: "nombre",
-          by: ["nombre", "autor"]
+          label: "Ordenar por",
+          by: ["Nombre", "Autor"],
         },
-        filterExcluir: {
-          title: [],
-          by: ["blabla", "algoalgo"]
-        },
-        filterIncluir: {
-          title: [],
-          by: ["blabla", "algoalgo"]
-        },
+        filterExcluir: ["Blabla", "Algoalgo"],
+        filterIncluir: ["Blabla", "Algoalgo"],
       },
-      dataRestaurant: [
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
-      ]
+      // restaurante-tienda
+      direccion: "Dirección"
     },
     US: {
-      restaurantes: "restaurants",
-      filtrar: "filter",
-      por: "by",
-      excluir: "suppress",
-      incluir: "include",
+      // restaurantes
+      restaurantes: "Restaurants",
+      filtrar: "Filter",
+      excluir: "Suppress",
+      incluir: "Include",
       filters: {
         filterName: {
-          title: "name",
-          by: ["name", "author"]
+          label: "Order by",
+          by: ["Name", "Author"]
         },
-        filterExcluir: {
-          title: [],
-          by: ["blahblah", "thingthing"]
-        },
-        filterIncluir: {
-          title: [],
-          by: ["blahblah", "thingthing"]
-        },
+        filterExcluir: ["Blahblah", "Thingthing"],
+        filterIncluir: ["Blahblah", "Thingthing"],
       },
-      dataRestaurant: [
-        {
-          img: require("@/assets/test.jpg"),
-          title: "title",
-          hours: "schedule",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "title",
-          hours: "schedule",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "title",
-          hours: "schedule",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "title",
-          hours: "schedule",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "title",
-          hours: "schedule",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "title",
-          hours: "schedule",
-        },
-      ]
+      // restaurante-tienda
+      direccion: "Direction"
     }
   }
 }

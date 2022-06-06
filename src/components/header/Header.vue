@@ -17,29 +17,30 @@
               class="eliminarmobile"
             >
             <template v-slot:prepend-inner>
-              <img src="@/assets/icons/lupa.png" alt="icon">
+              <img src="@/assets/icons/lupa.svg" alt="icon">
             </template>
 
               <template v-slot:label>
-                <span class="label">BUSCAR POR COMIDA / RESTAURANTE</span>
+                <span class="label">{{$t('labelBuscar')}}</span>
               </template>
             </v-text-field>
 
             <v-btn class="botones openOptions">
-              <img width="100%" src="@/assets/icons/options.png" alt="options">
+              <img width="100%" src="@/assets/icons/options.svg" alt="options">
             </v-btn>
 
             <v-btn
               class="botones vermobile openSearch">
-              <img src="@/assets/icons/lupa.png" alt="icon">
+              <img src="@/assets/icons/lupa.svg" alt="icon">
             </v-btn>
           </aside>
 
           <aside class="contright center">
-            <v-btn v-for="(item, index) in dataLogin" :key="index" @click="Login(item)"
-              v-show="item.show" :class="{ openMenuLogout: item.openMenu }"
+            <v-btn v-for="(item, index) in dataLogin" :key="index" @click="item.key=='login'?loginNear(item.key):null"
+              v-show="item.show" :class="{ openMenuLogout: item.key == 'logout' }"
               class="walletButton center">
-              {{ item.text }}
+              <span v-if="item.key=='login'">{{ $t(item.text) }}</span>
+              <span v-if="item.key=='logout'">{{ item.text }}</span>
             </v-btn>
 
             <v-btn class="botones">
@@ -48,7 +49,7 @@
                 :value="messages"
                 color="#3E2185"
               >
-                <img width="100%" src="@/assets/icons/cart.png" alt="shopping cart">
+                <img width="100%" src="@/assets/icons/cart.svg" alt="shopping cart">
               </v-badge>
             </v-btn>
           </aside>
@@ -69,9 +70,7 @@
   export default {
     name: "header",
     i18n: require("./i18n"),
-    components: {
-      MenuHeader,
-    },
+    components: { MenuHeader },
     data() {
       return {
         nearid: false,
@@ -80,13 +79,14 @@
         search: "",
         dataLogin: [
           {
-            text: this.$t('sesion'),
+            key: "login",
+            text: "sesion",
             show: false,
           },
           {
+            key: "logout",
             text: this.user,
             show: false,
-            openMenu: true,
           },
         ]
       };
@@ -126,14 +126,6 @@
           this.dataLogin[0].show = false;
           this.dataLogin[1].show = true;
           this.dataLogin[1].text = localStorage.walletid
-        }
-      },
-      // Login by: Csar
-      Login(item) {
-        if (item == this.dataLogin[0]) {
-          this.dataLogin[0].show = false;
-          this.dataLogin[1].show = true;
-          this.loginNear('login')
         }
       },
     },

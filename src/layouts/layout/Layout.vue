@@ -48,5 +48,6 @@ export default {
   name: "layout",
   // components: { Footer, Header, Navbar },
   components: { Header, Navbar, DrawerChats },
+  mounted() {if (this.$router.currentRoute.path == '/') {this.$refs.navbar.to('inicio')}},
 }
 </script>

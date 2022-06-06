@@ -2,16 +2,17 @@
   <v-row id="navbar" class="alignmobile">
     <!-- logo -->
     <a href="#" class="contlogo align eliminarmobile">
-      <img class="logo" src="@/assets/logos/logo.png" alt="Logo" @click="to('inicio')">
+      <img class="logo" src="@/assets/logos/logo.svg" alt="Logo" @click="to('inicio')">
     </a>
     <!-- content -->
     <aside class="contnavbar divcol divrowmobile spacea align">
+      <div class="slideSquare" />
       <template v-for="(item, index) in dataNavbar">
         <a v-if="item.mostrar" :key="index" @click="to(item)"
           class="conticon center" :class="{ conticonActive: item.active }">
           <button class="divcol center">
             <img :src="item.icon" alt="Icono">
-            <span>{{ item.title}}</span>
+            <span>{{ $t(item.key) }}</span>
           </button>
         </a>
       </template>
@@ -21,14 +22,14 @@
 
 <script>
 import { PERFIL,PROFILE } from '@/services/api.js'
-const icon1 = require("@/assets/icons/inicio-outline.png");
-const icon1Active = require("@/assets/icons/inicio.png");
-const icon2 = require("@/assets/icons/restaurantes-outline.png");
-const icon2Active = require("@/assets/icons/restaurantes.png");
-const icon3 = require("@/assets/icons/tienda-outline.png");
-const icon3Active = require("@/assets/icons/tienda.png");
-const icon4 = require("@/assets/icons/delivery-outline.png");
-const icon4Active = require("@/assets/icons/delivery.png");
+const icon1 = require("@/assets/icons/inicio-outline.svg");
+const icon1Active = require("@/assets/icons/inicio.svg");
+const icon2 = require("@/assets/icons/restaurantes-outline.svg");
+const icon2Active = require("@/assets/icons/restaurantes.svg");
+const icon3 = require("@/assets/icons/tienda-outline.svg");
+const icon3Active = require("@/assets/icons/tienda.svg");
+const icon4 = require("@/assets/icons/delivery-outline.svg");
+const icon4Active = require("@/assets/icons/delivery.svg");
 
 export default {
   name: "navbar",
@@ -39,28 +40,24 @@ export default {
         {
           key: "inicio",
           icon: icon1,
-          title: "Inicio",
           active: false,
           mostrar: true,
         },
         {
           key: "restaurantes",
           icon: icon2,
-          title: "Restaurantes",
           active: false,
           mostrar: true,
         },
         {
           key: "tienda",
           icon: icon3,
-          title: "Mi Tienda",
           active: false,
           mostrar: false,
         },
         {
           key: "pedido",
           icon: icon4,
-          title: "Pedido",
           active: false,
           mostrar: true,
         },
@@ -92,10 +89,10 @@ export default {
       })
     },
     clearAll() {
-      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'inicio')].icon = icon1
-      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'restaurantes')].icon = icon2
-      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'tienda')].icon = icon3
-      this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'pedido')].icon = icon4
+      this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'inicio')].icon = icon1
+      this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'restaurantes')].icon = icon2
+      this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'tienda')].icon = icon3
+      this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'pedido')].icon = icon4
       this.dataNavbar.forEach(element => {element.active = false});
     },
     to(item) {
@@ -103,7 +100,7 @@ export default {
       if (item.key == 'inicio' || item == 'inicio') {
         // if external or internal navbar call
         if (item == "inicio") {
-          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'inicio')]
+          const index = this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'inicio')]
           index.active = true;
           index.icon = icon1Active;
             // push select
@@ -116,7 +113,7 @@ export default {
       } else if (item.key == 'restaurantes' || item == 'restaurantes' || item == 'restauranteTienda') {
         // if external or internal navbar call
         if (item == "restaurantes" || item == 'restauranteTienda') {
-          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'restaurantes')]
+          const index = this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'restaurantes')]
           index.active = true;
           index.icon = icon2Active;
             // push select
@@ -130,7 +127,7 @@ export default {
       } else if (item.key == 'tienda' || item == 'tienda') {
         // if external or internal navbar call
         if (item == "tienda") {
-          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'tienda')]
+          const index = this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'tienda')]
           index.active = true;
           index.icon = icon3Active;
             // push select
@@ -143,7 +140,7 @@ export default {
       } else if (item.key == 'pedido' || item == 'pedido') {
         // if external or internal navbar call
         if (item == "pedido") {
-          const index = this.dataNavbar[this.dataNavbar.findIndex(element => element.key == 'pedido')]
+          const index = this.dataNavbar[this.dataNavbar.findIndex(data => data.key == 'pedido')]
           index.active = true;
           index.icon = icon4Active;
             // push select

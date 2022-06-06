@@ -17,11 +17,11 @@
         class="searchMobile"
       >
       <template v-slot:prepend-inner>
-        <img src="@/assets/icons/lupa.png" alt="icon">
+        <img src="@/assets/icons/lupa.svg" alt="icon">
       </template>
 
         <template v-slot:label>
-          <span class="label">BUSCAR POR COMIDA / RESTAURANTE</span>
+          <span class="label">{{$t('labelBuscar')}}</span>
         </template>
       </v-text-field>
     </v-menu>
@@ -36,14 +36,12 @@
       activator=".openOptions"
       :close-on-content-click="false"
     >
-      <v-expansion-panels
-        focusable
-        class="menuGlobal"
-      >
-        <v-expansion-panel v-for="(item, i) in dataMenuOptions" :key="i">
-          <template v-if="item.title">
+      <v-expansion-panels focusable class="menuGlobal">
+        <!-- expansion -->
+        <template v-if="dataMenuOptions.expansion">
+          <v-expansion-panel v-for="(item, i) in dataMenuOptions.expansion" :key="i">
             <v-expansion-panel-header>
-              {{ item.title }}
+              {{ $t(item.key) }}
             </v-expansion-panel-header>
 
             <v-expansion-panel-content>
@@ -51,14 +49,17 @@
                 <v-list-item @click="CambiarLanguaje(item2.key); optionMenu = false"
                   class="activeClass">
                   <v-list-item-title class="center">
-                    <span class="not_clr">{{ item2.item }}</span>
+                    <span class="not_clr">{{ $t(item2.name) }}</span>
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-expansion-panel-content>
-          </template>
+          </v-expansion-panel>
+        </template>
 
-          <!-- <v-list v-if="item.name" class="intoExpansion">
+        <!-- list -->
+        <!--<template v-if="dataMenuOptions.list">
+          <v-list v-for="(item,i) in dataMenuOptions.list" :key="i" class="intoExpansion">
             <v-list-item @click="SelectOptionItem(item.key)">
               <v-list-item-title>
                 <v-badge
@@ -69,12 +70,12 @@
                   class="not_clr"
                   style="margin: 0"
                 >
-                  {{ item.name }}
+                  {{ item.key }}
                 </v-badge>
               </v-list-item-title>
             </v-list-item>
-          </v-list> -->
-        </v-expansion-panel>
+          </v-list>
+        </template>-->
       </v-expansion-panels>
     </v-menu>
 
@@ -88,34 +89,36 @@
       activator=".openMenuLogout"
       :close-on-content-click="false"
     >
-      <v-expansion-panels
-        focusable
-        class="menuGlobal"
-      >
-        <v-expansion-panel v-for="(item, i) in dataMenuLogout" :key="i">
-          <template v-if="item.title">
+      <v-expansion-panels focusable class="menuGlobal">
+        <!-- expansion -->
+        <template v-if="dataMenuLogout.expansion">
+          <v-expansion-panel v-for="(item, i) in dataMenuLogout.expansion" :key="i">
             <v-expansion-panel-header>
-              {{ item.title }}
+              {{ $t(item.key) }}
             </v-expansion-panel-header>
+
             <v-expansion-panel-content>
               <v-list v-for="(item2, i) in item.selection" :key="i">
-                <v-list-item class="activeClass" @click.stop="logout = false; $router.push(item2.to)" href="#">
+                <v-list-item class="activeClass" :to="item2.to" @click.stop="logout = false">
                   <v-list-item-title class="center">
-                    <span class="not_clr">{{ item2.item }}</span>
+                    <span class="not_clr">{{ $t(item2.key) }}</span>
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-expansion-panel-content>
-          </template>
-
-          <v-list v-if="item.name" class="intoExpansion">
-            <v-list-item @click.stop="logout = false">
+          </v-expansion-panel>
+        </template>
+        
+        <!-- list -->
+        <template v-if="dataMenuLogout.list">
+          <v-list v-for="(item,i) in dataMenuLogout.list" :key="i" class="intoExpansion">
+            <v-list-item @click.stop="Logout()">
               <v-list-item-title>
-                <span class="not_clr">{{ item.name }}</span>
+                <span class="not_clr">{{ $t(item.key) }}</span>
               </v-list-item-title>
             </v-list-item>
           </v-list>
-        </v-expansion-panel>
+        </template>
       </v-expansion-panels>
     </v-menu>
   </section>
@@ -140,38 +143,36 @@ export default {
     return {
       logout: false,
       optionMenu: false,
-      messages: "1",
+      messages: 1,
       search: "",
-      dataMenuOptions: [
-        {
-          title: "Idioma",
-          selection: [
-            {item: "Ingles", key: "US"},
-            {item: "Español", key: "ES"}
-          ]
-        }
-      ],
-      dataMenuLogout: [
-        {
-          title: "ajustes",
-          selection: [
-            {
-              item: "Mi Perfil",
-              to: "/mi-perfil",
-              key: "perfil"
-            },
-            {
-              item: "Mi Tienda",
-              to: "/mi-tienda",
-              key: "tienda"
-            },
-          ]
-        },
-        {
-          name: "Cerrar sesión",
-          key: "logout"
-        }
-      ],
+      dataMenuOptions: {
+        expansion: [
+          {
+            key: "idioma",
+            selection: [{name: "ingles", key: "US"}, {name: "español", key: "ES"}],
+          },
+        ],
+      },
+      dataMenuLogout: {
+        expansion: [
+          {
+            key: "ajustes",
+            selection: [
+              {
+                key: "perfil",
+                to: "/mi-perfil",
+              },
+              {
+                key: "tienda",
+                to: "/mi-tienda",
+              },
+            ],
+          },
+        ],
+        list: [
+          { key: "logout" }
+        ]
+      },
     };
   },
   methods: {
@@ -194,9 +195,10 @@ export default {
     },
     Logout() {
       this.$parent.$parent.loginNear('logout');
+      this.logout = false;
       if (this.$route.name !== 'inicio') {
         localStorage.removeItem('store')
-        this.$router.push({name:'inicio'});
+        this.$parent.$parent.$parent.$parent.$refs.navbar.to('inicio');
       }
     },
   },

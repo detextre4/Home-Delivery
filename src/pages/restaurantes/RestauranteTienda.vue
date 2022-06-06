@@ -25,7 +25,7 @@
 
         <aside class="contmapa divcol jend">
           <div class="divcol">
-            <label class="h10_em">dirección</label>
+            <label class="h10_em">{{$t('direccion')}}</label>
             <span class="h11_em">dirección url o lo que sea que quieras poner</span>
           </div>
 
@@ -37,7 +37,7 @@
     <v-col class="contdown divcol">
       <aside class="contFilters divwrap acenter">
         <v-btn text class="searchBtn semibold">
-          filtrar
+          {{$t('filtrar')}}
         </v-btn>
 
         <v-text-field
@@ -52,66 +52,61 @@
         </v-btn>
 
         <v-select
-          v-model="filters.filterName.title"
-          :items="filters.filterName.by"
-          solo
+          v-model="filters.filterName"
+          :items="$t('filters.filterName.by')"
+          :label="$t('filters.filterName.label')"
           hide-details
-          class="select relative"
-        >
-          <template v-slot:selection="slotProps">
-            <div class="select_label">por</div>
-            <span>{{slotProps.item}}</span>
-          </template>
-        </v-select>
+          filled
+          class="select"
+        ></v-select>
 
         <v-select
-          v-model="filters.filterExcluir.title"
-          :items="filters.filterExcluir.by"
-          label="excluir"
-          solo
+          v-model="filters.filterExcluir"
+          :items="$t('filters.filterExcluir')"
+          :label="$t('excluir')"
+          filled
           hide-details
           multiple
           class="select"
         >
           <template v-slot:selection="{item, index}">
-            <div class="select_label">excluir</div>
             <v-chip color="#FFFFFF" v-if="index === 0">
-              <span>{{item}}</span>
+              <span class="semibold">{{item}}</span>
             </v-chip>
             <span
               v-if="index === 1"
               class="black--text text-caption"
             >
-              (+{{ filters.filterExcluir.title.length - 1 }})
+              (+{{ $t('filters.filterExcluir').length - 1 }})
             </span>
           </template>
         </v-select>
 
         <v-select
-          :items="filters.filterIncluir.by"
-          label="incluir"
-          solo
+          v-model="filters.filterIncluir"
+          :items="$t('filters.filterIncluir')"
+          :label="$t('incluir')"
           hide-details
+          filled
           multiple
           class="select"
         >
           <template v-slot:selection="{item, index}">
-            <div class="select_label">incluir</div>
             <v-chip color="#FFFFFF" v-if="index === 0">
-              <span>{{item}}</span>
+              <span class="semibold">{{item}}</span>
             </v-chip>
             <span
               v-if="index === 1"
               class="black--text text-caption"
             >
-              (+{{ filters.filterIncluir.title.length - 1 }})
+              (+{{ $t('filters.filterIncluir').length - 1 }})
             </span>
           </template>
         </v-select>
       </aside>
 
       <section class="contRestaurantList">
-        <v-card v-for="(item,i) in dataRestaurant" :key="i"
+        <v-card v-for="(item,i) in dataMenuRestaurant" :key="i"
           class="card divcol align" v-ripple="activeRipple?{class: 'activeRipple'}:''">
           <div class="contImages" @click="SelectMenu(item)"
             @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
@@ -123,7 +118,7 @@
 
             <div class="contPrice divcol tend">
               <div class="acenter">
-                <img class="logoNear" src="@/assets/logos/near.png" alt="near">
+                <img class="logoNear" src="@/assets/logos/near.svg" alt="near">
                 <span class="price normal">{{item.near}}</span>
               </div>
               <span class="not_clr">(${{item.dollar}})</span>
@@ -139,27 +134,17 @@
 import GoogleMap from '@/components/googleMaps/GoogleMap'
 export default {
   name: "restauranteTienda",
-  components: {
-    GoogleMap
-  },
+  components: { GoogleMap },
+  i18n: require("./i18n"),
   data() {
     return {
       activeRipple:false,
       filters: {
-        filterName: {
-          title: "nombre",
-          by: ["nombre", "autor"]
-        },
-        filterExcluir: {
-          title: [],
-          by: ["blabla", "algoalgo"]
-        },
-        filterIncluir: {
-          title: [],
-          by: ["blabla", "algoalgo"]
-        },
+        filterName: null,
+        filterExcluir: [],
+        filterIncluir: [],
       },
-      dataRestaurant: [
+      dataMenuRestaurant: [
         {
           img: require("@/assets/test.jpg"),
           desc: "descripcion",
@@ -169,31 +154,26 @@ export default {
         {
           img: require("@/assets/test.jpg"),
           desc: "descripcion",
-          near: "2",
-          dollar: "44"
+          near: "1",
+          dollar: "23"
         },
         {
           img: require("@/assets/test.jpg"),
           desc: "descripcion",
-          near: "2",
-          dollar: "44"
+          near: "1",
+          dollar: "23"
         },
         {
           img: require("@/assets/test.jpg"),
           desc: "descripcion",
-          near: "2",
-          dollar: "44"
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          desc: "descripcion",
-          near: "2",
-          dollar: "44"
+          near: "1",
+          dollar: "23"
         },
       ]
     }
   },
   methods: {
+    // al hacer click en el menu
     SelectMenu(item) {
       console.log(item)
     }
