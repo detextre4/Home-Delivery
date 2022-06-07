@@ -59,8 +59,9 @@
 
         <!-- list -->
         <!--<template v-if="dataMenuOptions.list">
-          <v-list v-for="(item,i) in dataMenuOptions.list" :key="i" class="intoExpansion">
-            <v-list-item @click="SelectOptionItem(item.key)">
+          <v-list class="intoExpansion">
+            <v-list-item v-for="(item,i) in dataMenuOptions.list" :key="i"
+              @click="SelectOptionItem(item.key)">
               <v-list-item-title>
                 <v-badge
                   :content="messages"
@@ -111,8 +112,9 @@
         
         <!-- list -->
         <template v-if="dataMenuLogout.list">
-          <v-list v-for="(item,i) in dataMenuLogout.list" :key="i" class="intoExpansion">
-            <v-list-item @click.stop="Logout()">
+          <v-list class="intoExpansion">
+            <v-list-item v-for="(item,i) in dataMenuLogout.list" :key="i"
+              @click.stop="Logout()">
               <v-list-item-title>
                 <span class="not_clr">{{ $t(item.key) }}</span>
               </v-list-item-title>
