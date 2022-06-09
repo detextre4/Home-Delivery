@@ -51,3 +51,23 @@
     border: 4px solid $clr-btn;
   }
 }
+
+//////////////////////////////////////////////////////////////////////
+// // // modalDirection // // //
+//////////////////////////////////////////////////////////////////////
+#modalDirection {
+  .mapContainer {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    >*:not(.vue-map-container) {z-index: 2}
+  }
+  // improve
+  .marcador {
+    @include absolute(auto, 10px, auto);
+  }
+  .v-btn {
+    @include absolute(auto, 50px, auto);
+  }
+}

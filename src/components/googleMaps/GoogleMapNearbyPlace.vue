@@ -44,7 +44,7 @@
 import axios from 'axios';
 import GmapCustomMarker from 'vue2-gmap-custom-marker';
 export default {
-  name: "googleMaps",
+  name: "GoogleMapNearbyPlace",
   components: {
     'gmap-custom-marker': GmapCustomMarker
   },

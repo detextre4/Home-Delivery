@@ -1,42 +1,34 @@
 <template>
-  <GmapMap
-    ref="mapRef"
-    :center="myCoordinates"
-    :zoom="zoom"
-    :options="{
-      zoomControl: true,
-      mapTypeControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      rotateControl: true,
-      fullscreenControl: true,
-      disableDefaultUi: false,
-      styles: [
-        {elementType: 'geometry', stylers: [{color: 'rgb(224, 224, 224)'}]},
-        {featureType: 'road.highway', elementType: 'geometry', stylers: [{color: '#3E2185'}]},
-      ]
-    }"
-    @dragend="handleDrag()"
-  >
-    <gmap-custom-marker
-      :marker="myCoordinates"
-      alignment="bottomright"
-      :offsetX="-10"
-      :offsetY="17.5"
-      @click.native="someFunction()"
-    >
-      <img class="localImg" src="@/assets/logos/logo.svg" />
-    </gmap-custom-marker>
-  </GmapMap>
+  <section class="mapContainer">
+    <span class="marcador bold h9_em">{{mapCoordinates}}</span>
+    <v-btn class="botones2" height="40px">
+      <span class="h10_em">Aceptar</span>
+    </v-btn>
+    <GmapMap
+      ref="mapRef"
+      :center="myCoordinates"
+      :zoom="zoom"
+      :options="{
+        zoomControl: true,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: true,
+        fullscreenControl: false,
+        disableDefaultUi: false,
+        styles: [
+          {elementType: 'geometry', stylers: [{color: 'rgb(224, 224, 224)'}]},
+          {featureType: 'road.highway', elementType: 'geometry', stylers: [{color: '#3E2185'}]},
+        ]
+      }"
+      @dragend="handleDrag()"
+    ></GmapMap>
+  </section>
 </template>
 
 <script>
-import GmapCustomMarker from 'vue2-gmap-custom-marker';
 export default {
-  name: "googleMap",
-  components: {
-    'gmap-custom-marker': GmapCustomMarker
-  },
+  name: "googleMapForms",
   data() {
     return {
       // map
@@ -46,11 +38,6 @@ export default {
         lng: 0,
       },
       zoom: 13,
-      // marker
-      marker: {
-        lat: 50.60229509638775,
-        lng: 3.0247059387528408
-      }
     }
   },
   computed: {
@@ -90,7 +77,6 @@ export default {
       let zoom = this.map.getZoom();
       localStorage.zoom = zoom;
     }
-
   },
 };
 </script>

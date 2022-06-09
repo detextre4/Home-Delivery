@@ -44,15 +44,18 @@
           ></v-text-field>
         </v-card>
         <v-card color="transparent">
-          <label for="Dirección" class="h10_em">
+          <label class="h10_em" @click="$refs.menu.modalDirection=true">
             {{$t('direccion')}}
           </label>
 
-          <v-text-field
-            id="Dirección"
-            v-model="perfil.direccion"
-            solo
-          ></v-text-field>
+          <v-sheet color="transparent" style="cursor:pointer" @click="$refs.menu.modalDirection=true">
+            <v-text-field
+              v-model="perfil.direccion"
+              solo
+              disabled
+              hide-details
+            ></v-text-field>
+          </v-sheet>
         </v-card>
         <v-card color="transparent">
           <label for="foto" class="h10_em">
@@ -99,8 +102,7 @@
               {{$t('preguntaVendedor')}}
             </label>
           </div>
-
-          </v-card>
+        </v-card>
       </aside>
 
       <aside class="contsubmit center">

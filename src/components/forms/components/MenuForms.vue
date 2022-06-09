@@ -1,5 +1,19 @@
 <template>
-  <section id="menuPerfil">
+  <section>
+    <v-dialog
+      v-model="modalDirection"
+      max-width="min(95%, 80em)"
+      scrollable
+    >
+      <v-card id="modalDirection">
+        <v-btn icon class="close" @click.stop="modalDirection=false">
+          <v-icon>mdi-close-circle-outline</v-icon>
+        </v-btn>
+
+        <GoogleMapForms ref="map"></GoogleMapForms>
+      </v-card>
+    </v-dialog>
+
     <v-menu
       v-model="item.closeMenu"
       v-for="(item, index) in dataVerificators" :key="index"
@@ -26,11 +40,14 @@
 </template>
 
 <script>
+import GoogleMapForms from '@/components/googleMaps/GoogleMapForms.vue'
 export default {
-  name: "menuPerfil",
+  name: "menuForms",
   i18n: require("./i18n"),
+  components: { GoogleMapForms },
   data() {
     return {
+      modalDirection: false,
       closeMenu: true,
       dataVerificators: [
         {
