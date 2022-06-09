@@ -93,7 +93,7 @@
               color="var(--clr-card-2)"
               id="vendedor"
               class="openVendedorAlert">
-              <img   v-if="foto2 == true" src="@/assets/icons/check.svg" alt="check button for merchant">
+              <img v-if="foto2 == true" src="@/assets/icons/check.svg" alt="check button for merchant">
             </v-btn>
             <label for="vendedor" class="h10_em">
               {{$t('preguntaVendedor')}}

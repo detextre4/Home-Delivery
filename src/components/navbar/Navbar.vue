@@ -1,7 +1,7 @@
 <template>
   <v-row id="navbar" class="alignmobile">
     <!-- logo -->
-    <a href="#" class="contlogo align eliminarmobile">
+    <a class="contlogo align eliminarmobile">
       <img class="logo" src="@/assets/logos/logo.svg" alt="Logo" @click="to('inicio')">
     </a>
     <!-- content -->

@@ -132,6 +132,8 @@ p:not(.not_typography, .not) {
     :is(.v-input__slot, .v-text-field__slot) {
       padding: 0 !important;
       height: 100% !important;
+      border-radius: 28px !important;
+      overflow: hidden;
       cursor: default;
     }
     .v-text-field__slot {cursor: pointer !important}
