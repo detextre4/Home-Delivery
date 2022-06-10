@@ -1,18 +1,29 @@
 <template>
   <section class="relative">
     <v-text-field
-      v-model="CoordenatesMap"
       solo
       hide-details
       class="inputGoogleSearch"
       prepend-icon="mdi-magnify"
       @change="findLocation()"
     ></v-text-field>
+    <!-- <div class="ui segment" style="max-height:500px;overflow:scroll">
+      <div class="ui divided items">
+        <div class="item" v-for="place in places" :key="place.id">
+          <div class="content">
+            <div class="header">{{place.name}}</div>
+            <div class="meta">{{place.vicinity}}</div>
+          </div>
+        </div>
+      </div>
+    </div> -->
     <GmapMap
       ref="mapRef"
       :center="myCoordinates"
       :zoom="zoom"
       :options="{
+        key: 'AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk',
+        mapId: '6840d2b70ceb1209',
         zoomControl: true,
         mapTypeControl: false,
         scaleControl: false,
@@ -30,8 +41,6 @@
       <gmap-custom-marker
         :marker="myCoordinates"
         alignment="bottomright"
-        :offsetX="-10"
-        :offsetY="17.5"
         @click.native="someFunction()"
       >
         <img class="localImg" src="@/assets/logos/logo.svg" />
@@ -41,13 +50,12 @@
 </template>
 
 <script>
+// const GOOGLE_MAPS_API_KEY = 'AIzaSyCTwopQSI2qo3en7mGvYZZqL1Y8jGbx2EY'
 import axios from 'axios';
 import GmapCustomMarker from 'vue2-gmap-custom-marker';
 export default {
   name: "GoogleMapNearbyPlace",
-  components: {
-    'gmap-custom-marker': GmapCustomMarker
-  },
+  components: { 'gmap-custom-marker': GmapCustomMarker },
   data() {
     return {
       // map
@@ -65,6 +73,7 @@ export default {
       lat: 0,
       lng: 0,
       radius: 50,
+      places: [],
     }
   },
   computed: {
@@ -108,15 +117,33 @@ export default {
       localStorage.zoom = zoom;
     },
     findLocation() {
-      const URL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${
-        this.lat}, ${this.lng}&type=restaurant&radius=${
-          this.radius * 1000}&key=[AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk]`;
-      axios.get(URL).then(response => {
-        console.log(response.data);
-      }).catch(error => {
-        console.log(error.message);
-      });
-    }
+      const URL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.myCoordinates.lat},
+      ${this.myCoordinates.lng}&type=restaurant&radius=2000&key=[AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk]`;
+      axios
+        .get(URL)
+        .then(response => {
+          this.places = response.data.results;
+          this.addLocationsToGoogleMaps();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    },
+    // addLocationsToGoogleMaps() {
+    //   var map = new google.maps.Map(this.$refs['map'], {
+    //     zoom: 15,
+    //     center: new google.maps.LatLng(this.lat, this.lng),
+    //     mapTypeId: google.maps.MapTypeId.ROADMAP
+    //   });
+    //   this.places.forEach((place) => {
+    //     const lat = place.geometry.location.lat;
+    //     const lng = place.geometry.location.lng;
+    //     let marker = new google.maps.Marker({
+    //       position: new google.maps.LatLng(lat, lng),
+    //       map: map
+    //     });
+    //   });
+    // }
   },
 };
 </script>
