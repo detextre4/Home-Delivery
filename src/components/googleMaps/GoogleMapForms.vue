@@ -11,6 +11,12 @@
       <span class="h10_em">Aceptar</span>
     </v-btn>
 
+    <!-- /* api place */ -->
+    <!-- <gmap-place-input style="position:absolute; background:purple" label="Add a marker at this place"
+      :select-first-on-enter="true"
+      @place_changed="updatePlace($event)"
+    ></gmap-place-input> -->
+
     <GmapMap
       ref="mapRef"
       :center="myCoordinates"
@@ -65,8 +71,7 @@ export default {
       // map
       map: null,
       myCoordinates: {lat: 0,lng: 0,},
-      // zoom: 13,
-      //testing
+      //markers
       markers: [],
       lastId: 1,
       clustering: true,
@@ -157,6 +162,15 @@ export default {
         this.$set(this, field, event);
       }
     },
+
+    /* api place */
+    // updatePlace(place) {
+    //   if (place && place.geometry && place.geometry.location) {
+    //     var marker = this.addMarker();
+    //     marker.position.lat = place.geometry.location.lat();
+    //     marker.position.lng = place.geometry.location.lng();
+    //   }
+    // }
   },
 };
 </script>
