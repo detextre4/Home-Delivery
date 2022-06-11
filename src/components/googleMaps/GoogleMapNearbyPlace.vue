@@ -31,10 +31,6 @@
         rotateControl: true,
         fullscreenControl: false,
         disableDefaultUi: false,
-        styles: [
-          {elementType: 'geometry', stylers: [{color: 'rgb(224, 224, 224)'}]},
-          {featureType: 'road.highway', elementType: 'geometry', stylers: [{color: '#3E2185'}]},
-        ]
       }"
       @dragend="handleDrag()"
     >
@@ -60,38 +56,23 @@ export default {
     return {
       // map
       map: null,
-      myCoordinates: {
-        lat: 0,
-        lng: 0,
-      },
+      myCoordinates: {lat: 0,lng: 0,},
       zoom: 13,
       // marker
-      marker: {
-        lat: 50.60229509638775,
-        lng: 3.0247059387528408
-      },
-      lat: 0,
-      lng: 0,
-      radius: 50,
-      places: [],
+      marker: {lat: 50.60229509638775,lng: 3.0247059387528408},
+      // places: [],
     }
   },
   computed: {
     mapCoordinates() {
       if (!this.map) {
-        return {
-          lat: 0,
-          lng: 0
-        }
+        return {lat: 0,lng: 0}
       }
       return {
         lat: this.map.getCenter().lat().toFixed(4),
         lng: this.map.getCenter().lng().toFixed(4)
       }
     },
-    CoordenatesMap() {
-      return `${this.lat}, ${this.lng}`
-    }
   },
   created() {
     // get user's coordinates from browser request

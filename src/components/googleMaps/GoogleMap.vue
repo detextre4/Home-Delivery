@@ -4,6 +4,8 @@
     :center="myCoordinates"
     :zoom="zoom"
     :options="{
+      key: 'AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk',
+      mapId: '6840d2b70ceb1209',
       zoomControl: true,
       mapTypeControl: false,
       scaleControl: false,
@@ -11,10 +13,6 @@
       rotateControl: true,
       fullscreenControl: true,
       disableDefaultUi: false,
-      styles: [
-        {elementType: 'geometry', stylers: [{color: 'rgb(224, 224, 224)'}]},
-        {featureType: 'road.highway', elementType: 'geometry', stylers: [{color: '#3E2185'}]},
-      ]
     }"
     @dragend="handleDrag()"
   >
@@ -41,25 +39,16 @@ export default {
     return {
       // map
       map: null,
-      myCoordinates: {
-        lat: 0,
-        lng: 0,
-      },
+      myCoordinates: {lat: 0,lng: 0,},
       zoom: 13,
       // marker
-      marker: {
-        lat: 50.60229509638775,
-        lng: 3.0247059387528408
-      }
+      marker: {lat: 50.60229509638775,lng: 3.0247059387528408}
     }
   },
   computed: {
     mapCoordinates() {
       if (!this.map) {
-        return {
-          lat: 0,
-          lng: 0
-        }
+        return {lat: 0,lng: 0}
       }
       return {
         lat: this.map.getCenter().lat().toFixed(4),
