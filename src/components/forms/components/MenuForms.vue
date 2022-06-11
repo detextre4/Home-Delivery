@@ -6,11 +6,10 @@
       scrollable
     >
       <v-card id="modalDirection">
-        <v-btn icon class="close" @click.stop="modalDirection=false">
-          <v-icon>mdi-close-circle-outline</v-icon>
-        </v-btn>
-
-        <GoogleMapForms ref="map"></GoogleMapForms>
+        <GoogleMapForms ref="map"
+          @closeModal="modalDirection=false"
+          @getDirection="(item)=>{$emit('getDirection',item)}"
+        ></GoogleMapForms>
       </v-card>
     </v-dialog>
 

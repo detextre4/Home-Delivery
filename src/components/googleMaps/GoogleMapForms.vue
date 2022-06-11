@@ -1,13 +1,20 @@
 <template>
   <section class="mapContainer">
-    <span class="marcador bold h9_em">{{markers[0].position}}</span>
-    <v-btn class="botones2" height="40px">
+    <v-btn icon class="close"
+      @click.stop="map.setCenter(myCoordinates); $emit('closeModal'); ClearMarker()">
+      <v-icon>mdi-close-circle-outline</v-icon>
+    </v-btn>
+    <!-- <span class="marcador bold h9_em">{{markers[0].position}}</span> -->
+    <v-btn v-if="markers[0]" class="botones2 anim_movedown" height="40px"
+      @click="$emit('getDirection',markers[0]); map.setCenter(myCoordinates); 
+      $emit('closeModal'); ClearMarker()">
       <span class="h10_em">Aceptar</span>
     </v-btn>
+
     <GmapMap
       ref="mapRef"
       :center="myCoordinates"
-      :zoom="zoom"
+      :zoom="14"
       :options="{
         key: 'AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk',
         mapId: '6840d2b70ceb1209',
@@ -19,8 +26,7 @@
         fullscreenControl: false,
         disableDefaultUi: false,
       }"
-      @dragend="handleDrag()"
-      @click="mapRclicked"
+      @click="mapClicked"
       @zoom_changed="update('zoom', $event)"
       @center_changed="update('reportedCenter', $event)"
       @maptypeid_changed="update('mapType', $event)"
@@ -34,8 +40,16 @@
             :position="item.position"
             :opacity="item.opacity"
             :draggable="item.draggable"
-            @click="item.ifw=!item.ifw">
-            <gmap-info-window :opened="item.ifw">{{item.ifw2text}}</gmap-info-window>
+            @click="item.ifw=!item.ifw"
+            @dragend="mapClicked">
+            <gmap-info-window :opened="item.ifw">
+              <v-card class="grid" style="grid-template-columns:repeat(2,1fr); gap:0 1em">
+                <h4>latitud</h4>
+                <h4>Longitud</h4>
+                <span>{{item.ifw2latText}}</span>
+                <span>{{item.ifw2lngText}}</span>
+              </v-card>
+            </gmap-info-window>
           </gmap-marker>
         </template>
       </gmap-cluster>
@@ -51,7 +65,7 @@ export default {
       // map
       map: null,
       myCoordinates: {lat: 0,lng: 0,},
-      zoom: 13,
+      // zoom: 13,
       //testing
       markers: [],
       lastId: 1,
@@ -65,62 +79,40 @@ export default {
       if (this.markersEven) {return this.markers.filter((v, k) => k % 2 == 0);}
       else {return this.markers;}
     },
-    mapCoordinates() {
-      if (!this.map) {return {lat: 0,lng: 0}}
-      return {
-        lat: this.map.getCenter().lat().toFixed(4),
-        lng: this.map.getCenter().lng().toFixed(4)
-      }
-    }
   },
   created() {
     // get user's coordinates from browser request
     this.$getLocation()
-    .then(coordinates => {this.myCoordinates = coordinates;})
-    .catch(error => alert(error))
-    // does the user have a saved zoom? use it instead of the default
-    if (localStorage.zoom) {
-      this.zoom = parseInt(localStorage.zoom);
-    }
+    .then(coordinates => {this.myCoordinates = coordinates})
+    .catch(error => alert(error));
   },
   mounted() {
     //add the map to a data object
     this.$refs.mapRef.$mapPromise.then(map => this.map = map)
   },
   methods: {
-    handleDrag() {
-      // get zoom level, store in localstorage
-      let zoom = this.map.getZoom();
-      localStorage.zoom = zoom;
-    },
-
-
-    updateMapCenter(which, value) { // eslint-disable-line no-unused-vars
-      this.center = _.clone(this.reportedCenter);
-    },
+    ClearMarker() {setTimeout(() => {this.markers.splice(0,1);this.markerCount=0;},500);},
     mapClicked(mouseArgs) {
-      console.log('map clicked', mouseArgs); // eslint-disable-line no-console
-    },
-    mapRclicked(mouseArgs) {
-      if (this.markerCount < 1) {this.addMarker()}
+      if (this.markerCount < 1) {this.addMarker(mouseArgs)}
       const createdMarker = this.markers[this.markers.length - 1];
       createdMarker.position.lat = mouseArgs.latLng.lat();
       createdMarker.position.lng = mouseArgs.latLng.lng();
+      createdMarker.ifw2latText = mouseArgs.latLng.lat();
+      createdMarker.ifw2lngText = mouseArgs.latLng.lng();
     },
-    addMarker: function addMarker() {
+    addMarker: function addMarker(mouseArgs) {
       this.markerCount++
       this.lastId++;
       this.markers.push({
         id: this.lastId,
-        position: {
-          lat: 0,
-          lng: 0
-        },
+        position: {lat: 0,lng: 0},
         opacity: 1,
         draggable: true,
         enabled: true,
         ifw: true,
-        ifw2text: '¿desea escoger esta localización?'
+        ifw2latText: mouseArgs.latLng.lat(),
+        ifw2lngText: mouseArgs.latLng.lng(),
+        direccion: "direccion creada al azar"
       });
     },
     //   if (this.markerCount < 1) {
@@ -146,9 +138,6 @@ export default {
     //   });
     //   return this.markers[this.markers.length - 1];
     // },
-    resetPlPath() {
-      this.plPath = this.originalPlPath;
-    },
     update(field, event) {
       if (field === 'reportedCenter') {
         // N.B. It is dangerous to update this.center
@@ -168,39 +157,6 @@ export default {
         this.$set(this, field, event);
       }
     },
-    updateChild(object, field, event) {
-      if (field === 'position') {
-        object.position = {
-          lat: event.lat(),
-          lng: event.lng(),
-        };
-      }
-    },
-    updatePolygonPaths(paths) { //eslint-disable-line no-unused-vars
-      // TODO
-    },
-    updatePolylinePath(paths) { //eslint-disable-line no-unused-vars
-      // TODO:
-    },
-    updateCircle(prop, value) {
-      if (prop === 'radius') {
-        this.radius = value;
-      } else if (prop === 'bounds') {
-        this.circleBounds = value;
-      }
-    },
-    updateRectangle(prop, value) {
-      if (prop === 'bounds') {
-        this.rectangleBounds = value;
-      }
-    },
-    updatePlace(place) {
-      if (place && place.geometry && place.geometry.location) {
-        var marker = this.addMarker();
-        marker.position.lat = place.geometry.location.lat();
-        marker.position.lng = place.geometry.location.lng();
-      }
-    }
   },
 };
 </script>

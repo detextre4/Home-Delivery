@@ -1,7 +1,9 @@
 <template>
   <section id="miPerfil" class="parentForm section">
     <Alerts ref="alerts"></Alerts>
-    <MenuForms ref="menu"></MenuForms>
+    <MenuForms ref="menu"
+      @getDirection="(item)=>{perfil.location.direccion=item.direccion}"
+    ></MenuForms>
     <v-col class="contmiperfil divcol gap2">
       <aside class="contup divcol">
         <h1 class="h7_em">{{$t('miPerfil')}}</h1>
@@ -50,7 +52,7 @@
 
           <v-sheet color="transparent" style="cursor:pointer" @click="$refs.menu.modalDirection=true">
             <v-text-field
-              v-model="perfil.direccion"
+              v-model="perfil.location.direccion"
               solo
               disabled
               hide-details
@@ -129,7 +131,7 @@ export default {
       walletid: null,
       foto: false,
       foto2: false,
-      perfil: {wallet: localStorage.getItem('walletid')},
+      perfil: {wallet: localStorage.getItem('walletid'), location: {direccion:null,coordinates: null}},
     }
   },
   mounted(){
