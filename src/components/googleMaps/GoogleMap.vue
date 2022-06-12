@@ -70,7 +70,7 @@ export default {
       // map
       map: null,
       myCoordinates: {},
-      userCoordinates: [],
+      userCoordinates: {},
       //markers
       PositionMarker: [],
       lastId: 1,

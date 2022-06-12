@@ -42,9 +42,12 @@
         <v-card v-for="(item,i) in dataHistorial" :key="i"
           class="divcol" :style="`width:${widthListener}`"
           @click="ViewCard(item)" v-ripple="{class: 'activeRipple'}">
-          <GoogleMap :class="{completado:item.state=='completado', enCurso:item.state=='enCurso',
+          <div :class="{completado:item.state=='completado', enCurso:item.state=='enCurso',
             cancelado:item.state=='cancelado'}" class="mapa"
-            :style="`--tag: '${$t(item.state)}'`"></GoogleMap>
+            :style="`--tag: '${$t(item.state)}'`">
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&markers=color:red%7Clabel:C%7C40.718217,-73.998284&zoom=12&size=600x400&key=AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk"
+              alt="google map location">
+          </div>
 
           <aside class="divcol center tcenter">
             <h3 class="h8_em semibold tnone">{{item.user}}</h3>
