@@ -70,12 +70,19 @@
 //////////////////////////////////////////////////////////////////////
 #modalDirection {
   .textField_direccion {
+    .v-input__slot {clip-path: none !important;border: 1.5px solid #000000}
     @include absolute(50%, 10px);
     transform: translateX(-50%);
+    z-index: 3 !important;
+    @include animation(.5s $ease-return) {
+      0% {transform: translate(-50%, -95%)}
+      100% {transform: translate(-50%, 0)}
+    }
   }
   .botones2 {
-    @include absolute(50%, 50px);
+    @include absolute(50%, 85px);
     transform: translateX(-50%);
+    z-index: 2 !important;
     @include animation(.5s $ease-return) {
       0% {transform: translate(-50%, -95%)}
       100% {transform: translate(-50%, 0)}

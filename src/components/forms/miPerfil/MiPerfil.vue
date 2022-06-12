@@ -2,7 +2,7 @@
   <section id="miPerfil" class="parentForm section">
     <Alerts ref="alerts"></Alerts>
     <MenuForms ref="menu"
-      @getDirection="(item)=>{perfil.location.direccion=item.direccion}"
+      @getDirection="(item)=>{perfil.location.direccion=item}"
     ></MenuForms>
     <v-col class="contmiperfil divcol gap2">
       <aside class="contup divcol">

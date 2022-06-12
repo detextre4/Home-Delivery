@@ -1,7 +1,7 @@
 <template>
   <section class="mapContainer">
     <v-btn icon class="close"
-      @click.stop="map.setCenter(myCoordinates); $emit('closeModal'); ClearMarker()">
+      @click.stop="map.setCenter(myCoordinates); $emit('closeModal'); ClearMap()">
       <v-icon>mdi-close-circle-outline</v-icon>
     </v-btn>
 
@@ -12,10 +12,18 @@
       @place_changed="updatePlace($event)"
     ></gmap-autocomplete>
 
-    <!-- <span class="textField_direccion bold h9_em">{{PositionMarker[0].position}}</span> -->
-    <v-btn v-if="PositionMarker[0]" class="botones2" height="40px"
-      @click="$emit('getDirection',PositionMarker[0]); map.setCenter(myCoordinates); 
-      $emit('closeModal'); ClearMarker()">
+    <v-text-field
+      v-show="PositionMarker[0]"
+      v-model="direccion"
+      placeholder="Introduce tu direccion"
+      hide-details
+      solo
+      class="textField_direccion bold h10_em"
+    ></v-text-field>
+
+    <v-btn v-show="PositionMarker[0]&&direccion!==''" class="botones2" height="40px"
+      @click="$emit('getDirection',direccion); map.setCenter(myCoordinates); 
+      $emit('closeModal'); ClearMap()">
       <span class="h10_em">Aceptar</span>
     </v-btn>
 
@@ -73,6 +81,8 @@ export default {
       // map
       map: null,
       myCoordinates: {lat: 0,lng: 0,},
+      // text-field
+      direccion: '',
       //markers
       PositionMarker: [],
       lastId: 1,
@@ -104,7 +114,7 @@ export default {
     });
   },
   methods: {
-    ClearMarker() {setTimeout(() => {this.PositionMarker.splice(0,1);this.markerCount=0;},500);},
+    ClearMap() {setTimeout(() => {this.PositionMarker.splice(0,1);this.markerCount=0;},500);this.direccion=''},
     mapClicked(mouseArgs) {
       if (this.markerCount < 1) {this.addMarker(mouseArgs)}
       const createdMarker = this.PositionMarker[this.PositionMarker.length - 1];
@@ -125,7 +135,6 @@ export default {
         ifw: true,
         ifw2latText: mouseArgs.latLng.lat(),
         ifw2lngText: mouseArgs.latLng.lng(),
-        direccion: "direccion creada al azar"
       });
     },
     //   if (this.markerCount < 1) {
