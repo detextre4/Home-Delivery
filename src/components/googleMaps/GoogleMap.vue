@@ -9,7 +9,7 @@
 
     <GmapMap
       ref="mapRef"
-      :center="myCoordinates"
+      :center="userCoordinates"
       :zoom="14"
       :options="{
         key: 'AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk',
@@ -51,7 +51,7 @@
       </gmap-cluster>
 
       <gmap-custom-marker
-        :marker="myCoordinates"
+        :marker="userCoordinates"
         @click.native="someFunction()"
       >
         <img class="localImg" src="@/assets/logos/logo.svg" />
@@ -69,7 +69,8 @@ export default {
     return {
       // map
       map: null,
-      myCoordinates: {lat: 0,lng: 0,},
+      myCoordinates: {},
+      userCoordinates: [],
       //markers
       PositionMarker: [],
       lastId: 1,
