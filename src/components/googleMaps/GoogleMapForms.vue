@@ -4,18 +4,20 @@
       @click.stop="map.setCenter(myCoordinates); $emit('closeModal'); ClearMarker()">
       <v-icon>mdi-close-circle-outline</v-icon>
     </v-btn>
-    <!-- <span class="marcador bold h9_em">{{markers[0].position}}</span> -->
-    <v-btn v-if="markers[0]" class="botones2 anim_movedown" height="40px"
-      @click="$emit('getDirection',markers[0]); map.setCenter(myCoordinates); 
+
+    <v-btn icon class="searchIcon not_clr"><v-icon>mdi-magnify</v-icon></v-btn>
+    <gmap-autocomplete
+      :select-first-on-enter="true"
+      class="inputGoogleSearch"
+      @place_changed="updatePlace($event)"
+    ></gmap-autocomplete>
+
+    <!-- <span class="textField_direccion bold h9_em">{{PositionMarker[0].position}}</span> -->
+    <v-btn v-if="PositionMarker[0]" class="botones2" height="40px"
+      @click="$emit('getDirection',PositionMarker[0]); map.setCenter(myCoordinates); 
       $emit('closeModal'); ClearMarker()">
       <span class="h10_em">Aceptar</span>
     </v-btn>
-
-    <!-- /* api place */ -->
-    <!-- <gmap-place-input style="position:absolute; background:purple" label="Add a marker at this place"
-      :select-first-on-enter="true"
-      @place_changed="updatePlace($event)"
-    ></gmap-place-input> -->
 
     <GmapMap
       ref="mapRef"
@@ -49,12 +51,12 @@
             @click="item.ifw=!item.ifw"
             @dragend="mapClicked">
             <gmap-info-window :opened="item.ifw">
-              <v-card class="grid" style="grid-template-columns:repeat(2,1fr); gap:0 1em">
+              <div class="grid" style="grid-template-columns:repeat(2,1fr); gap:0 1em">
                 <h4>latitud</h4>
                 <h4>Longitud</h4>
                 <span>{{item.ifw2latText}}</span>
                 <span>{{item.ifw2lngText}}</span>
-              </v-card>
+              </div>
             </gmap-info-window>
           </gmap-marker>
         </template>
@@ -72,7 +74,7 @@ export default {
       map: null,
       myCoordinates: {lat: 0,lng: 0,},
       //markers
-      markers: [],
+      PositionMarker: [],
       lastId: 1,
       clustering: true,
       gridSize: 50,
@@ -81,8 +83,8 @@ export default {
   },
   computed: {
     activeMarkers() {
-      if (this.markersEven) {return this.markers.filter((v, k) => k % 2 == 0);}
-      else {return this.markers;}
+      if (this.markersEven) {return this.PositionMarker.filter((v, k) => k % 2 == 0);}
+      else {return this.PositionMarker}
     },
   },
   created() {
@@ -93,13 +95,19 @@ export default {
   },
   mounted() {
     //add the map to a data object
-    this.$refs.mapRef.$mapPromise.then(map => this.map = map)
+    this.$refs.mapRef.$mapPromise.then(map => this.map = map);
+    // hide and show search
+    const item = document.querySelector('.inputGoogleSearch');
+    item.addEventListener('click', ()=>{item.classList.add('active')})
+    document.addEventListener('click', (e)=>{
+      if (!item.contains(e.target)) {item.classList.remove('active')}
+    });
   },
   methods: {
-    ClearMarker() {setTimeout(() => {this.markers.splice(0,1);this.markerCount=0;},500);},
+    ClearMarker() {setTimeout(() => {this.PositionMarker.splice(0,1);this.markerCount=0;},500);},
     mapClicked(mouseArgs) {
       if (this.markerCount < 1) {this.addMarker(mouseArgs)}
-      const createdMarker = this.markers[this.markers.length - 1];
+      const createdMarker = this.PositionMarker[this.PositionMarker.length - 1];
       createdMarker.position.lat = mouseArgs.latLng.lat();
       createdMarker.position.lng = mouseArgs.latLng.lng();
       createdMarker.ifw2latText = mouseArgs.latLng.lat();
@@ -108,7 +116,7 @@ export default {
     addMarker: function addMarker(mouseArgs) {
       this.markerCount++
       this.lastId++;
-      this.markers.push({
+      this.PositionMarker.push({
         id: this.lastId,
         position: {lat: 0,lng: 0},
         opacity: 1,
@@ -129,7 +137,7 @@ export default {
     // addMarker: function addMarker() {
     //   this.markerCount++
     //   this.lastId++;
-    //   this.markers.push({
+    //   this.PositionMarker.push({
     //     id: this.lastId,
     //     position: {
     //       lat: 0,
@@ -141,7 +149,7 @@ export default {
     //     ifw: true,
     //     ifw2text: 'This text is bad please change me :('
     //   });
-    //   return this.markers[this.markers.length - 1];
+    //   return this.PositionMarker[this.PositionMarker.length - 1];
     // },
     update(field, event) {
       if (field === 'reportedCenter') {
@@ -162,15 +170,12 @@ export default {
         this.$set(this, field, event);
       }
     },
-
-    /* api place */
-    // updatePlace(place) {
-    //   if (place && place.geometry && place.geometry.location) {
-    //     var marker = this.addMarker();
-    //     marker.position.lat = place.geometry.location.lat();
-    //     marker.position.lng = place.geometry.location.lng();
-    //   }
-    // }
+    updatePlace(place) {
+      if (place && place.geometry && place.geometry.location) {
+        this.PositionMarker[0].position.lat = place.geometry.location.lat();
+        this.PositionMarker[0].position.lng = place.geometry.location.lng();
+      }
+    }
   },
 };
 </script>
