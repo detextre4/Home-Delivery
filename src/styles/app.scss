@@ -265,7 +265,7 @@ p:not(.not_typography, .not) {
 }
 .activeClass:is(:hover, :focus) {
   background-color: var(--clr-btn-active) !important;
-  span {
+  i,span {
     color: var(--clr-text-btn-active) !important;
   }
 }
