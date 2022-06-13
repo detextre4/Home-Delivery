@@ -114,9 +114,6 @@ export default {
     });
   },
   methods: {
-        console(i) {
-      console.log(i);
-    },
     ClearMap() {setTimeout(() => {this.PositionMarker.splice(0,1);this.markerCount=0;},500);this.direccion=''},
     mapClicked(mouseArgs) {
       if (this.markerCount < 1) {this.addMarker(mouseArgs)}

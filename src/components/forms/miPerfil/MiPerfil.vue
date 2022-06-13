@@ -131,7 +131,7 @@ export default {
       walletid: null,
       foto: false,
       foto2: false,
-      perfil: {wallet: localStorage.getItem('walletid'), location: {direccion:null,coordinates: null}},
+      perfil: {wallet: localStorage.getItem('walletid'), direccion:null, location: null},
     }
   },
   mounted(){
