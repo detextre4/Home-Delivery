@@ -8,7 +8,7 @@
       <v-card id="modalDirection">
         <GoogleMapForms ref="map"
           @closeModal="modalDirection=false"
-          @getDirection="(item, coordinates)=>{$emit('getDirection',item, coordinates)}"
+          @getDirection="(direccion,coordinates)=>{$emit('getDirection',direccion,coordinates)}"
         ></GoogleMapForms>
       </v-card>
     </v-dialog>
