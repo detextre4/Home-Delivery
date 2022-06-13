@@ -22,7 +22,7 @@
     ></v-text-field>
 
     <v-btn v-show="PositionMarker[0]&&direccion!==''" class="botones2" height="40px"
-      @click="$emit('getDirection',direccion); map.setCenter(myCoordinates); 
+      @click="$emit('getDirection',direccion,PositionMarker[0].position); map.setCenter(myCoordinates); 
       $emit('closeModal'); ClearMap()">
       <span class="h10_em">Aceptar</span>
     </v-btn>
@@ -114,6 +114,9 @@ export default {
     });
   },
   methods: {
+        console(i) {
+      console.log(i);
+    },
     ClearMap() {setTimeout(() => {this.PositionMarker.splice(0,1);this.markerCount=0;},500);this.direccion=''},
     mapClicked(mouseArgs) {
       if (this.markerCount < 1) {this.addMarker(mouseArgs)}

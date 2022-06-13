@@ -8,7 +8,7 @@
       <v-card id="modalDirection">
         <GoogleMapForms ref="map"
           @closeModal="modalDirection=false"
-          @getDirection="(item)=>{$emit('getDirection',item)}"
+          @getDirection="(item, coordinates)=>{$emit('getDirection',item, coordinates); console(coordinates)}"
         ></GoogleMapForms>
       </v-card>
     </v-dialog>
@@ -63,6 +63,9 @@ export default {
     };
   },
   methods: {
+    console(i) {
+      console.log(i);
+    },
     AcceptVerificator(item) {
       this.$parent.AcceptVerificator(item);
       this.dataVerificators.forEach(element => {
