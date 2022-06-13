@@ -2,7 +2,7 @@
   <section id="miPerfil" class="parentForm section">
     <Alerts ref="alerts"></Alerts>
     <MenuForms ref="menu"
-      @getDirection="(item)=>{perfil.location.direccion=item}"
+      @getDirection="(item)=>{perfil.direccion=item}"
     ></MenuForms>
     <v-col class="contmiperfil divcol gap2">
       <aside class="contup divcol">
@@ -52,7 +52,7 @@
 
           <v-sheet color="transparent" style="cursor:pointer" @click="$refs.menu.modalDirection=true">
             <v-text-field
-              v-model="perfil.location.direccion"
+              v-model="perfil.direccion"
               solo
               disabled
               hide-details
