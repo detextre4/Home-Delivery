@@ -111,13 +111,7 @@
           <div class="contImages" @click="SelectMenu(item)"
             @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
             <span class="customeTooltip h12_em not_clr">Agregar al carrito</span>
-                <img class="images" :src="item.img" alt="Restaurant image">
-            <!-- <v-tooltip top color="var(--clr-btn)">
-              <template v-slot:activator="{ on, attrs }">
-                <img class="images" :src="item.img" alt="Restaurant image" v-bind="attrs" v-on="on">
-              </template>
-              <span class="customeTooltip h11_em not_clr">Agregar al carrito</span>
-            </v-tooltip> -->
+            <img class="images" :src="item.img" alt="Restaurant image">
           </div>
 
           <aside class="contcard space">

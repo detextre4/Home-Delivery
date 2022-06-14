@@ -152,6 +152,9 @@
             padding: .2em .8em;
             opacity: 0;
             text-align: end;
+            z-index: 1;
+            pointer-events: none;
+            transition: opacity .2s $ease;
           }
           &:hover .customeTooltip {opacity: 1}
         }
