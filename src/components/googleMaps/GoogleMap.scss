@@ -44,6 +44,14 @@
     .localImg {width: 10em}
   }
 }
+.marker {
+  gap: 1em !important;
+  flex-wrap: wrap;
+  .divcol {
+    h4 {margin-bottom: clamp(.2em, 5vw, .5em) !important;font-size: var(--step-em-0) !important}
+    span {font-size: var(--step-em--1) !important}
+  }
+}
 
 //////////////////////////////////////////////////////////////////////
 // // // restaurantes // // //
