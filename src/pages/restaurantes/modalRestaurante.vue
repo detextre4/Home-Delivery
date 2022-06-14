@@ -1,133 +1,39 @@
 <template>
-  <section id="restaurante-tienda" class="parent">
-    <v-col class="contup">
-      <section class="contbanner jspace">
-        <v-img
-          src="@/assets/test.jpg"
-          class="white--text align-end"
-          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        >
-          <aside class="backBtn">
-            <v-btn icon @click="$router.push('/restaurantes')" :ripple="false">
-              <v-icon class="not_clr">mdi-chevron-left</v-icon>
-            </v-btn>
-          </aside>
-          <span class="h11_em">horario</span>
+  <v-dialog
+    v-model="modalPedido"
+    max-width="min(100%, 60em)"
+    scrollable
+  >
+    <v-card id="modalPedido" class="grid">
+      <v-btn icon class="close" @click.stop="modalPedido=false">
+        <v-icon>mdi-close-circle-outline</v-icon>
+      </v-btn>
 
-          <v-card-title class="h6_em bold">
-            nombre
-          </v-card-title>
-
-          <v-card-text class="h11_em">
-            descripcion
-          </v-card-text>
-        </v-img>
-
-        <aside class="contmapa divcol jend">
-          <div class="divcol">
-            <label class="h10_em">{{$t('direccion')}}</label>
-            <span class="h11_em">{{perfil.location.direccion}}</span>
-          </div>
-
-          <GoogleMap ref="map"></GoogleMap>
+      <section class="first divcol">
+        <span class="h10_em bold">{{$t('informacionPedido')}}</span>
+        <aside class="grid">
+          <span v-for="(value, key) in dataModalPedido.pedido" :key="key"
+            class="h11_em semibold">{{key}}: {{value}}<span class="coma">,</span></span>
         </aside>
       </section>
-    </v-col>
-
-    <v-col class="contdown divcol">
-      <aside class="contFilters divwrap acenter">
-        <v-btn text class="searchBtn semibold">
-          {{$t('filtrar')}}
-        </v-btn>
-
-        <v-text-field
-          prepend-inner-icon="mdi-magnify"
-          solo
-          hide-details
-          class="search"
-        ></v-text-field>
-
-        <v-btn class="filtro">
-          <v-icon size="2.5em" color="var(--clr-text-btn)" class="not_clr">mdi-filter</v-icon>
-        </v-btn>
-
-        <v-select
-          v-model="filters.filterName"
-          :items="$t('filters.filterName.by')"
-          :label="$t('filters.filterName.label')"
-          hide-details
-          filled
-          class="select"
-        ></v-select>
-
-        <v-select
-          v-model="filters.filterExcluir"
-          :items="$t('filters.filterExcluir')"
-          :label="$t('excluir')"
-          filled
-          hide-details
-          multiple
-          class="select"
-        >
-          <template v-slot:selection="{item, index}">
-            <v-chip color="#FFFFFF" v-if="index === 0">
-              <span class="semibold">{{item}}</span>
-            </v-chip>
-            <span
-              v-if="index === 1"
-              class="black--text text-caption"
-            >
-              (+{{ $t('filters.filterExcluir').length - 1 }})
-            </span>
-          </template>
-        </v-select>
-
-        <v-select
-          v-model="filters.filterIncluir"
-          :items="$t('filters.filterIncluir')"
-          :label="$t('incluir')"
-          hide-details
-          filled
-          multiple
-          class="select"
-        >
-          <template v-slot:selection="{item, index}">
-            <v-chip color="#FFFFFF" v-if="index === 0">
-              <span class="semibold">{{item}}</span>
-            </v-chip>
-            <span
-              v-if="index === 1"
-              class="black--text text-caption"
-            >
-              (+{{ $t('filters.filterIncluir').length - 1 }})
-            </span>
-          </template>
-        </v-select>
-      </aside>
-
-      <section class="contRestaurantList">
-        <v-card v-for="(item,i) in dataMenuRestaurant" :key="i"
-          class="card divcol align" v-ripple="activeRipple?{class: 'activeRipple'}:''">
-          <div class="contImages" @click="SelectMenu(item)"
-            @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
-            <img class="images" :src="item.img" alt="Restaurant image">
-          </div>
-
-          <aside class="contcard space">
-            <p class="h10_em semibold">{{item.desc}}</p>
-
-            <div class="contPrice divcol tend">
-              <div class="acenter">
-                <img class="logoNear" src="@/assets/logos/near.svg" alt="near">
-                <span class="price normal">{{item.near}}</span>
-              </div>
-              <span class="not_clr">(${{item.dollar}})</span>
-            </div>
-          </aside>
-        </v-card>
+      
+      <section class="divcol">
+        <span class="h10_em bold">{{$t('informacionVendedor')}}</span>
+        <aside class="grid">
+          <span v-for="(value, key) in dataModalPedido.vendedor" :key="key"
+            class="h11_em semibold">{{key}}: {{value}}<span class="coma">,</span></span>
+        </aside>
       </section>
-    </v-col>
-  </section>
+      
+      <section class="last divcol">
+        <span class="h10_em bold">{{$t('informacionDelivery')}}</span>
+        <aside class="grid">
+          <span v-for="(value, key) in dataModalPedido.delivery" :key="key"
+            class="h11_em semibold">{{key}}: {{value}}<span class="coma">,</span></span>
+        </aside>
+      </section>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
@@ -141,51 +47,9 @@ export default {
   },
   data() {
     return {
-      activeRipple:false,
-      perfil: {
-        location:{
-          direccion: 'direccion del lugar',
-          coordinates: { lat:9.988903846136667, lng:-67.6891094161248 }
-        }
-      },
-      filters: {
-        filterName: null,
-        filterExcluir: [],
-        filterIncluir: [],
-      },
-      dataMenuRestaurant: [
-        {
-          img: require("@/assets/test.jpg"),
-          desc: "descripcion",
-          near: "1",
-          dollar: "23"
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          desc: "descripcion",
-          near: "1",
-          dollar: "23"
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          desc: "descripcion",
-          near: "1",
-          dollar: "23"
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          desc: "descripcion",
-          near: "1",
-          dollar: "23"
-        },
-      ]
     }
   },
   methods: {
-    // al hacer click en el menu
-    SelectMenu(item) {
-      console.log(item)
-    }
   },
 };
 </script>

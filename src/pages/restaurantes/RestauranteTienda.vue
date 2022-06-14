@@ -110,7 +110,14 @@
           class="card divcol align" v-ripple="activeRipple?{class: 'activeRipple'}:''">
           <div class="contImages" @click="SelectMenu(item)"
             @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
-            <img class="images" :src="item.img" alt="Restaurant image">
+            <span class="customeTooltip h12_em not_clr">Agregar al carrito</span>
+                <img class="images" :src="item.img" alt="Restaurant image">
+            <!-- <v-tooltip top color="var(--clr-btn)">
+              <template v-slot:activator="{ on, attrs }">
+                <img class="images" :src="item.img" alt="Restaurant image" v-bind="attrs" v-on="on">
+              </template>
+              <span class="customeTooltip h11_em not_clr">Agregar al carrito</span>
+            </v-tooltip> -->
           </div>
 
           <aside class="contcard space">
@@ -137,7 +144,16 @@ export default {
   components: { GoogleMap },
   i18n: require("./i18n"),
   mounted() {
-    this.$refs.map.userCoordinates = this.perfil.location.coordinates
+    this.$refs.map.userCoordinates = this.perfil.location.coordinates;
+    const el = document.querySelectorAll('.contImages');
+    el.forEach(element => {
+      element.addEventListener('mousemove', (e)=>{
+        var x = e.offsetX;
+        var y = e.offsetY;
+        element.style.setProperty('--x', `${x}px`)
+        element.style.setProperty('--y', `${y}px`)
+      });
+    });
   },
   data() {
     return {
