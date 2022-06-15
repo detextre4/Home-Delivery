@@ -99,7 +99,7 @@ export default {
   methods: {
     async VerifyStore() {
       try {
-        const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract3.ccoronel7.testnet'
         // Connect to NEAR
         const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
         // Create wallet connection
@@ -118,7 +118,7 @@ export default {
         }
       } catch (e) {
         // Router
-        this.$router.push({name:'MiTienda'})
+        this.$router.push({name:'miTienda'})
       }
     },
   }

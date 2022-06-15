@@ -1,5 +1,5 @@
 <template>
-  <section id="miPerfil" class="parentForm section">
+  <section id="miTienda" class="parentForm section">
     <v-col class="contmiperfil divcol gap2">
       <aside class="contup divrow">
         <v-btn class="back" icon href="#/tienda">
@@ -64,36 +64,28 @@
             solo
           ></v-text-field>
         </v-card>
-        <v-card color="transparent">
-          <label
-            for="telefono"
-            class="h10_em"
-          >
-            Logo
-          </label>
-          <v-text-field
-            id="foto"
+          <v-card color="transparent">
+          <label for="foto" class="h10_em"> Logo de la tienda </label>
+
+          <v-file-input
             v-model="store.logo"
+            id="foto"
             solo
-          ></v-text-field>
-          <!-- <v-file-input
-            v-model="store.logo"
-            id="foto"
-            class="input-file"
             prepend-icon=""
-            solo
+            :clearable="false"
+            class="input-file"
             @change="ImagePreview()"
           >
             <template v-slot:selection>
-              <img :src="url" alt="Image selected">
+              <img :src="url" alt="Image selected" />
             </template>
-          </v-file-input> -->
+          </v-file-input>
         </v-card>
       </aside>
 
       <aside class="contsubmit center">
         <v-btn v-if="save" @click="PutStore()">
-          <span class="h10_em">Guardaaar</span>
+          <span class="h10_em">Editar</span>
         </v-btn>
         <v-btn v-else @click="SetStore()">
           <span class="h10_em">Guardar</span>
@@ -105,7 +97,7 @@
 
 <script>
 import * as nearAPI from 'near-api-js'
-import { CONFIG } from '@/services/api'
+import { CONFIG, IPFS } from "@/services/api";
 const { connect, keyStores, WalletConnection, Contract } = nearAPI
 
 export default {
@@ -127,6 +119,9 @@ export default {
     this.SaveData()
   },
   methods: {
+    ImagePreview() {
+      this.url = URL.createObjectURL(this.store.logo);
+    },
     SaveData(){
       if (typeof localStorage.store !== 'undefined' && localStorage.store !== 'null') {
         this.save = true
@@ -138,7 +133,7 @@ export default {
       const data = localStorage.store
       localStorage.store = JSON.stringify(this.store)
       try {
-        const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract3.ccoronel7.testnet'
         // connect to NEAR
         const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
         // create wallet connection
@@ -165,9 +160,9 @@ export default {
       }
     },
     async SetStore() {
-      localStorage.setItem('store',JSON.stringify(this.store))
       try {
-        const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract3.ccoronel7.testnet'
+        const direccionIpfs = '.ipfs.dweb.link'
         // Connect to NEAR
         const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
         // Create wallet connection
@@ -177,24 +172,25 @@ export default {
           sender: wallet.account()
         })
         if (wallet.isSignedIn()) {
-          await contract.set_store({
+           const formData = new FormData()
+            formData.append('file', this.store.logo)
+            localStorage.setItem('store',JSON.stringify(this.store))
+           await this.axios.post(IPFS, formData).then((data) => {
+          contract.set_store({
             user_id: wallet.getAccountId(),
             name:this.store.name,
             address:this.store.address,
             phone:this.store.phone,
             wallet:this.store.wallet,
-            logo:this.store.logo,
+            logo:'https://' + data.data + direccionIpfs + '/' + data.nombre,
           }).then((res) => {
             this.store = res
           })
-        }
+        })  }
       } catch (e) {
         localStorage.removeItem('store');
         console.log(e)
       }
-    },
-    ImagePreview() {
-      this.url= URL.createObjectURL(this.image)
     },
     // AcceptVerificator(item) {
     //   if (item == "delivery") {

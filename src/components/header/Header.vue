@@ -107,7 +107,7 @@
         const wallet = new WalletConnection(near);
         if (action === 'login') {
           wallet.requestSignIn(
-            "min.mintick.testnet",
+            "contract3.ccoronel7.testnet",
           );
         } else if (action === 'logout') {
           wallet.signOut()
