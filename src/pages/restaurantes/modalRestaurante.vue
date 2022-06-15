@@ -37,13 +37,13 @@
 </template>
 
 <script>
-import GoogleMap from '@/components/googleMaps/GoogleMap'
+// import GoogleMap from '@/components/googleMaps/GoogleMap'
 export default {
   name: "restauranteTienda",
-  components: { GoogleMap },
+  // components: { GoogleMap },
   i18n: require("./i18n"),
   mounted() {
-    this.$refs.map.userCoordinates = this.perfil.location.coordinates
+    // this.$refs.map.userCoordinates = this.perfil.location.coordinates
   },
   data() {
     return {

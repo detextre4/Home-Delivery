@@ -9,7 +9,7 @@
 
     <GmapMap
       ref="mapRef"
-      :center="userCoordinates"
+      :center="UserCoordinates"
       :zoom="14"
       :options="{
         key: 'AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk',
@@ -55,7 +55,7 @@
       </gmap-cluster>
 
       <gmap-custom-marker
-        :marker="userCoordinates"
+        :marker="UserCoordinates"
         @click.native="someFunction()"
       >
         <img class="localImg" src="@/assets/logos/logo.svg" />
@@ -69,12 +69,12 @@ import GmapCustomMarker from 'vue2-gmap-custom-marker';
 export default {
   name: "googleMap",
   components: { 'gmap-custom-marker': GmapCustomMarker },
+  props: { UserCoordinates: Object },
   data() {
     return {
       // map
       map: null,
       myCoordinates: {},
-      userCoordinates: {},
       //markers
       PositionMarker: [],
       lastId: 1,
@@ -106,7 +106,7 @@ export default {
   },
   mounted() {
     //add the map to a data object
-    this.$refs.mapRef.$mapPromise.then(map => this.map = map);
+    // this.$refs.mapRef.$mapPromise.then(map => this.map = map);
     // hide and show search
     const item = document.querySelector('.inputGoogleSearch');
     item.addEventListener('click', ()=>{item.classList.add('active')})
