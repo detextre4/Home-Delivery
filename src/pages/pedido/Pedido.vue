@@ -8,7 +8,7 @@
       </aside>
 
       <v-card class="grid">
-        <GoogleMap ref="map" class="map"></GoogleMap>
+        <GoogleMap :UserCoordinates="previewPedido.location.coordinates" class="map"></GoogleMap>
 
         <aside class="divcol spacea relative">
           <p class="h10_em semibold">
@@ -42,9 +42,9 @@
         <v-card v-for="(item,i) in dataHistorial" :key="i"
           class="divcol" :style="`width:${widthListener}`"
           @click="ViewCard(item)" v-ripple="{class: 'activeRipple'}">
-          <GoogleMap :class="{completado:item.state=='completado', enCurso:item.state=='enCurso',
-            cancelado:item.state=='cancelado'}" class="mapa"
-            :style="`--tag: '${$t(item.state)}'`"></GoogleMap>
+          <GoogleMap :UserCoordinates="item.location.coordinates" :style="`--tag: '${$t(item.state)}'`"
+            :class="{completado:item.state=='completado', enCurso:item.state=='enCurso',
+            cancelado:item.state=='cancelado'}" class="mapa"></GoogleMap>
 
           <aside class="divcol center tcenter">
             <h3 class="h8_em semibold tnone">{{item.user}}</h3>
@@ -64,9 +64,6 @@ export default {
   name: "pedido",
   components: { GoogleMap, ModalPedido },
   i18n: require("./i18n"),
-  mounted() {
-    this.$refs.map.userCoordinates = this.previewPedido.location.coordinates
-  },
   data() {
     return {
       previewPedido: {
