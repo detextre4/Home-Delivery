@@ -207,11 +207,11 @@ export default {
         const formData = new FormData()
         formData.append('file', this.menu.img)
         console.log(this.menu.img)
-        await this.axios.post(IPFS, formData).then((data) => {
+        await this.axios.post(IPFS, formData).then((res) => {
           let prices = parseInt(this.menu.price)
           contract.set_menu({
             name: this.menu.name,
-            img: 'https://' + data.data + direccionIpfs + '/' + data.nombre,
+            img: 'https://' + res.data.data + direccionIpfs + '/' + res.data.nombre,
             user_id: wallet.account(),
             description: this.menu.description,
             price: prices,
