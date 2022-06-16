@@ -113,7 +113,7 @@ export default {
             user_id: wallet.getAccountId()
           }).then((res) => {
             this.data = res
-            localStorage.setItem('store', JSON.stringify(this.data))
+            console.info(this.data)
           })
         }
       } catch (e) {
