@@ -170,7 +170,7 @@ export default {
     },
     async GetCategorys() {
       try {
-        const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract3.ccoronel7.testnet'
         // Connect to NEAR
         const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
         // Create wallet connection
@@ -192,7 +192,7 @@ export default {
       }
     },
     async Addmenu () {
-        const CONTRACT_NAME = 'contract2.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract3.ccoronel7.testnet'
         const direccionIpfs = '.ipfs.dweb.link'
         // connect to NEAR
         const near = await connect(
@@ -216,11 +216,7 @@ export default {
             description: this.menu.description,
             price: prices,
             category: this.menu.category
-          }).then((response) => {
-            console.log(response)
-          }).catch((e) =>{
-            console.log(e)
-          }) 
+          })
         })  },
     showAlert() {
       this.$refs.alerts.Alerts("success");
