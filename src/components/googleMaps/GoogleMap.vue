@@ -138,7 +138,6 @@ export default {
         ifw: true,
         ifw2latText: mouseArgs.latLng.lat(),
         ifw2lngText: mouseArgs.latLng.lng(),
-        direccion: "direccion creada al azar"
       });
     },
     update(field, event) {
