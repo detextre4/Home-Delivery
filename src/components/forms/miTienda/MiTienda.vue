@@ -120,7 +120,7 @@ export default {
       const data = localStorage.store;
       localStorage.store = JSON.stringify(this.store);
       try {
-        const CONTRACT_NAME = "contract3.ccoronel7.testnet";
+        const CONTRACT_NAME = "contract1.ccoronel7.testnet";
         // connect to NEAR
         const near = await connect(
           CONFIG(new keyStores.BrowserLocalStorageKeyStore())
@@ -152,7 +152,7 @@ export default {
     },
     async SetStore() {
       try {
-        const CONTRACT_NAME = "contract3.ccoronel7.testnet";
+        const CONTRACT_NAME = "contract1.ccoronel7.testnet";
         const direccionIpfs = ".ipfs.dweb.link";
         // Connect to NEAR
         const near = await connect(

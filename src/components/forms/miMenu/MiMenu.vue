@@ -170,7 +170,7 @@ export default {
     },
     async GetCategorys() {
       try {
-        const CONTRACT_NAME = 'contract3.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract1.ccoronel7.testnet'
         // Connect to NEAR
         const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
         // Create wallet connection
@@ -192,7 +192,7 @@ export default {
       }
     },
     async Addmenu () {
-        const CONTRACT_NAME = 'contract3.ccoronel7.testnet'
+        const CONTRACT_NAME = 'contract1.ccoronel7.testnet'
         const direccionIpfs = '.ipfs.dweb.link'
         // connect to NEAR
         const near = await connect(
