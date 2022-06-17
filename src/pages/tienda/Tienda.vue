@@ -129,9 +129,9 @@
             <div class="contPrice divcol tend">
               <div class="acenter">
                 <img class="logoNear" src="@/assets/logos/near.svg" alt="near">
-                <span class="price normal">{{item.price}}</span>
+                <span class="price normal">{{formatPrice(item.near)}}</span>
               </div>
-              <span class="not_clr">(${{item.dollar}})</span>
+              <span class="not_clr">(${{item.price}})</span>
             </div>
           </aside>
         </v-card>
@@ -141,9 +141,9 @@
 </template>
 
 <script>
-import * as nearAPI from 'near-api-js'
-import { CONFIG } from '@/services/api'
-const { connect, keyStores, WalletConnection, Contract } = nearAPI
+import * as nearAPI from "near-api-js";
+import { CONFIG } from "@/services/api";
+const { connect, keyStores, WalletConnection, Contract, utils } = nearAPI;
 
 export default {
   name: "tienda",
@@ -162,66 +162,79 @@ export default {
           coordinates: { lat:9.988903846136667, lng:-67.6891094161248 }
         }
       },
-      dataMenuTienda: [
-        {
-          img: require("@/assets/test.jpg"),
-          nombre: "LUMPIAS CON QUESO",
-          categoria: "CHINO",
-          dollar: 50,
-          price: 2,
-          desc: "rico platillo para toda la familia pues",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          nombre: "LUMPIAS CON QUESO",
-          categoria: "CHINO",
-          dollar: 50,
-          price: 2,
-          desc: "rico platillo para toda la familia pues",
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          nombre: "LUMPIAS CON QUESO",
-          categoria: "CHINO",
-          dollar: 50,
-          price: 2,
-          desc: "rico platillo para toda la familia pues",
-        },
-      ]
+      dataMenuTienda: []
     }
   },
   mounted() {
     this.VerifyStore()
+    this.get_menu();
   },
   computed: {
     WidthListener() {if (this.dataMenuTienda.length <= 3) {return 'max-width: 20em'}}
   },
   methods: {
-    async VerifyStore() {
+    formatPrice(price) {
+      return utils.format.formatNearAmount(
+        price.toLocaleString("fullwide", { useGrouping: false })
+      );
+    },
+    async get_menu() {
       try {
-        const CONTRACT_NAME = 'contract1.ccoronel7.testnet'
+        const CONTRACT_NAME = "contract1.ccoronel7.testnet";
         // Connect to NEAR
-        const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
+        const near = await connect(
+          CONFIG(new keyStores.BrowserLocalStorageKeyStore())
+        );
         // Create wallet connection
-        const wallet = new WalletConnection(near)
+        const wallet = new WalletConnection(near);
         const contract = new Contract(wallet.account(), CONTRACT_NAME, {
-          viewMethods: ['get_store'],
-          sender: wallet.account()
-        })
+          viewMethods: ["get_menu"],
+          sender: wallet.account(),
+        });
         if (wallet.isSignedIn()) {
-          await contract.get_store({
-            user_id: wallet.getAccountId()
-          }).then((res) => {
-            this.data = res
-            console.info(this.data)
-          })
+          await contract
+            .get_menu({
+              user_id: wallet.getAccountId(),
+            })
+            .then((res) => {
+              console.log(res);
+              this.dataMenuTienda = res.platillos;
+            });
         }
       } catch (e) {
         // Router
-        this.$router.push({name:'miTienda'})
+        console.log(e);
       }
     },
-  }
+    async VerifyStore() {
+      try {
+        const CONTRACT_NAME = "contract1.ccoronel7.testnet";
+        // Connect to NEAR
+        const near = await connect(
+          CONFIG(new keyStores.BrowserLocalStorageKeyStore())
+        );
+        // Create wallet connection
+        const wallet = new WalletConnection(near);
+        const contract = new Contract(wallet.account(), CONTRACT_NAME, {
+          viewMethods: ["get_store"],
+          sender: wallet.account(),
+        });
+        if (wallet.isSignedIn()) {
+          await contract
+            .get_store({
+              user_id: wallet.getAccountId(),
+            })
+            .then((res) => {
+              this.data = res;
+              console.info(this.data);
+            });
+        }
+      } catch (e) {
+        // Router
+        this.$router.push({ name: "miTienda" });
+      }
+    },
+  },
 };
 </script>
 
