@@ -1,12 +1,12 @@
 <template>
   <section id="tienda" class="parent">
     <v-col class="contup astart">
-      <img src="@/assets/images/tienda-title.svg" alt="Titulo tienda">
+      <img src="@/assets/images/tienda-title.svg" alt="Titulo tienda" />
 
       <v-tooltip right color="var(--clr-btn)">
         <template v-slot:activator="{ on, attrs }">
           <v-btn class="add" icon v-bind="attrs" v-on="on" href="#/mi-tienda">
-            <img src="@/assets/icons/pencil.svg" alt="Add Menu">
+            <img src="@/assets/icons/pencil.svg" alt="Add Menu" />
           </v-btn>
         </template>
         <span class="clr-text-btn">Editar datos de tienda</span>
@@ -21,7 +21,7 @@
           <v-tooltip right color="var(--clr-btn)">
             <template v-slot:activator="{ on, attrs }">
               <v-btn class="add" icon v-bind="attrs" v-on="on" href="#/mi-menu">
-                <img src="@/assets/icons/plus.svg" alt="add menu">
+                <img src="@/assets/icons/plus.svg" alt="add menu" />
               </v-btn>
             </template>
             <span class="clr-text-btn">Agregar nuevo menú</span>
@@ -29,16 +29,22 @@
         </div>
 
         <v-col class="divcol gap2">
-          <v-card v-for="(item,i) in dataMenuTienda" :key="i"
-            style="display:flex" class="acenter">
+          <v-card
+            v-for="(item, i) in dataMenuTienda"
+            :key="i"
+            style="display: flex"
+            class="acenter"
+          >
             <aside class="divrow">
-              <img src="@/assets/icons/inicio.svg" alt="Menu Image">
+              <img :src="item.img" alt="Menu Image" />
 
               <div class="contInfo divcol jcenter">
-                <label class="h7_em">{{ item.nombre }}</label>
+                <label class="h7_em">{{ item.name }}</label>
                 <div class="space">
-                  <span class="h9_em semibold">{{ item.categoria }}</span>
-                  <span class="h9_em semibol">{{ item.precio }}$</span>
+                  <span class="h9_em semibold">{{ item.category }}</span>
+                  <span class="h9_em semibol"
+                    >{{ formatPrice(item.price) }}$</span
+                  >
                 </div>
               </div>
             </aside>
@@ -50,78 +56,85 @@
 </template>
 
 <script>
-import * as nearAPI from 'near-api-js'
-import { CONFIG } from '@/services/api'
-const { connect, keyStores, WalletConnection, Contract } = nearAPI
+import * as nearAPI from "near-api-js";
+import { CONFIG } from "@/services/api";
+const { connect, keyStores, WalletConnection, Contract, utils } = nearAPI;
 
 export default {
   name: "tienda",
   data() {
     return {
       data: {},
-      dataMenuTienda: [
-        {
-          nombre: "herian",
-          categoria: "css",
-          precio: "100"
-        },
-        {
-          nombre: "cesar",
-          categoria: "django",
-          precio: "100"
-        },
-        {
-          nombre: "angel",
-          categoria: "django",
-          precio: "100"
-        },
-        {
-          nombre: "herian",
-          categoria: "css",
-          precio: "100"
-        },
-        {
-          nombre: "cesar",
-          categoria: "django",
-          precio: "100"
-        },
-        {
-          nombre: "angel",
-          categoria: "django",
-          precio: "100"
-        },
-      ]
-    }
+      dataMenuTienda: [],
+    };
   },
   mounted() {
     // this.VerifyStore()
+    this.get_menu();
   },
   methods: {
-    async VerifyStore() {
+    formatPrice(price) {
+      return utils.format.formatNearAmount(
+        price.toLocaleString("fullwide", { useGrouping: false })
+      );
+    },
+    async get_menu() {
       try {
-        const CONTRACT_NAME = 'contract1.ccoronel7.testnet'
+        const CONTRACT_NAME = "contract1.ccoronel7.testnet";
         // Connect to NEAR
-        const near = await connect(CONFIG(new keyStores.BrowserLocalStorageKeyStore()))
+        const near = await connect(
+          CONFIG(new keyStores.BrowserLocalStorageKeyStore())
+        );
         // Create wallet connection
-        const wallet = new WalletConnection(near)
+        const wallet = new WalletConnection(near);
         const contract = new Contract(wallet.account(), CONTRACT_NAME, {
-          viewMethods: ['get_store'],
-          sender: wallet.account()
-        })
+          viewMethods: ["get_menu"],
+          sender: wallet.account(),
+        });
         if (wallet.isSignedIn()) {
-          await contract.get_store({
-            user_id: wallet.getAccountId()
-          }).then((res) => {
-            this.data = res
-            console.info(this.data)
-          })
+          await contract
+            .get_menu({
+              user_id: wallet.getAccountId(),
+            })
+            .then((res) => {
+              console.log(res);
+              this.dataMenuTienda = res.platillos;
+            });
         }
       } catch (e) {
         // Router
-        this.$router.push({name:'miTienda'})
+        console.log(e);
       }
     },
-  }
+    async VerifyStore() {
+      try {
+        const CONTRACT_NAME = "contract1.ccoronel7.testnet";
+        // Connect to NEAR
+        const near = await connect(
+          CONFIG(new keyStores.BrowserLocalStorageKeyStore())
+        );
+        // Create wallet connection
+        const wallet = new WalletConnection(near);
+        const contract = new Contract(wallet.account(), CONTRACT_NAME, {
+          viewMethods: ["get_store"],
+          sender: wallet.account(),
+        });
+        if (wallet.isSignedIn()) {
+          await contract
+            .get_store({
+              user_id: wallet.getAccountId(),
+            })
+            .then((res) => {
+              this.data = res;
+              console.info(this.data);
+            });
+        }
+      } catch (e) {
+        // Router
+        this.$router.push({ name: "miTienda" });
+      }
+    },
+  },
 };
 </script>
 
