@@ -6,6 +6,14 @@
 #miMenu {
   @media (max-width: 1100px) {font-size: 15px}
   .contmimenu {
+    .add {
+      filter: $sombra-filter;
+      padding: 1.6em;
+      img {
+        width: 2em;
+        transform: translateX(5%);
+      }
+    }
     .contup {
       padding-top: 2em;
       gap: 1em;
@@ -133,9 +141,14 @@
             width: 100%;
           }
           .v-btn:nth-child(1) {
+            border: 1px solid $clr-text-btn;
             span {color: $success !important;}
           }
           .v-btn:last-child {
+            background-color: $warning !important;
+            width: max-content;
+            height: max-content;
+            padding: .13em;
             filter: $sombra-filter;
             span {color: $error !important;}
             img {

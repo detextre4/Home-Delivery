@@ -78,7 +78,7 @@
         <h1 class="h7_em">{{$t('restaurantes')}}</h1>
       </aside>
       <section class="contRestaurantList">
-        <v-card v-for="(item,i) in dataRestaurant" :key="i"
+        <v-card v-for="(item,i) in dataRestaurant" :key="i" :style="WidthListener"
           class="card divcol" v-ripple="activeRipple?{class: 'activeRipple'}:''">
           <img class="images" :src="item.img" alt="Restaurant image">
 
@@ -123,12 +123,12 @@ export default {
           title: "titulo",
           hours: "horario",
         },
-        {
-          img: require("@/assets/test.jpg"),
-          title: "titulo",
-          hours: "horario",
-        },
       ]
+    }
+  },
+  computed: {
+    WidthListener() {
+      if (this.dataRestaurant.length <= 3) {return 'max-width: 20em'}
     }
   },
   methods: {

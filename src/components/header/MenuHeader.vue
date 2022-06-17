@@ -145,8 +145,8 @@
               <section class="contInformacion divcol gap1">
                 <span class="h10_em bold" style="text-indent:24px;">{{$t('informacionPedido')}}</span>
                 <ul class="divcol gap1">
-                  <li v-for="(item2,i) in item.pedido" :key="i"
-                    class="grid" :style="`--numeration: '${i+1}-'`">
+                  <v-card v-for="(item2,i) in item.pedido" :key="i" v-ripple="{class: 'activeRipple'}"
+                    class="grid" :style="`--numeration: '${i+1}-'`" :ripple="true">
                     <span class="h11_em semibold"><span class="titulo">Orden: </span>{{item2.orden}}</span>
                     <div class="divcol">
                       <div class="divrow acenter" style="gap:.2em">
@@ -158,7 +158,7 @@
                     <v-btn icon class="cancelBtn not_clr">
                       <img src="@/assets/icons/eliminar.svg" alt="cancel order">
                     </v-btn>
-                  </li>
+                  </v-card>
                 </ul>
               </section>
 

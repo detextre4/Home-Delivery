@@ -88,10 +88,10 @@
               <label class="h9_em">{{ item.nombre }}</label>
               <span class="h9_em semibold">{{ item.categoria }}</span>
               <div class="acenter gap1">
-                <span class="h10_em semibold">{{ item.dollar }}$</span>
-                <span class="h10_em semibold center">({{ item.near }} 
-                  <img src="@/assets/logos/near.svg" alt="near">)
+                <span class="h10_em semibold center">{{ item.near }} 
+                  <img src="@/assets/logos/near.svg" alt="near">
                 </span>
+                <span class="h10_em clr_label_2">(${{ item.dollar }})</span>
               </div>
             </div>
           </aside>
@@ -151,7 +151,7 @@ export default {
           img: require("@/assets/icons/inicio.svg"),
           nombre: "LUMPIAS CON QUESO",
           categoria: "Chino",
-          dollar: 1000,
+          dollar: 80,
           near: 3,
           desc: "rico platillo para toda la familia pues",
         },
@@ -159,7 +159,7 @@ export default {
           img: require("@/assets/icons/inicio.svg"),
           nombre: "HAMBURGUESAS TIRPLE CARNE",
           categoria: "Fritura",
-          dollar: 1000,
+          dollar: 50,
           near: 2,
           desc: "compra y lleva ahora 20% de descuenta para ¿, oferta limitada",
         },
