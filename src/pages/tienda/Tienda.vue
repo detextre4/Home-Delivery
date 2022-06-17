@@ -94,7 +94,7 @@ export default {
     }
   },
   mounted() {
-    this.VerifyStore()
+    // this.VerifyStore()
   },
   methods: {
     async VerifyStore() {

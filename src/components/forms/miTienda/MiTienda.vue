@@ -1,9 +1,13 @@
 <template>
   <section id="miTienda" class="parentForm section">
+    <Alerts ref="alerts"></Alerts>
+    <MenuForms ref="menu"
+      @getDirection="(direccion,coordinates)=>{perfil.direccion=direccion; perfil.location=coordinates}"
+    ></MenuForms>
     <v-col class="contmiperfil divcol gap2">
       <aside class="contup divrow">
-        <v-btn class="back" icon href="#/tienda">
-          <v-icon size="clamp(1.5em, 2.5vw, 2.5em)">mdi-arrow-left</v-icon>
+        <v-btn class="back" icon @click="$root.$children[0].$children[0].$children[0].$children[0].to('tienda')">
+          <v-icon size="clamp(1.4em, 2.2vw, 2.2em)">mdi-arrow-left</v-icon>
         </v-btn>
         <div style="margin-left: 5mm" class="divcol">
           <h1 class="h7_em">Mi Tienda</h1>
@@ -20,12 +24,18 @@
           <v-text-field id="wallet" v-model="store.wallet" solo></v-text-field>
         </v-card>
         <v-card color="transparent">
-          <label for="Dirección" class="h10_em"> Dirección </label>
-          <v-text-field
-            id="Dirección"
-            v-model="store.address"
-            solo
-          ></v-text-field>
+          <label class="h10_em" @click="$refs.menu.modalDirection=true">
+            Dirección
+          </label>
+
+          <v-sheet color="transparent" style="cursor:pointer" @click="$refs.menu.modalDirection=true">
+            <v-text-field
+              v-model="store.address"
+              solo
+              disabled
+              hide-details
+            ></v-text-field>
+          </v-sheet>
         </v-card>
         <v-card color="transparent">
           <label for="telefono" class="h10_em"> Teléfono </label>
@@ -67,9 +77,12 @@
 import * as nearAPI from "near-api-js";
 import { CONFIG, IPFS } from "@/services/api";
 const { connect, keyStores, WalletConnection, Contract } = nearAPI;
+import Alerts from '@/components/alerts/Alerts.vue'
+import MenuForms from '../components/MenuForms.vue'
 
 export default {
   name: "miTienda",
+  components: { MenuForms, Alerts },
   data() {
     return {
       url: null,
@@ -79,7 +92,7 @@ export default {
       // foto: false,
       // foto2: false,
       store: {},
-      perfil: { wallet: localStorage.getItem("walletid") },
+      perfil: { wallet: localStorage.getItem("walletid"), direccion:null, location: null },
     };
   },
   mounted() {

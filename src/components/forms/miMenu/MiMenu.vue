@@ -4,8 +4,8 @@
     <MenuForms ref="menu"></MenuForms>
     <v-col class="contmimenu divcol gap2">
       <aside class="contup divrow">
-        <v-btn class="back" icon href="#/tienda">
-          <v-icon size="clamp(1.5em, 2.5vw, 2.5em)">mdi-arrow-left</v-icon>
+        <v-btn class="back" icon to="/tienda">
+          <v-icon size="clamp(1.4em, 2.2vw, 2.2em)">mdi-arrow-left</v-icon>
         </v-btn>
 
         <div class="divcol">
