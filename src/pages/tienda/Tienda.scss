@@ -52,7 +52,21 @@
           }
           aside:nth-child(1) {
             gap: 1em;
-            img {
+            label {
+              position: relative;
+              &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                margin-inline: auto;
+                width: 100%;
+                height: 2px;
+                border: 1px solid $clr-btn-2;
+              }
+            }
+            .menuImg {
               width: 7em;
               height: 7em;
               border-radius: $border-btn;

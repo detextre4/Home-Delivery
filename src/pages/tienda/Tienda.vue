@@ -9,14 +9,14 @@
             <img src="@/assets/icons/pencil.svg" alt="Add Menu" />
           </v-btn>
         </template>
-        <span class="clr-text-btn">Editar datos de tienda</span>
+        <span class="clr_text_btn">Editar datos de tienda</span>
       </v-tooltip>
     </v-col>
 
     <v-col class="contdown">
       <aside class="wrapper divcol">
         <div class="center">
-          <h2 class="h6_em">Menú</h2>
+          <h2 class="h6_em">Mi Menú</h2>
 
           <v-tooltip right color="var(--clr-btn)">
             <template v-slot:activator="{ on, attrs }">
@@ -24,7 +24,7 @@
                 <img src="@/assets/icons/plus.svg" alt="add menu" />
               </v-btn>
             </template>
-            <span class="clr-text-btn">Agregar nuevo menú</span>
+            <span class="clr_text_btn">Agregar nuevo menú</span>
           </v-tooltip>
         </div>
 
@@ -36,15 +36,20 @@
             class="acenter"
           >
             <aside class="divrow">
-              <img :src="item.img" alt="Menu Image" />
+              <img class="menuImg" :src="item.img" alt="Menu Image">
 
               <div class="contInfo divcol jcenter">
                 <label class="h7_em">{{ item.name }}</label>
                 <div class="space">
                   <span class="h9_em semibold">{{ item.category }}</span>
-                  <span class="h9_em semibol"
+                  <div class="acenter gap1">
+                    <span class="h9_em semibol"
                     >{{ formatPrice(item.price) }}$</span
                   >
+                    <span class="h10_em semibold center">({{ item.near }} 
+                      <img src="@/assets/logos/near.svg" alt="near">)
+                    </span>
+                  </div>
                 </div>
               </div>
             </aside>
