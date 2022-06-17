@@ -166,7 +166,7 @@ export default {
     }
   },
   mounted() {
-    this.VerifyStore()
+    // this.VerifyStore()
     this.get_menu();
   },
   computed: {

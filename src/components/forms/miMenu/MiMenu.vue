@@ -88,10 +88,10 @@
               <label class="h9_em">{{ item.nombre }}</label>
               <span class="h9_em semibold">{{ item.categoria }}</span>
               <div class="acenter gap1">
-                <span class="h10_em semibold center">{{ formatPrice(item.price) }} 
+                <span class="h10_em semibold center">{{ formatPrice(item.near) }} 
                   <img src="@/assets/logos/near.svg" alt="near">
                 </span>
-                <span class="h10_em clr_label_2">(${{ item.dollar }})</span>
+                <span class="h10_em clr_label_2">(${{ item.price }})</span>
               </div>
             </div>
           </aside>
