@@ -9,14 +9,14 @@
             <img src="@/assets/icons/pencil.svg" alt="Add Menu">
           </v-btn>
         </template>
-        <span class="clr-text-btn">Editar datos de tienda</span>
+        <span class="clr_text_btn">Editar datos de tienda</span>
       </v-tooltip>
     </v-col>
 
     <v-col class="contdown">
       <aside class="wrapper divcol">
         <div class="center">
-          <h2 class="h6_em">Menú</h2>
+          <h2 class="h6_em">Mi Menú</h2>
 
           <v-tooltip right color="var(--clr-btn)">
             <template v-slot:activator="{ on, attrs }">
@@ -24,7 +24,7 @@
                 <img src="@/assets/icons/plus.svg" alt="add menu">
               </v-btn>
             </template>
-            <span class="clr-text-btn">Agregar nuevo menú</span>
+            <span class="clr_text_btn">Agregar nuevo menú</span>
           </v-tooltip>
         </div>
 
@@ -32,13 +32,18 @@
           <v-card v-for="(item,i) in dataMenuTienda" :key="i"
             style="display:flex" class="acenter">
             <aside class="divrow">
-              <img src="@/assets/icons/inicio.svg" alt="Menu Image">
+              <img class="menuImg" src="@/assets/icons/inicio.svg" alt="Menu Image">
 
               <div class="contInfo divcol jcenter">
                 <label class="h7_em">{{ item.nombre }}</label>
                 <div class="space">
                   <span class="h9_em semibold">{{ item.categoria }}</span>
-                  <span class="h9_em semibol">{{ item.precio }}$</span>
+                  <div class="acenter gap1">
+                    <span class="h9_em semibol">{{ item.dollar }}$</span>
+                    <span class="h10_em semibold center">({{ item.near }} 
+                      <img src="@/assets/logos/near.svg" alt="near">)
+                    </span>
+                  </div>
                 </div>
               </div>
             </aside>
@@ -61,34 +66,28 @@ export default {
       data: {},
       dataMenuTienda: [
         {
-          nombre: "herian",
-          categoria: "css",
-          precio: "100"
+          img: require("@/assets/icons/inicio.svg"),
+          nombre: "LUMPIAS CON QUESO",
+          categoria: "CHINO",
+          dollar: "1000",
+          near: "2",
+          desc: "rico platillo para toda la familia pues",
         },
         {
-          nombre: "cesar",
-          categoria: "django",
-          precio: "100"
+          img: require("@/assets/icons/inicio.svg"),
+          nombre: "LUMPIAS CON QUESO",
+          categoria: "CHINO",
+          dollar: "1000",
+          near: "2",
+          desc: "rico platillo para toda la familia pues",
         },
         {
-          nombre: "angel",
-          categoria: "django",
-          precio: "100"
-        },
-        {
-          nombre: "herian",
-          categoria: "css",
-          precio: "100"
-        },
-        {
-          nombre: "cesar",
-          categoria: "django",
-          precio: "100"
-        },
-        {
-          nombre: "angel",
-          categoria: "django",
-          precio: "100"
+          img: require("@/assets/icons/inicio.svg"),
+          nombre: "LUMPIAS CON QUESO",
+          categoria: "Chino",
+          dollar: 1000,
+          near: 3,
+          desc: "rico platillo para toda la familia pues",
         },
       ]
     }

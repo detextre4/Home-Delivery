@@ -86,9 +86,12 @@
             <img class="foto" :src="item.img" alt="Menu Image" />
             <div class="child1 divcol jcenter">
               <label class="h9_em">{{ item.nombre }}</label>
-              <div class="child2 space">
-                <span class="h9_em bold">{{ item.categoria }}</span>
-                <span class="h9_em bold">{{ item.precio }}$</span>
+              <span class="h9_em semibold">{{ item.categoria }}</span>
+              <div class="acenter gap1">
+                <span class="h10_em semibold">{{ item.dollar }}$</span>
+                <span class="h10_em semibold center">({{ item.near }} 
+                  <img src="@/assets/logos/near.svg" alt="near">)
+                </span>
               </div>
             </div>
           </aside>
@@ -104,7 +107,7 @@
                   <img src="@/assets/icons/pencil.svg" alt="Add Menu" />
                 </v-btn>
               </template>
-              <span class="clr-text-btn">Editar</span>
+              <span class="clr_text_btn">Editar</span>
             </v-tooltip>
 
             <v-tooltip bottom color="#ff4081">
@@ -147,15 +150,17 @@ export default {
         {
           img: require("@/assets/icons/inicio.svg"),
           nombre: "LUMPIAS CON QUESO",
-          categoria: "CHINO",
-          precio: "1000",
+          categoria: "Chino",
+          dollar: 1000,
+          near: 3,
           desc: "rico platillo para toda la familia pues",
         },
         {
           img: require("@/assets/icons/inicio.svg"),
           nombre: "HAMBURGUESAS TIRPLE CARNE",
-          categoria: "FRITURA",
-          precio: "1000",
+          categoria: "Fritura",
+          dollar: 1000,
+          near: 2,
           desc: "compra y lleva ahora 20% de descuenta para ¿, oferta limitada",
         },
       ],
