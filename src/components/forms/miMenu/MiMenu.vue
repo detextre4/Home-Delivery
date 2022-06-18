@@ -85,10 +85,10 @@
           <aside class="firstcont divrow">
             <img class="foto" :src="item.img" alt="Menu Image" />
             <div class="child1 divcol jcenter">
-              <label class="h9_em">{{ item.nombre }}</label>
-              <span class="h9_em semibold">{{ item.categoria }}</span>
+              <label class="h9_em">{{ item.name }}</label>
+              <span class="h9_em semibold">{{ item.category }}</span>
               <div class="acenter gap1">
-                <span class="h10_em semibold center">{{ formatPrice(item.near) }} 
+                <span class="h10_em semibold center">{{ formatPrice(item.price) }} 
                   <img src="@/assets/logos/near.svg" alt="near">
                 </span>
                 <span class="h10_em clr_label_2">(${{ item.price }})</span>
