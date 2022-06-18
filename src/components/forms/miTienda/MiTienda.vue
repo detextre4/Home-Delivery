@@ -2,7 +2,7 @@
   <section id="miTienda" class="parentForm section">
     <Alerts ref="alerts"></Alerts>
     <MenuForms ref="menu"
-      @getDirection="(direccion,coordinates)=>{perfil.direccion=direccion; perfil.location=coordinates}"
+      @getDirection="(direccion,coordinates)=>{store.address=direccion; store.location=coordinates}"
     ></MenuForms>
     <v-col class="contmiperfil divcol gap2">
       <aside class="contup divrow">
