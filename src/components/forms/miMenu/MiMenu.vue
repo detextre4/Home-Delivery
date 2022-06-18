@@ -91,7 +91,7 @@
                 <span class="h10_em semibold center">{{ formatPrice(item.price) }} 
                   <img src="@/assets/logos/near.svg" alt="near">
                 </span>
-                <span class="h10_em clr_label_2">(${{ item.price }})</span>
+                <!-- <span class="h10_em clr_label_2">(${{ item.price }})</span> -->
               </div>
             </div>
           </aside>

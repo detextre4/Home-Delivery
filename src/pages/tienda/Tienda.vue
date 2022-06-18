@@ -124,7 +124,7 @@
                 <img class="logoNear" src="@/assets/logos/near.svg" alt="near">
                 <span class="price normal">{{formatPrice(item.price)}}</span>
               </div>
-              <span class="not_clr">(${{item.price}})</span>
+              <!-- <span class="not_clr">(${{item.price}})</span> -->
             </div>
           </aside>
         </v-card>
