@@ -15,9 +15,8 @@
         user: null,
       }
     },
-    mounted(){
-      this.isSigned()
-    },
+    beforeCreate(){},
+    created(){this.isSigned()},
     methods: {
       async isSigned() {
         // Connect to NEAR

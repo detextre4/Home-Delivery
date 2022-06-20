@@ -2,7 +2,7 @@
   <section id="miPerfil" class="parentForm section">
     <Alerts ref="alerts"></Alerts>
     <MenuForms ref="menu"
-      @getDirection="(item)=>{perfil.location.direccion=item}"
+      @getDirection="(direccion,coordinates)=>{perfil.direccion=direccion; perfil.location=coordinates}"
     ></MenuForms>
     <v-col class="contmiperfil divcol gap2">
       <aside class="contup divcol">
@@ -52,7 +52,7 @@
 
           <v-sheet color="transparent" style="cursor:pointer" @click="$refs.menu.modalDirection=true">
             <v-text-field
-              v-model="perfil.location.direccion"
+              v-model="perfil.direccion"
               solo
               disabled
               hide-details
@@ -131,7 +131,7 @@ export default {
       walletid: null,
       foto: false,
       foto2: false,
-      perfil: {wallet: localStorage.getItem('walletid'), location: {direccion:null,coordinates: null}},
+      perfil: {wallet: localStorage.getItem('walletid'), direccion:null, location: null},
     }
   },
   mounted(){
