@@ -112,12 +112,12 @@
       <section class="contRestaurantList">
         <v-card v-for="(item,i) in dataMenuTienda" :key="i" class="card divcol" :style="WidthListener">
           <div class="contImages">
-            <label class="h9_em">{{ item.nombre }}</label>
+            <label class="h9_em">{{ item.name }}</label>
             <img class="images" :src="item.img" alt="Restaurant image">
           </div>
 
           <aside class="contcard space">
-            <p class="h10_em semibold">{{item.desc}}</p>
+            <p class="h10_em semibold">{{item.description}}</p>
 
             <div class="contPrice divcol tend">
               <div class="acenter">
