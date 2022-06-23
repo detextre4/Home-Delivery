@@ -303,9 +303,9 @@ p:not(.not_typography, .not) {
     position: relative;
     &::after {
       content: "";
-      position: absolute;;
+      position: absolute;
       width: calc(var(--size) - clamp(2em, 2.46vw, 2.46em));
-      height: calc(var(--size) - clamp(2em, 2.46vw, 2.46em));
+      aspect-ratio: 1/1;
       background: var(--clr-btn-inv);
       border-radius: $border-btn;
       z-index: 0;
