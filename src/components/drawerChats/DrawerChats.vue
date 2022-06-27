@@ -58,61 +58,23 @@ export default {
   data() {
     return {
       messagesBadge: 1,
-      currentUserId: '',
+      currentUserId: null,
       // Chats
       loadingRooms: false,
       roomsLoaded: true,
       rooms: [],
       esperando: false,
-      rooms_b: [
-        {
-          roomId: 1,
-          roomName: "Room 1",
-          avatar: "assets/imgs/people.png",
-          unreadCount: 4,
-          index: 3,
-          lastMessage: {
-            content: "Last message received",
-            senderId: 1234,
-            username: "John Doe",
-            timestamp: "10:20",
-            saved: true,
-            distributed: false,
-            seen: false,
-            new: true,
-          },
-          users: [
-            {
-              _id: 1,
-              username: "John Doe",
-              avatar: "assets/imgs/doe.png",
-              status: {
-                state: "online",
-                lastChanged: "today, 14:30",
-              },
-            },
-            {
-              _id: 2,
-              username: "John Snow",
-              avatar: "assets/imgs/snow.png",
-              status: {
-                state: "offline",
-                lastChanged: "14 July, 20:00",
-              },
-            },
-          ],
-          typingUsers: [4321],
-        },
-      ],
+      esperando_msg: false,
       // Mensajes
       messagesLoaded: false,
       messages: [],
-      intervalo: null,
+      intervalo_chats: null,
+      intervalo_msges: null,
       room_id: null,
     }
   },
   mounted () {
-    this.currentUserId = 1
+    this.currentUserId = parseInt(localStorage.getItem('profileid'))
     this.messagesLoaded = false
     this.initChatComponent()
   },
@@ -123,11 +85,12 @@ export default {
     },
     initChatComponent(){
       this.fetchChats(localStorage.getItem('profileid'))
-      // this.intervalo = setInterval(()=>{
-      //   if (this.esperando !== true) {
-      //     console.log('fetchChats')
-      //   }
-      // },3000)
+      this.intervalo_chats = setInterval(()=>{
+        if (this.esperando !== true) {
+          console.log(this.esperando)
+          this.fetchChats(localStorage.getItem('profileid'))
+        }
+      },3000)
     },
     handleChats(){
       this.axios.post(CHATS).then((res) => {
@@ -141,7 +104,7 @@ export default {
       this.roomsLoaded = true
       // vue-advanced-chat component is performance oriented, hence you have to follow specific rules to make it work properly
       const habs = []; // El componente necesita igualar un array lleno con la variable de las rooms
-      this.axios.get(CHATS+'?id='+e+'&').then((res) => {
+      this.axios.get(CHATS+'?usuario='+e+'&').then((res) => {
         res.data.forEach((element) => {
           habs.push(element);
         })
@@ -165,7 +128,13 @@ export default {
       }).catch((e)=>console.log(e))
     },
     fetchMessages(data) {
-      console.log(data)
+      this.esperando_msg = true
+      this.intervalo_msges = setInterval(()=>{
+        if (this.esperando_msg !== true) {
+          console.log(this.esperando)
+          this.fetchMessages(data)
+        }
+      },3000)
       var msgs = []
       this.axios.get(MESSAGES+'?chat='+data.room.roomId+'&').then((res) => {
         res.data.forEach((element) => {
@@ -174,6 +143,7 @@ export default {
         this.esperando = false
         this.messages = msgs
         this.messagesLoaded = true
+        this.esperando_msg = false
       })
     },
     // onFetchMessages() {
