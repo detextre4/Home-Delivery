@@ -57,6 +57,11 @@
           }
         }
       }
+      .cardHorario {
+        flex-wrap: wrap;
+        gap: 1em;
+        & > aside {flex: 1 1 130px}
+      }
     }
     .contsubmit {
       .v-btn:is(:hover, :focus) {
@@ -79,3 +84,21 @@
     }
   }
   
+  .v-picker--time {
+    border-radius: 40px / 30px !important;
+    clip-path: $clip-path-2 !important;
+    box-shadow: $sombra-card-2 !important;
+    .v-picker__title {span {color: $clr-text-btn !important}}
+    .v-picker__body {
+      .v-picker__title__btn {
+        color: $clr-btn-2;
+        &--active {color: $clr-btn !important}
+      }
+    }
+    // .v-picker__body {margin-inline: 2em}
+    .primary {background-color: $clr-btn !important;}
+    .accent {background-color: $clr-btn-2 !important;
+    &:is(::after, ::before) {background-color: $clr-btn-2 !important}}
+    .v-time-picker-clock__hand:after {border-color: $clr-btn-2 !important}
+    .v-time-picker-clock__hand:before {border-color: $clr-btn-2 !important}
+  }
