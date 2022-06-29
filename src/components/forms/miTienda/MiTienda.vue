@@ -32,7 +32,6 @@
             <v-text-field
               v-model="store.address"
               solo
-              hide-details
             ></v-text-field>
           <!-- </v-sheet> -->
         </v-card>
@@ -91,7 +90,8 @@ export default {
       // foto: false,
       // foto2: false,
       store: {},
-      perfil: { wallet: localStorage.getItem("walletid"), direccion:null, location: null },
+      perfil: { wallet: localStorage.getItem("walletid"), direccion:null, location: null,
+        apertura: '', cierre: '' },
     };
   },
   mounted() {
