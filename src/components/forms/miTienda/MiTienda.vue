@@ -32,7 +32,6 @@
             <v-text-field
               v-model="store.address"
               solo
-              hide-details
             ></v-text-field>
           <!-- </v-sheet> -->
         </v-card>
@@ -57,6 +56,67 @@
               <img :src="url" alt="Image selected" />
             </template>
           </v-file-input>
+        </v-card>
+        <v-card color="transparent" class="cardHorario" style="display:flex">
+          <aside class="divcol">
+            <label for="apertura" class="h10_em"> Horario de apertura </label>
+            <v-menu
+              ref="menu1"
+              :close-on-content-click="false"
+              :nudge-right="40"
+              :return-value.sync="perfil.apertura"
+              transition="scale-transition"
+              offset-y
+              max-width="290px"
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  id="apertura"
+                  v-model="perfil.apertura"
+                  type="time" solo
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-time-picker
+                v-model="perfil.apertura"
+                full-width scrollable
+                @click:minute="$refs.menu1.save(perfil.apertura)"
+              ></v-time-picker>
+            </v-menu>
+          </aside>
+
+          <aside class="divcol">
+            <label for="cierre" class="h10_em"> Horario de cierre </label>
+            <v-menu
+              ref="menu2"
+              :close-on-content-click="false"
+              :nudge-right="40"
+              :return-value.sync="perfil.cierre"
+              transition="scale-transition"
+              offset-y
+              max-width="290px"
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  id="cierre"
+                  v-model="perfil.cierre"
+                  type="time" solo
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-time-picker
+                v-model="perfil.cierre"
+                full-width scrollable
+                @click:minute="$refs.menu2.save(perfil.cierre)"
+              ></v-time-picker>
+            </v-menu>
+          </aside>
         </v-card>
       </aside>
 
@@ -91,7 +151,8 @@ export default {
       // foto: false,
       // foto2: false,
       store: {},
-      perfil: { wallet: localStorage.getItem("walletid"), direccion:null, location: null },
+      perfil: { wallet: localStorage.getItem("walletid"), direccion:null, location: null,
+        apertura: '', cierre: '' },
     };
   },
   mounted() {

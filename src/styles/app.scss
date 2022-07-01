@@ -52,15 +52,13 @@
 
 // v-dialogs
 .v-dialog--scrollable {
+  border-radius: 40px 40px 80px 80px / 150px !important;
+  border: 5px solid $clr-btn !important;
+  clip-path: $clip-path-2 !important;
+  box-shadow: $sombra-card-2 !important;
+  overflow-x: hidden !important;
+  position: relative;
   @include media(max, small) {margin: 0 !important;max-height: 99% !important;min-height: 99% !important}
-  &>*, & > .v-card {
-    border-radius: 40px 40px 80px 80px / 150px !important;
-    border: 5px solid $clr-btn !important;
-    clip-path: $clip-path-2 !important;
-    box-shadow: $sombra-card-2 !important;
-    overflow-x: hidden !important;
-    position: relative;
-  }
 }
 
 

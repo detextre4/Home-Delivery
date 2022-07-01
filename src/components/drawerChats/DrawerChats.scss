@@ -2,6 +2,7 @@
 
 // drawerChats
 #drawerChats {
+  * {text-transform: none !important}
   .floatingButton {
     --size: 3.5em;
     position: fixed;

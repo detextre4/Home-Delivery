@@ -46,6 +46,8 @@ export default {
   components: { GoogleMapForms },
   data() {
     return {
+      modalTimePicker: false,
+      picker: null,
       modalDirection: false,
       closeMenu: true,
       dataVerificators: [

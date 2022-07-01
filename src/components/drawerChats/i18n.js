@@ -4,7 +4,7 @@ module.exports = {
       pedidosPendientes: "Pedidos pendientes",
     },
     US: {
-      pedidosPendientes: "Pending orders",
+      pedidosPendientes: "Pending Orders",
     }
   }
 }
