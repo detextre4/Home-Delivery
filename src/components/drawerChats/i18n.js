@@ -1,7 +1,7 @@
 module.exports = {
   messages: {
     ES: {
-      pedidosPendientes: "Pedidos Pendientes",
+      pedidosPendientes: "Pedidos pendientes",
     },
     US: {
       pedidosPendientes: "Pending orders",

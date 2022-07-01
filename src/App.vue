@@ -35,7 +35,8 @@
       },
       // Check if the user has an associated profile by: Dinoir
       VerifyProfile(user) {
-        this.axios.post(PERFIL,{'wallet':user}).then((response) => {
+        this.axios.post(PERFIL,{'wallet':user,'password':'super'}).then((response) => {
+          this.axios.defaults.headers.common.Authorization = 'token ' + response.token
           if (response.data.id) {
             if (response.data.vendedor) {
               this.$router.addRoute('layout', { path: '/tienda', name: 'tienda', component: () => import('@/pages/tienda/Tienda') })
