@@ -77,7 +77,6 @@ export default {
   },
   mounted () {
     this.currentUserId = parseInt(localStorage.getItem('profileid'))
-    this.messagesLoaded = false
     this.initChatComponent()
   },
   methods: {
@@ -109,10 +108,10 @@ export default {
           res.data.forEach((element) => {
             if (element.unreadCount !== 0) {
               news = news + element.unreadCount
-              this.esperando = false
             }
             habs.push(element);
           })
+          this.esperando = false
           this.pending = news
           this.rooms = habs
           this.roomsLoaded = false
@@ -130,31 +129,33 @@ export default {
     },
     initMsgComponent (data) {
       var msgs = []
-      console.log(data)
-      // this.intervalo_msges = setInterval(()=>{
-        this.axios.get(MESSAGES+'?chat='+data.room.roomId+'&usuario='+this.currentUserId+'&').then((res) => {
-          res.data.forEach((element) => {
-            msgs.push(element);
-          });
-          this.esperando = false
-          this.messages = msgs
-          this.messagesLoaded = true
-          this.esperando_msg = false
-        })
-      // },1000)
+      if (this.chat_abierto !== data.room.roomId){
+        this.chat_abierto = data.room.roomId
+        clearInterval(this.intervalo_msges)
+        this.intervalo_msges = setInterval(()=>{
+          this.axios.get(MESSAGES+'?chat='+data.room.roomId+'&usuario='+this.currentUserId+'&').then((res) => {
+            res.data.forEach((element) => {
+              msgs.push(element);
+            });
+            this.messages = msgs
+            this.esperando_msg = false
+            this.messagesLoaded = true
+            msgs = []
+          })
+        },1000)
+      }
     },
     fetchMessages(data) {
+      this.messages = []
       this.esperando_msg = true
+      this.messagesLoaded = false
       var obj = {chat:data.room.roomId}
       if (data.room.unreadCount) { 
         this.axios.put(NEWS,obj).then((res) => {
           this.pending = this.pending - res.data.reads
         })
       }
-      if (this.chat_abierto !== data.room.roomId) {
-        this.chat_abierto = data.room.roomId
-        this.initMsgComponent(data)
-      }
+      this.initMsgComponent(data)
     },
     // onFetchMessages() {
     //   this.axios.get(MESSAGES).then((res) => {
