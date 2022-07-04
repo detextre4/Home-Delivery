@@ -1,5 +1,5 @@
 <template>
-  <section id="drawerChats">
+  <section id="drawerChats" v-if="currentUserId">
     <v-badge
       :content="pending"
       :value="pending"
@@ -134,6 +134,15 @@ export default {
         clearInterval(this.intervalo_msges)
         this.intervalo_msges = setInterval(()=>{
           this.axios.get(MESSAGES+'?chat='+data.room.roomId+'&usuario='+this.currentUserId+'&').then((res) => {
+            res.data.sort(function (a, b) {
+              if (a.id < b.id) {
+                return 1;
+              }
+              if (a.id > b.id) {
+                return -1;
+              }
+              return 0;
+            });
             res.data.forEach((element) => {
               msgs.push(element);
             });
