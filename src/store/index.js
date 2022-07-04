@@ -10,8 +10,12 @@ export default new Vuex.Store({
     baseURL: process.env.BASE_URL,
     theme: "light",
     drawerChats: false,
+    OWNER_ID: null
   },
   mutations: {
+    get_owner(state, item) {
+      state.OWNER_ID = item
+    },
     CambiarTheme(state, theme) {
       state.theme = theme
     },

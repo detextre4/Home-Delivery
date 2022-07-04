@@ -84,7 +84,7 @@
 
           <aside class="contcard space">
             <a class="h10_em bold" @click="ToTienda(item)"
-              @mouseover="activeRipple=true" @mouseleave="activeRipple=false">
+              @mouseover="activeRipple=true" @mouseleave="activeRipple=false" >
               {{item.name}}
             </a>
             <span class="normal tnone tend">{{item.hours}}</span>
@@ -146,8 +146,9 @@ export default {
       }
     },
     ToTienda(item) {
-      console.log(item)
-      this.$router.push({path: '/restaurante-tienda'})
+      // console.log(item)
+      this.$store.commit("get_owner", item.owner_id)
+        this.$router.push({path: '/restaurante-tienda'})
     }
   },
 };

@@ -122,7 +122,7 @@
           </div>
 
           <aside class="contcard space">
-            <p class="h10_em semibold">{{item.desc}}</p>
+            <p class="h10_em semibold">{{item.description}}</p>
 
             <div class="contPrice divcol tend">
               <div class="acenter">
@@ -139,6 +139,9 @@
 </template>
 
 <script>
+import * as nearAPI from "near-api-js";
+import { CONFIG } from "@/services/api";
+const { connect, keyStores, WalletConnection, Contract, utils } = nearAPI;
 import GoogleMap from '@/components/googleMaps/GoogleMap'
 export default {
   name: "restauranteTienda",
@@ -155,6 +158,8 @@ export default {
         element.style.setProperty('--y', `${y}px`)
       });
     });
+    this.VerifyStore()
+    this.get_menu()
   },
   data() {
     return {
@@ -172,30 +177,6 @@ export default {
         filterIncluir: [],
       },
       dataMenuRestaurant: [
-        {
-          img: require("@/assets/test.jpg"),
-          desc: "descripcion",
-          price: 1,
-          dollar: 23
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          desc: "descripcion",
-          price: 1,
-          dollar: 23
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          desc: "descripcion",
-          price: 1,
-          dollar: 23
-        },
-        {
-          img: require("@/assets/test.jpg"),
-          desc: "descripcion",
-          price: 1,
-          dollar: 23
-        },
       ]
     }
   },
@@ -206,7 +187,53 @@ export default {
     // al hacer click en el menu
     SelectMenu(item) {
       console.log(item)
-    }
+    },
+    async get_menu() {
+        const CONTRACT_NAME = "contract1.ccoronel7.testnet";
+        // Connect to NEAR
+        const near = await connect(
+          CONFIG(new keyStores.BrowserLocalStorageKeyStore())
+        );
+        // Create wallet connection
+        const wallet = new WalletConnection(near);
+        const contract = new Contract(wallet.account(), CONTRACT_NAME, {
+          viewMethods: ["get_menu"],
+          sender: wallet.account(),
+        });
+        if (wallet.isSignedIn()) {
+          await contract
+            .get_menu({
+              user_id:this.$store.state.OWNER_ID,
+            })
+            .then((res) => {
+              console.log(res);
+              this.dataMenuRestaurant = res.platillos;
+            });
+        }
+    },
+    async VerifyStore() {
+        const CONTRACT_NAME = "contract1.ccoronel7.testnet";
+        // Connect to NEAR
+        const near = await connect(
+          CONFIG(new keyStores.BrowserLocalStorageKeyStore())
+        );
+        // Create wallet connection
+        const wallet = new WalletConnection(near);
+        const contract = new Contract(wallet.account(), CONTRACT_NAME, {
+          viewMethods: ["get_store"],
+          sender: wallet.account(),
+        });
+        if (wallet.isSignedIn()) {
+          await contract
+            .get_store({
+              user_id:this.$store.state.OWNER_ID,
+            })
+            .then((res) => {
+              this.data = res;
+              console.log(this.data);
+            });
+        }
+    },
   },
 };
 </script>
