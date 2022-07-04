@@ -3,7 +3,7 @@
     <v-col class="contup">
       <section class="contbanner jspace">
         <v-img
-          src="@/assets/test.jpg"
+          :src="data.logo"
           class="white--text align-end"
           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
         >
@@ -22,12 +22,9 @@
           <span class="h11_em">horario</span>
 
           <v-card-title class="h6_em bold">
-            nombre
+            {{data.name}}
           </v-card-title>
 
-          <v-card-text class="h11_em">
-            descripcion
-          </v-card-text>
         </v-img>
 
         <aside class="contmapa divcol jend">
@@ -163,6 +160,7 @@ export default {
   },
   data() {
     return {
+      data: {},
       activeRipple:false,
       perfil: {
         like: false,
@@ -200,16 +198,13 @@ export default {
           viewMethods: ["get_menu"],
           sender: wallet.account(),
         });
-        if (wallet.isSignedIn()) {
           await contract
             .get_menu({
               user_id:this.$store.state.OWNER_ID,
             })
             .then((res) => {
-              console.log(res);
               this.dataMenuRestaurant = res.platillos;
             });
-        }
     },
     async VerifyStore() {
         const CONTRACT_NAME = "contract1.ccoronel7.testnet";
@@ -223,7 +218,6 @@ export default {
           viewMethods: ["get_store"],
           sender: wallet.account(),
         });
-        if (wallet.isSignedIn()) {
           await contract
             .get_store({
               user_id:this.$store.state.OWNER_ID,
@@ -232,7 +226,6 @@ export default {
               this.data = res;
               console.log(this.data);
             });
-        }
     },
   },
 };

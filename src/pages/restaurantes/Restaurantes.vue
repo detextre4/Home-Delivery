@@ -133,13 +133,12 @@ export default {
           viewMethods: ['get_all_stores'],
           sender: wallet.account()
         })
-        if (wallet.isSignedIn()) {
+
           await contract.get_all_stores({
           }).then((res) => {
             console.log(res)
             this.dataRestaurant = res
           })
-        }
       } catch (e) {
         // Router
         console.log(e)
