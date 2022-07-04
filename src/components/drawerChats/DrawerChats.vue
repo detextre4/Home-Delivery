@@ -1,9 +1,8 @@
 <template>
   <section id="drawerChats">
     <v-badge
-      v-if="!$store.state.drawerChats"
-      :content="messagesBadge"
-      :value="messagesBadge"
+      :content="pending"
+      :value="pending"
       color="red"
       class="floatingButton"
       overlap
@@ -24,7 +23,7 @@
     >
       <section class="contPedidos divcol acenter">
         <!-- caja de pedidos -->
-        <h3 class="h10_em tcenter">{{$t('pedidosPendientes')}}</h3>
+        <h3 class="h10_em tcenter">{{ $t('pedidosPendientes') }}</h3>
       </section>
 
       <chat-window
@@ -49,7 +48,7 @@
 
 <script>
 import ChatWindow from 'vue-advanced-chat'
-import { MESSAGES, CHATS } from '@/services/api.js'
+import { MESSAGES, CHATS, NEWS } from '@/services/api.js'
 import 'vue-advanced-chat/dist/vue-advanced-chat.css'
 export default {
   name: "drawerChats",
@@ -57,8 +56,8 @@ export default {
   i18n: require("./i18n"),
   data() {
     return {
-      messagesBadge: 1,
-      currentUserId: null,
+      pending: 0,
+      currentUserId: '',
       // Chats
       loadingRooms: false,
       roomsLoaded: true,
@@ -71,26 +70,24 @@ export default {
       intervalo_chats: null,
       intervalo_msges: null,
       room_id: null,
+      sesion_abierta: null,
+      chat_abierto: null,
+      notifications: false,
     }
   },
   mounted () {
     this.currentUserId = parseInt(localStorage.getItem('profileid'))
-    this.messagesLoaded = false
     this.initChatComponent()
   },
   methods: {
     openDrawer () {
       this.$store.dispatch('DrawerChats', {key: 'open'})
-      this.fetchChats(localStorage.getItem('profileid'))
     },
     initChatComponent(){
-      this.fetchChats(localStorage.getItem('profileid'))
-      this.intervalo_chats = setInterval(()=>{
-        if (this.esperando !== true) {
-          console.log(this.esperando)
-          this.fetchChats(localStorage.getItem('profileid'))
-        }
-      },3000)
+      if (localStorage.getItem('profileid') !== this.sesion_abierta) {
+        this.sesion_abierta = localStorage.getItem('profileid')
+        this.intervalo_chats = setInterval(this.fetchChats,3000)
+      }
     },
     handleChats(){
       this.axios.post(CHATS).then((res) => {
@@ -99,52 +96,66 @@ export default {
         }
       }).catch((e)=>console.log(e))
     },
-    fetchChats(e) {
-      this.esperando = true
+    fetchChats() {
+      var e = this.sesion_abierta
       this.roomsLoaded = true
       // vue-advanced-chat component is performance oriented, hence you have to follow specific rules to make it work properly
       const habs = []; // El componente necesita igualar un array lleno con la variable de las rooms
-      this.axios.get(CHATS+'?usuario='+e+'&').then((res) => {
-        res.data.forEach((element) => {
-          habs.push(element);
-        })
-        this.rooms = habs
-        this.esperando = false
-        this.roomsLoaded = false
-      }).catch((e)=>console.log(e))
+      if (!this.esperando) {
+        this.esperando = true
+        this.axios.get(CHATS+'?usuario='+e+'&').then((res) => {
+          var news = 0
+          res.data.forEach((element) => {
+            if (element.unreadCount !== 0) {
+              news = news + element.unreadCount
+            }
+            habs.push(element);
+          })
+          this.esperando = false
+          this.pending = news
+          this.rooms = habs
+          this.roomsLoaded = false
+        }).catch((e)=>console.log(e))
+      }
     },
     handleMessage(data){
       this.esperando = true
       var msgs = this.messages
       this.axios.post(MESSAGES,{content:data.content,replyMessage:data.replyMessage,roomId:data.roomId,usuario:localStorage.getItem('profileid')}).then((res) => {
-        console.log(res)
-        if (res.status !== 201) {
-          console.log(res)
-        } else {
-          msgs.push(res.data)
-          this.messages = msgs
-          this.esperando = false
-        }
+        msgs.push(res.data)
+        this.messages = msgs
+        this.esperando = false
       }).catch((e)=>console.log(e))
     },
-    fetchMessages(data) {
-      this.esperando_msg = true
-      this.intervalo_msges = setInterval(()=>{
-        if (this.esperando_msg !== true) {
-          console.log(this.esperando)
-          this.fetchMessages(data)
-        }
-      },3000)
+    initMsgComponent (data) {
       var msgs = []
-      this.axios.get(MESSAGES+'?chat='+data.room.roomId+'&').then((res) => {
-        res.data.forEach((element) => {
-          msgs.push(element);
-        });
-        this.esperando = false
-        this.messages = msgs
-        this.messagesLoaded = true
-        this.esperando_msg = false
-      })
+      if (this.chat_abierto !== data.room.roomId){
+        this.chat_abierto = data.room.roomId
+        clearInterval(this.intervalo_msges)
+        this.intervalo_msges = setInterval(()=>{
+          this.axios.get(MESSAGES+'?chat='+data.room.roomId+'&usuario='+this.currentUserId+'&').then((res) => {
+            res.data.forEach((element) => {
+              msgs.push(element);
+            });
+            this.messages = msgs
+            this.esperando_msg = false
+            this.messagesLoaded = true
+            msgs = []
+          })
+        },1000)
+      }
+    },
+    fetchMessages(data) {
+      this.messages = []
+      this.esperando_msg = true
+      this.messagesLoaded = false
+      var obj = {chat:data.room.roomId}
+      if (data.room.unreadCount) { 
+        this.axios.put(NEWS,obj).then((res) => {
+          this.pending = this.pending - res.data.reads
+        })
+      }
+      this.initMsgComponent(data)
     },
     // onFetchMessages() {
     //   this.axios.get(MESSAGES).then((res) => {
