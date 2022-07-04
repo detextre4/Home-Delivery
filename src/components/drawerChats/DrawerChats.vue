@@ -18,11 +18,11 @@
       fixed
       temporary
       width="max-content"
-      height="100vh"
+      height="100%"
       hide-overlay
     >
+      <!-- caja de pedidos -->
       <section class="contPedidos divcol acenter">
-        <!-- caja de pedidos -->
         <h3 class="h10_em tcenter">{{ $t('pedidosPendientes') }}</h3>
       </section>
 
