@@ -81,9 +81,9 @@
                 ></v-text-field>
               </template>
               <v-time-picker
-                v-model="perfil.apertura"
+                v-model="store.apertura"
                 full-width scrollable
-                @click:minute="$refs.menu1.save(perfil.apertura)"
+                @click:minute="$refs.menu1.save(store.apertura)"
               ></v-time-picker>
             </v-menu>
           </aside>
@@ -103,7 +103,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
                   id="cierre"
-                  v-model="perfil.cierre"
+                  v-model="store.cierre"
                   type="time" solo
                   readonly
                   v-bind="attrs"
@@ -111,9 +111,9 @@
                 ></v-text-field>
               </template>
               <v-time-picker
-                v-model="perfil.cierre"
+                v-model="store.cierre"
                 full-width scrollable
-                @click:minute="$refs.menu2.save(perfil.cierre)"
+                @click:minute="$refs.menu2.save(store.cierre)"
               ></v-time-picker>
             </v-menu>
           </aside>
@@ -225,6 +225,7 @@ export default {
           sender: wallet.account(),
         });
         if (wallet.isSignedIn()) {
+          let horario = {inicio: this.store.apertura, cierre: this.store.inicio}
           const formData = new FormData();
           formData.append("file", this.store.logo);
           await this.axios.post(IPFS, formData).then((res) => {
@@ -235,6 +236,7 @@ export default {
                 address: this.store.address,
                 phone: this.store.phone,
                 wallet: this.store.wallet,
+                schedule: JSON.stringify(horario),
                 logo:
                   "https://" + res.data.data + direccionIpfs + "/" + res.data.nombre,
               })
