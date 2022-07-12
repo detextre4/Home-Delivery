@@ -33,7 +33,7 @@
             <span class="h11_em">{{perfil.location.direccion}}</span>
           </div>
 
-          <GoogleMap ref="map"></GoogleMap>
+          <GoogleMap :UserCoordinates="perfil.location.coordinates" ref="map"></GoogleMap>
         </aside>
       </section>
     </v-col>
@@ -184,7 +184,10 @@ export default {
   methods: {
     // al hacer click en el menu
     SelectMenu(item) {
-      console.log(item)
+      let object = {
+        
+      }
+      this.$store.commit('ShoppingCart', object)
     },
     async get_menu() {
         const CONTRACT_NAME = "contract1.ccoronel7.testnet";

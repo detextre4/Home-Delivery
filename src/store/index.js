@@ -10,7 +10,40 @@ export default new Vuex.Store({
     baseURL: process.env.BASE_URL,
     theme: "light",
     drawerChats: false,
-    OWNER_ID: null
+    OWNER_ID: null,
+    dataModalShopCart: [
+      {
+        user: "juanito's shop",
+        pedido: [
+          {
+            orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
+            precio: 4,
+            comentario: "ensalada sin cebolla",
+          },
+          {
+            orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
+            precio: 4,
+            comentario: "ensalada sin cebolla",
+          },
+          {
+            orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
+            precio: 4,
+            comentario: "ensalada sin cebolla",
+          },
+          {
+            orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
+            precio: 4,
+            comentario: "ensalada sin cebolla",
+          },
+        ],
+        precio:{delivery: 0.5, total: 8.5},
+        entrega: {
+          direccion: "virgen de guadalupe, las rosas",
+          coordinates: { lat:9.988903846136667, lng:-67.6891094161248 },
+          numero: "0414-4137640",
+        },
+      },
+    ]
   },
   mutations: {
     get_owner(state, item) {
@@ -26,6 +59,10 @@ export default new Vuex.Store({
       if (key == 'close') {
         state.drawerChats = false
       }
+    },
+    ShoppingCart(state, item) {
+      console.log(item)
+      state.dataModalShopCart.push(item)
     }
   },
   actions: {

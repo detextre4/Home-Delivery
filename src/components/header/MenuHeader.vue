@@ -124,9 +124,10 @@
       </v-expansion-panels>
     </v-menu>
 
+    <!-- carrito de compras -->
     <v-dialog
       v-model="modalShopCart"
-      max-width="min(100%, 60em)"
+      max-width="min(100%, 70em)"
       scrollable
     >
       <v-card id="modalShopCart" class="divcol jspace">
@@ -135,7 +136,7 @@
         </v-btn>
 
         <v-window v-model="ventanaTiendas">
-          <v-window-item v-for="(item,i) in dataModalShopCart" :key="`card-${i}`"
+          <v-window-item v-for="(item,i) in $store.state.dataModalShopCart" :key="`card-${i}`"
             class="padd1block relative">
             <section class="center">
               <h1 class="h7_em">{{item.user}}</h1>
@@ -186,7 +187,7 @@
                   <span class="h10_em bold">{{$t('direccionEntrega')}}</span>
                   <aside class="divcol" style="gap:.2em">
                     <GoogleMap :UserCoordinates="item.entrega.coordinates"
-                      style="width:100%;height:150px"></GoogleMap>
+                      style="width:100%;height:230px"></GoogleMap>
 
                     <span class="h11_em semibold">
                       <span class="titulo">Dirección: </span>
@@ -205,7 +206,7 @@
 
         <v-card-actions class="center">
           <v-item-group v-model="ventanaTiendas" mandatory>
-            <v-item v-for="n in dataModalShopCart.length" :key="`btn-${n}`" v-slot="{ active, toggle }">
+            <v-item v-for="n in $store.state.dataModalShopCart.length" :key="`btn-${n}`" v-slot="{ active, toggle }">
               <v-btn :input-value="active" icon @click="toggle" :class="active?'':'not_clr'">
                 <v-icon>mdi-record</v-icon>
               </v-btn>
@@ -263,6 +264,10 @@ export default {
                 key: "tienda",
                 to: "/mi-tienda",
               },
+              {
+                key: "delivery",
+                to: "/mi-delivery",
+              },
             ],
           },
         ],
@@ -270,55 +275,6 @@ export default {
           { key: "logout" }
         ]
       },
-      dataModalShopCart: [
-        {
-          user: "juanito's shop",
-          pedido: [
-            {
-              orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-              precio: 4,
-              comentario: "ensalada sin cebolla",
-            },
-            {
-              orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-              precio: 4,
-              comentario: "ensalada sin cebolla",
-            },
-            {
-              orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-              precio: 4,
-              comentario: "ensalada sin cebolla",
-            },
-            {
-              orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-              precio: 4,
-              comentario: "ensalada sin cebolla",
-            },
-          ],
-          precio:{delivery: 0.5, total: 8.5},
-          entrega: {
-            direccion: "virgen de guadalupe, las rosas",
-            coordinates: { lat:9.988903846136667, lng:-67.6891094161248 },
-            numero: "0414-4137640",
-          },
-        },
-        {
-          user: "pedrito's shop",
-          pedido: [
-            {
-              orden: "sucaritas vida y mas na",
-              precio: 2,
-              comentario: "ninguno",
-            },
-          ],
-          precio:{delivery: 0.5, total: 2.5},
-          entrega: {
-            direccion: "las carmencitas, hoyuelos",
-            coordinates: { lat:9.988903846136667, lng:-67.6891094161248 },
-            numero: "0414-4137640",
-          },
-        },
-      ]
     };
   },
   methods: {

@@ -110,7 +110,7 @@
   @include media(max, small) {padding-top: 2em}
   .contentModal {
     overflow-y: scroll;
-    min-height: 450px;
+    min-height: 520px;
     max-height: 550px;
     @include media(max, small) {max-height: 80vh}
     .titulo {color: $clr-btn-2 !important; font-weight: 700}

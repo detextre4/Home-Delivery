@@ -47,6 +47,11 @@ export default new Router({
         //   name: 'miTienda',
         //   component: () => import('@/components/forms/miTienda/MiTienda'),
         // },
+        {
+          path: '/mi-delivery',
+          name: 'miDelivery',
+          component: () => import('@/components/forms/miDelivery/MiDelivery'),
+        },
         // {
         //   path: '/',
         //   name: 'inicio',
