@@ -225,7 +225,7 @@ export default {
           sender: wallet.account(),
         });
         if (wallet.isSignedIn()) {
-          let horario = {inicio: this.store.apertura, cierre: this.store.inicio}
+          let horario = {inicio: this.store.apertura, cierre: this.store.cierre}
           const formData = new FormData();
           formData.append("file", this.store.logo);
           await this.axios.post(IPFS, formData).then((res) => {
@@ -234,6 +234,7 @@ export default {
                 owner_id: wallet.getAccountId(),
                 name: this.store.name,
                 address: this.store.address,
+                location: "asdad",
                 phone: this.store.phone,
                 wallet: this.store.wallet,
                 schedule: JSON.stringify(horario),
@@ -242,6 +243,7 @@ export default {
               })
                this.store.logo =
               "https://" + res.data.data + direccionIpfs + "/" + res.data.nombre;
+              this.store.horario = horario
               localStorage.setItem("store", JSON.stringify(this.store));
           });
         }

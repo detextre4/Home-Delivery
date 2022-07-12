@@ -49,7 +49,7 @@
               ${item.location.coordinates.lat},${item.location.coordinates.lng}
               &markers=color:red%7Clabel:C%7C
               ${item.location.coordinates.lat},${item.location.coordinates.lng}
-              &size=600x400&zoom=14&key=AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk`"
+              &size=600x400&zoom=14&key=AIzaSyA8ZXhuqGTzEZY25fO5eM7Xxj-rotGs3JI`"
               alt="Google Map Static Location">
           </div>
 
