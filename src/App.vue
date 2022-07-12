@@ -47,6 +47,7 @@
             }
             // Set profile.id as localStorage item
             localStorage.setItem('profileid',response.data.id)
+            localStorage.setItem("data_profile", JSON.stringify(response.data))
           } else {
             if (this.$route.name !== 'perfil') {
               this.$router.push({name: 'perfil'})

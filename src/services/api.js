@@ -38,6 +38,7 @@ function CONFIG(keyStores) {
 module.exports = {
   ROUTES: `${BASE_URL}/menu-get`,
   PERFIL: `${BASE_URL}/verificar-perfil`,
+  ORDER_CREATE:`${BASE_URL}/order-create`,
   PROFILE: `${BASE_URL}/perfiles/`,
   MESSAGES: `${BASE_URL}/mensajes/`,
   CHATS: `${BASE_URL}/chats/`,

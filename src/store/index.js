@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import * as nearAPI from "near-api-js";
+const { utils } = nearAPI;
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -12,37 +13,35 @@ export default new Vuex.Store({
     drawerChats: false,
     OWNER_ID: null,
     dataModalShopCart: [
-      {
-        user: "juanito's shop",
-        pedido: [
-          {
-            orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-            precio: 4,
-            comentario: "ensalada sin cebolla",
-          },
-          {
-            orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-            precio: 4,
-            comentario: "ensalada sin cebolla",
-          },
-          {
-            orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-            precio: 4,
-            comentario: "ensalada sin cebolla",
-          },
-          {
-            orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-            precio: 4,
-            comentario: "ensalada sin cebolla",
-          },
-        ],
-        precio:{delivery: 0.5, total: 8.5},
-        entrega: {
-          direccion: "virgen de guadalupe, las rosas",
-          coordinates: { lat:9.988903846136667, lng:-67.6891094161248 },
-          numero: "0414-4137640",
-        },
-      },
+      // {
+      //   tienda: "juanito's shop",
+      //   wallet: 'ccoronel7.testnet',
+      //   productos: [
+      //     {
+      //       nombre: "papitas fritas con refresco, dos raciones de pollo y ensalada",
+      //       price: 4,
+      //       comentario: "ensalada sin cebolla",
+      //     },
+      //     {
+      //       orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
+      //       price: 4,
+      //       comentario: "ensalada sin cebolla",
+      //     },
+      //     {
+      //       orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
+      //       price: 4,
+      //       comentario: "ensalada sin cebolla",
+      //     },
+      //     {
+      //       orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
+      //       price: 4,
+      //       comentario: "ensalada sin cebolla",
+      //     },
+      //   ],
+      //   direccion: "virgen de guadalupe, las rosas",
+      //   coordinates: { lat:9.988903846136667, lng:-67.6891094161248 },
+      //   numero: "0414-4137640",
+      // },
     ]
   },
   mutations: {
@@ -62,10 +61,43 @@ export default new Vuex.Store({
     },
     ShoppingCart(state, item) {
       console.log(item)
-      state.dataModalShopCart.push(item)
+      let pedidos = state.dataModalShopCart
+      var pedido_encontrado =pedidos.find(pedido => pedido.wallet_shop === item.wallet_shop)
+      if (pedido_encontrado) {
+        pedido_encontrado.sub_total = pedido_encontrado.sub_total + item.price
+        pedido_encontrado.productos.push({
+          name: item.name,
+          price: item.price,
+          comment: ''
+        })
+      } else {
+        console.log(localStorage.getItem("data_profile"))
+        let datoa_profile = JSON.parse(localStorage.getItem("data_profile"))
+        state.dataModalShopCart.push({
+          client: localStorage.getItem("walletid"),
+          name_shop: item.name_shop,
+          wallet_shop: item.wallet_shop,
+          wallet_seller: item.wallet_seller,
+          productos: [{
+            name: item.name,
+            price: item.price,
+            comment: ''
+          }],
+          direccion: datoa_profile.direccion,
+          location: JSON.parse(datoa_profile.location),
+          telefono: datoa_profile.telefono,
+          sub_total: item.price
+        })
+      }
     }
   },
   actions: {
+
+    yoctoNEARNEAR: function(yoctoNEAR) {
+      const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())
+      this.yoctoNEARNEAR2(amountInNEAR)
+      this.precio_yocto = amountInNEAR
+    },
     CambiarTheme({state, commit}, {theme, element}) {
       element.href = `${state.baseURL}themes/${theme}/theme.css`;
       localStorage.setItem("theme", theme);
