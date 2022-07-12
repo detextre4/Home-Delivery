@@ -18,11 +18,11 @@
       fixed
       temporary
       width="max-content"
-      height="100%"
+      height="100vh"
       hide-overlay
     >
-      <!-- caja de pedidos -->
       <section class="contPedidos divcol acenter">
+        <!-- caja de pedidos -->
         <h3 class="h10_em tcenter">{{ $t('pedidosPendientes') }}</h3>
       </section>
 
@@ -73,13 +73,26 @@ export default {
       sesion_abierta: null,
       chat_abierto: null,
       notifications: false,
+      verifyCurrentUserValue: null,
+      chatSocket: WebSocket = new WebSocket(`ws://${window.location.host}/ws/chat/${this.roomName}/`),
     }
   },
   mounted () {
-    this.currentUserId = parseInt(localStorage.getItem('profileid'))
+    this.verifyCurrentUserValue = setInterval(this.verifyCurrentUser,1000)
     this.initChatComponent()
+    // this.chatSocket.onmessage = e => {
+    //   const data = JSON.parse(e.data);
+    //   const message = data.message;
+    //   this.messages.push(message);
+    // };
+    // this.chatSocket.onclose = e => {
+    //   console.error("chat socket closed unexpectedly!");
+    // };
   },
   methods: {
+    verifyCurrentUser () {
+      this.currentUserId = parseInt(localStorage.getItem('profileid'))
+    },
     openDrawer () {
       this.$store.dispatch('DrawerChats', {key: 'open'})
     },
@@ -126,6 +139,20 @@ export default {
         this.messages = msgs
         this.esperando = false
       }).catch((e)=>console.log(e))
+      // this.esperando = true
+      // var msgs = this.messages
+      // var msg = {content:data.content,replyMessage:data.replyMessage,roomId:data.roomId,usuario:localStorage.getItem('profileid')}
+      // var respuesta = this.chatSocket.send(
+      //   JSON.stringify({
+      //     message: msg
+      //   })
+      // );
+      // console.log(respuesta)
+      // // this.axios.post(MESSAGES,msg).then((res) => {
+      // msgs.push(respuesta.data)
+      // this.messages = msgs
+      // //   this.esperando = false
+      // // }).catch((e)=>console.log(e))
     },
     initMsgComponent (data) {
       var msgs = []
@@ -134,15 +161,15 @@ export default {
         clearInterval(this.intervalo_msges)
         this.intervalo_msges = setInterval(()=>{
           this.axios.get(MESSAGES+'?chat='+data.room.roomId+'&usuario='+this.currentUserId+'&').then((res) => {
-            res.data.sort(function (a, b) {
-              if (a.id < b.id) {
-                return 1;
-              }
-              if (a.id > b.id) {
-                return -1;
-              }
-              return 0;
-            });
+            // res.data.sort(function (a, b) {
+            //   if (a.id < b.id) {
+            //     return 1;
+            //   }
+            //   if (a.id > b.id) {
+            //     return -1;
+            //   }
+            //   return 0;
+            // });
             res.data.forEach((element) => {
               msgs.push(element);
             });

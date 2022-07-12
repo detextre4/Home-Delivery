@@ -12,8 +12,8 @@
       :center="UserCoordinates"
       :zoom="14"
       :options="{
-        key: 'AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk',
-        mapId: '6840d2b70ceb1209',
+        key: 'AIzaSyA8ZXhuqGTzEZY25fO5eM7Xxj-rotGs3JI',
+        mapId: 'f5c4f66caa34617d',
         zoomControl: true,
         mapTypeControl: false,
         scaleControl: false,

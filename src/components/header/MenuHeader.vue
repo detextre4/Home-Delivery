@@ -296,6 +296,7 @@ export default {
       }
     },
     Logout() {
+      localStorage.removeItem('profileid');
       this.$parent.$parent.loginNear('logout');
       this.logout = false;
       if (this.$route.name !== 'inicio') {
