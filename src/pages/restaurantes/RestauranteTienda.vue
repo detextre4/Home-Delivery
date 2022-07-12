@@ -124,9 +124,8 @@
             <div class="contPrice divcol tend">
               <div class="acenter">
                 <img class="logoNear" src="@/assets/logos/near.svg" alt="near">
-                <span class="price normal">{{item.price}}</span>
+                <span class="price normal">{{formatPrice(item.price)}}</span>
               </div>
-              <span class="not_clr">(${{item.dollar}})</span>
             </div>
           </aside>
         </v-card>
@@ -185,6 +184,11 @@ export default {
     // al hacer click en el menu
     SelectMenu(item) {
       console.log(item)
+    },
+        formatPrice(price) {
+      return utils.format.formatNearAmount(
+        price.toLocaleString("fullwide", { useGrouping: false })
+      );
     },
     async get_menu() {
         const CONTRACT_NAME = "contract1.ccoronel7.testnet";
