@@ -242,7 +242,7 @@
                   <span class="h10_em bold">{{ $t("direccionEntrega") }}</span>
                   <aside class="divcol" style="gap: 0.2em">
                     <GoogleMap
-                      :UserCoordinates="pedido.location"
+                      :UserCoordinates="JSON.parse(pedido.location)"
                       class="map"
                     >
                     </GoogleMap>

@@ -162,8 +162,7 @@ export default {
         item.location = JSON.stringify(item.location)
         this.axios.put(PROFILE+item.id+'/',item).then((response) => {
           this.perfil=response.data
-          this.$router.push({name:'inicio'})
-          this.$router.go()
+          this.$refs.alerts.Alerts('success');
         })
       } else {
         item.location = JSON.stringify(item.location)
@@ -171,7 +170,7 @@ export default {
         this.axios.post(PROFILE,item).then((response) => {
           this.perfil=response.data
           this.$router.push({name:'inicio'})
-          this.$router.go()
+          this.$refs.alerts.Alerts('success');
         })
       }
     },

@@ -203,6 +203,7 @@ export default {
             })
             .then((res) => {
               console.log(res);
+              this.$refs.alerts.Alerts('success');
             });
         }
       } catch (e) {
@@ -240,11 +241,14 @@ export default {
                 schedule: JSON.stringify(horario),
                 logo:
                   "https://" + res.data.data + direccionIpfs + "/" + res.data.nombre,
-              })
-               this.store.logo =
+              }).then((res) => {
+              console.log(res);
+              this.$refs.alerts.Alerts('success');
+              this.store.logo =
               "https://" + res.data.data + direccionIpfs + "/" + res.data.nombre;
               this.store.horario = horario
               localStorage.setItem("store", JSON.stringify(this.store));
+            });
           });
         }
       } catch (e) {
