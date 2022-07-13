@@ -12,37 +12,7 @@ export default new Vuex.Store({
     theme: "light",
     drawerChats: false,
     OWNER_ID: null,
-    dataModalShopCart: [
-      // {
-      //   tienda: "juanito's shop",
-      //   wallet: 'ccoronel7.testnet',
-      //   productos: [
-      //     {
-      //       nombre: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-      //       price: 4,
-      //       comentario: "ensalada sin cebolla",
-      //     },
-      //     {
-      //       orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-      //       price: 4,
-      //       comentario: "ensalada sin cebolla",
-      //     },
-      //     {
-      //       orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-      //       price: 4,
-      //       comentario: "ensalada sin cebolla",
-      //     },
-      //     {
-      //       orden: "papitas fritas con refresco, dos raciones de pollo y ensalada",
-      //       price: 4,
-      //       comentario: "ensalada sin cebolla",
-      //     },
-      //   ],
-      //   direccion: "virgen de guadalupe, las rosas",
-      //   coordinates: { lat:9.988903846136667, lng:-67.6891094161248 },
-      //   numero: "0414-4137640",
-      // },
-    ]
+    dataModalShopCart: []
   },
   mutations: {
     get_owner(state, item) {

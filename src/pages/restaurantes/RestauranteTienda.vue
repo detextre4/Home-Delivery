@@ -151,8 +151,7 @@ export default {
       item.wallet_shop = this.data.wallet
       item.name_shop = this.data.name
       item.wallet_seller = this.$store.state.OWNER_ID
-      let object = item
-      this.$store.commit('ShoppingCart', object)
+      this.$store.commit('ShoppingCart', item)
     },
     formatPrice(price) {
       return utils.format.formatNearAmount(
