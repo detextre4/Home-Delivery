@@ -155,7 +155,7 @@
             :key="`card-${i}`"
             class="padd1block relative"
           >
-            <section class="center">
+            <section class="center tcenter">
               <h1 class="h7_em">{{ pedido.name_shop }}</h1>
             </section>
 
@@ -169,16 +169,16 @@
                     v-for="(producto, i) in pedido.productos"
                     :key="i"
                     v-ripple="{ class: 'activeRipple' }"
-                    class="grid"
+                    class="fwrap"
                     :style="`--numeration: '${i + 1}-'`"
                     :ripple="true"
                   >
-                    <span class="h11_em semibold"
-                      ><span class="titulo">Producto: </span
-                      >{{ producto.name }}</span
-                    >
-                    <div class="divcol">
-                      <div class="divrow acenter" style="gap: 0.2em">
+                  <div class="divcol">
+                    <span class="h11_em semibold">
+                      <span class="titulo">Producto: </span>
+                      {{ producto.name }}
+                    </span>
+                    <div class="acenter" style="gap: 0.2em">
                         <span class="h11_em semibold"
                           ><span class="titulo">Precio: </span
                           >{{ formatPrice(producto.price) }}</span
@@ -187,14 +187,20 @@
                           src="@/assets/logos/near.svg"
                           width="14px"
                           alt="near"
-                        />
+                        >
                       </div>
-                      <span class="h11_em semibold"
-                        ><span class="titulo">Comentario: </span
-                        >{{ producto.comment }}</span
-                      >
                     </div>
-                    <v-btn icon class="cancelBtn not_clr">
+
+                    <v-text-field
+                      hide-details
+                      placeholder="Opcional"
+                    >
+                      <template v-slot:label>
+                        <span class="titulo">Comentario:</span>
+                      </template>
+                    </v-text-field>
+                      
+                    <v-btn icon class="cancelBtn not_clr alignmobile">
                       <img
                         src="@/assets/icons/eliminar.svg"
                         alt="cancel order"
@@ -237,7 +243,7 @@
                   <aside class="divcol" style="gap: 0.2em">
                     <GoogleMap
                       :UserCoordinates="pedido.location"
-                      style="width: 100%; height: 230px"
+                      class="map"
                     >
                     </GoogleMap>
 

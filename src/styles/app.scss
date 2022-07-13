@@ -57,8 +57,10 @@
   clip-path: $clip-path-2 !important;
   box-shadow: $sombra-card-2 !important;
   overflow-x: hidden !important;
+  overflow-y: auto;
   position: relative;
-  @include media(max, small) {margin: 0 !important;max-height: 99% !important;min-height: 99% !important}
+  @include media(min, small) {&::-webkit-scrollbar {display: none}}
+  // @include media(max, small) {margin: 0 !important;max-height: 99% !important;min-height: 99% !important}
 }
 
 
