@@ -1,5 +1,6 @@
 <template>
   <section id="restaurante-tienda" class="parent">
+    <Alerts ref="alerts"></Alerts>
     <v-col class="contup">
       <section class="contbanner jspace">
         <v-img :src="data.logo" class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)">
@@ -99,13 +100,14 @@
 </template>
 
 <script>
+import Alerts from '@/components/alerts/Alerts.vue'
 import * as nearAPI from "near-api-js";
 import { CONFIG } from "@/services/api";
 const { connect, keyStores, WalletConnection, Contract, utils } = nearAPI;
 import GoogleMap from '@/components/googleMaps/GoogleMap'
 export default {
   name: "restauranteTienda",
-  components: { GoogleMap },
+  components: { GoogleMap, Alerts },
   i18n: require("./i18n"),
   mounted() {
     this.$refs.map.userCoordinates = this.perfil.location.coordinates;
@@ -152,6 +154,7 @@ export default {
       item.name_shop = this.data.name
       item.wallet_seller = this.$store.state.OWNER_ID
       this.$store.commit('ShoppingCart', item)
+      this.$refs.alerts.Alerts('success', 'Añadido al carrito', 'Se ha agregado al carrito correctamente')
     },
     formatPrice(price) {
       return utils.format.formatNearAmount(
