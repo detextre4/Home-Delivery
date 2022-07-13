@@ -215,6 +215,7 @@ export default {
           }).then((res) => {
             console.log(res)
             this.listmenu = res.platillos
+            this.menu = {}
           })
         }
       } catch (e) {
@@ -246,8 +247,13 @@ export default {
             description: this.menu.description,
             price: utils.format.parseNearAmount(String(this.menu.price)),
             category: this.menu.category
+          }).then((res) => {
+            this.$refs.alerts.Alerts("success", "Menu creado");
+            this.get_menu()
           })
-        })  },
+        })
+
+},
     showAlert() {
       this.$refs.alerts.Alerts("success");
       this.$refs.alerts.Alerts("cancel");
