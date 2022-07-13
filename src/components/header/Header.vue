@@ -49,8 +49,8 @@
               $refs.menu.modalShopCart=true:
               $refs.alerts.Alerts('cancel', 'Sin registros', 'No hay registros disponibles')">
               <v-badge
-                :content="messages"
-                :value="messages"
+                :content="$store.state.dataModalShopCart.length"
+                :value="$store.state.dataModalShopCart.length"
                 color="#3E2185"
               >
                 <img width="100%" src="@/assets/icons/cart.svg" alt="shopping cart">
@@ -79,7 +79,6 @@
       return {
         nearid: false,
         user: null,
-        messages: 2,
         search: "",
         dataLogin: [
           {
