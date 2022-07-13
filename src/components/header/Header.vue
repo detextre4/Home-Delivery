@@ -1,5 +1,7 @@
 <template>
   <section>
+    <Alerts ref="alerts"></Alerts>
+    <MenuHeader ref="menu"></MenuHeader>
     <!-- desktop -->
     <v-app-bar
       id="headerApp"
@@ -43,7 +45,9 @@
               <span v-if="item.key=='logout'">{{ item.text }}</span>
             </v-btn>
 
-            <v-btn class="botones" @click="$refs.menu.modalShopCart=true">
+            <v-btn class="botones" @click="$store.state.dataModalShopCart.length!==0?
+              $refs.menu.modalShopCart=true:
+              $refs.alerts.Alerts('cancel', 'Sin registros', 'No hay registros disponibles')">
               <v-badge
                 :content="messages"
                 :value="messages"
@@ -55,12 +59,12 @@
           </aside>
         </v-col>
       </v-row>
-      <MenuHeader ref="menu"></MenuHeader>
     </v-app-bar>
   </section>
 </template>
 
 <script>
+  import Alerts from '@/components/alerts/Alerts.vue'
   import MenuHeader from './MenuHeader.vue'
   import { PERFIL,PROFILE } from '@/services/api.js'
   import * as nearAPI from "near-api-js";
@@ -70,7 +74,7 @@
   export default {
     name: "header",
     i18n: require("./i18n"),
-    components: { MenuHeader },
+    components: { MenuHeader, Alerts },
     data() {
       return {
         nearid: false,
