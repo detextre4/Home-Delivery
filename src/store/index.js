@@ -71,7 +71,7 @@ export default new Vuex.Store({
           comment: ''
         })
       } else {
-        let datoa_profile = localStorage.getItem("data_profile")
+        let datoa_profile = JSON.parse(localStorage.getItem("data_profile"))
         console.log(datoa_profile)
         state.dataModalShopCart.push({
           client: localStorage.getItem("walletid"),
@@ -84,7 +84,7 @@ export default new Vuex.Store({
             comment: ''
           }],
           direccion: datoa_profile.direccion,
-          location: datoa_profile.location,
+          location: JSON.parse(datoa_profile.location),
           telefono: datoa_profile.telefono,
           sub_total: item.price
         })
