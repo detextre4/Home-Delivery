@@ -170,16 +170,16 @@
                       v-for="(producto, i) in pedido.productos"
                       :key="i"
                       v-ripple="{ class: 'activeRipple' }"
-                      class="grid"
+                      class="fwrap"
                       :style="`--numeration: '${i + 1}-'`"
                       :ripple="true"
                     >
-                      <span class="h11_em semibold"
-                        ><span class="titulo">Producto: </span
-                        >{{ producto.name }}</span
-                      >
                       <div class="divcol">
-                        <div class="divrow acenter" style="gap: 0.2em">
+                        <span class="h11_em semibold"
+                          ><span class="titulo">Producto: </span
+                          >{{ producto.name }}</span
+                        >
+                        <div class="acenter" style="gap: 0.2em">
                           <span class="h11_em semibold"
                             ><span class="titulo">Precio: </span
                             >{{ formatPrice(producto.price) }}</span
@@ -190,11 +190,17 @@
                             alt="near"
                           />
                         </div>
-                        <span class="h11_em semibold"
-                          ><span class="titulo">Comentario: </span
-                          >{{ producto.comment }}</span
-                        >
                       </div>
+                      
+                      <v-text-field
+                        placeholder="Opcional"
+                        hide-details
+                      >
+                        <template v-slot:label>
+                          <span class="titulo h11_em">Comentario:</span>
+                        </template>
+                      </v-text-field>
+
                       <v-btn icon class="cancelBtn not_clr">
                         <img
                           src="@/assets/icons/eliminar.svg"
