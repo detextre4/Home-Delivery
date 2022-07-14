@@ -131,7 +131,7 @@
       .fwrap {
         display: flex;
         flex-wrap: wrap;
-        flex: 1 1;
+        &>*:not(.cancelBtn) {flex: 1 1};
         gap: .5em 1em;
         position: relative;
         align-items: center;
