@@ -36,6 +36,8 @@ function CONFIG(keyStores) {
 
 
 module.exports = {
+  ORDERD:`${BASE_URL}/order-details`,
+  ORDER:`${BASE_URL}/order`,
   ROUTES: `${BASE_URL}/menu-get`,
   PERFIL: `${BASE_URL}/verificar-perfil`,
   ORDER_CREATE:`${BASE_URL}/order-create`,

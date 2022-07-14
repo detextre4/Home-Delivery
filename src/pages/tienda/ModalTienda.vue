@@ -6,33 +6,30 @@
       </v-btn>
 
       <section class="center tcenter">
-        <h1 class="h7_em">asdasd</h1>
+        <h1 class="h7_em">Numero de orden {{order.id}}</h1>
       </section>
 
       <section class="contentModal grid">
         <div class="divcol">
-          <span class="h10_em bold" style="text-indent: 24px">{{
-            $t("informacionPedido")
-          }}</span>
+          <span class="h10_em bold" style="text-indent: 24px"> Información del pedido</span>
           <section class="contInformacion divcol gap1">
             <ul class="divcol gap1">
               <v-card
-                v-for="n in 5"
+                v-for="n in order_detail"
                 :key="n"
                 v-ripple="{ class: 'activeRipple' }"
                 class="fwrap"
-                :style="`--numeration: '${n + 1}-'`"
                 :ripple="true"
               >
                 <div class="divcol">
                   <span class="h11_em semibold tnone">
                     <span class="titulo">Producto: </span>
-                    Nombre del producto
+                    {{n.name}}
                   </span>
                   <div class="acenter" style="gap: 0.2em">
                     <span class="h11_em semibold"
                       ><span class="titulo">Precio: </span
-                      >12</span
+                      >{{formatPrice(n.price)}}</span
                     >
                     <img
                       src="@/assets/logos/near.svg"
@@ -44,7 +41,7 @@
 
                 <div class="divcol">
                   <span class="titulo">Comentario:</span>
-                  <span class="tnone">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis magnam, impedit culpa odit nam aliquam pariatur dolorem itaque</span>
+                  <span class="tnone">{{n.comment}}</span>
                 </div>
               </v-card>
             </ul>
@@ -66,7 +63,7 @@
               </span>
               <span class="h11_em semibold acenter" style="gap: 0.2em">
                 <span class="titulo">Total del Pedido: </span>
-                123123
+                {{formatPrice(order.total_price)}}
                 <img
                   src="@/assets/logos/near.svg"
                   width="14px"
@@ -108,6 +105,7 @@
 import GoogleMap from '@/components/googleMaps/GoogleMap'
 import * as nearAPI from "near-api-js";
 const { utils } = nearAPI;
+import { ORDER, CONFIG, ORDERD} from "@/services/api";
 export default {
   name: "modalTienda",
   i18n: require("./i18n"),
@@ -115,6 +113,8 @@ export default {
   data() {
     return {
       modalTienda: false,
+      order:{},
+      order_detail:[],
     }
   },
   mounted() {
@@ -124,6 +124,18 @@ export default {
       return utils.format.formatNearAmount(
         price.toLocaleString("fullwide", { useGrouping: false })
       );
+    },
+    get_orders(id) {
+        this.axios.get(ORDER+"/?id=" + id).then((response) => {
+          console.log(response.data[0])
+          this.order = response.data[0]
+        })
+    },
+    get_orders_details(id) {
+        this.axios.get(ORDERD+"/?order=" + id).then((response) => {
+          console.log(response.data)
+          this.order_detail = response.data
+        })
     },
     yoctoNEARNEAR: function(yoctoNEAR) {
       const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())

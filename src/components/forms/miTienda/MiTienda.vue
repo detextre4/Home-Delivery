@@ -235,11 +235,11 @@ export default {
               .set_store({
                 owner_id: wallet.getAccountId(),
                 name: this.store.name,
-                address: this.store.address,
-                location: "asdad",
+                address: "this.store.address",
+                location: "JSON.stringify(this.store.location)",
                 phone: this.store.phone,
                 wallet: this.store.wallet,
-                schedule: JSON.stringify(horario),
+                schedule: "JSON.stringify(horario)",
                 logo:
                   "https://" + res.data.data + direccionIpfs + "/" + res.data.nombre,
               }).then((res) => {

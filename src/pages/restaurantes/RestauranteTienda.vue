@@ -149,7 +149,6 @@ export default {
   methods: {
     // al hacer click en el menu
     SelectMenu(item) {
-      console.log(item)
       item.wallet_shop = this.data.wallet
       item.name_shop = this.data.name
       item.wallet_seller = this.$store.state.OWNER_ID

@@ -31,22 +31,21 @@
             hide-default-footer
             :mobile-breakpoint="1060"
           >
-            <template v-slot:[`item.number`]="{ item }">
+            <template v-slot:[`item.id`]="{ item }">
               <v-btn disabled icon small class="bold">
-                {{ item.number }}
+                {{ item.id }}
               </v-btn>
             </template>
 
-            <template v-slot:[`item.status`]="{ item }">
-              <v-chip :color="item.status=='active'?'#3CD4A0':'#ff4081'">
-               <span class="bold">{{item.status}}</span>
+            <template v-slot:[`item.statu`]="{ item }">
+              <v-chip :color="item.statu=='A'?'#3CD4A0':'#ff4081'">
+               <span v-if="item.statu ='R' " class="bold">Pendiente</span>
               </v-chip>
             </template>
-
-            <template v-slot:[`item.actions`]>
+            <template v-slot:[`item.actions`]="{ item }">
               <v-tooltip bottom color="var(--clr-btn)">
                 <template v-slot:activator="{ on, attrs }">
-                <v-btn icon small v-on="on" v-bind="attrs" @click="$refs.menu.modalTienda=true">
+                <v-btn icon small v-on="on" v-bind="attrs" @click=" $refs.menu.modalTienda=true, $refs.menu.get_orders_details(item.id), $refs.menu.get_orders(item.id)">
                   <v-icon small>mdi-eye-plus</v-icon>
                 </v-btn>
                 </template>
@@ -167,7 +166,7 @@
 <script>
 import ModalTienda from './ModalTienda.vue';
 import * as nearAPI from "near-api-js";
-import { CONFIG } from "@/services/api";
+import { ORDER, CONFIG, ORDERD} from "@/services/api";
 const { connect, keyStores, WalletConnection, Contract, utils } = nearAPI;
 
 export default {
@@ -190,14 +189,12 @@ export default {
       },
       dataMenuTienda: [],
       headersHistorial: [
-        { value: "number", text: "Número de orden", align: "center" },
-        { value: "name", text: "Nombre cliente", align: "center" },
-        { value: "status", text: "Estado", align: "center" },
+        { value: "id", text: "Número de orden", align: "center" },
+        { value: "client_name", text: "Nombre cliente", align: "center" },
+        { value: "statu", text: "Estado", align: "center" },
         { value: "actions", align: "center", sortable: false },
       ],
       dataHistorial: [
-        { number: 1, name: 'pedrito', status: "active" },
-        { number: 2, name: 'carlitos', status: "inactive" },
       ],
     }
   },
@@ -209,6 +206,17 @@ export default {
     WidthListener() {if (this.dataMenuTienda.length <= 3) {return 'max-width: 20em'}}
   },
   methods: {
+    get_orders() {
+        this.axios.get(ORDER+"/?wallet_shop=" + this.data.wallet).then((response) => {
+          console.log(response)
+          this.dataHistorial = response.data
+        })
+    },
+    get_orders_details(id) {
+        this.axios.get(ORDERD+"/?order=" + id).then((response) => {
+          console.log(response)
+        })
+    },
     formatPrice(price) {
       return utils.format.formatNearAmount(
         price.toLocaleString("fullwide", { useGrouping: false })
@@ -233,8 +241,8 @@ export default {
               user_id: wallet.getAccountId(),
             })
             .then((res) => {
-              console.log(res);
               this.dataMenuTienda = res.platillos;
+              this.get_orders()
             });
         }
       } catch (e) {
@@ -262,7 +270,6 @@ export default {
             })
             .then((res) => {
               this.data = res;
-              console.info(this.data);
               localStorage.setItem("store", JSON.stringify(this.data));
             });
         }
