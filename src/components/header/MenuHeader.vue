@@ -155,31 +155,31 @@
             :key="`card-${i}`"
             class="padd1block relative"
           >
-            <section class="center tcenter">
+            <section class="center">
               <h1 class="h7_em">{{ pedido.name_shop }}</h1>
             </section>
 
             <section class="contentModal grid">
               <div class="divcol">
-              <span class="h10_em bold" style="text-indent: 24px">{{
-                $t("informacionPedido")
-              }}</span>
-              <section class="contInformacion divcol gap1">
+                <span class="h10_em bold" style="text-indent: 24px">{{
+                  $t("informacionPedido")
+                }}</span>
+                <section class="contInformacion divcol gap1">
                   <ul class="divcol gap1">
                     <v-card
                       v-for="(producto, i) in pedido.productos"
                       :key="i"
                       v-ripple="{ class: 'activeRipple' }"
-                      class="fwrap"
+                      class="grid"
                       :style="`--numeration: '${i + 1}-'`"
                       :ripple="true"
                     >
-                    <div class="divcol">
-                      <span class="h11_em semibold tnone">
-                        <span class="titulo">Producto: </span>
-                        {{ producto.name }}
-                      </span>
-                      <div class="acenter" style="gap: 0.2em">
+                      <span class="h11_em semibold"
+                        ><span class="titulo">Producto: </span
+                        >{{ producto.name }}</span
+                      >
+                      <div class="divcol">
+                        <div class="divrow acenter" style="gap: 0.2em">
                           <span class="h11_em semibold"
                             ><span class="titulo">Precio: </span
                             >{{ formatPrice(producto.price) }}</span
@@ -188,20 +188,14 @@
                             src="@/assets/logos/near.svg"
                             width="14px"
                             alt="near"
-                          >
+                          />
                         </div>
+                        <span class="h11_em semibold"
+                          ><span class="titulo">Comentario: </span
+                          >{{ producto.comment }}</span
+                        >
                       </div>
-
-                      <v-text-field
-                        hide-details
-                        placeholder="Opcional"
-                      >
-                        <template v-slot:label>
-                          <span class="titulo">Comentario:</span>
-                        </template>
-                      </v-text-field>
-                        
-                      <v-btn icon class="cancelBtn not_clr alignmobile">
+                      <v-btn icon class="cancelBtn not_clr">
                         <img
                           src="@/assets/icons/eliminar.svg"
                           alt="cancel order"
@@ -244,7 +238,7 @@
                   <span class="h10_em bold">{{ $t("direccionEntrega") }}</span>
                   <aside class="divcol" style="gap: 0.2em">
                     <GoogleMap
-                      :UserCoordinates="pedido.location"
+                      :UserCoordinates="JSON.parse(pedido.location)"
                       class="map"
                     >
                     </GoogleMap>
