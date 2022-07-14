@@ -28,12 +28,13 @@
             Dirección
           </label>
 
-          <!-- <v-sheet color="transparent" style="cursor:pointer" @click="$refs.menu.modalDirection=true"> -->
+          <v-sheet color="transparent" style="cursor:pointer" @click="$refs.menu.modalDirection=true">
             <v-text-field
               v-model="store.address"
               solo
+              disabled
             ></v-text-field>
-          <!-- </v-sheet> -->
+          </v-sheet>
         </v-card>
         <v-card color="transparent">
           <label for="telefono" class="h10_em"> Teléfono </label>

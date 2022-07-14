@@ -1,5 +1,6 @@
 <template>
   <section id="tienda" class="parent">
+    <ModalTienda ref="menu"></ModalTienda>
     <v-col class="contup astart">
       <section class="contbanner jspace">
         <v-img
@@ -23,6 +24,36 @@
         <aside class="contHistorial fill">
           <div v-for="n in 19" :key="n" class="decoration" :style="`--distance:${(n+1)*4}`" />
           <h3 class="h8_em tcenter not_clr">Historial de Ordenes</h3>
+          <v-data-table
+            id="dataTable"
+            :headers="headersHistorial"
+            :items="dataHistorial"
+            hide-default-footer
+            :mobile-breakpoint="1060"
+          >
+            <template v-slot:[`item.number`]="{ item }">
+              <v-btn disabled icon small class="bold">
+                {{ item.number }}
+              </v-btn>
+            </template>
+
+            <template v-slot:[`item.status`]="{ item }">
+              <v-chip :color="item.status=='active'?'#3CD4A0':'#ff4081'">
+               <span class="bold">{{item.status}}</span>
+              </v-chip>
+            </template>
+
+            <template v-slot:[`item.actions`]>
+              <v-tooltip bottom color="var(--clr-btn)">
+                <template v-slot:activator="{ on, attrs }">
+                <v-btn icon small v-on="on" v-bind="attrs" @click="$refs.menu.modalTienda=true">
+                  <v-icon small>mdi-eye-plus</v-icon>
+                </v-btn>
+                </template>
+                <span class="clr_text_btn tnone">Ver información completa</span>
+              </v-tooltip>
+            </template>
+          </v-data-table>
         </aside>
       </section>
     </v-col>
@@ -134,6 +165,7 @@
 </template>
 
 <script>
+import ModalTienda from './ModalTienda.vue';
 import * as nearAPI from "near-api-js";
 import { CONFIG } from "@/services/api";
 const { connect, keyStores, WalletConnection, Contract, utils } = nearAPI;
@@ -141,6 +173,7 @@ const { connect, keyStores, WalletConnection, Contract, utils } = nearAPI;
 export default {
   name: "tienda",
   i18n: require("./i18n"),
+  components: { ModalTienda },
   data() {
     return {
       data: {},
@@ -155,7 +188,17 @@ export default {
           coordinates: { lat:9.988903846136667, lng:-67.6891094161248 }
         }
       },
-      dataMenuTienda: []
+      dataMenuTienda: [],
+      headersHistorial: [
+        { value: "number", text: "Número de orden", align: "center" },
+        { value: "name", text: "Nombre cliente", align: "center" },
+        { value: "status", text: "Estado", align: "center" },
+        { value: "actions", align: "center", sortable: false },
+      ],
+      dataHistorial: [
+        { number: 1, name: 'pedrito', status: "active" },
+        { number: 2, name: 'carlitos', status: "inactive" },
+      ],
     }
   },
   mounted() {

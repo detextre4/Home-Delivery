@@ -106,8 +106,8 @@
 // // // modal shop cart // // //
 //////////////////////////////////////////////////////////////////////
 #modalShopCart {
-  padding-top: 1em;
-  @include media(min, small) {height: 600px}
+  padding-block: 1em;
+  @include media(min, small) {max-height: 600px}
   @include media(max, small) {padding-top: calc(1em + 36px)}
   ::-webkit-scrollbar {width: 5px}
   :is(.primary--text, button[type].primary--text) {
@@ -125,8 +125,8 @@
     section.divcol  {padding:.5em; margin-right: .8em}
     .contInformacion {
       grid-row: span 2;
-      max-height: 400px;
-      @include media(max, small) {max-height: 300px}
+      height: 400px;
+      @include media(max, small) {height: 300px}
       overflow-y: scroll;
       .fwrap {
         display: flex;
@@ -158,6 +158,7 @@
     .contRightPanel {
       padding-inline: 1em;
       position: relative;
+      @include media(max,small){padding-bottom: 100px}
       @include media(min, small) {
         display: grid;
         place-content: center;
@@ -176,7 +177,8 @@
       }
       section+section {
         position: relative !important;
-        @include media(max,small){padding-bottom: 6em}
+        width: 315px;
+        @include media(max, small) {width: 100%}
         &::after {
           content: "";
           @include absolute(0,0,0,auto);
@@ -186,9 +188,8 @@
         }
       }
       .map {
-        width: 291px;
+        width: 100%;
         height: 230px;
-        @include media(max, small) {width: 100%;}
       }
     }
   }

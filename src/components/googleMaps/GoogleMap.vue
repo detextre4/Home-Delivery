@@ -161,9 +161,18 @@ export default {
     },
     updatePlace(place) {
       if (place && place.geometry && place.geometry.location) {
-        var marker = this.addMarker();
-        marker.position.lat = place.geometry.location.lat();
-        marker.position.lng = place.geometry.location.lng();
+        // var marker = this.addMarker();
+        // marker.position.lat = place.geometry.location.lat();
+        // marker.position.lng = place.geometry.location.lng();
+        if (this.markerCount < 1) {
+          var marker = this.addMarker();
+          marker.position.lat = place.geometry.location.lat();
+          marker.position.lng = place.geometry.location.lng();
+        }
+        else {
+          this.positionMarker[0].position.lat = place.geometry.location.lat();
+          this.positionMarker[0].position.lng = place.geometry.location.lng();
+        }
       }
     }
   },

@@ -55,7 +55,6 @@
               v-model="perfil.direccion"
               solo
               disabled
-              hide-details
             ></v-text-field>
           </v-sheet>
         </v-card>

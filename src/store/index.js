@@ -42,7 +42,7 @@ export default new Vuex.Store({
       //   coordinates: { lat:9.988903846136667, lng:-67.6891094161248 },
       //   numero: "0414-4137640",
       // },
-    ]
+    ],
   },
   mutations: {
     get_owner(state, item) {
@@ -71,7 +71,7 @@ export default new Vuex.Store({
           comment: ''
         })
       } else {
-        let datoa_profile = JSON.parse(localStorage.getItem("data_profile"))
+        let datoa_profile = localStorage.getItem("data_profile")
         console.log(datoa_profile)
         state.dataModalShopCart.push({
           client: localStorage.getItem("walletid"),
@@ -84,7 +84,7 @@ export default new Vuex.Store({
             comment: ''
           }],
           direccion: datoa_profile.direccion,
-          location: JSON.parse(datoa_profile.location),
+          location: datoa_profile.location,
           telefono: datoa_profile.telefono,
           sub_total: item.price
         })
