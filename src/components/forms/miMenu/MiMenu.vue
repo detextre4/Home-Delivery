@@ -98,8 +98,8 @@
           <p class="h10_em semibold p tcentermobile">{{ item.description }}</p>
 
           <aside class="controls divcol acenter spacee" style="gap: 0.5em">
-            <!-- <v-tooltip bottom color="var(--clr-btn)"> -->
-              <!-- <template v-slot:activator="{ on, attrs }">
+            <!-- <v-tooltip bottom color="var(--clr-btn)">
+              <template v-slot:activator="{ on, attrs }">
                 <v-btn class="add" icon v-bind="attrs" v-on="on">
                   <img src="@/assets/icons/pencil.svg" alt="Add Menu" />
                 </v-btn>
