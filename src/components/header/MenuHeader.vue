@@ -195,6 +195,7 @@
                       <v-text-field
                         placeholder="Opcional"
                         hide-details
+                        v-model="producto.comment"
                       >
                         <template v-slot:label>
                           <span class="titulo h11_em">Comentario:</span>
@@ -243,11 +244,11 @@
                 <section class="divcol">
                   <span class="h10_em bold">{{ $t("direccionEntrega") }}</span>
                   <aside class="divcol" style="gap: 0.2em">
-                    <GoogleMap
+                    <GoogleMapCart
                       :UserCoordinates="JSON.parse(pedido.location)"
                       class="map"
                     >
-                    </GoogleMap>
+                    </GoogleMapCart>
 
                     <span class="h11_em semibold tnone">
                       <span class="titulo">Dirección: </span>
@@ -291,12 +292,12 @@
 import * as nearAPI from "near-api-js";
 const { utils } = nearAPI;
 import { i18n } from "@/plugins/i18n";
-import GoogleMap from '@/components/googleMaps/GoogleMap'
+import GoogleMapCart from '@/components/googleMaps/GoogleMapCart'
 import { ORDER_CREATE } from '@/services/api.js'
 export default {
   name: "headerMenu",
   i18n: require("./i18n"),
-  components: { GoogleMap },
+  components: { GoogleMapCart },
   // created() {
   //   this.element = document.getElementById("theme");
   //   const theme = localStorage.getItem("theme");

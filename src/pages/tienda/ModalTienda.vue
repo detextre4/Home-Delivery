@@ -80,7 +80,7 @@
             <span class="h10_em bold">{{ $t("direccionEntrega") }}</span>
             <aside class="divcol" style="gap: 0.2em">
               <GoogleMap
-                :UserCoordinates="{ lat:9.988903846136667, lng:-67.6891094161248 }"
+                :UserCoordinates="JSON.parse(order.client_location)"
                 class="map"
               >
               </GoogleMap>
