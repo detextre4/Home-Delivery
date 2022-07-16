@@ -13,6 +13,7 @@ export default new Vuex.Store({
     drawerChats: false,
     OWNER_ID: null,
     dataModalShopCart: [],
+    editedItem: null,
   },
   mutations: {
     get_owner(state, item) {
@@ -28,6 +29,12 @@ export default new Vuex.Store({
       if (key == 'close') {
         state.drawerChats = false
       }
+    },
+    ChangeLocation(state, object){
+      state.editedItem = state.dataModalShopCart.indexOf(object.item)
+      const index = state.editedItem
+      state.dataModalShopCart[index].location.lat = object.location.lat()
+      state.dataModalShopCart[index].location.lng = object.location.lng()
     },
     ShoppingCart(state, item) {
       let pedidos = state.dataModalShopCart
@@ -68,7 +75,6 @@ export default new Vuex.Store({
     }
   },
   actions: {
-
     yoctoNEARNEAR: function(yoctoNEAR) {
       const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())
       this.yoctoNEARNEAR2(amountInNEAR)
