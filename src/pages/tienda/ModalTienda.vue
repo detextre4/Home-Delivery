@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="modalTienda" max-width="min(100%, 70em)" scrollable>
+  <v-dialog v-model="modalTienda" max-width="min(100%, 70em)">
     <v-card id="modalTienda" class="divcol jspace gap1">
       <v-btn icon class="close" @click.stop="modalTienda = false">
         <v-icon>mdi-close-circle-outline</v-icon>
@@ -80,7 +80,7 @@
             <span class="h10_em bold">{{ $t("direccionEntrega") }}</span>
             <aside class="divcol" style="gap: 0.2em">
               <GoogleMap
-                :UserCoordinates="JSON.parse(order.client_location)"
+                :UserCoordinates="order.client_location"
                 class="map"
               >
               </GoogleMap>
@@ -127,25 +127,25 @@ export default {
     },
     get_orders(id) {
         this.axios.get(ORDER+"/?id=" + id).then((response) => {
-          // console.log(response.data[0])
+          console.log(response.data[0])
           this.order = response.data[0]
         })
     },
     get_orders_details(id) {
         this.axios.get(ORDERD+"/?order=" + id).then((response) => {
-          // console.log(response.data)
+          console.log(response.data)
           this.order_detail = response.data
         })
     },
     yoctoNEARNEAR: function(yoctoNEAR) {
       const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())
-      // console.log(amountInNEAR)
+      console.log(amountInNEAR)
     },
     OrderCreate(item) {
-      // console.log(item)
-      this.axios.post(ORDER_CREATE,item).then(() => {
-        // console.log(response)
-      })
+      console.log(item)
+        this.axios.post(ORDER_CREATE,item).then((response) => {
+          console.log(response)
+        })
     },
   },
 };

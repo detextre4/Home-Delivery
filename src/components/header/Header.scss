@@ -128,6 +128,7 @@
       height: 450px;
       @include media(max, small) {height: 300px}
       overflow-y: scroll;
+      overflow-x: hidden;
       .fwrap {
         display: flex;
         flex-wrap: wrap;

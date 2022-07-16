@@ -143,7 +143,7 @@
     </v-menu>
 
     <!-- carrito de compras -->
-    <v-dialog v-model="modalShopCart" max-width="min(100%, 70em)" scrollable>
+    <v-dialog v-model="modalShopCart" max-width="min(100%, 70em)">
       <v-card id="modalShopCart" class="divcol jspace">
         <v-btn icon class="close" @click.stop="modalShopCart = false">
           <v-icon>mdi-close-circle-outline</v-icon>
