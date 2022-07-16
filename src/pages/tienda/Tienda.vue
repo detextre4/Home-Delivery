@@ -208,13 +208,13 @@ export default {
   methods: {
     get_orders() {
         this.axios.get(ORDER+"/?wallet_shop=" + this.data.wallet).then((response) => {
-          console.log(response)
+          // console.log(response)
           this.dataHistorial = response.data
         })
     },
     get_orders_details(id) {
-        this.axios.get(ORDERD+"/?order=" + id).then((response) => {
-          console.log(response)
+        this.axios.get(ORDERD+"/?order=" + id).then(() => {
+          // console.log(response)
         })
     },
     formatPrice(price) {

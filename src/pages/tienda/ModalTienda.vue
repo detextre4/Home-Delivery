@@ -127,25 +127,25 @@ export default {
     },
     get_orders(id) {
         this.axios.get(ORDER+"/?id=" + id).then((response) => {
-          console.log(response.data[0])
+          // console.log(response.data[0])
           this.order = response.data[0]
         })
     },
     get_orders_details(id) {
         this.axios.get(ORDERD+"/?order=" + id).then((response) => {
-          console.log(response.data)
+          // console.log(response.data)
           this.order_detail = response.data
         })
     },
     yoctoNEARNEAR: function(yoctoNEAR) {
       const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())
-      console.log(amountInNEAR)
+      // console.log(amountInNEAR)
     },
     OrderCreate(item) {
-      console.log(item)
-        this.axios.post(ORDER_CREATE,item).then((response) => {
-          console.log(response)
-        })
+      // console.log(item)
+      this.axios.post(ORDER_CREATE,item).then(() => {
+        // console.log(response)
+      })
     },
   },
 };

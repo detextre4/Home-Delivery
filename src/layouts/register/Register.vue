@@ -74,7 +74,7 @@ export default {
     login() {
       const user = this.dataLogin[0].model;
       const clave = this.dataLogin[1].model;
-      console.log(user, clave)
+      // console.log(user, clave)
     },
     unlock() {
       this.Unlock = true;
