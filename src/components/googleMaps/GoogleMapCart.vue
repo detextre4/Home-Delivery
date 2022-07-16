@@ -9,7 +9,7 @@
 
     <GmapMap
       ref="mapRef"
-      :center="myCoordinates"
+      :center="UserCoordinates"
       :zoom="14"
       :options="{
         key: 'AIzaSyA8ZXhuqGTzEZY25fO5eM7Xxj-rotGs3JI',
@@ -74,7 +74,6 @@ export default {
     return {
       // map
       map: null,
-      myCoordinates: this.UserCoordinates,
       //markers
       PositionMarker: [],
       lastId: 1,
@@ -119,8 +118,7 @@ export default {
       createdMarker.position.lng = mouseArgs.latLng.lng();
       createdMarker.ifw2latText = mouseArgs.latLng.lat();
       createdMarker.ifw2lngText = mouseArgs.latLng.lng();
-      this.myCoordinates.lat = mouseArgs.latLng.lat();
-      this.myCoordinates.lng = mouseArgs.latLng.lng();
+      this.$store.commit('ChangeLocation', mouseArgs.latLng)
 
     },
     addMarker: function addMarker() {
@@ -146,9 +144,7 @@ export default {
         marker.ifw2latText = place.geometry.location.lat();
         marker.ifw2lngText = place.geometry.location.lng();
         this.map.setCenter(marker.position)
-        this.myCoordinates.lat = place.geometry.location.lat();
-        this.myCoordinates.lng = place.geometry.location.lng();
-        this.$store
+        this.$store.commit('ChangeLocation', place.geometry.location)
       }
     },
     update(field, event) {

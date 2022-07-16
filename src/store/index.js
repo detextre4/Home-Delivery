@@ -29,6 +29,12 @@ export default new Vuex.Store({
         state.drawerChats = false
       }
     },
+    ChangeLocation(state, location, item){
+      let pedidos = state.dataModalShopCart
+      const index =pedidos.find(pedido => pedido.wallet_shop === item.wallet_shop)
+      state.dataModalShopCart[index].location.lat = location.lat()
+      state.dataModalShopCart[index].location.lng = location.lng()
+    },
     ShoppingCart(state, item) {
       let pedidos = state.dataModalShopCart
       var pedido_encontrado =pedidos.find(pedido => pedido.wallet_shop === item.wallet_shop)
@@ -61,7 +67,6 @@ export default new Vuex.Store({
     }
   },
   actions: {
-
     yoctoNEARNEAR: function(yoctoNEAR) {
       const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())
       this.yoctoNEARNEAR2(amountInNEAR)
