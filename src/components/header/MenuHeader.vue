@@ -245,7 +245,7 @@
                   <span class="h10_em bold">{{ $t("direccionEntrega") }}</span>
                   <aside class="divcol" style="gap: 0.2em">
                     <GoogleMapCart
-                      :UserCoordinates="JSON.parse(pedido.location)"
+                      :UserCoordinates="pedido"
                       class="map"
                     >
                     </GoogleMapCart>

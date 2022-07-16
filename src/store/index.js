@@ -13,6 +13,7 @@ export default new Vuex.Store({
     drawerChats: false,
     OWNER_ID: null,
     dataModalShopCart: [],
+    editedItem: null,
   },
   mutations: {
     get_owner(state, item) {
@@ -29,11 +30,11 @@ export default new Vuex.Store({
         state.drawerChats = false
       }
     },
-    ChangeLocation(state, location, item){
-      let pedidos = state.dataModalShopCart
-      const index =pedidos.find(pedido => pedido.wallet_shop === item.wallet_shop)
-      state.dataModalShopCart[index].location.lat = location.lat()
-      state.dataModalShopCart[index].location.lng = location.lng()
+    ChangeLocation(state, object){
+      state.editedItem = state.dataModalShopCart.indexOf(object.item)
+      const index = state.editedItem
+      state.dataModalShopCart[index].location.lat = object.location.lat()
+      state.dataModalShopCart[index].location.lng = object.location.lng()
     },
     ShoppingCart(state, item) {
       let pedidos = state.dataModalShopCart
@@ -59,7 +60,7 @@ export default new Vuex.Store({
             comment: ''
           }],
           direccion: datoa_profile.direccion,
-          location: datoa_profile.location,
+          location: JSON.parse(JSON.parse(datoa_profile.location)),
           telefono: datoa_profile.telefono,
           sub_total: item.price
         })

@@ -9,7 +9,7 @@
 
     <GmapMap
       ref="mapRef"
-      :center="UserCoordinates"
+      :center="UserCoordinates.location"
       :zoom="14"
       :options="{
         key: 'AIzaSyA8ZXhuqGTzEZY25fO5eM7Xxj-rotGs3JI',
@@ -118,7 +118,11 @@ export default {
       createdMarker.position.lng = mouseArgs.latLng.lng();
       createdMarker.ifw2latText = mouseArgs.latLng.lat();
       createdMarker.ifw2lngText = mouseArgs.latLng.lng();
-      this.$store.commit('ChangeLocation', mouseArgs.latLng)
+      let object = {
+        location: mouseArgs.latLng,
+        item: this.UserCoordinates
+      }
+      this.$store.commit('ChangeLocation', object)
 
     },
     addMarker: function addMarker() {
