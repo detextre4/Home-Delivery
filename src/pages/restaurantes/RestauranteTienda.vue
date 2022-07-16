@@ -198,7 +198,7 @@ export default {
         })
         .then((res) => {
           this.data = res;
-          console.log(this.data);
+          // console.log(this.data);
         });
     },
   },

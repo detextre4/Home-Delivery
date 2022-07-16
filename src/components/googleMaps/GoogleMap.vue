@@ -115,9 +115,9 @@ export default {
     });
   },
   methods: {
-    someFunction() {
-      console.log('alguna funcion')
-    },
+    // someFunction() {
+    //   console.log('alguna funcion')
+    // },
     mapClicked(mouseArgs) {
       if (this.markerCount < 1) {this.addMarker()}
       const createdMarker = this.PositionMarker[this.PositionMarker.length - 1];

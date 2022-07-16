@@ -108,7 +108,7 @@ export default {
       ) {
         this.save = true;
         const d = JSON.parse(localStorage.store);
-        console.log(d)
+        // console.log(d)
         this.store = d;
         this.url =  d.logo,
         this.store.logo = d.logo
@@ -139,8 +139,8 @@ export default {
               wallet: this.store.wallet,
               logo: this.store.logo,
             })
-            .then((res) => {
-              console.log(res);
+            .then(() => {
+              // console.log(res);
             });
         }
       } catch (e) {

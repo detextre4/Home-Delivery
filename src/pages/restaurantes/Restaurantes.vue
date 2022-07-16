@@ -136,7 +136,7 @@ export default {
 
           await contract.get_all_stores({
           }).then((res) => {
-            console.log(res)
+            // console.log(res)
             this.dataRestaurant = res
           })
       } catch (e) {

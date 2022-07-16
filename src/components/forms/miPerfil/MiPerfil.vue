@@ -165,7 +165,7 @@ export default {
         })
       } else {
         item.location = JSON.stringify(item.location)
-        console.log(item)
+        // console.log(item)
         this.axios.post(PROFILE,item).then((response) => {
           this.perfil=response.data
           this.$router.push({name:'inicio'})

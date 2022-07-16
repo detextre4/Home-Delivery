@@ -45,9 +45,10 @@
               <span v-if="item.key=='logout'">{{ item.text }}</span>
             </v-btn>
 
-            <v-btn class="botones" @click="$store.state.dataModalShopCart.length!==0?
-              $refs.menu.modalShopCart=true:
-              $refs.alerts.Alerts('cancel', 'Sin registros', 'No hay registros disponibles')">
+            <v-btn
+              class="botones"
+              @click="verifyDataShopCart()"
+            >
               <v-badge
                 :content="$store.state.dataModalShopCart.length"
                 :value="$store.state.dataModalShopCart.length"
@@ -66,7 +67,7 @@
 <script>
   import Alerts from '@/components/alerts/Alerts.vue'
   import MenuHeader from './MenuHeader.vue'
-  import { PERFIL,PROFILE } from '@/services/api.js'
+  import { PERFIL,PROFILE,PENDING_ORDERS} from '@/services/api.js'
   import * as nearAPI from "near-api-js";
   import { CONFIG } from "@/services/api";
   const { connect, keyStores, WalletConnection } = nearAPI;
@@ -99,10 +100,26 @@
       if (localStorage.walletid && localStorage.walletid !== 'null') {
         this.nearid = true
       }
+      this.fetchPendingOrders_client()
       // Configure button/menu by: Csar
       this.ChangeMenu(this.nearid)
     },
     methods: {
+      fetchPendingOrders_client () {
+        var id = parseInt(localStorage.getItem('profileid'))
+        this.axios.get(PENDING_ORDERS + '?id=' + id + '&').then((res) => {
+          res.data.forEach(element => {
+            this.$store.commit('ShoppingCart', element)
+          });
+        })
+      },
+      verifyDataShopCart () {
+        if (this.$store.state.dataModalShopCart.length !== 0) {
+          this.$refs.menu.modalShopCart = true
+        } else {
+          this.$refs.alerts.Alerts('cancel', 'Sin registros', 'No hay registros disponibles')
+        }
+      },
       async loginNear(action) {
         const near = await connect(
           CONFIG(new keyStores.BrowserLocalStorageKeyStore())

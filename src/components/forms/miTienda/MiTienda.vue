@@ -171,7 +171,7 @@ export default {
       ) {
         this.save = true;
         const d = JSON.parse(localStorage.store);
-        console.log(d)
+        // console.log(d)
         this.store = d;
         this.url =  d.logo,
         this.store.logo = d.logo
@@ -202,8 +202,8 @@ export default {
               wallet: this.store.wallet,
               logo: this.store.logo,
             })
-            .then((res) => {
-              console.log(res);
+            .then(() => {
+              // console.log(res);
               this.$refs.alerts.Alerts('success');
             });
         }
@@ -231,8 +231,7 @@ export default {
           const formData = new FormData();
           formData.append("file", this.store.logo);
           await this.axios.post(IPFS, formData).then((res) => {
-            contract
-              .set_store({
+            contract.set_store({
                 owner_id: wallet.getAccountId(),
                 name: this.store.name,
                 address: "this.store.address",
@@ -243,13 +242,14 @@ export default {
                 logo:
                   "https://" + res.data.data + direccionIpfs + "/" + res.data.nombre,
               }).then((res) => {
-              console.log(res);
-              this.$refs.alerts.Alerts('success');
-              this.store.logo =
-              "https://" + res.data.data + direccionIpfs + "/" + res.data.nombre;
-              this.store.horario = horario
-              localStorage.setItem("store", JSON.stringify(this.store));
-            });
+                // console.log(res);
+                this.$refs.alerts.Alerts('success');
+                this.store.logo =
+                "https://" + res.data.data + direccionIpfs + "/" + res.data.nombre;
+                this.store.horario = horario
+                localStorage.setItem("store", JSON.stringify(this.store));
+              }
+            );
           });
         }
       } catch (e) {

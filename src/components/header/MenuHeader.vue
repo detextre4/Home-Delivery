@@ -366,14 +366,12 @@ export default {
     //   }
     // },
     formatPrice(price) {
-      return utils.format.formatNearAmount(
-        price.toLocaleString("fullwide", { useGrouping: false })
+      return utils.format.formatNearAmount(price.toLocaleString("fullwide", { useGrouping: false })
       );
     },
     yoctoNEARNEAR: function(yoctoNEAR) {
       const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())
-      console.log(amountInNEAR)
-
+      // console.log(amountInNEAR)
     },
     CambiarLanguaje(lang) {
       if (lang === "ES") {
@@ -385,12 +383,9 @@ export default {
       }
     },
     OrderCreate(item) {
-
-      console.log(item)
-        this.axios.post(ORDER_CREATE,item).then((response) => {
-          console.log(response)
-        })
-
+      this.axios.post(ORDER_CREATE,item).then(() => {
+        // console.log(response)
+      })
     },
     Logout() {
       localStorage.removeItem('profileid');

@@ -189,7 +189,7 @@ export default {
         if (wallet.isSignedIn()) {
           await contract.get_category({
           }).then((res) => {
-            console.log(res)
+            // console.log(res)
             this.listCategoria = res
           })
         }
@@ -213,7 +213,7 @@ export default {
           await contract.get_menu({
             user_id: wallet.getAccountId()
           }).then((res) => {
-            console.log(res)
+            // console.log(res)
             this.listmenu = res.platillos
             this.menu = {}
           })
@@ -262,7 +262,7 @@ export default {
         })
         const formData = new FormData()
         formData.append('file', this.menu.img)
-        console.log(this.menu.img)
+        // console.log(this.menu.img)
         await this.axios.post(IPFS, formData).then((res) => {
   
           contract.set_platillo({
