@@ -411,8 +411,8 @@ export default {
     },
     OrderCreate(item) {
       this.axios.post(ORDER_CREATE,item).then((res) => {
-        var i = this.$store.state.dataModalShopCart.findIndex((obj) => obj.wallet_shop == res.orden.wallet_shop)
-        this.$store.state.dataModalShopCart[i].statu = res.orden.statu
+        var i = this.$store.state.dataModalShopCart.findIndex((obj) => obj.wallet_shop === res.data.orden.wallet_shop)
+        this.$store.state.dataModalShopCart[i].statu = res.data.orden.statu
       })
     },
     Logout() {

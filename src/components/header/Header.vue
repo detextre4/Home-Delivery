@@ -81,6 +81,7 @@
         nearid: false,
         user: null,
         search: "",
+        intervalo: null,
         dataLogin: [
           {
             key: "login",
@@ -100,12 +101,13 @@
       if (localStorage.walletid && localStorage.walletid !== 'null') {
         this.nearid = true
       }
-      this.fetchPendingOrders_client()
+      this.intervalo = setInterval(this.fetchPendingOrders_client,3000)
       // Configure button/menu by: Csar
       this.ChangeMenu(this.nearid)
     },
     methods: {
       fetchPendingOrders_client () {
+        console.log('asdf')
         var id = parseInt(localStorage.getItem('profileid'))
         this.axios.get(PENDING_ORDERS + '?id=' + id + '&').then((res) => {
           res.data.forEach(element => {

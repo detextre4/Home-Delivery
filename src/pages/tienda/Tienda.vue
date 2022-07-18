@@ -196,13 +196,14 @@ export default {
       ],
       dataHistorial: [
       ],
+      intervalo: null,
     }
   },
   mounted() {
     this.VerifyStore()
     this.get_menu();
     setTimeout(() => {
-          setInterval(this.get_orders(), 2500)
+      this.intervalo = setInterval(this.get_orders(), 2500)
     }, 5000);
 
   },

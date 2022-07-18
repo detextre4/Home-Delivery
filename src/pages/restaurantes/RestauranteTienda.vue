@@ -149,11 +149,24 @@ export default {
   methods: {
     // al hacer click en el menu
     SelectMenu(item) {
-      item.wallet_shop = this.data.wallet
-      item.name_shop = this.data.name
-      item.wallet_seller = this.$store.state.OWNER_ID
-      this.$store.commit('ShoppingCart', item)
-      this.$refs.alerts.Alerts('success', 'Añadido al carrito', 'Se ha agregado al carrito correctamente')
+      var detalles_totales = 0;
+      this.$store.state.dataModalShopCart.forEach(element=>{detalles_totales++;detalles_totales+=element.productos.length});
+
+      item.wallet_shop = this.data.wallet;
+      item.name_shop = this.data.name;
+      item.wallet_seller = this.$store.state.OWNER_ID;
+
+      this.$store.commit('ShoppingCart', item);
+
+      var nuevos_detalles_totales = 0
+      this.$store.state.dataModalShopCart.forEach(element=>{nuevos_detalles_totales++;nuevos_detalles_totales+=element.productos.length;
+      });
+      
+      if (detalles_totales !== nuevos_detalles_totales) {
+        this.$refs.alerts.Alerts('success', 'Añadido al carrito', 'Se ha agregado al carrito correctamente');
+      } else {
+        this.$refs.alerts.Alerts('cancel', 'Tienda ocupada', 'Ya tienes un pedido pendiente con esta tienda');
+      };
     },
     formatPrice(price) {
       return utils.format.formatNearAmount(

@@ -37,18 +37,23 @@ export default new Vuex.Store({
       state.dataModalShopCart[index].location.lng = object.location.lng()
     },
     ShoppingCart(state, item) {
-      let pedidos = state.dataModalShopCart
-      var pedido_encontrado =pedidos.find(pedido => pedido.wallet_shop === item.wallet_shop)
+      let pedidos = state.dataModalShopCart;
+      var pedido_encontrado = pedidos.find(pedido => pedido.wallet_shop === item.wallet_shop) || {};
+      if (pedido_encontrado) {
+        if (pedido_encontrado.statu) {
+          return false;
+        }
+      };
       if (!item.igualacion_rapida) {
-        if (pedido_encontrado) {
-          pedido_encontrado.sub_total = pedido_encontrado.sub_total + item.price
+        if (Object.keys(pedido_encontrado).length !== 0) {
+          pedido_encontrado.sub_total = pedido_encontrado.sub_total + item.price;
           pedido_encontrado.productos.push({
             name: item.name,
             price: item.price,
             comment: ''
-          })
+          });
         } else {
-          let data_profile = JSON.parse(localStorage.getItem("data_profile"))
+          let data_profile = JSON.parse(localStorage.getItem("data_profile"));
           state.dataModalShopCart.push({
             client: localStorage.getItem("walletid"),
             name_shop: item.name_shop,
@@ -60,14 +65,16 @@ export default new Vuex.Store({
               comment: ''
             }],
             direccion: data_profile.direccion,
-            location: data_profile.location,
+            location: JSON.parse(data_profile.location),
             telefono: data_profile.telefono,
             sub_total: item.price
-          })
-        }
+          });
+        };
+        return true;
       } else {
-        state.dataModalShopCart.push(item)
-      }
+        state.dataModalShopCart.push(item);
+        return true;
+      };
       //   // this.$refs.alerts.Alerts('success', 'Añadido al carrito', 'Se ha agregado al carrito correctamente')
       // } catch (e) {
       //   console.log(e)
