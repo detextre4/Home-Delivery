@@ -143,7 +143,7 @@
     </v-menu>
 
     <!-- carrito de compras -->
-    <v-dialog v-model="modalShopCart" max-width="min(100%, 70em)" scrollable>
+    <v-dialog v-model="modalShopCart" max-width="min(100%, 70em)">
       <v-card id="modalShopCart" class="divcol jspace">
         <v-btn icon class="close" @click.stop="modalShopCart = false">
           <v-icon>mdi-close-circle-outline</v-icon>
@@ -202,7 +202,7 @@
                         </template>
                       </v-text-field>
 
-                      <v-btn icon class="cancelBtn not_clr">
+                      <v-btn icon class="cancelBtn not_clr align">
                         <img
                           src="@/assets/icons/eliminar.svg"
                           alt="cancel order"
@@ -266,8 +266,14 @@
                     </GoogleMapCart>
 
                     <span class="h11_em semibold tnone">
-                      <span class="titulo">Dirección: </span>
-                      {{ pedido.direccion }}
+                      <v-text-field
+                        v-model="pedido.direccion"
+                        hide-details
+                      >
+                        <template v-slot:label>
+                          <span class="titulo">Dirección:</span>
+                        </template>
+                      </v-text-field>
                     </span>
                     <span class="h11_em semibold">
                       <span class="titulo">Número: </span>

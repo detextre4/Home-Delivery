@@ -107,7 +107,7 @@
 //////////////////////////////////////////////////////////////////////
 #modalShopCart {
   padding-block: 1em;
-  @include media(min, small) {max-height: 600px}
+  @include media(min, small) {max-height: 700px}
   @include media(max, small) {padding-top: calc(1em + 36px)}
   ::-webkit-scrollbar {width: 5px}
   :is(.primary--text, button[type].primary--text) {
@@ -122,16 +122,17 @@
     @include media(max, small) {max-height: 80vh;overflow-y: scroll}
     .titulo {color: $clr-btn-2 !important; font-weight: 700}
     @include media(min, small) {grid-template-columns: 1fr max-content}
-    section.divcol  {padding:.5em; margin-right: .8em}
+    section.divcol  {margin:.5em; margin-right: .8em}
     .contInformacion {
       grid-row: span 2;
-      height: 400px;
+      height: 450px;
       @include media(max, small) {height: 300px}
       overflow-y: scroll;
+      overflow-x: hidden;
       .fwrap {
         display: flex;
         flex-wrap: wrap;
-        &>*:not(.cancelBtn) {flex: 1 1};
+        &>*:not(.cancelBtn) {flex: 1 1 150px};
         gap: .5em 1em;
         position: relative;
         align-items: center;

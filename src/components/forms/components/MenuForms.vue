@@ -3,7 +3,6 @@
     <v-dialog
       v-model="modalDirection"
       max-width="min(95%, 80em)"
-      scrollable
     >
       <v-card id="modalDirection">
         <GoogleMapForms ref="map"

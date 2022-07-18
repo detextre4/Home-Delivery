@@ -35,7 +35,7 @@
     </v-col>
 
     <v-col class="contdown divcol">
-      <aside class="contFilters divwrap acenter">
+      <!-- <aside class="contFilters divwrap acenter">
         <v-btn text class="searchBtn semibold">
           {{ $t('filtrar') }}
         </v-btn>
@@ -72,7 +72,7 @@
             </span>
           </template>
         </v-select>
-      </aside>
+      </aside> -->
 
       <section class="contRestaurantList">
         <v-card v-for="(item, i) in dataMenuRestaurant" :key="i" :style="WidthListener" class="card divcol"

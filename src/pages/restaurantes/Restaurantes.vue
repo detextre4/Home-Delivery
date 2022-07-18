@@ -2,7 +2,7 @@
   <section id="restaurantes" class="parent relative">
     <v-col class="contup relative divcol">
       <h1 class="h7_em vermobile">{{$t('restaurantes')}}</h1>
-      <aside class="contFilters divwrap acenter">
+      <!-- <aside class="contFilters divwrap acenter">
         <v-btn text class="searchBtn semibold">
           {{$t('filtrar')}}
         </v-btn>
@@ -70,7 +70,7 @@
             </span>
           </template>
         </v-select>
-      </aside>
+      </aside> -->
     </v-col>
 
     <v-col class="contdown">

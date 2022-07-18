@@ -69,7 +69,7 @@
         </v-tooltip>
       </h2>
 
-      <aside class="contFilters divwrap acenter">
+      <!-- <aside class="contFilters divwrap acenter">
         <v-btn text class="searchBtn semibold">
           {{$t('filtrar')}}
         </v-btn>
@@ -137,7 +137,7 @@
             </span>
           </template>
         </v-select>
-      </aside>
+      </aside> -->
 
       <section class="contRestaurantList">
         <v-card v-for="(item,i) in dataMenuTienda" :key="i" class="card divcol" :style="WidthListener">
