@@ -43,7 +43,7 @@ module.exports = {
   PERFIL: `${BASE_URL}/verificar-perfil`,
   ORDER_CREATE:`${BASE_URL}/order-create`,
   ORDER_CANCEL:`${BASE_URL}/orders-update-cancel`,
-  ORDER_STATU:`${BASE_URL}/orders-update-statu`,
+  ORDER_STATU:`${BASE_URL}/order-update-statu`,
   PENDING_ORDERS:`${BASE_URL}/pending-orders-client-side`,
   PROFILE: `${BASE_URL}/perfiles/`,
   MESSAGES: `${BASE_URL}/mensajes/`,

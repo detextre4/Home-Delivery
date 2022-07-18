@@ -71,7 +71,7 @@
                 />
               </span>
             </aside>
-            <v-btn @click="OrderUpdate(pedido)" class="botones2 align maxsize_w margin1top">
+            <v-btn @click="OrderUpdate(order)" class="botones2 align maxsize_w margin1top">
               Aceptar
             </v-btn>
           </section>
@@ -100,7 +100,7 @@
 import GoogleMap from '@/components/googleMaps/GoogleMap'
 import * as nearAPI from "near-api-js";
 const { utils } = nearAPI;
-import { ORDER, CONFIG, ORDERD} from "@/services/api";
+import { ORDER, CONFIG, ORDERD, ORDER_STATU} from "@/services/api";
 export default {
   name: "modalTienda",
   i18n: require("./i18n"),
@@ -137,8 +137,9 @@ export default {
       console.log(amountInNEAR)
     },
     OrderUpdate(item) {
+      console.log(item)
       var objeto = {id: item.id, statu: 'N'}
-      this.axios.put(ORDER_STATU,objeto).then(() => {
+      this.axios.post(ORDER_STATU,objeto).then(() => {
         // console.log(response)
       })
     },
