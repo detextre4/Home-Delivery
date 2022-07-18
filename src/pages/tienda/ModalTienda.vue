@@ -71,7 +71,7 @@
                 />
               </span>
             </aside>
-            <v-btn @click="OrderCreate(pedido)" class="botones2 align maxsize_w margin1top">
+            <v-btn @click="OrderUpdate(pedido)" class="botones2 align maxsize_w margin1top">
               Aceptar
             </v-btn>
           </section>
@@ -84,14 +84,9 @@
                 class="map"
               >
               </GoogleMap>
-
-              <span class="h11_em semibold tnone" style="max-width:100%">
-                <span class="titulo">Dirección: </span>
-                virgen de guadalupe, las rosas
-              </span>
               <span class="h11_em semibold">
                 <span class="titulo">Número: </span>
-                0414-4137640
+                {{ order.client_number }}
               </span>
             </aside>
           </section>
@@ -141,9 +136,9 @@ export default {
       const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())
       // console.log(amountInNEAR)
     },
-    OrderCreate(item) {
-      // console.log(item)
-      this.axios.post(ORDER_CREATE,item).then(() => {
+    OrderUpdate(item) {
+      var objeto = {id: item.id, statu: 'N'}
+      this.axios.put(ORDER_STATU,objeto).then(() => {
         // console.log(response)
       })
     },

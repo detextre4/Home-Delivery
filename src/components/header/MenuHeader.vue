@@ -236,7 +236,22 @@
                       />
                     </span>
                   </aside>
-                  <v-btn @click="OrderCreate(pedido)" class="botones2 align maxsize_w margin1top">
+                  <v-btn v-if="pedido.statu === 'R'" disabled dark color="primary" class="botones2 align maxsize_w margin1top">
+                    En revision
+                  </v-btn>
+                  <v-btn v-else-if="pedido.statu === 'N'" @click="OrderPay(pedido)" class="botones2 align maxsize_w margin1top">
+                    Pagar
+                  </v-btn>
+                  <v-btn v-else-if="pedido.statu === 'P'" disabled class="botones2 align maxsize_w margin1top">
+                    Preparando
+                  </v-btn>
+                  <v-btn v-else-if="pedido.statu === 'C'" disabled class="botones2 align maxsize_w margin1top">
+                    En camino
+                  </v-btn>
+                  <v-btn v-else-if="pedido.statu === 'E'" class="botones2 align maxsize_w margin1top">
+                    Confirmar
+                  </v-btn>
+                  <v-btn v-else @click="OrderCreate(pedido)" class="botones2 align maxsize_w margin1top">
                     Aceptar
                   </v-btn>
                 </section>
@@ -293,7 +308,7 @@ import * as nearAPI from "near-api-js";
 const { utils } = nearAPI;
 import { i18n } from "@/plugins/i18n";
 import GoogleMapCart from '@/components/googleMaps/GoogleMapCart'
-import { ORDER_CREATE } from '@/services/api.js'
+import { ORDER_CREATE, ORDER_STATU, ORDER_CANCEL } from '@/services/api.js'
 export default {
   name: "headerMenu",
   i18n: require("./i18n"),
@@ -359,6 +374,18 @@ export default {
     //     this.$store.dispatch("CambiarTheme", { theme, element: this.element });
     //   }
     // },
+    OrderPay(item) {
+      var objeto = {id: item.id, statu: 'P'}
+      this.axios.post(ORDER_STATU,objeto).then(() => {
+        // console.log(response)
+      })
+    },
+    OrderPay(item) {
+      var objeto = {id: item.id, statu: 'P'}
+      this.axios.post(ORDER_STATU,objeto).then(() => {
+        // console.log(response)
+      })
+    },
     formatPrice(price) {
       return utils.format.formatNearAmount(price.toLocaleString("fullwide", { useGrouping: false })
       );
@@ -377,8 +404,9 @@ export default {
       }
     },
     OrderCreate(item) {
-      this.axios.post(ORDER_CREATE,item).then(() => {
-        // console.log(response)
+      this.axios.post(ORDER_CREATE,item).then((res) => {
+        var i = this.$store.state.dataModalShopCart.findIndex((obj) => obj.wallet_shop == res.orden.wallet_shop)
+        this.$store.state.dataModalShopCart[i].statu = res.orden.statu
       })
     },
     Logout() {

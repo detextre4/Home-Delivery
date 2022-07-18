@@ -201,6 +201,10 @@ export default {
   mounted() {
     this.VerifyStore()
     this.get_menu();
+    setTimeout(() => {
+          setInterval(this.get_orders(), 2500)
+    }, 5000);
+
   },
   computed: {
     WidthListener() {if (this.dataMenuTienda.length <= 3) {return 'max-width: 20em'}}
@@ -242,7 +246,6 @@ export default {
             })
             .then((res) => {
               this.dataMenuTienda = res.platillos;
-              this.get_orders()
             });
         }
       } catch (e) {
