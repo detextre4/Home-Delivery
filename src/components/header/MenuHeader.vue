@@ -236,10 +236,10 @@
                       />
                     </span>
                   </aside>
-                  <v-btn v-if="pedido.statu === 'R'" disabled dark color="primary" class="botones2 align maxsize_w margin1top">
+                  <v-btn v-if="pedido.statu === 'R'" disabled class="botones2 align maxsize_w margin1top">
                     En revision
                   </v-btn>
-                  <v-btn v-else-if="pedido.statu === 'N'" @click="OrderPay(pedido)" class="botones2 align maxsize_w margin1top">
+                  <v-btn v-else-if="pedido.statu === 'N'" @click="OrderPay(pedido)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
                     Pagar
                   </v-btn>
                   <v-btn v-else-if="pedido.statu === 'P'" disabled class="botones2 align maxsize_w margin1top">
@@ -248,10 +248,10 @@
                   <v-btn v-else-if="pedido.statu === 'C'" disabled class="botones2 align maxsize_w margin1top">
                     En camino
                   </v-btn>
-                  <v-btn v-else-if="pedido.statu === 'E'" class="botones2 align maxsize_w margin1top">
+                  <v-btn v-else-if="pedido.statu === 'E'" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
                     Confirmar
                   </v-btn>
-                  <v-btn v-else @click="OrderCreate(pedido)" class="botones2 align maxsize_w margin1top">
+                  <v-btn v-else @click="OrderCreate(pedido)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
                     Aceptar
                   </v-btn>
                 </section>
@@ -337,6 +337,7 @@ export default {
       optionMenu: false,
       messages: 1,
       search: "",
+      bloqueoForzado: false,
       dataMenuOptions: {
         expansion: [
           {
@@ -410,9 +411,13 @@ export default {
       }
     },
     OrderCreate(item) {
+      this.bloqueoForzado = true
       this.axios.post(ORDER_CREATE,item).then((res) => {
         var i = this.$store.state.dataModalShopCart.findIndex((obj) => obj.wallet_shop === res.data.orden.wallet_shop)
         this.$store.state.dataModalShopCart[i].statu = res.data.orden.statu
+        if (res.status !== 201) {
+          this.bloqueoForzado = false
+        }
       })
     },
     Logout() {

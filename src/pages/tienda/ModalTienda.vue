@@ -6,7 +6,7 @@
       </v-btn>
 
       <section class="center tcenter">
-        <h1 class="h7_em">Numero de orden {{order.id}}</h1>
+        <h1 class="h7_em">Order Nº: {{order.id}}</h1>
       </section>
 
       <section class="contentModal grid">
@@ -15,8 +15,8 @@
           <section class="contInformacion divcol gap1">
             <ul class="divcol gap1">
               <v-card
-                v-for="n in order_detail"
-                :key="n"
+                v-for="(detail, i) in order_details"
+                :key="i"
                 v-ripple="{ class: 'activeRipple' }"
                 class="fwrap"
                 :ripple="true"
@@ -24,13 +24,13 @@
                 <div class="divcol">
                   <span class="h11_em semibold tnone">
                     <span class="titulo">Producto: </span>
-                    {{n.name}}
+                    {{detail.name}}
                   </span>
                   <div class="acenter" style="gap: 0.2em">
-                    <span class="h11_em semibold"
-                      ><span class="titulo">Precio: </span
-                      >{{formatPrice(n.price)}}</span
-                    >
+                    <span class="h11_em semibold">
+                      <span class="titulo">Precio: </span>
+                      {{ formatPrice(detail.price) }}
+                    </span>
                     <img
                       src="@/assets/logos/near.svg"
                       width="14px"
@@ -38,10 +38,9 @@
                     >
                   </div>
                 </div>
-
                 <div class="divcol">
                   <span class="titulo">Comentario:</span>
-                  <span class="tnone">{{n.comment}}</span>
+                  <span class="tnone">{{ detail.comment }}</span>
                 </div>
               </v-card>
             </ul>
@@ -54,7 +53,7 @@
             <aside class="divcol" style="gap: 0.2em">
               <span class="h11_em semibold acenter" style="gap: 0.2em">
                 <span class="titulo">Precio de Delivery: </span>
-                2
+                {{ formatPrice(order.delivery_price) }}
                 <img
                   src="@/assets/logos/near.svg"
                   width="14px"
@@ -63,7 +62,7 @@
               </span>
               <span class="h11_em semibold acenter" style="gap: 0.2em">
                 <span class="titulo">Total del Pedido: </span>
-                {{formatPrice(order.total_price)}}
+                {{ formatPrice(order.total_price) }}
                 <img
                   src="@/assets/logos/near.svg"
                   width="14px"
@@ -71,8 +70,20 @@
                 />
               </span>
             </aside>
-            <v-btn @click="OrderUpdate(pedido)" class="botones2 align maxsize_w margin1top">
+            <v-btn v-if="order.statu === 'R'" @click="OrderUpdate(order)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
               Aceptar
+            </v-btn>
+            <v-btn v-else-if="order.statu === 'N'" disabled class="botones2 align maxsize_w margin1top">
+              Esperando
+            </v-btn>
+            <v-btn v-else-if="order.statu === 'P'" disabled class="botones2 align maxsize_w margin1top">
+              Pagado
+            </v-btn>
+            <v-btn v-else-if="order.statu === 'C'" @click="OrderUpdate(order)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
+              Entregar
+            </v-btn>
+            <v-btn v-else disabled class="botones2 align maxsize_w margin1top">
+              Desconocido
             </v-btn>
           </section>
 
@@ -84,7 +95,7 @@
                 class="map"
               >
               </GoogleMap>
-              <span class="h11_em semibold">
+              <span class="h11_em semibold" style="margin-top: 15px">
                 <span class="titulo">Número: </span>
                 {{ order.client_number }}
               </span>
@@ -100,7 +111,7 @@
 import GoogleMap from '@/components/googleMaps/GoogleMap'
 import * as nearAPI from "near-api-js";
 const { utils } = nearAPI;
-import { ORDER, CONFIG, ORDERD} from "@/services/api";
+import { ORDER, CONFIG, ORDERD, ORDER_STATU} from "@/services/api";
 export default {
   name: "modalTienda",
   i18n: require("./i18n"),
@@ -109,7 +120,8 @@ export default {
     return {
       modalTienda: false,
       order:{},
-      order_detail:[],
+      order_details:[],
+      bloqueoForzado: false,
     }
   },
   mounted() {
@@ -121,26 +133,34 @@ export default {
       );
     },
     get_orders(id) {
-        this.axios.get(ORDER+"/?id=" + id).then((response) => {
-          console.log(response.data[0])
-          this.order = response.data[0]
-        })
+      this.axios.get(ORDER+"/?id=" + id).then((response) => {
+        this.order = response.data[0]
+      })
     },
     get_orders_details(id) {
-        this.axios.get(ORDERD+"/?order=" + id).then((response) => {
-          console.log(response.data)
-          this.order_detail = response.data
-        })
+      this.axios.get(ORDERD+"/?order=" + id).then((response) => {
+        this.order_details = response.data
+      })
     },
     yoctoNEARNEAR: function(yoctoNEAR) {
       const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())
       console.log(amountInNEAR)
     },
     OrderUpdate(item) {
-      var objeto = {id: item.id, statu: 'N'}
-      this.axios.put(ORDER_STATU,objeto).then(() => {
-        // console.log(response)
-      })
+      this.bloqueoForzado = true
+      var objeto = null
+      if (item.statu === 'R') {
+        objeto = {id: item.id, statu: 'N'}
+      } else if (item.statu === 'P') {
+        objeto = {id: item.id, statu: 'C'}
+      }
+      if (objeto) {
+        this.axios.put(ORDER_STATU,objeto).then((res) => {
+          if (res.status !== 202) {
+            this.bloqueoForzado = false
+          }
+        })
+      }
     },
   },
 };

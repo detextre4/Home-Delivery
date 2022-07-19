@@ -39,7 +39,13 @@
 
             <template v-slot:[`item.statu`]="{ item }">
               <v-chip :color="item.statu=='A'?'#3CD4A0':'#ff4081'">
-               <span v-if="item.statu ='R' " class="bold">Pendiente</span>
+               <span v-if="item.statu==='R'" class="bold">Revisar</span>
+               <span v-if="item.statu==='N'" class="bold">Por pagar</span>
+               <span v-if="item.statu==='P'" class="bold">Preparando</span>
+               <span v-if="item.statu==='C'" class="bold">En camino</span>
+               <span v-if="item.statu==='E'" class="bold">Entregando</span>
+               <span v-if="item.statu==='B'" class="bold">Recibido</span>
+               <span v-if="item.statu==='X'" class="bold">Cancelado</span>
               </v-chip>
             </template>
             <template v-slot:[`item.actions`]="{ item }">
@@ -200,22 +206,22 @@ export default {
     }
   },
   mounted() {
-    this.VerifyStore()
-    this.get_menu();
-    setTimeout(() => {
-      this.intervalo = setInterval(this.get_orders(), 2500)
-    }, 5000);
-
+    this.initComponentOrdersShop()
   },
   computed: {
     WidthListener() {if (this.dataMenuTienda.length <= 3) {return 'max-width: 20em'}}
   },
   methods: {
+    async initComponentOrdersShop () {
+      const re_1 = await this.VerifyStore();
+      const re_2 =  await this.get_menu();
+      this.intervalo = setInterval(this.get_orders, 3000);
+    },
     get_orders() {
-        this.axios.get(ORDER+"/?wallet_shop=" + this.data.wallet).then((response) => {
-          // console.log(response)
-          this.dataHistorial = response.data
-        })
+      this.axios.get(ORDER+"/?wallet_shop=" + this.data.wallet).then((response) => {
+        // console.log(response)
+        this.dataHistorial = response.data
+      })
     },
     get_orders_details(id) {
         this.axios.get(ORDERD+"/?order=" + id).then(() => {
@@ -247,11 +253,13 @@ export default {
             })
             .then((res) => {
               this.dataMenuTienda = res.platillos;
+              return true
             });
         }
       } catch (e) {
         // Router
         console.log(e);
+        return false
       }
     },
     async VerifyStore() {
@@ -275,11 +283,13 @@ export default {
             .then((res) => {
               this.data = res;
               localStorage.setItem("store", JSON.stringify(this.data));
+              return true
             });
         }
       } catch (e) {
         // Router
         this.$router.push({ name: "miTienda" });
+        return false
       }
     },
   },
