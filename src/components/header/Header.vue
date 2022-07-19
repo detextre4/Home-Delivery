@@ -108,7 +108,7 @@
     methods: {
       fetchPendingOrders_client () {
         var id = parseInt(localStorage.getItem('profileid'))
-        this.axios.get(PENDING_ORDERS + '?id=' + id + '&').then((res) => {
+        this.axios.get(PENDING_ORDERS + '/?id=' + id + '&').then((res) => {
           res.data.forEach(element => {
             this.$store.commit('ShoppingCart', element)
           });

@@ -8,7 +8,7 @@
       </aside>
 
       <v-card class="grid">
-        <GoogleMap :UserCoordinates="order.location.coordinates" class="map"></GoogleMap>
+        <GoogleMap :UserCoordinates="order.location" class="map"></GoogleMap>
 
         <aside class="divcol spacea relative">
           <p class="h10_em semibold">
@@ -17,16 +17,16 @@
           </p>
           <p class="h10_em semibold">
             <span>{{$t('costoViaje')}}: </span>
-            {{order.dollar}}$ ({{order.near}} NEAR)
+            ({{order.deliver_cost}} NEAR)
           </p>
           <p class="h10_em semibold">
             <span>{{$t('direccion')}}: </span>
-            {{order.location.direccion}}
+            {{order.direccion}}
           </p>
-          <p class="h10_em semibold">
+          <!-- <p class="h10_em semibold">
             <span>{{$t('distanciaTotal')}}: </span>
             {{order.distance}}
-          </p>
+          </p> -->
           <v-btn class="h11_em" text color="var(--clr-btn)" rounded max-width="max-content"
             @click="$refs.modalPedido.modalPedido=true">
             {{$t('verDetalles')}}
@@ -141,7 +141,10 @@ export default {
       this.intervalo = setInterval(this.fetchOrders, 3000);
     },
     fetchOrders(){
-      this.axios.get(PENDING_ORDERS_DELIVER+"/?id=" + id).then((response) => {
+      this.axios.get(PENDING_ORDERS_DELIVER+"/?id=" + localStorage.getItem('profileid')).then((response) => {
+        if (this.orders !== response.data) {
+          this.order = response.data[0]
+        }
         this.orders = response.data
       })
     },

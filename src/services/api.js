@@ -45,7 +45,7 @@ module.exports = {
   ORDER_CANCEL:`${BASE_URL}/order-update-cancel`,
   ORDER_STATU:`${BASE_URL}/order-update-statu`,
   PENDING_ORDERS:`${BASE_URL}/pending-orders-client-side`,
-  PENDING_ORDERS_DELIVER:`${BASE_URL}/pending-orders-deliver-side`,
+  PENDING_ORDERS_DELIVER:`${BASE_URL}/pending-orders-delivery-side`,
   PROFILE: `${BASE_URL}/perfiles/`,
   MESSAGES: `${BASE_URL}/mensajes/`,
   CHATS: `${BASE_URL}/chats/`,
