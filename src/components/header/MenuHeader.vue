@@ -191,7 +191,7 @@
                           />
                         </div>
                       </div>
-                      
+
                       <v-text-field
                         placeholder="Opcional"
                         hide-details
@@ -236,40 +236,71 @@
                       />
                     </span>
                   </aside>
-                  <v-btn v-if="pedido.statu === 'R'" disabled class="botones2 align maxsize_w margin1top">
+                  <!-- <v-btn v-else-if="pedido.statu === 'N'" @click="OrderPay(pedido)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top"> -->
+                  <v-btn
+                    v-if="pedido.statu === 'R'"
+                    color="primary"
+                    class="botones2 align maxsize_w margin1top"
+                  >
                     En revision
                   </v-btn>
-                  <v-btn v-else-if="pedido.statu === 'N'" @click="OrderPay(pedido)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
+                  <v-btn
+                    v-else-if="pedido.statu === 'N'"
+                    @click="payorder(pedido)"
+                    class="botones2 align maxsize_w margin1top"
+                  >
                     Pagar
                   </v-btn>
-                  <v-btn v-else-if="pedido.statu === 'P'" disabled class="botones2 align maxsize_w margin1top">
+                  <v-btn
+                    v-else-if="pedido.statu === 'P'"
+                    disabled
+                    class="botones2 align maxsize_w margin1top"
+                  >
                     Preparando
                   </v-btn>
-                  <v-btn v-else-if="pedido.statu === 'C'" disabled class="botones2 align maxsize_w margin1top">
+                  <v-btn
+                    v-else-if="pedido.statu === 'C'"
+                    disabled
+                    class="botones2 align maxsize_w margin1top"
+                  >
                     En camino
                   </v-btn>
-                  <v-btn v-else-if="pedido.statu === 'E'" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
+                  <v-btn
+                    v-else-if="pedido.statu === 'E'"
+                    :disabled="bloqueoForzado"
+                    class="botones2 align maxsize_w margin1top">
                     Confirmar
                   </v-btn>
-                  <v-btn v-else @click="OrderCreate(pedido)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
-                    Aceptar
+                  <v-btn
+                    v-else
+                    @click="OrderCreate(pedido)"
+                    :disabled="bloqueoForzado"
+                    class="botones2 align maxsize_w margin1top"
+                  >
                   </v-btn>
+                  <!-- <v-btn
+                    v-else-if="pedido.statu === 'E'"
+                    class="botones2 align maxsize_w margin1top"
+                  >
+                    Confirmar
+                  </v-btn>
+                  <v-btn
+                    v-else
+                    @click="OrderCreate(pedido)"
+                    class="botones2 align maxsize_w margin1top"
+                  >
+                    Aceptar
+                  </v-btn> -->
                 </section>
 
                 <section class="divcol">
                   <span class="h10_em bold">{{ $t("direccionEntrega") }}</span>
                   <aside class="divcol" style="gap: 0.2em">
-                    <GoogleMapCart
-                      :UserCoordinates="pedido"
-                      class="map"
-                    >
+                    <GoogleMapCart :UserCoordinates="pedido" class="map">
                     </GoogleMapCart>
 
                     <span class="h11_em semibold tnone">
-                      <v-text-field
-                        v-model="pedido.direccion"
-                        hide-details
-                      >
+                      <v-text-field v-model="pedido.direccion" hide-details>
                         <template v-slot:label>
                           <span class="titulo">Dirección:</span>
                         </template>
@@ -310,11 +341,16 @@
 </template>
 
 <script>
-import * as nearAPI from "near-api-js";
-const { utils } = nearAPI;
 import { i18n } from "@/plugins/i18n";
-import GoogleMapCart from '@/components/googleMaps/GoogleMapCart'
-import { ORDER_CREATE, ORDER_STATU, ORDER_CANCEL } from '@/services/api.js'
+import GoogleMapCart from "@/components/googleMaps/GoogleMapCart";
+import {
+  ORDER_CREATE,
+  ORDER_STATU,
+  ORDER_CANCEL,
+  CONFIG,
+} from "@/services/api.js";
+import * as nearAPI from "near-api-js";
+const { Contract, utils, connect, keyStores, WalletConnection } = nearAPI;
 export default {
   name: "headerMenu",
   i18n: require("./i18n"),
@@ -342,7 +378,10 @@ export default {
         expansion: [
           {
             key: "idioma",
-            selection: [{name: "ingles", key: "US"}, {name: "español", key: "ES"}],
+            selection: [
+              { name: "ingles", key: "US" },
+              { name: "español", key: "ES" },
+            ],
           },
         ],
       },
@@ -366,9 +405,7 @@ export default {
             ],
           },
         ],
-        list: [
-          { key: "logout" }
-        ]
+        list: [{ key: "logout" }],
       },
     };
   },
@@ -382,23 +419,59 @@ export default {
     //   }
     // },
     OrderPay(item) {
-      var objeto = {id: item.id, statu: 'P'}
-      this.axios.post(ORDER_STATU,objeto).then(() => {
+      var objeto = { id: item.id, statu: "P" };
+      this.axios.post(ORDER_STATU, objeto).then(() => {
         // console.log(response)
-      })
+      });
     },
     OrderPay(item) {
-      var objeto = {id: item.id, statu: 'P'}
-      this.axios.post(ORDER_STATU,objeto).then(() => {
+      var objeto = { id: item.id, statu: "P" };
+      this.axios.post(ORDER_STATU, objeto).then(() => {
         // console.log(response)
-      })
+      });
+    },
+    async payorder(id) {
+      console.log(id);
+      try {
+        const CONTRACT_NAME = "contract1.ccoronel7.testnet";
+        // Connect to NEAR
+        const near = await connect(
+          CONFIG(new keyStores.BrowserLocalStorageKeyStore())
+        );
+        // Create wallet connection
+        const wallet = new WalletConnection(near);
+        const contract = new Contract(wallet.account(), CONTRACT_NAME, {
+          changeMethods: ["order_payment"],
+          sender: wallet.account(),
+        });
+        if (wallet.isSignedIn()) {
+          await contract
+            .order_payment(
+              {
+                id_orden: id.id,
+                id_tienda: id.wallet_shop,
+              },
+              "300000000000000", // attached GAS (optional)
+              id.sub_total
+            )
+            .then((res) => {
+              this.$refs.alerts.Alerts("success");
+            });
+        }
+      } catch (e) {
+        // Router
+        console.log(e);
+      }
     },
     formatPrice(price) {
-      return utils.format.formatNearAmount(price.toLocaleString("fullwide", { useGrouping: false })
+      return utils.format.formatNearAmount(
+        price.toLocaleString("fullwide", { useGrouping: false })
       );
     },
-    yoctoNEARNEAR: function(yoctoNEAR) {
-      const amountInNEAR = utils.format.parseNearAmount((this.formatPrice(yoctoNEAR)).toString())
+    yoctoNEARNEAR: function (yoctoNEAR) {
+      const amountInNEAR = utils.format.parseNearAmount(
+        this.formatPrice(yoctoNEAR).toString()
+      );
       // console.log(amountInNEAR)
     },
     CambiarLanguaje(lang) {
@@ -421,12 +494,12 @@ export default {
       })
     },
     Logout() {
-      localStorage.removeItem('profileid');
-      this.$parent.loginNear('logout');
+      localStorage.removeItem("profileid");
+      this.$parent.loginNear("logout");
       this.logout = false;
-      if (this.$route.name !== 'inicio') {
-        localStorage.removeItem('store')
-        this.$parent.$parent.$parent.$parent.$refs.navbar.to('inicio');
+      if (this.$route.name !== "inicio") {
+        localStorage.removeItem("store");
+        this.$parent.$parent.$parent.$parent.$refs.navbar.to("inicio");
       }
     },
   },
