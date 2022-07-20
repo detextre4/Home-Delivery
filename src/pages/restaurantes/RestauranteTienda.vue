@@ -15,7 +15,7 @@
               <img :src="require(`@/assets/icons/corazon${perfil.like == true ? '' : '-outline'}.svg`)" alt="Food icon">
             </button>
           </aside> -->
-          <span class="h11_em">horario</span>
+          <span class="h11_em">{{$t('horario')}}:</span>
 
           <v-card-title class="h6_em bold">
             {{ data.name }}
@@ -79,7 +79,7 @@
           v-ripple="activeRipple ? { class: 'activeRipple' } : ''">
           <div class="contImages" @click="SelectMenu(item)" @mouseover="activeRipple = true"
             @mouseleave="activeRipple = false">
-            <span class="customeTooltip h12_em not_clr">Agregar al carrito</span>
+            <span class="customeTooltip h12_em not_clr">{{$t('agregarCarrito')}}</span>
             <img class="images" :src="item.img" alt="Restaurant image">
           </div>
 

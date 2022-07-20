@@ -17,12 +17,6 @@ export default new Router({
   routes: [
     // path 1
     {
-      path: '/register',
-      name: 'register',
-      component: () => import('@/layouts/register/Register'),
-    },
-    // path 2
-    {
       path: '/',
       name: 'layout',
       component: () => import('@/layouts/layout/Layout'),
@@ -79,8 +73,6 @@ export default new Router({
         },
       ],
     },
-    // Here next path if need
-    
     // Last path (Errors)
     {
       path: '*',

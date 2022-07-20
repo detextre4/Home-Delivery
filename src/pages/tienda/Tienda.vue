@@ -16,14 +16,14 @@
                   <v-icon class="not_clr" color="var(--clr-text-btn)">mdi-clipboard-edit</v-icon>
                 </v-btn>
               </template>
-              <span class="clr_text_btn">Editar datos de tienda</span>
+              <span class="clr_text_btn">{{$t('editarTienda')}}</span>
             </v-tooltip>
           </v-card-title>
         </v-img>
 
         <aside class="contHistorial fill">
           <div v-for="n in 19" :key="n" class="decoration" :style="`--distance:${(n+1)*4}`" />
-          <h3 class="h8_em tcenter not_clr">Historial de Ordenes</h3>
+          <h3 class="h8_em tcenter not_clr">{{$t('historialOrdenes')}}</h3>
           <v-data-table
             id="dataTable"
             :headers="headersHistorial"
@@ -39,13 +39,13 @@
 
             <template v-slot:[`item.statu`]="{ item }">
               <v-chip :color="item.statu=='A'?'#3CD4A0':'#ff4081'">
-               <span v-if="item.statu==='R'" class="bold">Revisar</span>
-               <span v-if="item.statu==='N'" class="bold">Por pagar</span>
-               <span v-if="item.statu==='P'" class="bold">Preparando</span>
-               <span v-if="item.statu==='C'" class="bold">En camino</span>
-               <span v-if="item.statu==='E'" class="bold">Entregando</span>
-               <span v-if="item.statu==='B'" class="bold">Recibido</span>
-               <span v-if="item.statu==='X'" class="bold">Cancelado</span>
+               <span v-if="item.statu==='R'" class="bold">{{$t('revisar')}}</span>
+               <span v-if="item.statu==='N'" class="bold">{{$t('porPagar')}}</span>
+               <span v-if="item.statu==='P'" class="bold">{{$t('preparando')}}</span>
+               <span v-if="item.statu==='C'" class="bold">{{$t('enCamino')}}</span>
+               <span v-if="item.statu==='E'" class="bold">{{$t('entregando')}}</span>
+               <span v-if="item.statu==='B'" class="bold">{{$t('recibido')}}</span>
+               <span v-if="item.statu==='X'" class="bold">{{$t('cancelado')}}</span>
               </v-chip>
             </template>
             <template v-slot:[`item.actions`]="{ item }">
@@ -55,7 +55,7 @@
                   <v-icon small>mdi-eye-plus</v-icon>
                 </v-btn>
                 </template>
-                <span class="clr_text_btn tnone">Ver información completa</span>
+                <span class="clr_text_btn tnone">{{$t('verInformaciónCompleta')}}</span>
               </v-tooltip>
             </template>
           </v-data-table>
@@ -64,14 +64,14 @@
     </v-col>
 
     <v-col class="contdown divcol margin2top">
-      <h2 class="h6_em center">Mi Menú
+      <h2 class="h6_em center">{{$t('miMenu')}}
         <v-tooltip right color="var(--clr-btn)">
           <template v-slot:activator="{ on, attrs }">
             <v-btn class="not_clr margin1left" icon v-bind="attrs" v-on="on" to="/mi-menu" :ripple="false">
               <v-icon size="2em" class="not_clr" color="var(--clr-btn-2)">mdi-plus-circle</v-icon>
             </v-btn>
           </template>
-          <span class="clr_text_btn">Organizar menú</span>
+          <span class="clr_text_btn">{{$t('organizarMenu')}}</span>
         </v-tooltip>
       </h2>
 

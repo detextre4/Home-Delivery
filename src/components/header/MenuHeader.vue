@@ -176,12 +176,12 @@
                     >
                       <div class="divcol">
                         <span class="h11_em semibold"
-                          ><span class="titulo">Producto: </span
+                          ><span class="titulo">{{$t('producto')}}: </span
                           >{{ producto.name }}</span
                         >
                         <div class="acenter" style="gap: 0.2em">
                           <span class="h11_em semibold"
-                            ><span class="titulo">Precio: </span
+                            ><span class="titulo">{{$t('precio')}}: </span
                             >{{ formatPrice(producto.price) }}</span
                           >
                           <img
@@ -198,7 +198,7 @@
                         v-model="producto.comment"
                       >
                         <template v-slot:label>
-                          <span class="titulo h11_em">Comentario:</span>
+                          <span class="titulo h11_em">{{$t('comentario')}}:</span>
                         </template>
                       </v-text-field>
 
@@ -218,7 +218,7 @@
                   <span class="h10_em bold">{{ $t("precioPedido") }}</span>
                   <aside class="divcol" style="gap: 0.2em">
                     <span class="h11_em semibold acenter" style="gap: 0.2em">
-                      <span class="titulo">Precio de Delivery: </span>
+                      <span class="titulo">{{$t('precioDelivery')}}: </span>
                       2
                       <img
                         src="@/assets/logos/near.svg"
@@ -227,7 +227,7 @@
                       />
                     </span>
                     <span class="h11_em semibold acenter" style="gap: 0.2em">
-                      <span class="titulo">Total del Pedido: </span>
+                      <span class="titulo">{{$t('totalPedido')}}: </span>
                       {{ formatPrice(pedido.sub_total) }}
                       <img
                         src="@/assets/logos/near.svg"
@@ -241,34 +241,34 @@
                     v-if="pedido.statu === 'R'"
                     class="botones2 align maxsize_w margin1top"
                   >
-                    En revision
+                    {{$t('enRevision')}}
                   </v-btn>
                   <v-btn
                     v-else-if="pedido.statu === 'N'"
                     @click="payorder(pedido)"
                     class="botones2 align maxsize_w margin1top"
                   >
-                    Pagar
+                    {{$t('pagar')}}
                   </v-btn>
                   <v-btn
                     v-else-if="pedido.statu === 'P'"
                     disabled
                     class="botones2 align maxsize_w margin1top"
                   >
-                    Preparando
+                    {{$t('preparando')}}
                   </v-btn>
                   <v-btn
                     v-else-if="pedido.statu === 'C'"
                     disabled
                     class="botones2 align maxsize_w margin1top"
                   >
-                    En camino
+                    {{$t('encamino')}}
                   </v-btn>
                   <v-btn
                     v-else-if="pedido.statu === 'E'"
                     :disabled="bloqueoForzado"
                     class="botones2 align maxsize_w margin1top">
-                    Confirmar
+                    {{$t('confirmar')}}
                   </v-btn>
                   <v-btn
                     v-else
@@ -301,12 +301,12 @@
                     <span class="h11_em semibold tnone">
                       <v-text-field v-model="pedido.direccion" hide-details>
                         <template v-slot:label>
-                          <span class="titulo">Dirección:</span>
+                          <span class="titulo">{{$t('direccion')}}:</span>
                         </template>
                       </v-text-field>
                     </span>
                     <span class="h11_em semibold">
-                      <span class="titulo">Número: </span>
+                      <span class="titulo">{{$t('numero')}}: </span>
                       {{ pedido.telefono }}
                     </span>
                   </aside>

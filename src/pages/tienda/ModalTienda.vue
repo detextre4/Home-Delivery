@@ -11,7 +11,7 @@
 
       <section class="contentModal grid">
         <div class="divcol">
-          <span class="h10_em bold" style="text-indent: 24px"> Información del pedido</span>
+          <span class="h10_em bold" style="text-indent: 24px">{{$t('informacionPedido')}}</span>
           <section class="contInformacion divcol gap1">
             <ul class="divcol gap1">
               <v-card
@@ -52,7 +52,7 @@
             <span class="h10_em bold">{{ $t("precioPedido") }}</span>
             <aside class="divcol" style="gap: 0.2em">
               <span class="h11_em semibold acenter" style="gap: 0.2em">
-                <span class="titulo">Precio de Delivery: </span>
+                <span class="titulo">{{$t('precioDelivery')}}: </span>
                 {{ formatPrice(order.delivery_price) }}
                 <img
                   src="@/assets/logos/near.svg"
@@ -61,7 +61,7 @@
                 />
               </span>
               <span class="h11_em semibold acenter" style="gap: 0.2em">
-                <span class="titulo">Total del Pedido: </span>
+                <span class="titulo">{{$t('totalPedido')}}: </span>
                 {{ formatPrice(order.total_price) }}
                 <img
                   src="@/assets/logos/near.svg"
@@ -71,19 +71,19 @@
               </span>
             </aside>
             <v-btn v-if="order.statu === 'R'" @click="OrderUpdate(order)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
-              Aceptar
+              {{$t('aceptar')}}
             </v-btn>
             <v-btn v-else-if="order.statu === 'N'" disabled class="botones2 align maxsize_w margin1top">
-              Esperando
+              {{$t('esperando')}}
             </v-btn>
             <v-btn v-else-if="order.statu === 'P'" disabled class="botones2 align maxsize_w margin1top">
-              Pagado
+              {{$t('pagado')}}
             </v-btn>
             <v-btn v-else-if="order.statu === 'C'" @click="OrderUpdate(order)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top">
-              Entregar
+              {{$t('entregar')}}
             </v-btn>
             <v-btn v-else disabled class="botones2 align maxsize_w margin1top">
-              Desconocido
+              {{$t('desconocido')}}
             </v-btn>
           </section>
 
@@ -96,7 +96,7 @@
               >
               </GoogleMap>
               <span class="h11_em semibold" style="margin-top: 15px">
-                <span class="titulo">Número: </span>
+                <span class="titulo">{{$t('nmmero')}}: </span>
                 {{ order.client_number }}
               </span>
             </aside>
