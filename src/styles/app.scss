@@ -266,6 +266,11 @@ p:not(.not_typography, .not) {
     font-weight: 600 !important;
     letter-spacing: -0.1ch !important;
   }
+  &.botones2.v-btn--disabled {
+    & span {
+      color: var(--clr-btn-2) !important;
+    }
+  }
 }
 .label {
   color: $clr-label !important;

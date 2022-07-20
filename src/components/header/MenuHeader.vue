@@ -239,7 +239,6 @@
                   <!-- <v-btn v-else-if="pedido.statu === 'N'" @click="OrderPay(pedido)" :disabled="bloqueoForzado" class="botones2 align maxsize_w margin1top"> -->
                   <v-btn
                     v-if="pedido.statu === 'R'"
-                    color="primary"
                     class="botones2 align maxsize_w margin1top"
                   >
                     En revision
