@@ -57,6 +57,7 @@
   clip-path: $clip-path-2 !important;
   box-shadow: $sombra-card-2 !important;
   position: relative;
+  overscroll-behavior: contain;
   &::-webkit-scrollbar {display: none}
   // @include media(min, small) {&::-webkit-scrollbar {display: none}}
   // @include media(max, small) {margin: 0 !important;max-height: 99% !important;min-height: 99% !important}
