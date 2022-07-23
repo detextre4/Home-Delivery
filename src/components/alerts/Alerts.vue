@@ -46,8 +46,7 @@ export default {
       }, 5000);
 
       // create alert
-      switch(key, title, desc) {
-        case title&&desc:
+      if (title&&desc) {
         var alert = {
           key: key,
           title: title,
@@ -56,10 +55,7 @@ export default {
           color: key=='success'?'#A4FDDF':key=='cancel'?'rgb(200, 0, 0)':null,
           model: true,
         }
-        this.dataAlerts.push(alert)
-          // code block
-          break;
-        case title:
+      } else if (title) {
         var alert = {
           key: key,
           title: title,
@@ -68,10 +64,7 @@ export default {
           color: key=='success'?'#A4FDDF':key=='cancel'?'rgb(200, 0, 0)':null,
           model: true,
         }
-        this.dataAlerts.push(alert)
-          // code block
-          break;
-        case desc:
+      } else if (desc) {
         var alert = {
           key: key,
           title: key,
@@ -80,10 +73,7 @@ export default {
           color: key=='success'?'#A4FDDF':key=='cancel'?'rgb(200, 0, 0)':null,
           model: true,
         }
-        this.dataAlerts.push(alert)
-          // code block
-          break;
-        default:
+      } else {
         var alert = {
           key: key,
           title: key,
@@ -92,9 +82,8 @@ export default {
           color: key=='success'?'#A4FDDF':key=='cancel'?'rgb(200, 0, 0)':null,
           model: true,
         }
-        this.dataAlerts.push(alert)
-          // code block
       }
+      this.dataAlerts.push(alert)
     },
   }
 };
